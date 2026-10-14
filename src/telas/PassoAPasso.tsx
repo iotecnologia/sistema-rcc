@@ -1,10 +1,10 @@
-// Agendar passo a passo, com TRAVAS: só avança quando a etapa está certa.
+// Agendar (página de Atendimento), com TRAVAS: só avança quando a etapa está certa.
 // 1 Convênio · 2 Plano · 3 Pedido médico · 4 Exames e paciente · 5 Resultado
 import { useMemo, useState, type ReactNode } from 'react';
 import { useBase } from '../componentes/Dados';
 import { BotoesSaida, TituloPagina } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
-import { ResultadoView } from '../componentes/ResultadoView';
+import { ResultadoSimples, relatorioAgendamento } from '../componentes/ResultadoSimples';
 import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { br, hojeIso, somarDias } from '../regras/calendario';
@@ -79,10 +79,10 @@ export function PassoAPasso() {
 
   return (
     <>
-      <TituloPagina titulo="Agendar passo a passo" sub="Siga as etapas. O sistema só deixa avançar quando está tudo certo.">
+      <TituloPagina titulo="Agendar" sub="Siga as etapas. Só avança quando está tudo certo.">
         <button type="button" className="btn2 ic" title="Começar de novo" aria-label="Começar de novo"
           onClick={() => { setPasso(0); setConv(''); setJaAutorizado(null); setPlano(''); setDataPedido(''); setConselho(''); setResp({}); setExames([]); setPeso(''); }}><Icone n="limpar" /></button>
-        <BotoesSaida desativado={passo !== 4 || !resultado} texto={() => (resultado ? resumoTexto(resultado) : '')} />
+        <BotoesSaida desativado={passo !== 4 || !resultado} texto={() => (resultado ? resumoTexto(resultado) : '')} relatorio={() => relatorioAgendamento(resultado!)} />
       </TituloPagina>
 
       <div className="passos">
@@ -146,11 +146,11 @@ export function PassoAPasso() {
           <h2>Quais exames? E o paciente</h2>
           <div className="barra" style={{ margin: 0 }}><SeletorExames convenio={conv} escolhidos={exames} mudar={setExames} /></div>
           <label className="campo" style={{ maxWidth: 220 }}>Peso do paciente (kg)<input type="number" min={0} value={peso} onChange={(e) => setPeso(e.target.value)} style={{ paddingLeft: 12 }} /></label>
-          {resultado && resultado.exames.flatMap((e) => e.agenda.avisosPaciente).filter((a, i, arr) => arr.findIndex((y) => y.id === a.id) === i).map((a) => <div key={a.id} className="mini">• Atenção ao paciente: {a.texto}</div>)}
+          {resultado && resultado.exames.flatMap((e) => e.agenda.avisosPaciente).filter((a, i, arr) => arr.findIndex((y) => y.id === a.id) === i).map((a) => <div key={a.id} className="mini">• {a.texto}</div>)}
           {trava4 ? <Trava>{trava4}</Trava> : <Certo>Exames liberados para continuar.</Certo>}
         </>}
 
-        {passo === 4 && resultado && <ResultadoView r={resultado} />}
+        {passo === 4 && resultado && <ResultadoSimples r={resultado} />}
 
         <div className="rodape-etapa">
           <button type="button" className="btn-grande" disabled={passo === 0} onClick={() => setPasso(passo - 1)}><Icone n="volta" />Voltar</button>

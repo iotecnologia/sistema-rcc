@@ -59,18 +59,16 @@ Regra das camadas: **tela só chama `regras/`**, **`regras/` só recebe `BaseDad
 
 ## Telas
 
-| Menu | O que faz |
-|---|---|
-| Visão geral | resumo da base e atalhos |
-| Consultar | convênio + exames + data → resultado completo |
-| Agendar passo a passo | o mesmo, em 5 etapas com travas (não avança sem responder) |
-| Convênios | todas as regras de um convênio: prazos, pedido, regras por tipo, códigos, planos |
-| Exames | um exame em todos os convênios + máquina e preparo |
-| Orçamento | particular / Sócio Remido, desconto, parcelamento, envio por WhatsApp |
-| Médicos · Unidades e máquinas · Ramais | consulta de apoio |
-| Regras a confirmar | o que ainda depende de resposta da RCC, com o texto original |
+Login pelo **e-mail**. Cada usuário tem um **cargo**, e o cargo define quais páginas abrem (página sem permissão aparece com cadeado).
+Cargos e usuários são cadastro em **Usuários e cargos** (só Administrador). Usuários de exemplo: `admin@rcc.exemplo`, `autorizacao@rcc.exemplo`, `atendimento@rcc.exemplo`.
 
-Todo resultado tem **imprimir/PDF**, **WhatsApp** e **copiar**. A impressão sai em preto no branco.
+| Grupo | Páginas |
+|---|---|
+| Atendimento | Agendar (uma etapa por vez, resultado em 3 blocos) · Regras do convênio · Orçamento · Preparos · Telefones e endereços |
+| Autorização | Consulta completa · Convênios · Exames e códigos |
+| Cadastros | Médicos · Máquinas · Regras a confirmar · Usuários e cargos |
+
+Imprimir/PDF abre o **relatório** (cartão do Analiza antigo: cabeçalho RCC, título, paciente/data/atendente, conteúdo, total) e imprime só ele, preto no branco. WhatsApp e copiar mandam o texto.
 
 ## Como as regras funcionam
 
@@ -91,7 +89,7 @@ Depois de gerar a base: copie os JSON para `src/dados/` e rode `npm test` antes 
 
 ## Limitações conhecidas (mock)
 
-- Sem login: o usuário é fixo ("Izabel · Administradora"). Login e perfis entram na Fase 3.
+- Login sem senha no mock (o repositório é público). A senha entra com o servidor (Fase 3). Cargos e usuários editados ficam salvos só no navegador até lá.
 - Máquina e médico são ligados ao exame **pelo nome**; 9 exames de RM/TC ainda não têm máquina (escanometria, radiocirurgia, planejamento oncológico, perfusão, reconstrução 3D, endorretal, PET, urotomografia). O teste `varredura` lista esses casos.
 - Os dados estão em JSON dentro do app; edição só pelo pipeline até a Fase 3.
 - Respostas pendentes da RCC (40 perguntas) aparecem em "Regras a confirmar".

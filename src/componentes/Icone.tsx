@@ -25,6 +25,7 @@ const P: Record<string, string[]> = {
   arquivo: ['M14 3H6v18h12V7z', 'M14 3v4h4'],
   usuarios: ['M9 4a4 4 0 1 0 0 8a4 4 0 0 0 0-8z', 'M2 21c1-4 3.5-6 7-6s6 2 7 6', 'M16 4a4 4 0 0 1 0 8', 'M18 15c2 .5 3.5 2.5 4 6'],
   mais: ['M12 5v14', 'M5 12h14'],
+  editar: ['M4 20h4L19 9l-4-4L4 16z', 'M13 7l4 4'],
   menos: ['M5 12h14'],
   seta: ['M5 12h14', 'M13 6l6 6-6 6'],
   volta: ['M19 12H5', 'M11 6l-6 6 6 6'],

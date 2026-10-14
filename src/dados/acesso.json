@@ -1,0 +1,12 @@
+{
+  "cargos": [
+    { "id": "administrador", "nome": "Administrador", "paginas": ["*"] },
+    { "id": "autorizacao", "nome": "Autorização", "paginas": ["agendar", "convenio", "orcamento", "preparos", "contatos", "consultar", "convenios", "exames"] },
+    { "id": "atendimento", "nome": "Atendimento", "paginas": ["agendar", "convenio", "orcamento", "preparos", "contatos"] }
+  ],
+  "usuarios": [
+    { "email": "admin@rcc.exemplo", "nome": "Administrador", "cargo": "administrador" },
+    { "email": "autorizacao@rcc.exemplo", "nome": "Autorização", "cargo": "autorizacao" },
+    { "email": "atendimento@rcc.exemplo", "nome": "Atendimento", "cargo": "atendimento" }
+  ]
+}

@@ -1,60 +1,46 @@
-// Estrutura da tela (igual ao sistema Prometals): menu lateral, topo, conteúdo e barra de status.
+// Estrutura da tela (igual ao sistema Prometals): menu lateral por grupo, topo com usuário e cargo, conteúdo.
+// O menu mostra todas as páginas; as que o cargo não libera aparecem com cadeado.
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Icone } from './Icone';
-import { local } from '../util/formato';
+import { local, iniciais } from '../util/formato';
+import { useSessao } from '../acesso/Sessao';
+import { GRUPOS, PAGINAS } from '../acesso/paginas';
 
-const MENU: { sec?: string; itens: { para: string; nome: string; ic: string }[] }[] = [
-  { itens: [{ para: '/', nome: 'Visão geral', ic: 'inicio' }, { para: '/consultar', nome: 'Consultar', ic: 'busca' }] },
-  { sec: 'Autorização', itens: [
-    { para: '/passo-a-passo', nome: 'Agendar passo a passo', ic: 'passos' },
-    { para: '/convenios', nome: 'Convênios', ic: 'convenio' },
-    { para: '/exames', nome: 'Exames', ic: 'exame' },
-  ] },
-  { sec: 'Atendimento', itens: [
-    { para: '/orcamento', nome: 'Orçamento', ic: 'orcamento' },
-    { para: '/medicos', nome: 'Médicos', ic: 'medico' },
-    { para: '/unidades', nome: 'Unidades e máquinas', ic: 'maquina' },
-    { para: '/ramais', nome: 'Ramais', ic: 'ramal' },
-  ] },
-  { sec: 'Administração', itens: [{ para: '/pendencias', nome: 'Regras a confirmar', ic: 'pendencia' }] },
-];
-
-export const TITULOS: Record<string, string> = Object.fromEntries(MENU.flatMap((s) => s.itens.map((i) => [i.para, i.nome])));
+const Cadeado = () => <svg className="i cadeado" viewBox="0 0 24 24" aria-hidden><path d="M6 11h12v10H6z" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>;
 
 export function Shell() {
+  const s = useSessao();
   const [claro, setClaro] = useState(() => local.ler('tema-claro', true));
   const loc = useLocation();
-  const atual = TITULOS[loc.pathname] ?? 'Analiza';
+  const atual = PAGINAS.find((p) => p.rota === loc.pathname);
   const trocarTema = () => { setClaro(!claro); local.gravar('tema-claro', !claro); };
   return (
     <div className={'app' + (claro ? ' tema-claro' : '')}>
       <aside className="lateral">
         <div className="lat-topo"><img src="./rcc-logo.png" alt="RCC Diagnósticos por Imagem" /><div><b>ANALIZA</b><small>Central de informações</small></div></div>
         <nav className="lat-nav" aria-label="Menu principal">
-          {MENU.map((s, i) => (
-            <div key={i}>
-              {s.sec && <div className="lat-sec">{s.sec}</div>}
-              {s.itens.map((it) => (
-                <NavLink key={it.para} to={it.para} end className={({ isActive }) => 'lat-item' + (isActive ? ' ativo' : '')}>
-                  <Icone n={it.ic} /><span className="nm">{it.nome}</span>
-                </NavLink>
-              ))}
+          {GRUPOS.map((g) => (
+            <div key={g}>
+              <div className="lat-sec">{g}</div>
+              {PAGINAS.filter((p) => p.grupo === g).map((p) => s.pode(p.id)
+                ? <NavLink key={p.id} to={p.rota} className={({ isActive }) => 'lat-item' + (isActive ? ' ativo' : '')}><Icone n={p.icone} /><span className="nm">{p.nome}</span></NavLink>
+                : <span key={p.id} className="lat-item bloqueado" title="Sem permissão para o seu cargo"><Icone n={p.icone} /><span className="nm">{p.nome}</span><Cadeado /></span>)}
             </div>
           ))}
         </nav>
-        <div className="lat-rodape">mock funcional · v0.1.0</div>
+        <div className="lat-rodape">mock funcional · v0.2.0</div>
       </aside>
       <header className="topo">
-        <div className="migalha">Início{loc.pathname !== '/' && <> &nbsp;/&nbsp; <b>{atual}</b></>}</div>
+        <div className="migalha">{atual ? <>{atual.grupo} &nbsp;/&nbsp; <b>{atual.nome}</b></> : 'Analiza'}</div>
         <div className="topo-dir">
           <button type="button" className="icone-btn" onClick={trocarTema} title="Tema claro/escuro" aria-label="Alternar tema claro ou escuro"><Icone n="tema" /></button>
-          <div className="usuario"><div className="avatar">IZ</div><div><b>Izabel</b><small>Administradora</small></div></div>
-          <button type="button" className="icone-btn" title="Sair (no mock não há login)" aria-label="Sair"><Icone n="sair" /></button>
+          <div className="usuario"><div className="avatar">{iniciais(s.usuario?.nome ?? '')}</div><div><b>{s.usuario?.nome}</b><small>{s.cargo?.nome ?? 'sem cargo'}</small></div></div>
+          <button type="button" className="icone-btn" onClick={s.sair} title="Sair" aria-label="Sair"><Icone n="sair" /></button>
         </div>
       </header>
       <main className="conteudo"><Outlet /></main>
-      <footer className="status"><span className="on">Dados da base consolidada (arquivos JSON)</span><span className="dir">Sessão: izabel · Administradora</span></footer>
+      <footer className="status"><span className="on">Dados da base consolidada (arquivos JSON)</span><span className="dir">{s.usuario?.email} · {s.cargo?.nome}</span></footer>
     </div>
   );
 }

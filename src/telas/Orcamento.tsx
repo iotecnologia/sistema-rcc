@@ -31,11 +31,21 @@ export function Orcamento() {
   const texto = () => [`*Orçamento RCC — ${b.tabelasPreco.find((t) => t.id === tabela)?.nome}*`, paciente && `Paciente: ${paciente}`, ...itens.map((x) => `- ${x.qtd}x ${x.p.procedimento}: ${brl(x.p.valor * x.qtd)}`),
     d ? `Desconto: ${d}%` : '', `*Total: ${brl(total)}*`, `Parcelamento: até ${parcelas(total)}x · PIX ou dinheiro: 5% de desconto`, `Válido até ${br(validade)} (30 dias)`].filter(Boolean).join('\n');
 
+  const nomeTabela = b.tabelasPreco.find((t) => t.id === tabela)?.nome ?? '';
+  const relatorio = () => ({
+    titulo: /remido/i.test(nomeTabela) ? 'Orçamento de Exames — Sócio Remido Casa de Saúde' : 'Orçamento de Exames',
+    paciente: paciente || undefined,
+    secoes: [{ linhas: itens.map((x) => [`${x.qtd > 1 ? x.qtd + 'x ' : ''}${x.p.procedimento}`, brl(x.p.valor * x.qtd)] as [string, string]) },
+      { titulo: 'Formas de pagamento', linhas: [['Até R$ 300,00', 'em até 2x'], ['R$ 300,00 a R$ 500,00', 'em até 3x'], ['Acima de R$ 500,00', 'em até 6x'], ['PIX ou dinheiro', '5% de desconto']] as [string, string][] }],
+    totais: [...(d ? [['Subtotal', brl(subtotal)], [`Desconto (${d}%)`, '- ' + brl(subtotal - total)]] as [string, string][] : []), ['Total', brl(total)] as [string, string]],
+    rodape: [`Orçamento válido até ${br(validade)} (30 dias).`],
+  });
+
   return (
     <>
       <TituloPagina titulo="Orçamento" sub="Some os exames, aplique desconto e envie ao paciente. Válido por 30 dias.">
         <button type="button" className="btn2 ic" onClick={() => { setLinhas([]); setDesc(0); setPaciente(''); }} title="Limpar orçamento" aria-label="Limpar orçamento"><Icone n="limpar" /></button>
-        <BotoesSaida desativado={!itens.length} texto={texto} />
+        <BotoesSaida desativado={!itens.length} texto={texto} relatorio={relatorio} />
       </TituloPagina>
       <div className="barra">
         <label className="cp" style={{ flex: '0 1 220px' }}><span>Tabela</span><select value={tabela} onChange={(e) => { setTabela(Number(e.target.value)); setLinhas([]); }}>{b.tabelasPreco.map((t) => <option key={t.id} value={t.id}>{t.nome}</option>)}</select></label>

@@ -5,6 +5,7 @@ import { useBase } from '../componentes/Dados';
 import { BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
 import { ResultadoView } from '../componentes/ResultadoView';
+import { relatorioAgendamento } from '../componentes/ResultadoSimples';
 import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { hojeIso } from '../regras/calendario';
@@ -39,7 +40,7 @@ export function Consultar() {
     <>
       <TituloPagina titulo="Consultar" sub="Escolha o convênio, depois os exames e a data do pedido. O resultado vale só para esse convênio.">
         <button type="button" className="btn2 ic" onClick={limpar} title="Nova consulta" aria-label="Nova consulta"><Icone n="limpar" /></button>
-        <BotoesSaida desativado={!resultado} texto={() => (resultado ? resumoTexto(resultado) : '')} />
+        <BotoesSaida desativado={!resultado} texto={() => (resultado ? resumoTexto(resultado) : '')} relatorio={() => relatorioAgendamento(resultado!)} />
       </TituloPagina>
 
       <div className="barra">

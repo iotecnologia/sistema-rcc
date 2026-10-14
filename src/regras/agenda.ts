@@ -129,11 +129,20 @@ function preparosDoExame(b: BaseDados, e: Exame): Preparo[] {
   return b.preparos.filter((p) => regra[1].test(norm(p.titulo)));
 }
 
+/** Condição do paciente que dispara a regra (o texto da regra sozinho não diz). */
+const CONDICAO: Record<string, string> = {
+  GESTANTE: 'Se a paciente for gestante', NEUROESTIMULADOR: 'Se o paciente tiver neuroestimulador',
+  OPERADO_TUMOR: 'Se o paciente foi operado de tumor', TATUAGEM_RECENTE: 'Se o paciente fez tatuagem recente',
+  JOELHO_90KG: 'Se o paciente tiver mais de 90 kg',
+};
+
 export function agendaDoExame(b: BaseDados, e: Exame): AgendaExame {
   const rcc = regrasRCC(b);
   const doExame = rcc.filter((r) => ['M23', 'M24', 'M25', 'M26', 'M16', 'M20'].includes(r.molde) && r.alvos.length
     && r.alvos.some((a) => !ALVOS_GERAIS.has(a) && !ALVOS_COMBINACAO.has(a) && !ALVOS_PACIENTE.has(a) && alvoCasa(b, a, e)));
-  const doPaciente = rcc.filter((r) => r.alvos.some((a) => ALVOS_PACIENTE.has(a)) && ['RM'].includes(modalidadeBase(e)));
+  const doPaciente = rcc.filter((r) => r.alvos.some((a) => ALVOS_PACIENTE.has(a) && (a !== 'JOELHO_90KG' || /JOELHO/.test(norm(e.nome))))
+    && ['RM'].includes(modalidadeBase(e)));
+  const condicao = (r: (typeof doPaciente)[number]) => CONDICAO[r.alvos.find((a) => ALVOS_PACIENTE.has(a)) ?? ''] ?? 'Condição do paciente';
   return { maquinas: maquinasDoExame(b, e), medicos: medicosDoExame(b, e), preparos: preparosDoExame(b, e),
-    avisos: doExame.map((r) => paraItem(b, r)), avisosPaciente: doPaciente.map((r) => paraItem(b, r)), ligacaoPorNome: true };
+    avisos: doExame.map((r) => paraItem(b, r)), avisosPaciente: doPaciente.map((r) => { const i = paraItem(b, r); return { ...i, texto: `${condicao(r)}: ${i.texto}` }; }), ligacaoPorNome: true };
 }
