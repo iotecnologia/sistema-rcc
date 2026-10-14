@@ -10,6 +10,7 @@ import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { br, hojeIso, somarDias } from '../regras/calendario';
 import { modalidadeBase } from '../regras/contexto';
+import { LogoConvenio } from './Convenios';
 
 type SN = 'sim' | 'nao' | null;
 const PASSOS = ['Convênio', 'Plano', 'Exames', 'Pedido médico', 'Resultado'];
@@ -100,7 +101,7 @@ export function PassoAPasso() {
           <div className="opcoes">
             {[...b.convenios].sort((a, x) => a.nome.localeCompare(x.nome)).map((x) => (
               <button type="button" key={x.slug} className={'opcao' + (conv === x.slug ? ' sel' : '')} onClick={() => { setConv(x.slug); setPlano(''); setConselho(''); setResp({}); setJaAutorizado(null); }}>
-                <span className="sg" style={{ background: x.cor ?? '#64748b', color: '#fff' }}>{x.nome.slice(0, 2).toUpperCase()}</span>{x.nome}
+                <LogoConvenio c={x} tam={30} />{x.nome}
               </button>
             ))}
           </div>

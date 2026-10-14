@@ -1,0 +1,33 @@
+LOGOS DOS CONVÊNIOS
+
+Coloque aqui o logo de cada convênio em PNG (fundo branco ou transparente), com o nome do arquivo EXATAMENTE como abaixo.
+Enquanto o arquivo não existir, o sistema mostra a sigla colorida.
+
+aafresp.png  ->  Aafresp
+abas15.png  ->  Abas 15
+amil.png  ->  Amil
+assefaz.png  ->  Assefaz
+azimutemed.png  ->  AZIMUTEMED
+bradesco.png  ->  Bradesco Saúde
+cabesp.png  ->  Cabesp
+careplus.png  ->  Care Plus
+cassi.png  ->  Cassi
+cespvivest.png  ->  CESP/VIVEST
+economus.png  ->  Economus
+saudecaixa.png  ->  Funcef (Saúde Caixa)
+haoc.png  ->  Haoc
+hapvida.png  ->  Hapvida
+holambra.png  ->  Holambra
+hospitalsantatereza.png  ->  Hospital Santa Tereza
+instwaldemarrochacentromedico.png  ->  INST. WALDEMAR ROCHA - CENTRO MÉDICO
+intermedici.png  ->  Intermedici
+mediservice.png  ->  Mediservice
+petrobras.png  ->  Petrobras Saúde
+portoseguro.png  ->  Porto Seguro
+proasa.png  ->  Proasa
+protocolotav.png  ->  Protocolo TAV
+seprev.png  ->  Seprev
+sulamerica.png  ->  SulAmérica
+saolucassaude.png  ->  SÃO LUCAS SAÚDE
+unafisco.png  ->  Unafisco
+unimed.png  ->  Unimed

@@ -14,7 +14,10 @@ const NOME_GRUPO: Record<string, string> = { cardiaco: 'Exames cardíacos', arti
 export const sigla = (n: string) => { const p = n.replace(/[^A-Za-zÀ-ú ]/g, '').split(' ').filter((x) => x.length > 2 || /^[A-Z]/.test(x)); return (p.length > 1 ? p[0][0] + p[1][0] : (p[0] ?? n).slice(0, 2)).toUpperCase(); };
 /** Convênio com alguma informação cadastrada (regra ou prazo). Sem nada, ele só aparece como "pedido vem autorizado". */
 export const temInfo = (b: ReturnType<typeof useBase>, c: Convenio) => c.tem_regras && (regrasDoConvenio(b, c.slug).length > 0 || b.prazos.some((p) => p.convenio_id === c.id));
+/** Logo do convênio: usa public/logos/<slug>.png quando o arquivo existe; senão, a sigla colorida. */
 export function LogoConvenio({ c, tam = 44 }: { c: Convenio; tam?: number }) {
+  const [falhou, setFalhou] = useState(false);
+  if (!falhou) return <img src={`./logos/${c.slug}.png`} alt={c.nome} onError={() => setFalhou(true)} style={{ width: tam * 1.6, height: tam, objectFit: 'contain', flex: 'none' }} />;
   return <span style={{ width: tam, height: tam, borderRadius: 10, background: c.cor ?? '#64748b', color: '#fff', display: 'inline-grid', placeItems: 'center', fontWeight: 800, fontSize: tam * 0.32, flex: 'none' }}>{sigla(c.nome)}</span>;
 }
 
