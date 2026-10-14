@@ -1,0 +1,4393 @@
+{
+ "tipos": {
+  "A": "Pacote / tabela de códigos",
+  "B": "Composição (autorizar junto)",
+  "C": "Substituição (autorizar como outro)",
+  "D": "Exigência no texto do pedido",
+  "E": "Relatório médico",
+  "F": "Cobertura / contrato",
+  "G": "Quantidade a autorizar",
+  "H": "Status do código",
+  "I": "Cobrança",
+  "J": "Canal de autorização",
+  "K": "Agrupamento de pedidos",
+  "T1": "Antecedência de agendamento (dias úteis)",
+  "T2": "Antecedência por quantidade",
+  "T3": "Prazo de análise da operadora",
+  "T4": "Só agenda após autorização",
+  "T5": "Validade do pedido / autorização",
+  "L": "Restrição do paciente",
+  "M": "Regra do médico",
+  "N": "Ocupação de horários",
+  "O": "Preparo / orientação ao paciente",
+  "P": "Limite por período",
+  "Q": "Restrição de agenda por exame (máquina/horário/dia)",
+  "R": "Plano / rede / elegibilidade",
+  "S": "Conselho profissional do solicitante",
+  "U": "Documento do pedido (original, cópia, assinatura)",
+  "V": "Preço / orçamento",
+  "W": "Sistema / acesso / LGPD",
+  "X": "Informativo (não é regra)"
+ },
+ "regras": [
+  {
+   "id": "AMI-01",
+   "escopo": "amil",
+   "tipo": "D",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pedido NÃO pode ter escrito \"angiotomografia de aorta torácica\".",
+   "fontes": [
+    "R1"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-02",
+   "escopo": "amil",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Autorizar somente o código 41001230 (pacote).",
+   "fontes": [
+    "R1"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-03",
+   "escopo": "amil",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "Autorizar RM cardíaca 41101138 + angio-RM aorta torácica 41101332.",
+   "fontes": [
+    "R2"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-04",
+   "escopo": "amil",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Pedido precisa ter a descrição da angio-RM de aorta torácica.",
+   "fontes": [
+    "R2"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-05",
+   "escopo": "amil",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Pedido deve descrever \"tomografia de tórax para avaliação do escore de cálcio\".",
+   "fontes": [
+    "R3"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-06",
+   "escopo": "amil",
+   "tipo": "C",
+   "alvo": "TC maxila e mandíbula",
+   "enunciado": "Autorizar como TC de face.",
+   "fontes": [
+    "R4"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-07",
+   "escopo": "amil",
+   "tipo": "T5",
+   "alvo": "Pedido médico",
+   "enunciado": "Validade do pedido: 180 dias corridos.",
+   "fontes": [
+    "R5"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-08",
+   "escopo": "amil",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização: 60 dias.",
+   "fontes": [
+    "R6"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "AMI-09",
+   "escopo": "amil",
+   "tipo": "R",
+   "alvo": "Plano",
+   "enunciado": "Consultar a carteirinha no sistema para ver se o plano é atendido.",
+   "fontes": [
+    "R6"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-10",
+   "escopo": "amil",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R7"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-11",
+   "escopo": "amil",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "Agendar com 4 dias úteis.",
+   "fontes": [
+    "R8"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-12",
+   "escopo": "amil",
+   "tipo": "T1",
+   "alvo": "Demais exames",
+   "enunciado": "Agendar com 3 dias úteis.",
+   "fontes": [
+    "R8"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-13",
+   "escopo": "amil",
+   "tipo": "T2",
+   "alvo": "Articulações",
+   "enunciado": "Mais de 2 articulações: agendar com 4 dias úteis.",
+   "fontes": [
+    "R9"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-14",
+   "escopo": "amil",
+   "tipo": "K",
+   "alvo": "Pedidos",
+   "enunciado": "Mesmo médico solicitante: exames podem ser autorizados juntos no mesmo pedido.",
+   "fontes": [
+    "R10"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-15",
+   "escopo": "amil",
+   "tipo": "F",
+   "alvo": "RX dacriocistografia",
+   "enunciado": "Não faz \"Dacryo\" por RX.",
+   "fontes": [
+    "R11"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "AMI-16",
+   "escopo": "amil",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura — consultar faturamento.",
+   "fontes": [
+    "R12"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-17",
+   "escopo": "amil",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-18",
+   "escopo": "amil",
+   "tipo": "F",
+   "alvo": "Ampliação/magnificação mamária",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-19",
+   "escopo": "amil",
+   "tipo": "F",
+   "alvo": "Espectroscopia",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-20",
+   "escopo": "amil",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita cópia legível (informação de 05/10, sem ano).",
+   "fontes": [
+    "R14"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "AMI-21",
+   "escopo": "amil",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita pedido digital com assinatura eletrônica.",
+   "fontes": [
+    "R14"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-22",
+   "escopo": "amil",
+   "tipo": "B",
+   "alvo": "Biópsia",
+   "enunciado": "Código 40809161 + o ultrassom.",
+   "fontes": [
+    "R15"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-23",
+   "escopo": "amil",
+   "tipo": "A",
+   "alvo": "Mamografia",
+   "enunciado": "Código 40808033 (convencional — RCC faz digital 40808041?).",
+   "fontes": [
+    "R16"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "AMI-24",
+   "escopo": "amil",
+   "tipo": "A",
+   "alvo": "Angio-RM crânio arterial/venosa",
+   "enunciado": "Código 41101537 (que é ARTERIAL; venosa é 41101545).",
+   "fontes": [
+    "R17"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "AMI-25",
+   "escopo": "amil",
+   "tipo": "A",
+   "alvo": "Angio-TC arterial crânio",
+   "enunciado": "Código 41001370.",
+   "fontes": [
+    "R18"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AMI-26",
+   "escopo": "amil",
+   "tipo": "A",
+   "alvo": "Marcação pré-cirúrgica (biometria ocular)",
+   "enunciado": "Código 40808190 — mas esse código é \"marcação pré-cirúrgica por nódulo de MAMA por estereotaxia\" (tabela Cassi), não biometria ocular.",
+   "fontes": [
+    "R19"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "CAS-01",
+   "escopo": "cassi",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Somente o pacote 41001230.",
+   "fontes": [
+    "R20"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-02",
+   "escopo": "cassi",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "41101138 + 41101332.",
+   "fontes": [
+    "R21"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-03",
+   "escopo": "cassi",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Pedido precisa descrever angio-RM de aorta torácica.",
+   "fontes": [
+    "R21"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-04",
+   "escopo": "cassi",
+   "tipo": "B",
+   "alvo": "RM crânio + angio-RM intracraniana",
+   "enunciado": "41101014 + 41101537.",
+   "fontes": [
+    "R22"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-05",
+   "escopo": "cassi",
+   "tipo": "A",
+   "alvo": "RM crânio com fluxo liquórico",
+   "enunciado": "Código 41101235 (complementar — junto com RM crânio?).",
+   "fontes": [
+    "R23"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "CAS-06",
+   "escopo": "cassi",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "Validade 90 dias (corridos — padrão D).",
+   "fontes": [
+    "R24"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-07",
+   "escopo": "cassi",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade 60 dias.",
+   "fontes": [
+    "R25"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-08",
+   "escopo": "cassi",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R26"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-09",
+   "escopo": "cassi",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "4 dias úteis.",
+   "fontes": [
+    "R27"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-10",
+   "escopo": "cassi",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R27"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-11",
+   "escopo": "cassi",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Cobertura só para ARTERIAL.",
+   "fontes": [
+    "R28"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-12",
+   "escopo": "cassi",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Tem cobertura.",
+   "fontes": [
+    "R29"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-13",
+   "escopo": "cassi",
+   "tipo": "I",
+   "alvo": "Primovist",
+   "enunciado": "Cobrança à parte na guia.",
+   "fontes": [
+    "R29"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-14",
+   "escopo": "cassi",
+   "tipo": "F",
+   "alvo": "Espectroscopia",
+   "enunciado": "Tem cobertura.",
+   "fontes": [
+    "R30"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-15",
+   "escopo": "cassi",
+   "tipo": "F",
+   "alvo": "Hidro-RM",
+   "enunciado": "Tem cobertura — 41101359.",
+   "fontes": [
+    "R31"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-16",
+   "escopo": "cassi",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita cópia legível (informação de 05/10).",
+   "fontes": [
+    "R32"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-17",
+   "escopo": "cassi",
+   "tipo": "A",
+   "alvo": "RM mama",
+   "enunciado": "Código 41101480.",
+   "fontes": [
+    "R33"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-18",
+   "escopo": "cassi",
+   "tipo": "F",
+   "alvo": "TC maxila/mandíbula",
+   "enunciado": "Aceita.",
+   "fontes": [
+    "R34"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAS-19",
+   "escopo": "cassi",
+   "tipo": "A",
+   "alvo": "Todos TC/RM",
+   "enunciado": "Cada código existe avulso e como pacote (HM+mat+med) — falta dizer qual usar.",
+   "fontes": [
+    "CD01"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "CAB-01",
+   "escopo": "cabesp",
+   "tipo": "C",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Autorizar como 41001176 (angio-TC aorta torácica) + 41001079 (TC tórax/escore).",
+   "fontes": [
+    "R35"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-02",
+   "escopo": "cabesp",
+   "tipo": "D",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pode estar escrito \"CT coronárias\", mas o pedido precisa ter coronária E tórax.",
+   "fontes": [
+    "R35"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-03",
+   "escopo": "cabesp",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica (códigos não informados).",
+   "fontes": [
+    "R36"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "CAB-04",
+   "escopo": "cabesp",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R37"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-05",
+   "escopo": "cabesp",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "90 dias corridos.",
+   "fontes": [
+    "R38"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-06",
+   "escopo": "cabesp",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "30 dias.",
+   "fontes": [
+    "R39"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-07",
+   "escopo": "cabesp",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R40"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-08",
+   "escopo": "cabesp",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R41"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-09",
+   "escopo": "cabesp",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R41"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-10",
+   "escopo": "cabesp",
+   "tipo": "A",
+   "alvo": "Angio-RM (crânio/pescoço/tórax/abd sup)",
+   "enunciado": "Código 41101324 (existe na tabela Cassi; falta no catálogo de exames).",
+   "fontes": [
+    "R42"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-11",
+   "escopo": "cabesp",
+   "tipo": "A",
+   "alvo": "Angio-TC (crânio/pescoço/tórax/abd sup)",
+   "enunciado": "Código 41001168.",
+   "fontes": [
+    "R43"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-12",
+   "escopo": "cabesp",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII arterial e venosa",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R44"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAB-13",
+   "escopo": "cabesp",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Cabesp antes de enviar (obrigatório).",
+   "fontes": [
+    "R45",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-01",
+   "escopo": "proasa",
+   "tipo": "D",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pedido descreve somente coronárias.",
+   "fontes": [
+    "R46"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-02",
+   "escopo": "proasa",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R47"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "PRO-03",
+   "escopo": "proasa",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R48"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-04",
+   "escopo": "proasa",
+   "tipo": "F",
+   "alvo": "Angio-RM e angio-TC",
+   "enunciado": "Consultar sempre o contrato antes de autorizar.",
+   "fontes": [
+    "R49"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-05",
+   "escopo": "proasa",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "30 dias corridos.",
+   "fontes": [
+    "R50"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-06",
+   "escopo": "proasa",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R51"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-07",
+   "escopo": "proasa",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Proasa (obrigatório).",
+   "fontes": [
+    "R52",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-08",
+   "escopo": "proasa",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRM.",
+   "fontes": [
+    "R53"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-09",
+   "escopo": "proasa",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "CRO somente para estruturas do crânio.",
+   "fontes": [
+    "R54"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PRO-10",
+   "escopo": "proasa",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R50"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "SEP-01",
+   "escopo": "seprev",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pacote (só coronárias); pedido somente \"CT coronária\".",
+   "fontes": [
+    "R55"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-02",
+   "escopo": "seprev",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R56"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "SEP-03",
+   "escopo": "seprev",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R57"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-04",
+   "escopo": "seprev",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "90 dias corridos.",
+   "fontes": [
+    "R58"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-05",
+   "escopo": "seprev",
+   "tipo": "T5",
+   "alvo": "Pedido com data futura",
+   "enunciado": "Se o médico anotou data futura para o exame, os 90 dias contam a partir dessa data.",
+   "fontes": [
+    "R58"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-06",
+   "escopo": "seprev",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Não aceita pedido de múltipla escolha.",
+   "fontes": [
+    "R59"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-07",
+   "escopo": "seprev",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Não aceita pedido de médico de outro estado (só CRM-SP).",
+   "fontes": [
+    "R60",
+    "R66"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-08",
+   "escopo": "seprev",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R61"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-09",
+   "escopo": "seprev",
+   "tipo": "C",
+   "alvo": "RM mama",
+   "enunciado": "Autorizar como RM tórax 41101120.",
+   "fontes": [
+    "R62"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-10",
+   "escopo": "seprev",
+   "tipo": "C",
+   "alvo": "Colangio-RM",
+   "enunciado": "Autorizar como RM abdome superior.",
+   "fontes": [
+    "R63"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-11",
+   "escopo": "seprev",
+   "tipo": "G",
+   "alvo": "Colangio-RM",
+   "enunciado": "Quantidade 2.",
+   "fontes": [
+    "R63"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-12",
+   "escopo": "seprev",
+   "tipo": "F",
+   "alvo": "TC ATM 41001044",
+   "enunciado": "Sem cobertura contratual.",
+   "fontes": [
+    "R64"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-13",
+   "escopo": "seprev",
+   "tipo": "T3",
+   "alvo": "Todos",
+   "enunciado": "Todos os pedidos vão para auditoria.",
+   "fontes": [
+    "R65"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-14",
+   "escopo": "seprev",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R65"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SEP-15",
+   "escopo": "seprev",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R58"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "AAF-01",
+   "escopo": "aafresp",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pacote 89022845.",
+   "fontes": [
+    "R67"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-02",
+   "escopo": "aafresp",
+   "tipo": "D",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Não precisa pedido de tórax separado.",
+   "fontes": [
+    "R67"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-03",
+   "escopo": "aafresp",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R68"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "AAF-04",
+   "escopo": "aafresp",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R69"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-05",
+   "escopo": "aafresp",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "Sem prazo de validade.",
+   "fontes": [
+    "R70"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-06",
+   "escopo": "aafresp",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Não aceita pedido de múltipla escolha (X).",
+   "fontes": [
+    "R70"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-07",
+   "escopo": "aafresp",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Somente CRM.",
+   "fontes": [
+    "R71"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-08",
+   "escopo": "aafresp",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "Pode agendar com 2 dias (não diz se úteis).",
+   "fontes": [
+    "R72"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "AAF-09",
+   "escopo": "aafresp",
+   "tipo": "F",
+   "alvo": "TC maxilar/mandíbula",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R73"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-10",
+   "escopo": "aafresp",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII arterial",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R74"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-11",
+   "escopo": "aafresp",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita pedido em receituário da Unimed, se carimbado e assinado.",
+   "fontes": [
+    "R75"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "AAF-12",
+   "escopo": "aafresp",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção de códigos vazia.",
+   "fontes": [
+    "R76"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ASS-01",
+   "escopo": "assefaz",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Coronárias + TC de tórax (códigos não informados).",
+   "fontes": [
+    "R77"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ASS-02",
+   "escopo": "assefaz",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R78"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ASS-03",
+   "escopo": "assefaz",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R79"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-04",
+   "escopo": "assefaz",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "30 dias corridos.",
+   "fontes": [
+    "R80"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-05",
+   "escopo": "assefaz",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Não aceita múltipla escolha.",
+   "fontes": [
+    "R81"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-06",
+   "escopo": "assefaz",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R82"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-07",
+   "escopo": "assefaz",
+   "tipo": "T1",
+   "alvo": "Coronárias e RM cardíaca",
+   "enunciado": "7 dias (não diz se úteis).",
+   "fontes": [
+    "R83"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "ASS-08",
+   "escopo": "assefaz",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R84"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-09",
+   "escopo": "assefaz",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R85"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ASS-10",
+   "escopo": "assefaz",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Conselhos aceitos NÃO informados.",
+   "fontes": [
+    "R77"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ASS-11",
+   "escopo": "assefaz",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção de códigos vazia.",
+   "fontes": [
+    "R86"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "HAP-01",
+   "escopo": "hapvida",
+   "tipo": "F",
+   "alvo": "RM cardíaca e angio-TC",
+   "enunciado": "Não autoriza.",
+   "fontes": [
+    "R87"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-02",
+   "escopo": "hapvida",
+   "tipo": "F",
+   "alvo": "Demais angios",
+   "enunciado": "Não autoriza.",
+   "fontes": [
+    "R88",
+    "CD02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-03",
+   "escopo": "hapvida",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "60 dias corridos.",
+   "fontes": [
+    "R89"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-04",
+   "escopo": "hapvida",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO (CRM implícito).",
+   "fontes": [
+    "R90"
+   ],
+   "situacao": "RESPONDIDO",
+   "resposta": "Aceita CRO e CRM (RESP-2)."
+  },
+  {
+   "id": "HAP-05",
+   "escopo": "hapvida",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R91"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-06",
+   "escopo": "hapvida",
+   "tipo": "F",
+   "alvo": "Todos",
+   "enunciado": "Só autoriza exame que está no contrato, com códigos AMB.",
+   "fontes": [
+    "R92"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-07",
+   "escopo": "hapvida",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Hapvida (obrigatório).",
+   "fontes": [
+    "R93",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-08",
+   "escopo": "hapvida",
+   "tipo": "A",
+   "alvo": "US mama",
+   "enunciado": "33010380 ou 40901114 (alternativos).",
+   "fontes": [
+    "R94",
+    "CD02",
+    "CD04"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-09",
+   "escopo": "hapvida",
+   "tipo": "A",
+   "alvo": "US tireoide",
+   "enunciado": "33019983 ou 40901203 (alternativos).",
+   "fontes": [
+    "R95"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-10",
+   "escopo": "hapvida",
+   "tipo": "H",
+   "alvo": "Código 33019274",
+   "enunciado": "Não habilitado para a RCC.",
+   "fontes": [
+    "R96"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-11",
+   "escopo": "hapvida",
+   "tipo": "C",
+   "alvo": "TC abdome total",
+   "enunciado": "Não tem código: autorizar abdome superior 34010017 + pelve 34010106.",
+   "fontes": [
+    "R97"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-12",
+   "escopo": "hapvida",
+   "tipo": "C",
+   "alvo": "TC aparelho urinário",
+   "enunciado": "Também = abdome superior + pelve.",
+   "fontes": [
+    "R97"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "HAP-13",
+   "escopo": "hapvida",
+   "tipo": "I",
+   "alvo": "Doppler colorido 33010242",
+   "enunciado": "Acrescenta 20% ao código do US.",
+   "fontes": [
+    "CD02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-14",
+   "escopo": "hapvida",
+   "tipo": "H",
+   "alvo": "Cine-RM coração 36010081",
+   "enunciado": "Suspenso.",
+   "fontes": [
+    "CD02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-15",
+   "escopo": "hapvida",
+   "tipo": "H",
+   "alvo": "RM mama 41101480",
+   "enunciado": "Anotação \"não mais\" — confirmar.",
+   "fontes": [
+    "CD02"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "HAP-16",
+   "escopo": "hapvida",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R89"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "BRA-01",
+   "escopo": "bradesco",
+   "tipo": "C",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Autorizar 41001176 (angio-TC aorta torácica) + 41001079 (TC tórax).",
+   "fontes": [
+    "R98"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-02",
+   "escopo": "bradesco",
+   "tipo": "D",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pedido PRECISA ter escrito: \"angiotomografia de aorta torácica + tomografia de tórax para escore de cálcio\".",
+   "fontes": [
+    "R98"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-03",
+   "escopo": "bradesco",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "41101138 + 41101332.",
+   "fontes": [
+    "R99"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-04",
+   "escopo": "bradesco",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Pedido precisa descrever angio-RM de aorta torácica.",
+   "fontes": [
+    "R99"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-05",
+   "escopo": "bradesco",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R100"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-06",
+   "escopo": "bradesco",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "28 dias corridos.",
+   "fontes": [
+    "R101"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-07",
+   "escopo": "bradesco",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Carimbado e assinado.",
+   "fontes": [
+    "R101"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-08",
+   "escopo": "bradesco",
+   "tipo": "D",
+   "alvo": "Todos os exames",
+   "enunciado": "Indicação clínica ou CID obrigatória em todos os exames.",
+   "fontes": [
+    "R101"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-09",
+   "escopo": "bradesco",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "28 dias corridos.",
+   "fontes": [
+    "R102"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-10",
+   "escopo": "bradesco",
+   "tipo": "R",
+   "alvo": "Plano",
+   "enunciado": "Não atende: Sistel, Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha, Efetivo II.",
+   "fontes": [
+    "R103"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-11",
+   "escopo": "bradesco",
+   "tipo": "R",
+   "alvo": "Plano",
+   "enunciado": "Rede Pleno atende normalmente.",
+   "fontes": [
+    "R103"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-12",
+   "escopo": "bradesco",
+   "tipo": "R",
+   "alvo": "Redes",
+   "enunciado": "Lista de 92 redes — \"REDE SISTEL\" aparece na lista e Sistel também está em \"não atende\". (Resposta: as 92 redes são atendidas — continua a dúvida da Sistel.)",
+   "fontes": [
+    "R118",
+    "R103"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "BRA-13",
+   "escopo": "bradesco",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Não aceita CREFITO.",
+   "fontes": [
+    "R104"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-14",
+   "escopo": "bradesco",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO desde que o exame conste como TC de face.",
+   "fontes": [
+    "R104"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-15",
+   "escopo": "bradesco",
+   "tipo": "C",
+   "alvo": "TC maxila e mandíbula",
+   "enunciado": "Sem cobertura — trocar por TC de face / seios da face (mesmo código 41001036).",
+   "fontes": [
+    "R104",
+    "R111"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-16",
+   "escopo": "bradesco",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "4 dias úteis.",
+   "fontes": [
+    "R105"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-17",
+   "escopo": "bradesco",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R106"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-18",
+   "escopo": "bradesco",
+   "tipo": "E",
+   "alvo": "RM + angio (TC ou RM)",
+   "enunciado": "Pedir relatório médico complementar.",
+   "fontes": [
+    "R107"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-19",
+   "escopo": "bradesco",
+   "tipo": "E",
+   "alvo": "Mais de uma coluna (RM/TC)",
+   "enunciado": "Pedir relatório médico.",
+   "fontes": [
+    "R108"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-20",
+   "escopo": "bradesco",
+   "tipo": "E",
+   "alvo": "Articulação bilateral (RM/TC)",
+   "enunciado": "Pedir relatório médico.",
+   "fontes": [
+    "R108"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-21",
+   "escopo": "bradesco",
+   "tipo": "E",
+   "alvo": "Coluna lombar + bacia (RM/TC)",
+   "enunciado": "Pedir relatório médico.",
+   "fontes": [
+    "R109"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-22",
+   "escopo": "bradesco",
+   "tipo": "C",
+   "alvo": "RM abdome total",
+   "enunciado": "Desmembrar em RM abdome superior + RM pelve.",
+   "fontes": [
+    "R110"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-23",
+   "escopo": "bradesco",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura para ilíacas e femoral.",
+   "fontes": [
+    "R112"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-24",
+   "escopo": "bradesco",
+   "tipo": "K",
+   "alvo": "Pedidos separados",
+   "enunciado": "Mesmo médico (RM): autorizar todos juntos.",
+   "fontes": [
+    "R113"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-25",
+   "escopo": "bradesco",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita cópia legível (informação de 29/12) e assinatura digital.",
+   "fontes": [
+    "R114"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-26",
+   "escopo": "bradesco",
+   "tipo": "A",
+   "alvo": "Core biópsia",
+   "enunciado": "40808262.",
+   "fontes": [
+    "R115"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-27",
+   "escopo": "bradesco",
+   "tipo": "A",
+   "alvo": "Punção",
+   "enunciado": "40809161.",
+   "fontes": [
+    "R115"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-28",
+   "escopo": "bradesco",
+   "tipo": "B",
+   "alvo": "RM para talassemia",
+   "enunciado": "RM coração + RM abdome superior.",
+   "fontes": [
+    "R116"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-29",
+   "escopo": "bradesco",
+   "tipo": "F",
+   "alvo": "Angio-RM membro superior",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R117"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-30",
+   "escopo": "bradesco",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Sem contrato (seção repetida 2 vezes).",
+   "fontes": [
+    "R119",
+    "R120"
+   ],
+   "situacao": "DUPLICADO",
+   "resposta": null
+  },
+  {
+   "id": "BRA-31",
+   "escopo": "bradesco",
+   "tipo": "J",
+   "alvo": "Elegibilidade",
+   "enunciado": "Consultar elegibilidade no site da Bradesco; autorização no Orizon.",
+   "fontes": [
+    "JS20"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAR-01",
+   "escopo": "careplus",
+   "tipo": "X",
+   "alvo": "Critérios cardíacos",
+   "enunciado": "\"Informação a atualizar\".",
+   "fontes": [
+    "R121"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "CAR-02",
+   "escopo": "careplus",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "60 dias.",
+   "fontes": [
+    "R122"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAR-03",
+   "escopo": "careplus",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "30 dias.",
+   "fontes": [
+    "R122"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAR-04",
+   "escopo": "careplus",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Somente CRM.",
+   "fontes": [
+    "R123"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAR-05",
+   "escopo": "careplus",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "10 dias úteis.",
+   "fontes": [
+    "R124"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CAR-06",
+   "escopo": "careplus",
+   "tipo": "X",
+   "alvo": "Regras específicas",
+   "enunciado": "\"Informação a atualizar\".",
+   "fontes": [
+    "R125"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "CAR-07",
+   "escopo": "careplus",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção vazia.",
+   "fontes": [
+    "R126"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ECO-01",
+   "escopo": "economus",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Economus (obrigatório).",
+   "fontes": [
+    "R127",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-02",
+   "escopo": "economus",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Somente pacote 41001230.",
+   "fontes": [
+    "R128"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-03",
+   "escopo": "economus",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "41101138 + 41101332.",
+   "fontes": [
+    "R129"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-04",
+   "escopo": "economus",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Pedido descreve angio-RM aorta torácica.",
+   "fontes": [
+    "R129"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-05",
+   "escopo": "economus",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Somente pedido ORIGINAL (não aceita cópia).",
+   "fontes": [
+    "R130"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-06",
+   "escopo": "economus",
+   "tipo": "T5",
+   "alvo": "Pedido e autorização",
+   "enunciado": "30 dias.",
+   "fontes": [
+    "R131"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-07",
+   "escopo": "economus",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO e CRM; não aceita CREFITO.",
+   "fontes": [
+    "R132"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-08",
+   "escopo": "economus",
+   "tipo": "T3",
+   "alvo": "Angio-TC e angio-RM",
+   "enunciado": "Até 21 dias para autorizar (texto diz úteis; Oliver disse corridos).",
+   "fontes": [
+    "R133"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "ECO-09",
+   "escopo": "economus",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "10 dias úteis.",
+   "fontes": [
+    "R134"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-10",
+   "escopo": "economus",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R135"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-11",
+   "escopo": "economus",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R136"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-12",
+   "escopo": "economus",
+   "tipo": "J",
+   "alvo": "Autorização",
+   "enunciado": "Por e-mail: assunto \"Autorização exame [nome do exame]\"; corpo com nome do paciente, exame, carteirinha, nº prestador, nº operadora; anexar pedido.",
+   "fontes": [
+    "R137"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "ECO-13",
+   "escopo": "economus",
+   "tipo": "J",
+   "alvo": "Portal",
+   "enunciado": "Link do portal aponta para o site da Caixa (mesmo da Saúde Caixa).",
+   "fontes": [
+    "JS20"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "ECO-14",
+   "escopo": "economus",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção vazia.",
+   "fontes": [
+    "R138"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "ECO-15",
+   "escopo": "economus",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Regra do escore não cadastrada (todos os outros têm).",
+   "fontes": [
+    "R128"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "UNA-01",
+   "escopo": "unafisco",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R139"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "UNA-02",
+   "escopo": "unafisco",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R140"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "UNA-03",
+   "escopo": "unafisco",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R141"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "UNA-04",
+   "escopo": "unafisco",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "60 dias corridos.",
+   "fontes": [
+    "R142"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "UNA-05",
+   "escopo": "unafisco",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Somente CRM.",
+   "fontes": [
+    "R143"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "UNA-06",
+   "escopo": "unafisco",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R144"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "UNA-07",
+   "escopo": "unafisco",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R145"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "UNA-08",
+   "escopo": "unafisco",
+   "tipo": "J",
+   "alvo": "Portal",
+   "enunciado": "Sem link de portal cadastrado.",
+   "fontes": [
+    "JS20"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "UNA-09",
+   "escopo": "unafisco",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção vazia.",
+   "fontes": [
+    "R146"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "PET-01",
+   "escopo": "petrobras",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Coronárias + TC de tórax (escore).",
+   "fontes": [
+    "R147"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "PET-02",
+   "escopo": "petrobras",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R148"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "PET-03",
+   "escopo": "petrobras",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R149"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-04",
+   "escopo": "petrobras",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "90 dias corridos.",
+   "fontes": [
+    "R150"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-05",
+   "escopo": "petrobras",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO (inclusive maxilar e mandíbula) e CREFITO.",
+   "fontes": [
+    "R151"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-06",
+   "escopo": "petrobras",
+   "tipo": "T3",
+   "alvo": "Coronárias e RM cardíaca",
+   "enunciado": "Até 5 dias para autorizar (não diz úteis/corridos).",
+   "fontes": [
+    "R152"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "PET-07",
+   "escopo": "petrobras",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R153"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-08",
+   "escopo": "petrobras",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Libera.",
+   "fontes": [
+    "R154"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-09",
+   "escopo": "petrobras",
+   "tipo": "A",
+   "alvo": "RM, TC, angios",
+   "enunciado": "Tem tabela de pacotes (prefixo 96).",
+   "fontes": [
+    "R155"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-10",
+   "escopo": "petrobras",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R156"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "PET-11",
+   "escopo": "petrobras",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Petrobras (obrigatório).",
+   "fontes": [
+    "R157",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-01",
+   "escopo": "cespvivest",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R158"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "CES-02",
+   "escopo": "cespvivest",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica = 41101138 + 98411013 (autorizar os dois).",
+   "fontes": [
+    "R159",
+    "CD03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-03",
+   "escopo": "cespvivest",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R160"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-04",
+   "escopo": "cespvivest",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "30 dias corridos.",
+   "fontes": [
+    "R161"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-05",
+   "escopo": "cespvivest",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO; não aceita CREFITO.",
+   "fontes": [
+    "R162"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-06",
+   "escopo": "cespvivest",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco + angio",
+   "enunciado": "5 dias (úteis presumido).",
+   "fontes": [
+    "R163"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "CES-07",
+   "escopo": "cespvivest",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R163"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-08",
+   "escopo": "cespvivest",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R164"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-09",
+   "escopo": "cespvivest",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Autoriza.",
+   "fontes": [
+    "R165"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "CES-10",
+   "escopo": "cespvivest",
+   "tipo": "F",
+   "alvo": "Angio-RM e angio-TC",
+   "enunciado": "Verificar contrato antes.",
+   "fontes": [
+    "R166"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-01",
+   "escopo": "saudecaixa",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pacote 41001230 — MAS a tabela de pacotes da Saúde Caixa tem 98327402 (angio coronariana).",
+   "fontes": [
+    "R167",
+    "CD07"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "SCX-02",
+   "escopo": "saudecaixa",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Se o pedido tiver TC de tórax, autorizar junto.",
+   "fontes": [
+    "R167"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-03",
+   "escopo": "saudecaixa",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "98324306 (angio-RM aorta torácica) + 98322605 (RM coração).",
+   "fontes": [
+    "R168"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-04",
+   "escopo": "saudecaixa",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Pedido descreve angio-RM aorta torácica.",
+   "fontes": [
+    "R168"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-05",
+   "escopo": "saudecaixa",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "180 dias corridos (impresso antigo dizia 60).",
+   "fontes": [
+    "R169"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-06",
+   "escopo": "saudecaixa",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO e CRM.",
+   "fontes": [
+    "R170"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-07",
+   "escopo": "saudecaixa",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "10 dias úteis.",
+   "fontes": [
+    "R171"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-08",
+   "escopo": "saudecaixa",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R172"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-09",
+   "escopo": "saudecaixa",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Tem cobertura — consultar faturamento.",
+   "fontes": [
+    "R173"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-10",
+   "escopo": "saudecaixa",
+   "tipo": "J",
+   "alvo": "TC simples",
+   "enunciado": "Não gera senha.",
+   "fontes": [
+    "R174"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-11",
+   "escopo": "saudecaixa",
+   "tipo": "J",
+   "alvo": "Angio-TC",
+   "enunciado": "Gera senha.",
+   "fontes": [
+    "R174"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-12",
+   "escopo": "saudecaixa",
+   "tipo": "G",
+   "alvo": "PAAF / biópsia",
+   "enunciado": "Autoriza só PAAF OU biópsia na guia (uma das duas).",
+   "fontes": [
+    "R175"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-13",
+   "escopo": "saudecaixa",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Liberado — não precisa autorizar.",
+   "fontes": [
+    "R176"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-14",
+   "escopo": "saudecaixa",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Saúde Caixa (obrigatório).",
+   "fontes": [
+    "R177",
+    "JS23"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-15",
+   "escopo": "saudecaixa",
+   "tipo": "C",
+   "alvo": "RM corpo inteiro",
+   "enunciado": "Desmembrar: RM crânio, tórax, abdome total, pescoço, pernas, coxas, antebraço (+ o que mais tiver).",
+   "fontes": [
+    "R178"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-16",
+   "escopo": "saudecaixa",
+   "tipo": "C",
+   "alvo": "TC corpo inteiro",
+   "enunciado": "Desmembrar: TC crânio, tórax, abdome total, coluna lombar/cervical/dorsal, pernas, coxas, antebraço.",
+   "fontes": [
+    "R179"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SCX-17",
+   "escopo": "saudecaixa",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Regra do escore não cadastrada.",
+   "fontes": [
+    "R167"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "SCX-18",
+   "escopo": "saudecaixa",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R169"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "SUL-01",
+   "escopo": "sulamerica",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Pacote; não precisa pedido de TC tórax separado.",
+   "fontes": [
+    "R180"
+   ],
+   "situacao": "OK",
+   "resposta": "Pacote 64625885 (RESP-1)."
+  },
+  {
+   "id": "SUL-02",
+   "escopo": "sulamerica",
+   "tipo": "D",
+   "alvo": "RM coração",
+   "enunciado": "Somente cardíaca — NÃO incluir angio-RM de aorta torácica.",
+   "fontes": [
+    "R181"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-03",
+   "escopo": "sulamerica",
+   "tipo": "K",
+   "alvo": "RM cardíaca para talassemia",
+   "enunciado": "Abdome + cardíaca descritos → autorizar pacote \"múltiplas regiões\".",
+   "fontes": [
+    "R182"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-04",
+   "escopo": "sulamerica",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R183"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-05",
+   "escopo": "sulamerica",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "90 dias corridos.",
+   "fontes": [
+    "R184"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-06",
+   "escopo": "sulamerica",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "CRO só para mandíbula/maxilar, face e ATM.",
+   "fontes": [
+    "R185"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-07",
+   "escopo": "sulamerica",
+   "tipo": "T4",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "NÃO agendar antes de autorizar.",
+   "fontes": [
+    "R186"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-08",
+   "escopo": "sulamerica",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R187"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-09",
+   "escopo": "sulamerica",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII, MMSS, aorta torácica, aorta abdominal",
+   "enunciado": "Sem contrato.",
+   "fontes": [
+    "R188"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-10",
+   "escopo": "sulamerica",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Mas a tabela de códigos tem \"PCT angiotomografia arterial de membro inferior 64625493\".",
+   "fontes": [
+    "R188",
+    "CD06"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "SUL-11",
+   "escopo": "sulamerica",
+   "tipo": "F",
+   "alvo": "Espectroscopia",
+   "enunciado": "Sem contrato.",
+   "fontes": [
+    "R189"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-12",
+   "escopo": "sulamerica",
+   "tipo": "F",
+   "alvo": "Primovist",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R190"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-13",
+   "escopo": "sulamerica",
+   "tipo": "I",
+   "alvo": "Primovist",
+   "enunciado": "Cobrado junto com o pacote da RM.",
+   "fontes": [
+    "R190"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-14",
+   "escopo": "sulamerica",
+   "tipo": "A",
+   "alvo": "TC e RM",
+   "enunciado": "Tem tabela de pacotes (prefixo 646).",
+   "fontes": [
+    "R191"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-15",
+   "escopo": "sulamerica",
+   "tipo": "F",
+   "alvo": "Pacote angio-TC arterial MMII com DUT",
+   "enunciado": "\"Não aceito no contrato vigente\".",
+   "fontes": [
+    "R192",
+    "R193",
+    "R194"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-16",
+   "escopo": "sulamerica",
+   "tipo": "R",
+   "alvo": "Plano Clássico 100",
+   "enunciado": "Sem contrato (não atende).",
+   "fontes": [
+    "R195"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-17",
+   "escopo": "sulamerica",
+   "tipo": "R",
+   "alvo": "Plano Especial 100",
+   "enunciado": "Tem contrato.",
+   "fontes": [
+    "R196"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-18",
+   "escopo": "sulamerica",
+   "tipo": "G",
+   "alvo": "Articulação bilateral, coluna, membros sup/inf, angio-RM MMII",
+   "enunciado": "Autorizar quantidade 01 (coluna: \"sempre\").",
+   "fontes": [
+    "CD06"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-19",
+   "escopo": "sulamerica",
+   "tipo": "K",
+   "alvo": "Regiões diferentes do corpo",
+   "enunciado": "Usar pacote \"múltiplas regiões\" (64625958 TC / 64625966 RM).",
+   "fontes": [
+    "CD06"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-20",
+   "escopo": "sulamerica",
+   "tipo": "E",
+   "alvo": "Coronária, fluxo liquórico, angio-RM MMII",
+   "enunciado": "Pacotes \"com DUT\" — exigem critério da Diretriz de Utilização ANS.",
+   "fontes": [
+    "CD06"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-21",
+   "escopo": "sulamerica",
+   "tipo": "T5",
+   "alvo": "Autorização",
+   "enunciado": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R184"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "MED-01",
+   "escopo": "mediservice",
+   "tipo": "X",
+   "alvo": "Critérios cardíacos",
+   "enunciado": "\"Informação a atualizar\".",
+   "fontes": [
+    "R197"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "MED-02",
+   "escopo": "mediservice",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "Título diz 90 dias; texto diz \"a definir\".",
+   "fontes": [
+    "R198"
+   ],
+   "situacao": "RESPONDIDO",
+   "resposta": "90 dias (RESP-3)."
+  },
+  {
+   "id": "MED-03",
+   "escopo": "mediservice",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "CRM (\"informação a definir\").",
+   "fontes": [
+    "R199"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "MED-04",
+   "escopo": "mediservice",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "CRO só para TC de seios da face.",
+   "fontes": [
+    "R200"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-05",
+   "escopo": "mediservice",
+   "tipo": "T1",
+   "alvo": "Grupo cardíaco",
+   "enunciado": "5 dias úteis.",
+   "fontes": [
+    "R201"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-06",
+   "escopo": "mediservice",
+   "tipo": "T1",
+   "alvo": "Demais",
+   "enunciado": "3 dias úteis.",
+   "fontes": [
+    "R202"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-07",
+   "escopo": "mediservice",
+   "tipo": "J",
+   "alvo": "TC",
+   "enunciado": "Autoriza no site Orizon somente TC.",
+   "fontes": [
+    "R203",
+    "JS20"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-08",
+   "escopo": "mediservice",
+   "tipo": "J",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Exceção: não autoriza pelo Orizon.",
+   "fontes": [
+    "R204"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-09",
+   "escopo": "mediservice",
+   "tipo": "J",
+   "alvo": "RM e coronária",
+   "enunciado": "Por onde autorizar? Só existe o link do site Mediservice.",
+   "fontes": [
+    "R203",
+    "JS20"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "MED-10",
+   "escopo": "mediservice",
+   "tipo": "E",
+   "alvo": "Exames bilaterais",
+   "enunciado": "Precisa relatório (mesmos critérios da Bradesco → herda BRA-18 a BRA-21?).",
+   "fontes": [
+    "R205"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "MED-11",
+   "escopo": "mediservice",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção vazia.",
+   "fontes": [
+    "R206"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "POR-01",
+   "escopo": "portoseguro",
+   "tipo": "B",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R207"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "POR-02",
+   "escopo": "portoseguro",
+   "tipo": "B",
+   "alvo": "RM coração",
+   "enunciado": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R208"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "POR-03",
+   "escopo": "portoseguro",
+   "tipo": "D",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R209"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-04",
+   "escopo": "portoseguro",
+   "tipo": "T5",
+   "alvo": "Pedido",
+   "enunciado": "90 dias corridos.",
+   "fontes": [
+    "R210"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-05",
+   "escopo": "portoseguro",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita cópia bem legível.",
+   "fontes": [
+    "R211"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-06",
+   "escopo": "portoseguro",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO.",
+   "fontes": [
+    "R212"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-07",
+   "escopo": "portoseguro",
+   "tipo": "T1",
+   "alvo": "Todos",
+   "enunciado": "2 dias (não diz se úteis).",
+   "fontes": [
+    "R213"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "POR-08",
+   "escopo": "portoseguro",
+   "tipo": "F",
+   "alvo": "Angio-TC MMII",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R214"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-09",
+   "escopo": "portoseguro",
+   "tipo": "F",
+   "alvo": "Espectroscopia e Primovist",
+   "enunciado": "Sem cobertura.",
+   "fontes": [
+    "R215"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "POR-10",
+   "escopo": "portoseguro",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Transcrever na guia SP/SADT Porto (item cadastrado 2 vezes).",
+   "fontes": [
+    "R216",
+    "R217",
+    "JS23"
+   ],
+   "situacao": "DUPLICADO",
+   "resposta": null
+  },
+  {
+   "id": "POR-11",
+   "escopo": "portoseguro",
+   "tipo": "X",
+   "alvo": "Códigos",
+   "enunciado": "Seção vazia.",
+   "fontes": [
+    "R218"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "TAV-01",
+   "escopo": "protocolotav",
+   "tipo": "X",
+   "alvo": "Cadastro",
+   "enunciado": "\"Protocolo TAV\" cadastrado como convênio, só com seção de códigos vazia — é protocolo de exame (TAVI), não convênio.",
+   "fontes": [
+    "R219",
+    "CV01",
+    "VA08"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-01",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "Convênios sem página",
+   "enunciado": "Pedido precisa vir AUTORIZADO pelo próprio convênio; Izabel e Sandra não autorizam (Abas 15, Azimutemed, Haoc, Holambra, Santa Tereza, Intermedici, Waldemar Rocha, São Lucas, Unimed).",
+   "fontes": [
+    "JS22",
+    "CV02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-02",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "Responsável",
+   "enunciado": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida.",
+   "fontes": [
+    "JS02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-03",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "Portais",
+   "enunciado": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
+   "fontes": [
+    "JS20"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-04",
+   "escopo": "RCC",
+   "tipo": "T1",
+   "alvo": "Contagem",
+   "enunciado": "Antecedência conta dias úteis da operadora (seg–sex, sem feriado nacional).",
+   "fontes": [
+    "D11"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-05",
+   "escopo": "RCC",
+   "tipo": "T5",
+   "alvo": "Contagem",
+   "enunciado": "Validade de pedido/autorização em dias corridos, começando no dia seguinte.",
+   "fontes": [
+    "D11"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-06",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Funcionamento",
+   "enunciado": "RCC atende todos os dias; domingo só RM; trabalha em feriados.",
+   "fontes": [
+    "D11",
+    "PR05"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-07",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Horário RM",
+   "enunciado": "Dias úteis até 21:30; sábado até ~12:00 (\"conferir\"); domingo não descrito.",
+   "fontes": [
+    "PR05"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-08",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "Ocupação",
+   "enunciado": "1 horário = 10 min; \"nH\" = n horários.",
+   "fontes": [
+    "D12"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-09",
+   "escopo": "RCC",
+   "tipo": "L",
+   "alvo": "Peso RM",
+   "enunciado": "Limite 180 kg.",
+   "fontes": [
+    "PR05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-10",
+   "escopo": "RCC",
+   "tipo": "L",
+   "alvo": "Peso TC",
+   "enunciado": "Limite 170 kg.",
+   "fontes": [
+    "PR06"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-11",
+   "escopo": "RCC",
+   "tipo": "L",
+   "alvo": "Peso RX panorâmico",
+   "enunciado": "Perguntar o peso; aparelho até 100 kg (texto diz membros SUPERIORES; catálogo só tem panorâmica de INFERIORES).",
+   "fontes": [
+    "CD10"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-12",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Toda RM",
+   "enunciado": "Jejum de sólidos 2h; água até 1h antes; retirar metais; cabelo seco; chegar 30 min antes; trazer exames anteriores.",
+   "fontes": [
+    "PR05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-13",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Toda TC",
+   "enunciado": "Sem preparo (exceto angio); perguntar alergia; chegar 30 min antes.",
+   "fontes": [
+    "PR06"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-14",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM com tatuagem/micropigmentação recente",
+   "enunciado": "Esperar 30 dias.",
+   "fontes": [
+    "PR01",
+    "PR02",
+    "PR03",
+    "PR08"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-15",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM",
+   "enunciado": "Remover cílios postiços, extensão fio a fio, piercings e Freestyle (sensor de glicose).",
+   "fontes": [
+    "PR01",
+    "PR02",
+    "PR03",
+    "PR08"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-16",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Entero-RM",
+   "enunciado": "Jejum 4h; chegar 40 min antes.",
+   "fontes": [
+    "PR01",
+    "JS05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-17",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM pelve",
+   "enunciado": "Jejum 2h; trazer roupa íntima e absorvente; chegar 30 min antes (obrigatório).",
+   "fontes": [
+    "PR02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-18",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM pelve endometriose",
+   "enunciado": "Dieta leve na véspera; Buscopan 5h antes; Phospoenema 2h (opcional); Simeticona 30 gotas 1h; bexiga moderadamente cheia; trazer pedido original e carteirinha.",
+   "fontes": [
+    "PR03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-19",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "RM pelve endometriose",
+   "enunciado": "Quem toma ferro (oral ou EV) só agenda 5 dias após parar.",
+   "fontes": [
+    "PR03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-20",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM cardíaca",
+   "enunciado": "Jejum 2h; sem cafeína/álcool/cigarro 24h; trazer exames do coração; chegar 30 min.",
+   "fontes": [
+    "PR04"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-21",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "RM cardíaca",
+   "enunciado": "Só RM 3, horário 07:30–10:10, horários reservados (texto também menciona RM 4).",
+   "fontes": [
+    "PR04"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-22",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "RM cardíaca / angio-TC coronárias / talassemia",
+   "enunciado": "Médico Dr. Juliano.",
+   "fontes": [
+    "PR04",
+    "PR10",
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": "Dr. Juliano de Lara Fernandes, CRM 94.129 (RESP-5)."
+  },
+  {
+   "id": "RCC-23",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Colangio-RM",
+   "enunciado": "Jejum absoluto 8h inclusive água; perguntar alergia a contraste e metal no corpo; chegar 30 min.",
+   "fontes": [
+    "PR08",
+    "JS05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-24",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Colangio-RM",
+   "enunciado": "Só RM 1 (texto também menciona RM 4).",
+   "fontes": [
+    "PR08"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-25",
+   "escopo": "RCC",
+   "tipo": "L",
+   "alvo": "RM próstata",
+   "enunciado": "Verificar biópsia/cirurgia recente (sem prazo definido).",
+   "fontes": [
+    "PR09"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-26",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "RM próstata",
+   "enunciado": "Dieta leve; jejum 2h; não urinar 30 min antes; Phosfoenema 2h; Buscopan 5h; preparo enviado SÓ por WhatsApp.",
+   "fontes": [
+    "PR09"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-27",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "RM próstata",
+   "enunciado": "RM 3 com 3 horários; com marcapasso → RM 2 com 3 horários.",
+   "fontes": [
+    "PR09",
+    "EQ05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-28",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Preço R$ 2.200 (preparo) × R$ 2.330 (tabela).",
+   "fontes": [
+    "PR10",
+    "VA01"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-29",
+   "escopo": "RCC",
+   "tipo": "T3",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "\"Prazo de liberação 3 a 4 dias úteis\" — choca com prazos por convênio.",
+   "fontes": [
+    "PR10"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-30",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "TC 2, seg–sex, só manhã até 11:30, não atende sábado.",
+   "fontes": [
+    "PR10"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-31",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Jejum 2h; sem cafeína 24h; perguntar alergia a frutos do mar/iodo e qual reação; \"preparo de PA\" (conferir).",
+   "fontes": [
+    "PR10"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-32",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Doppler renal",
+   "enunciado": "Luftal 40 gotas véspera 15h + 40 gotas 1h antes; jejum 8h; água pouca após Luftal; chegar 20 min.",
+   "fontes": [
+    "PR11"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-33",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Doppler renal",
+   "enunciado": "Agendas Dra. Lílian e Dr. Leandro.",
+   "fontes": [
+    "PR11",
+    "MD07"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-34",
+   "escopo": "RCC",
+   "tipo": "X",
+   "alvo": "Doppler renal",
+   "enunciado": "\"Válido a partir de 19/08\" sem ano.",
+   "fontes": [
+    "PR11"
+   ],
+   "situacao": "VENCIDO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-35",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Escore de cálcio",
+   "enunciado": "Agendar em TC 2 — mas TC I também lista \"Escore (Dr. Pinho)\".",
+   "fontes": [
+    "PR07",
+    "EQ03"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-36",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Neuroestimulador",
+   "enunciado": "Agendar no RM 4.",
+   "fontes": [
+    "JS05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-37",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "Casa de Saúde, operado de tumor",
+   "enunciado": "Reservar 2 horários (nota duplicada como \"RM Unidade 2\").",
+   "fontes": [
+    "JS05",
+    "EQ06"
+   ],
+   "situacao": "DUPLICADO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-38",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "Joelho acima de 90 kg",
+   "enunciado": "2 horários (RM 2).",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-39",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Gestante",
+   "enunciado": "RM 2, 2 horários.",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-40",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Corpo total (mieloma 10H / Li-Fraumeni 7H)",
+   "enunciado": "RM 4, só manhã.",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-41",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Angio arterial RM 3",
+   "enunciado": "Pedidos do Dr. Bacin / Dr. Tomas: 3 horários.",
+   "fontes": [
+    "EQ03",
+    "MD04"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-42",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "RM coração",
+   "enunciado": "Unimed (cód. 46) × outros convênios — mesma duração, diferença não explicada; com marcapasso → RM 1.",
+   "fontes": [
+    "EQ03",
+    "EQ05"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-43",
+   "escopo": "RCC",
+   "tipo": "C",
+   "alvo": "Arcos costais",
+   "enunciado": "Agendar como RM de tórax.",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-44",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "Abdome superior com próstata",
+   "enunciado": "Quando tiver RM próstata, abdome superior vai no RM 3 (2 horários).",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-45",
+   "escopo": "RCC",
+   "tipo": "G",
+   "alvo": "Coxofemoral",
+   "enunciado": "Conta por lado.",
+   "fontes": [
+    "EQ03"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-46",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "RM 4 cóccix / púbis",
+   "enunciado": "Duas durações (1H e 2H) na mesma máquina.",
+   "fontes": [
+    "EQ01"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-47",
+   "escopo": "RCC",
+   "tipo": "N",
+   "alvo": "RM Unidade 2, TC I, TC II",
+   "enunciado": "Exames sem tempo cadastrado.",
+   "fontes": [
+    "EQ07"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-48",
+   "escopo": "RCC",
+   "tipo": "O",
+   "alvo": "Contraste",
+   "enunciado": "RM usa gadolínio; TC usa iodado; \"protocolo sujeito a confirmação\".",
+   "fontes": [
+    "JS19"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-49",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Dra. Grace",
+   "enunciado": "\"Exceto crianças\" × \"não agendar a partir de 18 anos\".",
+   "fontes": [
+    "MD01"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-50",
+   "escopo": "RCC",
+   "tipo": "P",
+   "alvo": "Dra. Sofia Devito",
+   "enunciado": "1 US mamas e 1 US transvaginal por período.",
+   "fontes": [
+    "MD02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-51",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Dra. Sofia Devito",
+   "enunciado": "Doppler MMII não avalia varizes.",
+   "fontes": [
+    "MD02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-52",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Médicos sem agenda diária",
+   "enunciado": "Marcados \"não tem agenda todos os dias\": Ighor, Sofia, Gustavo, Eveline, Grace, Amanda.",
+   "fontes": [
+    "MD06",
+    "JS13"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-53",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Dra. Amanda",
+   "enunciado": "Quartas 18:00–21:30; eventual sábado 10/10 12:30–16:00 (vencida).",
+   "fontes": [
+    "MD06"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-54",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Obstétrica",
+   "enunciado": "Dra. Sarah (única que fazia) foi apagada — ninguém mais faz obstétrica?",
+   "fontes": [
+    "MD05"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-55",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Parcelamento",
+   "enunciado": "Até R$300 → 2x; R$300–500 → 3x; acima de R$500 → 6x (faixas se sobrepõem em 300 e 500).",
+   "fontes": [
+    "UI01",
+    "VA14"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-56",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "PIX/dinheiro",
+   "enunciado": "5% de desconto (não calculado).",
+   "fontes": [
+    "UI01"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-57",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Validade do orçamento",
+   "enunciado": "30 dias da emissão.",
+   "fontes": [
+    "UI02"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-58",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Desconto manual",
+   "enunciado": "0 a 100% sobre o subtotal.",
+   "fontes": [
+    "JS15"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-59",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Sócio Remido",
+   "enunciado": "Tabela própria (Casa de Saúde); pode misturar com Particular no orçamento.",
+   "fontes": [
+    "JS10",
+    "JS14",
+    "JS17"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-60",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Itens \"acrescentado\"",
+   "enunciado": "US pélvico, TC segmento adicional, escore — só junto com outro exame.",
+   "fontes": [
+    "VA07"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-61",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Tomossíntese com pedido de mamografia",
+   "enunciado": "R$ 510 (preço condicional).",
+   "fontes": [
+    "VA07"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-62",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Primovist",
+   "enunciado": "Adicional R$ 565.",
+   "fontes": [
+    "VA07"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-63",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Serviços",
+   "enunciado": "2ª via TC/RM R$100; demais R$80; CD R$65; SEDEX R$30.",
+   "fontes": [
+    "VA09"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-64",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Itens R$ 0,00",
+   "enunciado": "RM membros inferiores/superiores \"PART\".",
+   "fontes": [
+    "VA03"
+   ],
+   "situacao": "RESPONDIDO",
+   "resposta": "Itens zerados excluídos da tabela pela equipe (RESP-7)."
+  },
+  {
+   "id": "RCC-65",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "\"Não usar\"",
+   "enunciado": "RM abdome e pelve (abd. total) R$ 1.400.",
+   "fontes": [
+    "VA04"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-66",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Duplicados de preço",
+   "enunciado": "Carótidas, venoso MI, órgão isolado, TC abdome total, RM pênis ×3, TC órbitas, TC pescoço.",
+   "fontes": [
+    "VA05"
+   ],
+   "situacao": "DUPLICADO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-67",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Escore",
+   "enunciado": "R$ 715 (TC tórax escore) × R$ 350 (Dr. Pinho) × R$ 300 (Remido acrescentado).",
+   "fontes": [
+    "VA02"
+   ],
+   "situacao": "CONFLITO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-68",
+   "escopo": "RCC",
+   "tipo": "W",
+   "alvo": "Acesso",
+   "enunciado": "Perfis Admin e Só pesquisa; login obrigatório; senha mínima 6 (subir no sistema novo).",
+   "fontes": [
+    "JS27",
+    "JS29",
+    "JS30",
+    "UI05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-69",
+   "escopo": "RCC",
+   "tipo": "W",
+   "alvo": "LGPD",
+   "enunciado": "Orçamento guarda nome, CPF e WhatsApp do paciente; CPF sai no PDF/JPEG.",
+   "fontes": [
+    "UI04",
+    "JS16"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-70",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "WhatsApp agendamento",
+   "enunciado": "(19) 99790-9463; número do paciente sem DDI recebe 55.",
+   "fontes": [
+    "UI03",
+    "JS16"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-71",
+   "escopo": "RCC",
+   "tipo": "A",
+   "alvo": "Códigos com regra no nome",
+   "enunciado": "Reconstrução 3D e punção para contraste: acrescentar o exame de base; fluxo liquórico é complementar; ovulação 3+ exames; uretrocistografia criança até 12 anos; obstétrica gemelar por feto.",
+   "fontes": [
+    "CD11",
+    "CD05"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-72",
+   "escopo": "RCC",
+   "tipo": "A",
+   "alvo": "Códigos sem exame ligado",
+   "enunciado": "364 códigos de pacote/AMB sem equivalência com o catálogo.",
+   "fontes": [
+    "CD07"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-73",
+   "escopo": "RCC",
+   "tipo": "F",
+   "alvo": "Escopo das regras de convênio",
+   "enunciado": "Tela do convênio diz \"Ressonância Magnética e Tomografia Computadorizada\" — US, RX, mamo, densito e doppler seguem quais regras de autorização?",
+   "fontes": [
+    "JS21"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-74",
+   "escopo": "RCC",
+   "tipo": "V",
+   "alvo": "Sócio Remido sem preço",
+   "enunciado": "Exames sem preço na tabela Remido (ex.: angio-RM de membros, incidências adicionais de RX) — o que fazer?",
+   "fontes": [
+    "VA13"
+   ],
+   "situacao": "INCOMPLETO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-75",
+   "escopo": "RCC",
+   "tipo": "G",
+   "alvo": "Marcação pré-cirúrgica mama 40808190",
+   "enunciado": "Máximo de 3 nódulos por mama.",
+   "fontes": [
+    "CD11"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "SUL-22",
+   "escopo": "sulamerica",
+   "tipo": "A",
+   "alvo": "Angio-TC coronárias",
+   "enunciado": "Usar o pacote 64625885 (o 64625845 não se usa).",
+   "fontes": [
+    "RESP-1"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "HAP-17",
+   "escopo": "hapvida",
+   "tipo": "S",
+   "alvo": "Solicitante",
+   "enunciado": "Aceita CRO e CRM.",
+   "fontes": [
+    "RESP-2"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-12",
+   "escopo": "mediservice",
+   "tipo": "T5",
+   "alvo": "Pedido e autorização",
+   "enunciado": "Validade 90 dias.",
+   "fontes": [
+    "RESP-3"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-13",
+   "escopo": "mediservice",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Não aceita cópia: só pedido original ou digitalizado.",
+   "fontes": [
+    "RESP-3"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "MED-14",
+   "escopo": "mediservice",
+   "tipo": "L",
+   "alvo": "Mamografia",
+   "enunciado": "Só de 40 a 69 anos (só Mediservice? confirmar).",
+   "fontes": [
+    "RESP-3"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "MED-15",
+   "escopo": "mediservice",
+   "tipo": "A",
+   "alvo": "Eco aparelho urinário",
+   "enunciado": "Autorizar com 40901769 (mas Mediservice \"só autoriza TC no Orizon\" — por onde autoriza US?).",
+   "fontes": [
+    "RESP-3"
+   ],
+   "situacao": "AMBIGUO",
+   "resposta": null
+  },
+  {
+   "id": "RCC-76",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "Unidades",
+   "enunciado": "Norte Sul (Av. José de Souza Campos, 840), Hospital Casa de Saúde (Praça Dr. Tóffoli, 28) e Barão Geraldo – Centro de Oncologia de Campinas (Rua Alberto de Salvo, 311), com telefones e horários.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-77",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Casa de Saúde",
+   "enunciado": "Atende seg–sex 7h–17h30 e sábado 7h–11h (sem domingo).",
+   "fontes": [
+    "RESP-4"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-78",
+   "escopo": "RCC",
+   "tipo": "Q",
+   "alvo": "Barão Geraldo (COC)",
+   "enunciado": "Atende seg–sex 8h–12h e 13h–16h.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-79",
+   "escopo": "RCC",
+   "tipo": "J",
+   "alvo": "WhatsApp médicos",
+   "enunciado": "Norte Sul: (19) 99642-6828.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "RCC-80",
+   "escopo": "RCC",
+   "tipo": "M",
+   "alvo": "Dr. Juliano",
+   "enunciado": "Dr. Juliano de Lara Fernandes, CRM 94.129.",
+   "fontes": [
+    "RESP-5"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
+   "id": "BRA-32",
+   "escopo": "bradesco",
+   "tipo": "R",
+   "alvo": "Redes",
+   "enunciado": "As 92 redes da lista são ATENDIDAS.",
+   "fontes": [
+    "RESP-6"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  }
+ ],
+ "cruzamentos": [
+  {
+   "id": "X-01",
+   "texto": "Escore de cálcio — \"descrever TC de tórax para escore\" está em 13 convênios; falta em Cassi, Economus, Saúde Caixa, Hapvida, Care Plus, Mediservice → candidata a REGRA PADRÃO com exceções."
+  },
+  {
+   "id": "X-02",
+   "texto": "RM coração — padrão \"cardíaca + angio-RM aorta torácica\" em 14 convênios; exceções: SulAmérica (só cardíaca), Hapvida (não autoriza); sem regra: Care Plus, Mediservice. Códigos só existem para Amil, Cassi, Bradesco, Economus, Saúde Caixa, Cesp."
+  },
+  {
+   "id": "X-03",
+   "texto": "Angio-TC coronárias — 5 jeitos: (1) só pacote 41001230: Amil, Cassi, Economus, Saúde Caixa*; (2) pacote próprio sem tórax: Aafresp 89022845, SulAmérica, Seprev; (3) coronária + TC tórax: Assefaz, Unafisco, Petrobras, Cesp, Porto, Proasa(só coronárias?); (4) como AORTA TORÁCICA 41001176 + tórax 41001079: Bradesco, Cabesp; (5) não autoriza: Hapvida. Sem regra: Care Plus, Mediservice."
+  },
+  {
+   "id": "X-04",
+   "texto": "Angio-TC MMII — sem cobertura: Amil, Economus, Unafisco, Cesp, Porto, SulAmérica, Bradesco(ilíacas/femoral); tem: Cabesp, Aafresp(arterial), Assefaz, Petrobras, Saúde Caixa, Cassi(só arterial); sem info: Proasa, Seprev, Care Plus, Mediservice, Hapvida(não autoriza angio)."
+  },
+  {
+   "id": "X-05",
+   "texto": "Primovist — sem: Amil, Seprev, Assefaz, Porto, Bradesco; com: Cassi (cobra à parte), Petrobras, Cesp, Saúde Caixa (sem autorizar), SulAmérica (cobra junto); sem info: Cabesp, Proasa, Aafresp, Unafisco, Economus, Care Plus, Mediservice, Hapvida."
+  },
+  {
+   "id": "X-06",
+   "texto": "Espectroscopia — sem: Amil, SulAmérica, Porto; com: Cassi; resto sem info."
+  },
+  {
+   "id": "X-07",
+   "texto": "TC maxila/mandíbula — vira TC face: Amil, Bradesco; sem cobertura: Aafresp; aceita: Cassi, Petrobras (CRO); SulAmérica CRO aceito p/ maxilar."
+  },
+  {
+   "id": "X-08",
+   "texto": "Cópia do pedido — aceita: Amil, Cassi, Bradesco, Porto; só original: Economus; sem info: os outros 13."
+  },
+  {
+   "id": "X-09",
+   "texto": "Múltipla escolha — não aceita: Seprev, Aafresp, Assefaz; sem info: resto."
+  },
+  {
+   "id": "X-10",
+   "texto": "Validade da AUTORIZAÇÃO — informada só em Amil 60, Cassi 60, Cabesp 30, Bradesco 28, Care Plus 30, Economus 30; falta em 12."
+  },
+  {
+   "id": "X-11",
+   "texto": "Relatório médico — só Bradesco (4 casos) e Mediservice (bilaterais \"mesmos critérios Bradesco\"); SulAmérica DUT."
+  },
+  {
+   "id": "X-12",
+   "texto": "\"Mesmo médico → autorizar junto\" — Amil e Bradesco (RM). Outros sem info."
+  },
+  {
+   "id": "X-13",
+   "texto": "Grupo cardíaco com prazo maior — Amil 4, Cassi 4, Cabesp 5, Bradesco 4, Economus 10, Saúde Caixa 10, Cesp 5 (+angio), Mediservice 5, Assefaz 7, Petrobras 5 (análise). Prazo único: Proasa 5, Seprev 5, Hapvida 5, Unafisco 5, Care Plus 10, Aafresp 2, Porto 2."
+  },
+  {
+   "id": "X-14",
+   "texto": "Unidade do prazo não escrita (\"2 dias\", \"7 dias\", \"5 dias\", \"até 5 dias\") em Aafresp, Porto, Assefaz, Cesp, Petrobras."
+  }
+ ]
+}

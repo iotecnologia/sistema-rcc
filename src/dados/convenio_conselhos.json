@@ -1,0 +1,260 @@
+[
+ {
+  "convenio_id": 2,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 2,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 2,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 3,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 3,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 3,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 11,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 11,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 11,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 10,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 10,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": "Somente para estruturas do crânio"
+ },
+ {
+  "convenio_id": 14,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": "Somente CRM do estado de São Paulo"
+ },
+ {
+  "convenio_id": 16,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 16,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 16,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 1,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 1,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": "Só se o pedido for TC de face (maxila/mandíbula: trocar por TC de seios da face)"
+ },
+ {
+  "convenio_id": 1,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 6,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 6,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 6,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 5,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 5,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 5,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 13,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 13,
+  "conselho": "CRO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 13,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 8,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 8,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": "Inclusive maxilar e mandíbula"
+ },
+ {
+  "convenio_id": 8,
+  "conselho": "CREFITO",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 17,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 17,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 17,
+  "conselho": "CREFITO",
+  "aceita": false,
+  "restricao": null
+ },
+ {
+  "convenio_id": 4,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 4,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 9,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 9,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": "Só para mandíbula/maxilar, face e ATM"
+ },
+ {
+  "convenio_id": 7,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 7,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": "Somente TC de seios da face"
+ },
+ {
+  "convenio_id": 15,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 15,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 18,
+  "conselho": "CRM",
+  "aceita": true,
+  "restricao": null
+ },
+ {
+  "convenio_id": 18,
+  "conselho": "CRO",
+  "aceita": true,
+  "restricao": null
+ }
+]

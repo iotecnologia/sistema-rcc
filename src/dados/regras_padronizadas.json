@@ -1,0 +1,8414 @@
+{
+ "moldes": {
+  "M01": "Validade do pedido",
+  "M02": "Validade da autorização",
+  "M03": "Antecedência de agendamento",
+  "M04": "Prazo de análise da operadora",
+  "M05": "Só agenda depois de autorizado",
+  "M06": "Conselho do solicitante",
+  "M07": "Tipo de pedido aceito",
+  "M08": "Exigências do pedido",
+  "M09": "Guia SP/SADT obrigatória",
+  "M10": "Canal de autorização",
+  "M11": "Plano / rede",
+  "M12": "Modalidades que o convênio autoriza",
+  "M13": "Cobertura",
+  "M14": "Código para autorizar",
+  "M15": "Composição (autorizar junto)",
+  "M16": "Substituição (autorizar como)",
+  "M17": "Desmembrar",
+  "M18": "Texto exigido no pedido",
+  "M19": "Relatório médico",
+  "M20": "Quantidade a autorizar",
+  "M21": "Agrupamento",
+  "M22": "Cobrança",
+  "M23": "Restrição do paciente",
+  "M24": "Agenda do exame",
+  "M25": "Médico",
+  "M26": "Preparo",
+  "M27": "Preço",
+  "M28": "Orçamento",
+  "INFO": "Informativo (sem regra)",
+  "SIS": "Sistema / acesso"
+ },
+ "alvos": [
+  {
+   "id": "TODOS",
+   "nome": "Todos os exames",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "DEMAIS",
+   "nome": "Demais exames (fora dos grupos com prazo próprio)",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "PEDIDO",
+   "nome": "Pedido médico",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "AUTORIZACAO",
+   "nome": "Autorização",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "SOLICITANTE",
+   "nome": "Médico solicitante (conselho)",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "PLANO",
+   "nome": "Plano / rede do paciente",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "CANAL",
+   "nome": "Canal de autorização",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "CODIGOS",
+   "nome": "Tabela de códigos do convênio",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "G_CARDIACO",
+   "nome": "Grupo cardíaco (coronária, RM coração, escore)",
+   "tipo": "grupo",
+   "tuss": [
+    "41001230",
+    "41101138",
+    "41101146",
+    "41101154"
+   ],
+   "exame_ids": [
+    274,
+    176,
+    177,
+    178
+   ]
+  },
+  {
+   "id": "G_ANGIO",
+   "nome": "Grupo angio (angio-TC e angio-RM)",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "G_ARTICULACAO",
+   "nome": "Grupo articulação",
+   "tipo": "grupo",
+   "tuss": [
+    "41101316",
+    "41001141"
+   ],
+   "exame_ids": [
+    193,
+    160
+   ]
+  },
+  {
+   "id": "G_RM",
+   "nome": "Toda RM",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "G_TC",
+   "nome": "Toda TC",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ANGIO_TC_CORONARIAS",
+   "nome": "Angio-TC de coronárias",
+   "tipo": "exame",
+   "tuss": [
+    "41001230"
+   ],
+   "exame_ids": [
+    274
+   ]
+  },
+  {
+   "id": "RM_CORACAO",
+   "nome": "RM de coração",
+   "tipo": "exame",
+   "tuss": [
+    "41101138"
+   ],
+   "exame_ids": [
+    176
+   ]
+  },
+  {
+   "id": "ESCORE_CALCIO",
+   "nome": "Escore de cálcio (TC coração/tórax para escore)",
+   "tipo": "exame",
+   "tuss": [
+    "41001087"
+   ],
+   "exame_ids": [
+    427,
+    431
+   ]
+  },
+  {
+   "id": "ANGIO_TC_MMII",
+   "nome": "Angio-TC de membros inferiores",
+   "tipo": "exame",
+   "tuss": [
+    "41001478"
+   ],
+   "exame_ids": [
+    214
+   ]
+  },
+  {
+   "id": "ANGIO_TC_MMSS",
+   "nome": "Angio-TC de membros superiores",
+   "tipo": "exame",
+   "tuss": [
+    "41001494",
+    "41001508"
+   ],
+   "exame_ids": [
+    429,
+    430
+   ]
+  },
+  {
+   "id": "ANGIO_TC_AORTA_TOR",
+   "nome": "Angio-TC de aorta torácica",
+   "tipo": "exame",
+   "tuss": [
+    "41001176"
+   ],
+   "exame_ids": [
+    202
+   ]
+  },
+  {
+   "id": "ANGIO_TC_AORTA_ABD",
+   "nome": "Angio-TC de aorta abdominal",
+   "tipo": "exame",
+   "tuss": [
+    "41001184"
+   ],
+   "exame_ids": [
+    203
+   ]
+  },
+  {
+   "id": "ANGIO_TC_GERAL",
+   "nome": "Angio-TC (crânio/pescoço/tórax/abd. sup./pelve)",
+   "tipo": "exame",
+   "tuss": [
+    "41001168"
+   ],
+   "exame_ids": [
+    272
+   ]
+  },
+  {
+   "id": "ANGIO_TC_CRANIO_ART",
+   "nome": "Angio-TC arterial de crânio",
+   "tipo": "exame",
+   "tuss": [
+    "41001370"
+   ],
+   "exame_ids": [
+    204
+   ]
+  },
+  {
+   "id": "ANGIO_RM_GERAL",
+   "nome": "Angio-RM (crânio/pescoço/tórax/abd. sup./pelve)",
+   "tipo": "exame",
+   "tuss": [
+    "41101324"
+   ],
+   "exame_ids": [
+    279
+   ]
+  },
+  {
+   "id": "ANGIO_RM_CRANIO",
+   "nome": "Angio-RM de crânio (arterial/venosa)",
+   "tipo": "exame",
+   "tuss": [
+    "41101537",
+    "41101545"
+   ],
+   "exame_ids": [
+    223,
+    224
+   ]
+  },
+  {
+   "id": "ANGIO_RM_MMSS",
+   "nome": "Angio-RM de membro superior",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ANGIO_RM_MMII",
+   "nome": "Angio-RM de membros inferiores",
+   "tipo": "exame",
+   "tuss": [
+    "41101553"
+   ],
+   "exame_ids": [
+    225
+   ]
+  },
+  {
+   "id": "RM_CRANIO_ANGIO",
+   "nome": "RM de crânio + angio-RM intracraniana",
+   "tipo": "exame",
+   "tuss": [
+    "41101014",
+    "41101537"
+   ],
+   "exame_ids": [
+    165,
+    223
+   ]
+  },
+  {
+   "id": "RM_FLUXO_LIQUORICO",
+   "nome": "RM fluxo liquórico",
+   "tipo": "exame",
+   "tuss": [
+    "41101235"
+   ],
+   "exame_ids": [
+    185
+   ]
+  },
+  {
+   "id": "RM_MAMA",
+   "nome": "RM de mama",
+   "tipo": "exame",
+   "tuss": [
+    "41101480"
+   ],
+   "exame_ids": [
+    196
+   ]
+  },
+  {
+   "id": "RM_ABDOME_TOTAL",
+   "nome": "RM de abdome total",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_ABDOME_SUP",
+   "nome": "RM de abdome superior",
+   "tipo": "exame",
+   "tuss": [
+    "41101170"
+   ],
+   "exame_ids": [
+    179
+   ]
+  },
+  {
+   "id": "RM_TORAX",
+   "nome": "RM de tórax",
+   "tipo": "exame",
+   "tuss": [
+    "41101120"
+   ],
+   "exame_ids": [
+    175
+   ]
+  },
+  {
+   "id": "ANGIO_RM_AORTA_TORACICA",
+   "nome": "Angio-RM de aorta torácica",
+   "tipo": "exame",
+   "tuss": [
+    "41101332"
+   ],
+   "exame_ids": [
+    217
+   ]
+  },
+  {
+   "id": "RM_TALASSEMIA",
+   "nome": "RM para talassemia (coração + abdome superior)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_CORPO_INTEIRO",
+   "nome": "RM de corpo inteiro",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "TC_CORPO_INTEIRO",
+   "nome": "TC de corpo inteiro",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_PROSTATA",
+   "nome": "RM de próstata",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_PELVE",
+   "nome": "RM de pelve",
+   "tipo": "exame",
+   "tuss": [
+    "41101189"
+   ],
+   "exame_ids": [
+    180
+   ]
+  },
+  {
+   "id": "RM_PELVE_ENDOMETRIOSE",
+   "nome": "RM de pelve para endometriose",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_ENTERO",
+   "nome": "Entero-RM",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "COLANGIO_RM",
+   "nome": "Colangio-RM (hidro-RM)",
+   "tipo": "exame",
+   "tuss": [
+    "41101359"
+   ],
+   "exame_ids": [
+    194
+   ]
+  },
+  {
+   "id": "ESPECTROSCOPIA",
+   "nome": "Espectroscopia por RM",
+   "tipo": "exame",
+   "tuss": [
+    "41101065"
+   ],
+   "exame_ids": [
+    169
+   ]
+  },
+  {
+   "id": "TC_MAXILA_MANDIBULA",
+   "nome": "TC de maxila e mandíbula",
+   "tipo": "exame",
+   "tuss": [
+    "41001273",
+    "41001281"
+   ],
+   "exame_ids": [
+    275,
+    276
+   ]
+  },
+  {
+   "id": "TC_FACE",
+   "nome": "TC de face / seios da face",
+   "tipo": "exame",
+   "tuss": [
+    "41001036"
+   ],
+   "exame_ids": [
+    151
+   ]
+  },
+  {
+   "id": "TC_ATM",
+   "nome": "TC de ATM",
+   "tipo": "exame",
+   "tuss": [
+    "41001044"
+   ],
+   "exame_ids": [
+    152
+   ]
+  },
+  {
+   "id": "TC_ABDOME_TOTAL",
+   "nome": "TC de abdome total",
+   "tipo": "exame",
+   "tuss": [
+    "41001095"
+   ],
+   "exame_ids": [
+    155
+   ]
+  },
+  {
+   "id": "TC_APARELHO_URINARIO",
+   "nome": "TC de aparelho urinário",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ARCOS_COSTAIS",
+   "nome": "RM de arcos costais",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "COLUNA_MAIS_DE_UMA",
+   "nome": "Mais de uma coluna (RM/TC)",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ARTICULACAO_BILATERAL",
+   "nome": "Articulação bilateral (RM/TC)",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "COLUNA_LOMBAR_BACIA",
+   "nome": "Coluna lombar + bacia (RM/TC)",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "EXAMES_BILATERAIS",
+   "nome": "Exames bilaterais",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_MAIS_ANGIO",
+   "nome": "RM + angio (TC ou RM) no mesmo pedido",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "REGIOES_DIFERENTES",
+   "nome": "Regiões diferentes do corpo no mesmo pedido",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "COXOFEMORAL",
+   "nome": "Articulação coxofemoral",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "MAMOGRAFIA",
+   "nome": "Mamografia",
+   "tipo": "exame",
+   "tuss": [
+    "40808041",
+    "40808033"
+   ],
+   "exame_ids": [
+    148,
+    147
+   ]
+  },
+  {
+   "id": "TOMOSSINTESE",
+   "nome": "Tomossíntese mamária",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "AMPLIACAO_MAMARIA",
+   "nome": "Ampliação / magnificação mamária",
+   "tipo": "exame",
+   "tuss": [
+    "40808050"
+   ],
+   "exame_ids": [
+    89
+   ]
+  },
+  {
+   "id": "MARCACAO_PRE_CIRURGICA",
+   "nome": "Marcação pré-cirúrgica",
+   "tipo": "exame",
+   "tuss": [
+    "40808190"
+   ],
+   "exame_ids": [
+    290
+   ]
+  },
+  {
+   "id": "BIOPSIA",
+   "nome": "Biópsia orientada por US",
+   "tipo": "exame",
+   "tuss": [
+    "40809161"
+   ],
+   "exame_ids": [
+    303
+   ]
+  },
+  {
+   "id": "CORE_BIOPSIA",
+   "nome": "Core biópsia mamária",
+   "tipo": "exame",
+   "tuss": [
+    "40808262"
+   ],
+   "exame_ids": [
+    297
+   ]
+  },
+  {
+   "id": "PUNCAO",
+   "nome": "Punção orientada por US",
+   "tipo": "exame",
+   "tuss": [
+    "40809161"
+   ],
+   "exame_ids": [
+    303
+   ]
+  },
+  {
+   "id": "PAAF_BIOPSIA",
+   "nome": "PAAF ou biópsia",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "US_MAMA",
+   "nome": "US de mamas",
+   "tipo": "exame",
+   "tuss": [
+    "40901114"
+   ],
+   "exame_ids": [
+    118
+   ]
+  },
+  {
+   "id": "US_TIREOIDE",
+   "nome": "US de tireoide",
+   "tipo": "exame",
+   "tuss": [
+    "40901203"
+   ],
+   "exame_ids": [
+    125
+   ]
+  },
+  {
+   "id": "US_APARELHO_URINARIO",
+   "nome": "US de aparelho urinário",
+   "tipo": "exame",
+   "tuss": [
+    "40901769"
+   ],
+   "exame_ids": [
+    143
+   ]
+  },
+  {
+   "id": "US_OBSTETRICA",
+   "nome": "US obstétrica",
+   "tipo": "exame",
+   "tuss": [
+    "40901238"
+   ],
+   "exame_ids": [
+    128
+   ]
+  },
+  {
+   "id": "DOPPLER_COLORIDO",
+   "nome": "Doppler colorido (acréscimo)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "DOPPLER_RENAL",
+   "nome": "Doppler renal",
+   "tipo": "exame",
+   "tuss": [
+    "40901394"
+   ],
+   "exame_ids": [
+    99
+   ]
+  },
+  {
+   "id": "RX_DACRIOCISTOGRAFIA",
+   "nome": "RX dacriocistografia",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RX_PANORAMICA",
+   "nome": "RX panorâmica de membros",
+   "tipo": "exame",
+   "tuss": [
+    "40804127"
+   ],
+   "exame_ids": [
+    55
+   ]
+  },
+  {
+   "id": "TC_SIMPLES",
+   "nome": "TC sem angio",
+   "tipo": "grupo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "PRIMOVIST",
+   "nome": "Contraste Primovist",
+   "tipo": "item",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "CONTRASTE",
+   "nome": "Contraste (gadolínio na RM, iodado na TC)",
+   "tipo": "item",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "CORPO_TOTAL_RM4",
+   "nome": "RM corpo total (mieloma / Li-Fraumeni)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ANGIO_ARTERIAL_RM3",
+   "nome": "Angio arterial (RM 3)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "RM_COCCIX_PUBIS",
+   "nome": "RM de cóccix / púbis",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "JOELHO_90KG",
+   "nome": "RM de joelho (paciente acima de 90 kg)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "GESTANTE",
+   "nome": "RM em gestante",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "NEUROESTIMULADOR",
+   "nome": "Paciente com neuroestimulador",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "OPERADO_TUMOR",
+   "nome": "Paciente operado de tumor (Casa de Saúde)",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "TATUAGEM_RECENTE",
+   "nome": "Tatuagem / micropigmentação recente (RM)",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ABDOME_SUP_COM_PROSTATA",
+   "nome": "Abdome superior junto com próstata",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "MAQUINAS_SEM_TEMPO",
+   "nome": "Máquinas com exames sem tempo",
+   "tipo": "recurso",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "MEDICO",
+   "nome": "Médico",
+   "tipo": "recurso",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "UNIDADE",
+   "nome": "Unidade / funcionamento",
+   "tipo": "recurso",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "ORCAMENTO",
+   "nome": "Orçamento / preço",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  },
+  {
+   "id": "SISTEMA",
+   "nome": "Sistema / acesso",
+   "tipo": "escopo",
+   "tuss": [],
+   "exame_ids": []
+  }
+ ],
+ "padroes": [
+  {
+   "id": "PAD-01",
+   "molde": "M18",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "tomografia de tórax para avaliação do escore de cálcio"
+   },
+   "texto": "Pedido de escore de cálcio deve descrever \"tomografia de tórax para avaliação do escore de cálcio\".",
+   "convenios_que_seguem": [
+    "aafresp",
+    "amil",
+    "assefaz",
+    "bradesco",
+    "cabesp",
+    "cespvivest",
+    "petrobras",
+    "portoseguro",
+    "proasa",
+    "seprev",
+    "sulamerica",
+    "unafisco"
+   ]
+  },
+  {
+   "id": "PAD-02",
+   "molde": "M15",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "41101332"
+    ]
+   },
+   "texto": "RM de coração = RM cardíaca + angio-RM de aorta torácica (autorizar os dois).",
+   "convenios_que_seguem": [
+    "aafresp",
+    "amil",
+    "assefaz",
+    "bradesco",
+    "cabesp",
+    "cassi",
+    "cespvivest",
+    "economus",
+    "petrobras",
+    "portoseguro",
+    "proasa",
+    "saudecaixa",
+    "seprev",
+    "unafisco"
+   ]
+  }
+ ],
+ "regras": [
+  {
+   "id": "AMI-01",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "amil",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "nao_pode_conter": "Pedido NÃO pode ter escrito \"angiotomografia de aorta torácica\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido NÃO pode ter escrito \"angiotomografia de aorta torácica\".",
+   "fontes": [
+    "R1"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-02",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "41001230"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar somente o código 41001230 (pacote).",
+   "fontes": [
+    "R1"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "amil",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "41101332"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar RM cardíaca 41101138 + angio-RM aorta torácica 41101332.",
+   "fontes": [
+    "R2"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "AMI-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "amil",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido precisa ter a descrição da angio-RM de aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido precisa ter a descrição da angio-RM de aorta torácica.",
+   "fontes": [
+    "R2"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-05",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "amil",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido deve descrever \"tomografia de tórax para avaliação do escore de cálcio\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido deve descrever \"tomografia de tórax para avaliação do escore de cálcio\".",
+   "fontes": [
+    "R3"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "AMI-06",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "amil",
+   "alvo_original": "TC maxila e mandíbula",
+   "alvos": [
+    "TC_MAXILA_MANDIBULA"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "TC_FACE"
+    ],
+    "codigos": []
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar como TC de face.",
+   "fontes": [
+    "R4"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-07",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "amil",
+   "alvo_original": "Pedido médico",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 180,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Validade do pedido: 180 dias corridos.",
+   "fontes": [
+    "R5"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-08",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "amil",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 60,
+    "contagem": "corridos"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Validade da autorização: 60 dias.",
+   "fontes": [
+    "R6"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-09",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "amil",
+   "alvo_original": "Plano",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": null,
+    "verificar": "carteirinha no sistema"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Consultar a carteirinha no sistema para ver se o plano é atendido.",
+   "fontes": [
+    "R6"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-10",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "amil",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R7"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-11",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "amil",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 4,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendar com 4 dias úteis.",
+   "fontes": [
+    "R8"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-12",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "amil",
+   "alvo_original": "Demais exames",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendar com 3 dias úteis.",
+   "fontes": [
+    "R8"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-13",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "amil",
+   "alvo_original": "Articulações",
+   "alvos": [
+    "G_ARTICULACAO"
+   ],
+   "campos": {
+    "grupo": "articulacao",
+    "dias": 4,
+    "contagem": "uteis",
+    "qtd_minima": 3
+   },
+   "situacao": "confirmada",
+   "texto_original": "Mais de 2 articulações: agendar com 4 dias úteis.",
+   "fontes": [
+    "R9"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-14",
+   "molde": "M21",
+   "molde_nome": "Agrupamento",
+   "convenio": "amil",
+   "alvo_original": "Pedidos",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "criterio": "mesmo_medico",
+    "acao": "Mesmo médico solicitante: exames podem ser autorizados juntos no mesmo pedido."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Mesmo médico solicitante: exames podem ser autorizados juntos no mesmo pedido.",
+   "fontes": [
+    "R10"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-15",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "amil",
+   "alvo_original": "RX dacriocistografia",
+   "alvos": [
+    "RX_DACRIOCISTOGRAFIA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Não faz \"Dacryo\" por RX.",
+   "fontes": [
+    "R11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-16",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "amil",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "consultar_faturamento"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura — consultar faturamento.",
+   "fontes": [
+    "R12"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-17",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "amil",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-18",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "amil",
+   "alvo_original": "Ampliação/magnificação mamária",
+   "alvos": [
+    "AMPLIACAO_MAMARIA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-19",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "amil",
+   "alvo_original": "Espectroscopia",
+   "alvos": [
+    "ESPECTROSCOPIA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R13"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-20",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "amil",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "copia_legivel"
+    ],
+    "informado_em": "05/10 (sem ano)"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Aceita cópia legível (informação de 05/10, sem ano).",
+   "fontes": [
+    "R14"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-21",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "amil",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "assinatura_digital"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita pedido digital com assinatura eletrônica.",
+   "fontes": [
+    "R14"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-22",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "amil",
+   "alvo_original": "Biópsia",
+   "alvos": [
+    "BIOPSIA"
+   ],
+   "campos": {
+    "codigos": [
+     "40809161"
+    ],
+    "exames": [
+     "BIOPSIA",
+     "US do local"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 40809161 + o ultrassom.",
+   "fontes": [
+    "R15"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-23",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Mamografia",
+   "alvos": [
+    "MAMOGRAFIA"
+   ],
+   "campos": {
+    "codigos": [
+     "40808033"
+    ],
+    "status": "ativo",
+    "duvida": "RCC faz digital (40808041)?"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Código 40808033 (convencional — RCC faz digital 40808041?).",
+   "fontes": [
+    "R16"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-24",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Angio-RM crânio arterial/venosa",
+   "alvos": [
+    "ANGIO_RM_CRANIO"
+   ],
+   "campos": {
+    "codigos": [
+     "41101537"
+    ],
+    "status": "ativo",
+    "duvida": "venosa é 41101545 na tabela da própria Amil"
+   },
+   "situacao": "conflito",
+   "texto_original": "Código 41101537 (que é ARTERIAL; venosa é 41101545).",
+   "fontes": [
+    "R17"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-25",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Angio-TC arterial crânio",
+   "alvos": [
+    "ANGIO_TC_CRANIO_ART"
+   ],
+   "campos": {
+    "codigos": [
+     "41001370"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 41001370.",
+   "fontes": [
+    "R18"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-26",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Marcação pré-cirúrgica (biometria ocular)",
+   "alvos": [
+    "MARCACAO_PRE_CIRURGICA"
+   ],
+   "campos": {
+    "codigos": [
+     "40808190"
+    ],
+    "status": "ativo",
+    "duvida": "código é de marcação de nódulo de mama"
+   },
+   "situacao": "conflito",
+   "texto_original": "Código 40808190 — mas esse código é \"marcação pré-cirúrgica por nódulo de MAMA por estereotaxia\" (tabela Cassi), não biometria ocular.",
+   "fontes": [
+    "R19"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-01",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cassi",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "41001230"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente o pacote 41001230.",
+   "fontes": [
+    "R20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "cassi",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "41101332"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "41101138 + 41101332.",
+   "fontes": [
+    "R21"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "CAS-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "cassi",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido precisa descrever angio-RM de aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido precisa descrever angio-RM de aorta torácica.",
+   "fontes": [
+    "R21"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-04",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "cassi",
+   "alvo_original": "RM crânio + angio-RM intracraniana",
+   "alvos": [
+    "RM_CRANIO_ANGIO"
+   ],
+   "campos": {
+    "codigos": [
+     "41101014",
+     "41101537"
+    ],
+    "exames": null
+   },
+   "situacao": "confirmada",
+   "texto_original": "41101014 + 41101537.",
+   "fontes": [
+    "R22"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-05",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cassi",
+   "alvo_original": "RM crânio com fluxo liquórico",
+   "alvos": [
+    "RM_FLUXO_LIQUORICO"
+   ],
+   "campos": {
+    "codigos": [
+     "41101235"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Código 41101235 (complementar — junto com RM crânio?).",
+   "fontes": [
+    "R23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-06",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "cassi",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Validade 90 dias (corridos — padrão D).",
+   "fontes": [
+    "R24"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-07",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "cassi",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 60,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Validade 60 dias.",
+   "fontes": [
+    "R25"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-08",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "cassi",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R26"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-09",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cassi",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 4,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "4 dias úteis.",
+   "fontes": [
+    "R27"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-10",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cassi",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R27"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-11",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cassi",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "coberto",
+    "variante": "só arterial"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Cobertura só para ARTERIAL.",
+   "fontes": [
+    "R28"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-12",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cassi",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem cobertura.",
+   "fontes": [
+    "R29"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-13",
+   "molde": "M22",
+   "molde_nome": "Cobrança",
+   "convenio": "cassi",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "forma": "a_parte",
+    "percentual": null
+   },
+   "situacao": "confirmada",
+   "texto_original": "Cobrança à parte na guia.",
+   "fontes": [
+    "R29"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-14",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cassi",
+   "alvo_original": "Espectroscopia",
+   "alvos": [
+    "ESPECTROSCOPIA"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem cobertura.",
+   "fontes": [
+    "R30"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-15",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cassi",
+   "alvo_original": "Hidro-RM",
+   "alvos": [
+    "COLANGIO_RM"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem cobertura — 41101359.",
+   "fontes": [
+    "R31"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-16",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "cassi",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "copia_legivel"
+    ],
+    "informado_em": "05/10 (sem ano)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita cópia legível (informação de 05/10).",
+   "fontes": [
+    "R32"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-17",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cassi",
+   "alvo_original": "RM mama",
+   "alvos": [
+    "RM_MAMA"
+   ],
+   "campos": {
+    "codigos": [
+     "41101480"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 41101480.",
+   "fontes": [
+    "R33"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-18",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cassi",
+   "alvo_original": "TC maxila/mandíbula",
+   "alvos": [
+    "TC_MAXILA_MANDIBULA"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita.",
+   "fontes": [
+    "R34"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAS-19",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cassi",
+   "alvo_original": "Todos TC/RM",
+   "alvos": [
+    "G_TC",
+    "G_RM"
+   ],
+   "campos": {
+    "codigos": [],
+    "status": "ativo",
+    "avulso_e_pacote": true,
+    "duvida": "qual usar"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Cada código existe avulso e como pacote (HM+mat+med) — falta dizer qual usar.",
+   "fontes": [
+    "CD01"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-01",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "cabesp",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "ANGIO_TC_AORTA_TOR",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [
+     "41001176",
+     "41001079"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar como 41001176 (angio-TC aorta torácica) + 41001079 (TC tórax/escore).",
+   "fontes": [
+    "R35"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-02",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "cabesp",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "deve_conter": "Pode estar escrito \"CT coronárias\", mas o pedido precisa ter coronária E tórax."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pode estar escrito \"CT coronárias\", mas o pedido precisa ter coronária E tórax.",
+   "fontes": [
+    "R35"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "cabesp",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica (códigos não informados).",
+   "fontes": [
+    "R36"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "CAB-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "cabesp",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R37"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "CAB-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "cabesp",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "90 dias corridos.",
+   "fontes": [
+    "R38"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-06",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "cabesp",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias.",
+   "fontes": [
+    "R39"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-07",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "cabesp",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita CRO nem CREFITO.",
+   "fontes": [
+    "R40"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-08",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cabesp",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R41"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-09",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cabesp",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R41"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-10",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cabesp",
+   "alvo_original": "Angio-RM (crânio/pescoço/tórax/abd sup)",
+   "alvos": [
+    "ANGIO_RM_GERAL"
+   ],
+   "campos": {
+    "codigos": [
+     "41101324"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 41101324 (existe na tabela Cassi; falta no catálogo de exames).",
+   "fontes": [
+    "R42"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-11",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "cabesp",
+   "alvo_original": "Angio-TC (crânio/pescoço/tórax/abd sup)",
+   "alvos": [
+    "ANGIO_TC_GERAL"
+   ],
+   "campos": {
+    "codigos": [
+     "41001168"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 41001168.",
+   "fontes": [
+    "R43"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-12",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cabesp",
+   "alvo_original": "Angio-TC MMII arterial e venosa",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "coberto",
+    "variante": "arterial e venosa"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R44"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAB-13",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "cabesp",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Cabesp antes de enviar (obrigatório).",
+   "fontes": [
+    "R45",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-01",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "proasa",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "deve_conter": "Pedido descreve somente coronárias."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido descreve somente coronárias.",
+   "fontes": [
+    "R46"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "proasa",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R47"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "PRO-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "proasa",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R48"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "PRO-04",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "proasa",
+   "alvo_original": "Angio-RM e angio-TC",
+   "alvos": [
+    "G_ANGIO"
+   ],
+   "campos": {
+    "cobertura": "consultar_contrato"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Consultar sempre o contrato antes de autorizar.",
+   "fontes": [
+    "R49"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "proasa",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias corridos.",
+   "fontes": [
+    "R50"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-06",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "proasa",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R51"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-07",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "proasa",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Proasa (obrigatório).",
+   "fontes": [
+    "R52",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-08",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "proasa",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRM.",
+   "fontes": [
+    "R53"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-09",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "proasa",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": "só estruturas do crânio"
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "CRO somente para estruturas do crânio.",
+   "fontes": [
+    "R54"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PRO-10",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "proasa",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R50"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-01",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "seprev",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [],
+    "tipo": "pacote",
+    "status": "ativo",
+    "observacao": "pacote só coronárias; código não informado"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pacote (só coronárias); pedido somente \"CT coronária\".",
+   "fontes": [
+    "R55"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "seprev",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R56"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "SEP-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "seprev",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R57"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "SEP-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "seprev",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "90 dias corridos.",
+   "fontes": [
+    "R58"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "seprev",
+   "alvo_original": "Pedido com data futura",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "conta_a_partir": "data_futura_anotada"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Se o médico anotou data futura para o exame, os 90 dias contam a partir dessa data.",
+   "fontes": [
+    "R58"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-06",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "seprev",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "exigencia": "nao_aceita_multipla_escolha"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita pedido de múltipla escolha.",
+   "fontes": [
+    "R59"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-07",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "seprev",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": "só CRM-SP"
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita pedido de médico de outro estado (só CRM-SP).",
+   "fontes": [
+    "R60",
+    "R66"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "seprev",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R61"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-09",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "seprev",
+   "alvo_original": "RM mama",
+   "alvos": [
+    "RM_MAMA"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "RM_TORAX"
+    ],
+    "codigos": [
+     "41101120"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar como RM tórax 41101120.",
+   "fontes": [
+    "R62"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-10",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "seprev",
+   "alvo_original": "Colangio-RM",
+   "alvos": [
+    "COLANGIO_RM"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "RM_ABDOME_SUP"
+    ],
+    "codigos": []
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar como RM abdome superior.",
+   "fontes": [
+    "R63"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-11",
+   "molde": "M20",
+   "molde_nome": "Quantidade a autorizar",
+   "convenio": "seprev",
+   "alvo_original": "Colangio-RM",
+   "alvos": [
+    "COLANGIO_RM"
+   ],
+   "campos": {
+    "qtd": 2
+   },
+   "situacao": "confirmada",
+   "texto_original": "Quantidade 2.",
+   "fontes": [
+    "R63"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-12",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "seprev",
+   "alvo_original": "TC ATM 41001044",
+   "alvos": [
+    "TC_ATM"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura contratual.",
+   "fontes": [
+    "R64"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-13",
+   "molde": "M04",
+   "molde_nome": "Prazo de análise da operadora",
+   "convenio": "seprev",
+   "alvo_original": "Todos",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "auditoria_todos": true,
+    "dias_max": null
+   },
+   "situacao": "confirmada",
+   "texto_original": "Todos os pedidos vão para auditoria.",
+   "fontes": [
+    "R65"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-14",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "seprev",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R65"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SEP-15",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "seprev",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R58"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-01",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "aafresp",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "89022845"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pacote 89022845.",
+   "fontes": [
+    "R67"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-02",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "aafresp",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "deve_conter": "Não precisa pedido de tórax separado."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não precisa pedido de tórax separado.",
+   "fontes": [
+    "R67"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "aafresp",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R68"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "AAF-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "aafresp",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R69"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "AAF-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "aafresp",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": null,
+    "sem_prazo": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem prazo de validade.",
+   "fontes": [
+    "R70"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-06",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "aafresp",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "exigencia": "nao_aceita_multipla_escolha"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita pedido de múltipla escolha (X).",
+   "fontes": [
+    "R70"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-07",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "aafresp",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente CRM.",
+   "fontes": [
+    "R71"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-08",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "aafresp",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 2,
+    "contagem": "uteis",
+    "contagem_assumida": true
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Pode agendar com 2 dias (não diz se úteis).",
+   "fontes": [
+    "R72"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "aafresp",
+   "alvo_original": "TC maxilar/mandíbula",
+   "alvos": [
+    "TC_MAXILA_MANDIBULA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R73"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-10",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "aafresp",
+   "alvo_original": "Angio-TC MMII arterial",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "coberto",
+    "variante": "arterial"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R74"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-11",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "aafresp",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "exigencia": "carimbo_e_assinatura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita pedido em receituário da Unimed, se carimbado e assinado.",
+   "fontes": [
+    "R75"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-12",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "aafresp",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção de códigos vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção de códigos vazia.",
+   "fontes": [
+    "R76"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-01",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "assefaz",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Coronárias + TC de tórax (códigos não informados).",
+   "fontes": [
+    "R77"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "assefaz",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R78"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "ASS-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "assefaz",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R79"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "ASS-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "assefaz",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias corridos.",
+   "fontes": [
+    "R80"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-05",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "assefaz",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "exigencia": "nao_aceita_multipla_escolha"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita múltipla escolha.",
+   "fontes": [
+    "R81"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-06",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "assefaz",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R82"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-07",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "assefaz",
+   "alvo_original": "Coronárias e RM cardíaca",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS",
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 7,
+    "contagem": "uteis",
+    "contagem_assumida": true
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "7 dias (não diz se úteis).",
+   "fontes": [
+    "R83"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "assefaz",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R84"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "assefaz",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R85"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-10",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "assefaz",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Conselhos aceitos NÃO informados.",
+   "fontes": [
+    "R77"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-11",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "assefaz",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção de códigos vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção de códigos vazia.",
+   "fontes": [
+    "R86"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-01",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "hapvida",
+   "alvo_original": "RM cardíaca e angio-TC",
+   "alvos": [
+    "RM_CORACAO",
+    "G_ANGIO"
+   ],
+   "campos": {
+    "cobertura": "nao_autoriza"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não autoriza.",
+   "fontes": [
+    "R87"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-02",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "hapvida",
+   "alvo_original": "Demais angios",
+   "alvos": [
+    "G_ANGIO"
+   ],
+   "campos": {
+    "cobertura": "nao_autoriza"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não autoriza.",
+   "fontes": [
+    "R88",
+    "CD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-03",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "hapvida",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 60,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "60 dias corridos.",
+   "fontes": [
+    "R89"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-04",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "hapvida",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "substituida",
+   "texto_original": "Aceita CRO (CRM implícito).",
+   "fontes": [
+    "R90"
+   ],
+   "resposta": "Aceita CRO e CRM (RESP-2).",
+   "substituida_por": "HAP-17"
+  },
+  {
+   "id": "HAP-05",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "hapvida",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R91"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-06",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "hapvida",
+   "alvo_original": "Todos",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "cobertura": "so_contrato_amb"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Só autoriza exame que está no contrato, com códigos AMB.",
+   "fontes": [
+    "R92"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-07",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "hapvida",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Hapvida (obrigatório).",
+   "fontes": [
+    "R93",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-08",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "hapvida",
+   "alvo_original": "US mama",
+   "alvos": [
+    "US_MAMA"
+   ],
+   "campos": {
+    "codigos": [
+     "33010380",
+     "40901114"
+    ],
+    "alternativos": true,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "33010380 ou 40901114 (alternativos).",
+   "fontes": [
+    "R94",
+    "CD02",
+    "CD04"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-09",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "hapvida",
+   "alvo_original": "US tireoide",
+   "alvos": [
+    "US_TIREOIDE"
+   ],
+   "campos": {
+    "codigos": [
+     "33019983",
+     "40901203"
+    ],
+    "alternativos": true,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "33019983 ou 40901203 (alternativos).",
+   "fontes": [
+    "R95"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-10",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "hapvida",
+   "alvo_original": "Código 33019274",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "codigos": [
+     "33019274"
+    ],
+    "status": "nao_habilitado"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não habilitado para a RCC.",
+   "fontes": [
+    "R96"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-11",
+   "molde": "M17",
+   "molde_nome": "Desmembrar",
+   "convenio": "hapvida",
+   "alvo_original": "TC abdome total",
+   "alvos": [
+    "TC_ABDOME_TOTAL"
+   ],
+   "campos": {
+    "desmembrar_em": [
+     "TC abdome superior",
+     "TC pelve"
+    ],
+    "codigos": [
+     "34010017",
+     "34010106"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não tem código: autorizar abdome superior 34010017 + pelve 34010106.",
+   "fontes": [
+    "R97"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-12",
+   "molde": "M17",
+   "molde_nome": "Desmembrar",
+   "convenio": "hapvida",
+   "alvo_original": "TC aparelho urinário",
+   "alvos": [
+    "TC_APARELHO_URINARIO"
+   ],
+   "campos": {
+    "desmembrar_em": [
+     "TC abdome superior",
+     "TC pelve"
+    ],
+    "codigos": [
+     "34010017",
+     "34010106"
+    ]
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Também = abdome superior + pelve.",
+   "fontes": [
+    "R97"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-13",
+   "molde": "M22",
+   "molde_nome": "Cobrança",
+   "convenio": "hapvida",
+   "alvo_original": "Doppler colorido 33010242",
+   "alvos": [
+    "DOPPLER_COLORIDO"
+   ],
+   "campos": {
+    "forma": "percentual",
+    "percentual": 20
+   },
+   "situacao": "confirmada",
+   "texto_original": "Acrescenta 20% ao código do US.",
+   "fontes": [
+    "CD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-14",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "hapvida",
+   "alvo_original": "Cine-RM coração 36010081",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "codigos": [
+     "36010081"
+    ],
+    "status": "suspenso"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Suspenso.",
+   "fontes": [
+    "CD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-15",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "hapvida",
+   "alvo_original": "RM mama 41101480",
+   "alvos": [
+    "RM_MAMA"
+   ],
+   "campos": {
+    "codigos": [
+     "41101480"
+    ],
+    "status": "a_confirmar",
+    "observacao": "anotação \"não mais\""
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Anotação \"não mais\" — confirmar.",
+   "fontes": [
+    "CD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-16",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "hapvida",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R89"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-01",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "bradesco",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "ANGIO_TC_AORTA_TOR",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [
+     "41001176",
+     "41001079"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar 41001176 (angio-TC aorta torácica) + 41001079 (TC tórax).",
+   "fontes": [
+    "R98"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-02",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "bradesco",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "deve_conter": "Pedido PRECISA ter escrito: \"angiotomografia de aorta torácica + tomografia de tórax para escore de cálcio\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido PRECISA ter escrito: \"angiotomografia de aorta torácica + tomografia de tórax para escore de cálcio\".",
+   "fontes": [
+    "R98"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "bradesco",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "41101332"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "41101138 + 41101332.",
+   "fontes": [
+    "R99"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "BRA-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "bradesco",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido precisa descrever angio-RM de aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido precisa descrever angio-RM de aorta torácica.",
+   "fontes": [
+    "R99"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-05",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "bradesco",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R100"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "BRA-06",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "bradesco",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 28,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "28 dias corridos.",
+   "fontes": [
+    "R101"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-07",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "bradesco",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "exigencia": "carimbo_e_assinatura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Carimbado e assinado.",
+   "fontes": [
+    "R101"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-08",
+   "molde": "M08",
+   "molde_nome": "Exigências do pedido",
+   "convenio": "bradesco",
+   "alvo_original": "Todos os exames",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "exigencia": "cid_ou_indicacao_clinica",
+    "em": "todos os exames"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Indicação clínica ou CID obrigatória em todos os exames.",
+   "fontes": [
+    "R101"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-09",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "bradesco",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 28,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "28 dias corridos.",
+   "fontes": [
+    "R102"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-10",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "bradesco",
+   "alvo_original": "Plano",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": false,
+    "planos": [
+     "SISTEL",
+     "PRATA",
+     "REDE NACIONAL FLEX",
+     "PERFIL CPS",
+     "PERFIL SÃO PAULO",
+     "LIVRE ESCOLHA",
+     "EFETIVO II"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não atende: Sistel, Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha, Efetivo II.",
+   "fontes": [
+    "R103"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-11",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "bradesco",
+   "alvo_original": "Plano",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": true,
+    "planos": [
+     "REDE PLENO"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Rede Pleno atende normalmente.",
+   "fontes": [
+    "R103"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-12",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "bradesco",
+   "alvo_original": "Redes",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": null,
+    "planos": [
+     "SISTEL"
+    ],
+    "conflito": "REDE SISTEL atendida × SISTEL não atende"
+   },
+   "situacao": "conflito",
+   "texto_original": "Lista de 92 redes — \"REDE SISTEL\" aparece na lista e Sistel também está em \"não atende\". (Resposta: as 92 redes são atendidas — continua a dúvida da Sistel.)",
+   "fontes": [
+    "R118",
+    "R103"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-13",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "bradesco",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita CREFITO.",
+   "fontes": [
+    "R104"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-14",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "bradesco",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": "só se o exame constar como TC de face"
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO desde que o exame conste como TC de face.",
+   "fontes": [
+    "R104"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-15",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": "bradesco",
+   "alvo_original": "TC maxila e mandíbula",
+   "alvos": [
+    "TC_MAXILA_MANDIBULA"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "TC_FACE"
+    ],
+    "codigos": [
+     "41001036"
+    ],
+    "motivo": "sem cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura — trocar por TC de face / seios da face (mesmo código 41001036).",
+   "fontes": [
+    "R104",
+    "R111"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-16",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "bradesco",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 4,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "4 dias úteis.",
+   "fontes": [
+    "R105"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-17",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "bradesco",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R106"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-18",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "bradesco",
+   "alvo_original": "RM + angio (TC ou RM)",
+   "alvos": [
+    "RM_MAIS_ANGIO"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "RM + angio (TC ou RM)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedir relatório médico complementar.",
+   "fontes": [
+    "R107"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-19",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "bradesco",
+   "alvo_original": "Mais de uma coluna (RM/TC)",
+   "alvos": [
+    "COLUNA_MAIS_DE_UMA"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "Mais de uma coluna (RM/TC)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedir relatório médico.",
+   "fontes": [
+    "R108"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-20",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "bradesco",
+   "alvo_original": "Articulação bilateral (RM/TC)",
+   "alvos": [
+    "ARTICULACAO_BILATERAL"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "Articulação bilateral (RM/TC)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedir relatório médico.",
+   "fontes": [
+    "R108"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-21",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "bradesco",
+   "alvo_original": "Coluna lombar + bacia (RM/TC)",
+   "alvos": [
+    "COLUNA_LOMBAR_BACIA"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "Coluna lombar + bacia (RM/TC)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedir relatório médico.",
+   "fontes": [
+    "R109"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-22",
+   "molde": "M17",
+   "molde_nome": "Desmembrar",
+   "convenio": "bradesco",
+   "alvo_original": "RM abdome total",
+   "alvos": [
+    "RM_ABDOME_TOTAL"
+   ],
+   "campos": {
+    "desmembrar_em": [
+     "RM_ABDOME_SUP",
+     "RM_PELVE"
+    ],
+    "codigos": []
+   },
+   "situacao": "confirmada",
+   "texto_original": "Desmembrar em RM abdome superior + RM pelve.",
+   "fontes": [
+    "R110"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-23",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "bradesco",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura",
+    "variante": "sem ilíacas e femoral"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura para ilíacas e femoral.",
+   "fontes": [
+    "R112"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-24",
+   "molde": "M21",
+   "molde_nome": "Agrupamento",
+   "convenio": "bradesco",
+   "alvo_original": "Pedidos separados",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "criterio": "mesmo_medico",
+    "acao": "Mesmo médico (RM): autorizar todos juntos."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Mesmo médico (RM): autorizar todos juntos.",
+   "fontes": [
+    "R113"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-25",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "bradesco",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "copia_legivel",
+     "assinatura_digital"
+    ],
+    "informado_em": "29/12 (sem ano)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita cópia legível (informação de 29/12) e assinatura digital.",
+   "fontes": [
+    "R114"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-26",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "bradesco",
+   "alvo_original": "Core biópsia",
+   "alvos": [
+    "CORE_BIOPSIA"
+   ],
+   "campos": {
+    "codigos": [
+     "40808262"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "40808262.",
+   "fontes": [
+    "R115"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-27",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "bradesco",
+   "alvo_original": "Punção",
+   "alvos": [
+    "PUNCAO"
+   ],
+   "campos": {
+    "codigos": [
+     "40809161"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "40809161.",
+   "fontes": [
+    "R115"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-28",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "bradesco",
+   "alvo_original": "RM para talassemia",
+   "alvos": [
+    "RM_TALASSEMIA"
+   ],
+   "campos": {
+    "codigos": [],
+    "exames": [
+     "RM_CORACAO",
+     "RM_ABDOME_SUP"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM coração + RM abdome superior.",
+   "fontes": [
+    "R116"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-29",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "bradesco",
+   "alvo_original": "Angio-RM membro superior",
+   "alvos": [
+    "ANGIO_RM_MMSS"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R117"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-30",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "bradesco",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem contrato (seção repetida 2 vezes).",
+   "fontes": [
+    "R119",
+    "R120"
+   ],
+   "resposta": null,
+   "resolucao": "duplicada unificada (decisão técnica)"
+  },
+  {
+   "id": "BRA-31",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "bradesco",
+   "alvo_original": "Elegibilidade",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "canal": "portal",
+    "uso": "elegibilidade"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Consultar elegibilidade no site da Bradesco; autorização no Orizon.",
+   "fontes": [
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-01",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "careplus",
+   "alvo_original": "Critérios cardíacos",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "texto": "\"Informação a atualizar\"."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "\"Informação a atualizar\".",
+   "fontes": [
+    "R121"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-02",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "careplus",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 60,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "60 dias.",
+   "fontes": [
+    "R122"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-03",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "careplus",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias.",
+   "fontes": [
+    "R122"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-04",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "careplus",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente CRM.",
+   "fontes": [
+    "R123"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-05",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "careplus",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 10,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "10 dias úteis.",
+   "fontes": [
+    "R124"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-06",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "careplus",
+   "alvo_original": "Regras específicas",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "texto": "\"Informação a atualizar\"."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "\"Informação a atualizar\".",
+   "fontes": [
+    "R125"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CAR-07",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "careplus",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção vazia.",
+   "fontes": [
+    "R126"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-01",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "economus",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Economus (obrigatório).",
+   "fontes": [
+    "R127",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-02",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "economus",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "41001230"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente pacote 41001230.",
+   "fontes": [
+    "R128"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "economus",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "41101332"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "41101138 + 41101332.",
+   "fontes": [
+    "R129"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "ECO-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "economus",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido descreve angio-RM aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido descreve angio-RM aorta torácica.",
+   "fontes": [
+    "R129"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-05",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "economus",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita_copia": false,
+    "aceita": [
+     "original"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente pedido ORIGINAL (não aceita cópia).",
+   "fontes": [
+    "R130"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-06",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "economus",
+   "alvo_original": "Pedido e autorização",
+   "alvos": [
+    "PEDIDO",
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias.",
+   "fontes": [
+    "R131"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-07",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "economus",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO e CRM; não aceita CREFITO.",
+   "fontes": [
+    "R132"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-08",
+   "molde": "M04",
+   "molde_nome": "Prazo de análise da operadora",
+   "convenio": "economus",
+   "alvo_original": "Angio-TC e angio-RM",
+   "alvos": [
+    "G_ANGIO"
+   ],
+   "campos": {
+    "dias_max": 21,
+    "contagem": null,
+    "duvida": "texto diz úteis; Oliver disse corridos"
+   },
+   "situacao": "conflito",
+   "texto_original": "Até 21 dias para autorizar (texto diz úteis; Oliver disse corridos).",
+   "fontes": [
+    "R133"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-09",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "economus",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 10,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "10 dias úteis.",
+   "fontes": [
+    "R134"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-10",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "economus",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R135"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-11",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "economus",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R136"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-12",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "economus",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "canal": "email",
+    "modelo": "Por e-mail: assunto \"Autorização exame [nome do exame]\"; corpo com nome do paciente, exame, carteirinha, nº prestador, nº operadora; anexar pedido."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Por e-mail: assunto \"Autorização exame [nome do exame]\"; corpo com nome do paciente, exame, carteirinha, nº prestador, nº operadora; anexar pedido.",
+   "fontes": [
+    "R137"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-13",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "economus",
+   "alvo_original": "Portal",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "portal",
+    "observacao": "Link do portal aponta para o site da Caixa (mesmo da Saúde Caixa)."
+   },
+   "situacao": "conflito",
+   "texto_original": "Link do portal aponta para o site da Caixa (mesmo da Saúde Caixa).",
+   "fontes": [
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-14",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "economus",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção vazia.",
+   "fontes": [
+    "R138"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ECO-15",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "economus",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Regra do escore não cadastrada (todos os outros têm)."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Regra do escore não cadastrada (todos os outros têm).",
+   "fontes": [
+    "R128"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-01",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "unafisco",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R139"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "unafisco",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R140"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "UNA-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "unafisco",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R141"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "UNA-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "unafisco",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 60,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "60 dias corridos.",
+   "fontes": [
+    "R142"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-05",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "unafisco",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRO",
+      "aceita": false,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente CRM.",
+   "fontes": [
+    "R143"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-06",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "unafisco",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R144"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-07",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "unafisco",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R145"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-08",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "unafisco",
+   "alvo_original": "Portal",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "portal",
+    "observacao": "Sem link de portal cadastrado."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Sem link de portal cadastrado.",
+   "fontes": [
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "UNA-09",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "unafisco",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção vazia.",
+   "fontes": [
+    "R146"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-01",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "petrobras",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Coronárias + TC de tórax (escore).",
+   "fontes": [
+    "R147"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "petrobras",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R148"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "PET-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "petrobras",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R149"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "PET-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "petrobras",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "90 dias corridos.",
+   "fontes": [
+    "R150"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-05",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "petrobras",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": "inclusive maxilar e mandíbula"
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO (inclusive maxilar e mandíbula) e CREFITO.",
+   "fontes": [
+    "R151"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-06",
+   "molde": "M04",
+   "molde_nome": "Prazo de análise da operadora",
+   "convenio": "petrobras",
+   "alvo_original": "Coronárias e RM cardíaca",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS",
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "dias_max": 5,
+    "contagem": null
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Até 5 dias para autorizar (não diz úteis/corridos).",
+   "fontes": [
+    "R152"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-07",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "petrobras",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R153"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "petrobras",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Libera.",
+   "fontes": [
+    "R154"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-09",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "petrobras",
+   "alvo_original": "RM, TC, angios",
+   "alvos": [
+    "G_RM",
+    "G_TC",
+    "G_ANGIO"
+   ],
+   "campos": {
+    "tabela_pacotes": true,
+    "prefixo": "96"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem tabela de pacotes (prefixo 96).",
+   "fontes": [
+    "R155"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-10",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "petrobras",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R156"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "PET-11",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "petrobras",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Petrobras (obrigatório).",
+   "fontes": [
+    "R157",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-01",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "cespvivest",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R158"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "cespvivest",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "41101138",
+     "98411013"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica = 41101138 + 98411013 (autorizar os dois).",
+   "fontes": [
+    "R159",
+    "CD03"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "CES-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "cespvivest",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R160"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "CES-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "cespvivest",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 30,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias corridos.",
+   "fontes": [
+    "R161"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-05",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "cespvivest",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CREFITO",
+      "aceita": false,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO; não aceita CREFITO.",
+   "fontes": [
+    "R162"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-06",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cespvivest",
+   "alvo_original": "Grupo cardíaco + angio",
+   "alvos": [
+    "G_CARDIACO",
+    "G_ANGIO"
+   ],
+   "campos": {
+    "grupo": "cardiaco+angio",
+    "dias": 5,
+    "contagem": "uteis",
+    "contagem_assumida": true
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "5 dias (úteis presumido).",
+   "fontes": [
+    "R163"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-07",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "cespvivest",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R163"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cespvivest",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R164"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cespvivest",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autoriza.",
+   "fontes": [
+    "R165"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "CES-10",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "cespvivest",
+   "alvo_original": "Angio-RM e angio-TC",
+   "alvos": [
+    "G_ANGIO"
+   ],
+   "campos": {
+    "cobertura": "consultar_contrato"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Verificar contrato antes.",
+   "fontes": [
+    "R166"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-01",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "saudecaixa",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "41001230"
+    ],
+    "status": "ativo",
+    "duvida": "tabela de pacotes Saúde Caixa tem 98327402"
+   },
+   "situacao": "conflito",
+   "texto_original": "Pacote 41001230 — MAS a tabela de pacotes da Saúde Caixa tem 98327402 (angio coronariana).",
+   "fontes": [
+    "R167",
+    "CD07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "saudecaixa",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [],
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "condicao": "se o pedido tiver TC de tórax"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Se o pedido tiver TC de tórax, autorizar junto.",
+   "fontes": [
+    "R167"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-03",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "saudecaixa",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [
+     "98324306",
+     "98322605"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "98324306 (angio-RM aorta torácica) + 98322605 (RM coração).",
+   "fontes": [
+    "R168"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "SCX-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "saudecaixa",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "deve_conter": "Pedido descreve angio-RM aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido descreve angio-RM aorta torácica.",
+   "fontes": [
+    "R168"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "saudecaixa",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 180,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "180 dias corridos (impresso antigo dizia 60).",
+   "fontes": [
+    "R169"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-06",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "saudecaixa",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO e CRM.",
+   "fontes": [
+    "R170"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-07",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "saudecaixa",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 10,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "10 dias úteis.",
+   "fontes": [
+    "R171"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-08",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "saudecaixa",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R172"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "saudecaixa",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "consultar_faturamento"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem cobertura — consultar faturamento.",
+   "fontes": [
+    "R173"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-10",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "saudecaixa",
+   "alvo_original": "TC simples",
+   "alvos": [
+    "TC_SIMPLES"
+   ],
+   "campos": {
+    "gera_senha": false
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não gera senha.",
+   "fontes": [
+    "R174"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-11",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "saudecaixa",
+   "alvo_original": "Angio-TC",
+   "alvos": [
+    "G_ANGIO"
+   ],
+   "campos": {
+    "gera_senha": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Gera senha.",
+   "fontes": [
+    "R174"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-12",
+   "molde": "M20",
+   "molde_nome": "Quantidade a autorizar",
+   "convenio": "saudecaixa",
+   "alvo_original": "PAAF / biópsia",
+   "alvos": [
+    "PAAF_BIOPSIA"
+   ],
+   "campos": {
+    "qtd": 1,
+    "um_ou_outro": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autoriza só PAAF OU biópsia na guia (uma das duas).",
+   "fontes": [
+    "R175"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-13",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "saudecaixa",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "coberto",
+    "autorizar": false
+   },
+   "situacao": "confirmada",
+   "texto_original": "Liberado — não precisa autorizar.",
+   "fontes": [
+    "R176"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-14",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "saudecaixa",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Saúde Caixa (obrigatório).",
+   "fontes": [
+    "R177",
+    "JS23"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-15",
+   "molde": "M17",
+   "molde_nome": "Desmembrar",
+   "convenio": "saudecaixa",
+   "alvo_original": "RM corpo inteiro",
+   "alvos": [
+    "RM_CORPO_INTEIRO"
+   ],
+   "campos": {
+    "desmembrar_em": [
+     "RM crânio",
+     "RM tórax",
+     "RM abdome total",
+     "RM pescoço",
+     "RM pernas",
+     "RM coxas",
+     "RM antebraço"
+    ],
+    "mais_o_que_tiver": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Desmembrar: RM crânio, tórax, abdome total, pescoço, pernas, coxas, antebraço (+ o que mais tiver).",
+   "fontes": [
+    "R178"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-16",
+   "molde": "M17",
+   "molde_nome": "Desmembrar",
+   "convenio": "saudecaixa",
+   "alvo_original": "TC corpo inteiro",
+   "alvos": [
+    "TC_CORPO_INTEIRO"
+   ],
+   "campos": {
+    "desmembrar_em": [
+     "TC crânio",
+     "TC tórax",
+     "TC abdome total",
+     "TC coluna lombar/cervical/dorsal",
+     "TC pernas",
+     "TC coxas",
+     "TC antebraço"
+    ],
+    "mais_o_que_tiver": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Desmembrar: TC crânio, tórax, abdome total, coluna lombar/cervical/dorsal, pernas, coxas, antebraço.",
+   "fontes": [
+    "R179"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-17",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "saudecaixa",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Regra do escore não cadastrada."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Regra do escore não cadastrada.",
+   "fontes": [
+    "R167"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SCX-18",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "saudecaixa",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R169"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-01",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "64625885"
+    ],
+    "tipo": "pacote",
+    "status": "ativo",
+    "sem_tc_torax_separado": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pacote; não precisa pedido de TC tórax separado.",
+   "fontes": [
+    "R180"
+   ],
+   "resposta": "Pacote 64625885 (RESP-1)."
+  },
+  {
+   "id": "SUL-02",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "sulamerica",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "nao_pode_conter": "Somente cardíaca — NÃO incluir angio-RM de aorta torácica."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Somente cardíaca — NÃO incluir angio-RM de aorta torácica.",
+   "fontes": [
+    "R181"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-03",
+   "molde": "M21",
+   "molde_nome": "Agrupamento",
+   "convenio": "sulamerica",
+   "alvo_original": "RM cardíaca para talassemia",
+   "alvos": [
+    "RM_TALASSEMIA"
+   ],
+   "campos": {
+    "criterio": "regioes_diferentes",
+    "acao": "Abdome + cardíaca descritos → autorizar pacote \"múltiplas regiões\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Abdome + cardíaca descritos → autorizar pacote \"múltiplas regiões\".",
+   "fontes": [
+    "R182"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-04",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "sulamerica",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R183"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "SUL-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "sulamerica",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "90 dias corridos.",
+   "fontes": [
+    "R184"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-06",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "sulamerica",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": "só mandíbula/maxilar, face e ATM"
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "CRO só para mandíbula/maxilar, face e ATM.",
+   "fontes": [
+    "R185"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-07",
+   "molde": "M05",
+   "molde_nome": "Só agenda depois de autorizado",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "so_apos_autorizar": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "NÃO agendar antes de autorizar.",
+   "fontes": [
+    "R186"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-08",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "sulamerica",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R187"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC MMII, MMSS, aorta torácica, aorta abdominal",
+   "alvos": [
+    "ANGIO_TC_MMII",
+    "ANGIO_TC_MMSS",
+    "ANGIO_TC_AORTA_TOR",
+    "ANGIO_TC_AORTA_ABD"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem contrato.",
+   "fontes": [
+    "R188"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-10",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "conflito",
+    "conflito_com": [
+     "64625493"
+    ]
+   },
+   "situacao": "conflito",
+   "texto_original": "Mas a tabela de códigos tem \"PCT angiotomografia arterial de membro inferior 64625493\".",
+   "fontes": [
+    "R188",
+    "CD06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-11",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "sulamerica",
+   "alvo_original": "Espectroscopia",
+   "alvos": [
+    "ESPECTROSCOPIA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem contrato.",
+   "fontes": [
+    "R189"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-12",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "sulamerica",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "coberto"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R190"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-13",
+   "molde": "M22",
+   "molde_nome": "Cobrança",
+   "convenio": "sulamerica",
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "forma": "junto_pacote",
+    "percentual": null
+   },
+   "situacao": "confirmada",
+   "texto_original": "Cobrado junto com o pacote da RM.",
+   "fontes": [
+    "R190"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-14",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "sulamerica",
+   "alvo_original": "TC e RM",
+   "alvos": [
+    "G_TC",
+    "G_RM"
+   ],
+   "campos": {
+    "tabela_pacotes": true,
+    "prefixo": "646"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem tabela de pacotes (prefixo 646).",
+   "fontes": [
+    "R191"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-15",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "sulamerica",
+   "alvo_original": "Pacote angio-TC arterial MMII com DUT",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "nao_aceito_no_contrato"
+   },
+   "situacao": "confirmada",
+   "texto_original": "\"Não aceito no contrato vigente\".",
+   "fontes": [
+    "R192",
+    "R193",
+    "R194"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-16",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "sulamerica",
+   "alvo_original": "Plano Clássico 100",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": false,
+    "planos": [
+     "CLÁSSICO 100"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem contrato (não atende).",
+   "fontes": [
+    "R195"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-17",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "sulamerica",
+   "alvo_original": "Plano Especial 100",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": true,
+    "planos": [
+     "ESPECIAL 100"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tem contrato.",
+   "fontes": [
+    "R196"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-18",
+   "molde": "M20",
+   "molde_nome": "Quantidade a autorizar",
+   "convenio": "sulamerica",
+   "alvo_original": "Articulação bilateral, coluna, membros sup/inf, angio-RM MMII",
+   "alvos": [
+    "ARTICULACAO_BILATERAL",
+    "COLUNA_MAIS_DE_UMA",
+    "ANGIO_RM_MMII"
+   ],
+   "campos": {
+    "qtd": 1,
+    "sempre_em": "coluna"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorizar quantidade 01 (coluna: \"sempre\").",
+   "fontes": [
+    "CD06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-19",
+   "molde": "M21",
+   "molde_nome": "Agrupamento",
+   "convenio": "sulamerica",
+   "alvo_original": "Regiões diferentes do corpo",
+   "alvos": [
+    "REGIOES_DIFERENTES"
+   ],
+   "campos": {
+    "criterio": "regioes_diferentes",
+    "acao": "Usar pacote \"múltiplas regiões\" (64625958 TC / 64625966 RM)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Usar pacote \"múltiplas regiões\" (64625958 TC / 64625966 RM).",
+   "fontes": [
+    "CD06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-20",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "sulamerica",
+   "alvo_original": "Coronária, fluxo liquórico, angio-RM MMII",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS",
+    "RM_FLUXO_LIQUORICO",
+    "ANGIO_RM_MMII"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "Coronária, fluxo liquórico, angio-RM MMII"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pacotes \"com DUT\" — exigem critério da Diretriz de Utilização ANS.",
+   "fontes": [
+    "CD06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-21",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "sulamerica",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Validade da autorização NÃO informada.",
+   "fontes": [
+    "R184"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-01",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "mediservice",
+   "alvo_original": "Critérios cardíacos",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "texto": "\"Informação a atualizar\"."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "\"Informação a atualizar\".",
+   "fontes": [
+    "R197"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-02",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "mediservice",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "substituida",
+   "texto_original": "Título diz 90 dias; texto diz \"a definir\".",
+   "fontes": [
+    "R198"
+   ],
+   "resposta": "90 dias (RESP-3).",
+   "substituida_por": "MED-12"
+  },
+  {
+   "id": "MED-03",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "mediservice",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "CRM (\"informação a definir\").",
+   "fontes": [
+    "R199"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-04",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "mediservice",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": "só TC de seios da face"
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "CRO só para TC de seios da face.",
+   "fontes": [
+    "R200"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-05",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "mediservice",
+   "alvo_original": "Grupo cardíaco",
+   "alvos": [
+    "G_CARDIACO"
+   ],
+   "campos": {
+    "grupo": "cardiaco",
+    "dias": 5,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "5 dias úteis.",
+   "fontes": [
+    "R201"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-06",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "mediservice",
+   "alvo_original": "Demais",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 3,
+    "contagem": "uteis"
+   },
+   "situacao": "confirmada",
+   "texto_original": "3 dias úteis.",
+   "fontes": [
+    "R202"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-07",
+   "molde": "M12",
+   "molde_nome": "Modalidades que o convênio autoriza",
+   "convenio": "mediservice",
+   "alvo_original": "TC",
+   "alvos": [
+    "G_TC"
+   ],
+   "campos": {
+    "modalidades": [
+     "TC"
+    ],
+    "canal": "Orizon",
+    "observacao": "Autoriza no site Orizon somente TC."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autoriza no site Orizon somente TC.",
+   "fontes": [
+    "R203",
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-08",
+   "molde": "M12",
+   "molde_nome": "Modalidades que o convênio autoriza",
+   "convenio": "mediservice",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "modalidades": [
+     "TC"
+    ],
+    "canal": "Orizon",
+    "excecao": "angio-TC coronárias não autoriza pelo Orizon"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Exceção: não autoriza pelo Orizon.",
+   "fontes": [
+    "R204"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-09",
+   "molde": "M12",
+   "molde_nome": "Modalidades que o convênio autoriza",
+   "convenio": "mediservice",
+   "alvo_original": "RM e coronária",
+   "alvos": [
+    "G_RM",
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "modalidades": null,
+    "canal": null,
+    "observacao": "Por onde autorizar? Só existe o link do site Mediservice."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Por onde autorizar? Só existe o link do site Mediservice.",
+   "fontes": [
+    "R203",
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-10",
+   "molde": "M19",
+   "molde_nome": "Relatório médico",
+   "convenio": "mediservice",
+   "alvo_original": "Exames bilaterais",
+   "alvos": [
+    "EXAMES_BILATERAIS"
+   ],
+   "campos": {
+    "exige_relatorio": true,
+    "condicao": "Exames bilaterais"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Precisa relatório (mesmos critérios da Bradesco → herda BRA-18 a BRA-21?).",
+   "fontes": [
+    "R205"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-11",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "mediservice",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção vazia.",
+   "fontes": [
+    "R206"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-01",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "portoseguro",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "exames": [
+     "ANGIO_TC_CORONARIAS",
+     "ESCORE_CALCIO"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Coronárias + TC de tórax.",
+   "fontes": [
+    "R207"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-02",
+   "molde": "M15",
+   "molde_nome": "Composição (autorizar junto)",
+   "convenio": "portoseguro",
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "exames": [
+     "RM_CORACAO",
+     "ANGIO_RM_AORTA_TORACICA"
+    ],
+    "codigos": [],
+    "codigos_pendentes": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM cardíaca + angio-RM aorta torácica.",
+   "fontes": [
+    "R208"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-02"
+  },
+  {
+   "id": "POR-03",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "portoseguro",
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "deve_conter": "Descrever TC de tórax para escore."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Descrever TC de tórax para escore.",
+   "fontes": [
+    "R209"
+   ],
+   "resposta": null,
+   "segue_padrao": "PAD-01"
+  },
+  {
+   "id": "POR-04",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "portoseguro",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "90 dias corridos.",
+   "fontes": [
+    "R210"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-05",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "portoseguro",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "copia_legivel"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita cópia bem legível.",
+   "fontes": [
+    "R211"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-06",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "portoseguro",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO.",
+   "fontes": [
+    "R212"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-07",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": "portoseguro",
+   "alvo_original": "Todos",
+   "alvos": [
+    "DEMAIS"
+   ],
+   "campos": {
+    "grupo": "padrao",
+    "dias": 2,
+    "contagem": "uteis",
+    "contagem_assumida": true
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "2 dias (não diz se úteis).",
+   "fontes": [
+    "R213"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "portoseguro",
+   "alvo_original": "Angio-TC MMII",
+   "alvos": [
+    "ANGIO_TC_MMII"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R214"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-09",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "portoseguro",
+   "alvo_original": "Espectroscopia e Primovist",
+   "alvos": [
+    "ESPECTROSCOPIA",
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Sem cobertura.",
+   "fontes": [
+    "R215"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "POR-10",
+   "molde": "M09",
+   "molde_nome": "Guia SP/SADT obrigatória",
+   "convenio": "portoseguro",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "obrigatoria": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Transcrever na guia SP/SADT Porto (item cadastrado 2 vezes).",
+   "fontes": [
+    "R216",
+    "R217",
+    "JS23"
+   ],
+   "resposta": null,
+   "resolucao": "duplicada unificada (decisão técnica)"
+  },
+  {
+   "id": "POR-11",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "portoseguro",
+   "alvo_original": "Códigos",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Seção vazia."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Seção vazia.",
+   "fontes": [
+    "R218"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "TAV-01",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": "protocolotav",
+   "alvo_original": "Cadastro",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "\"Protocolo TAV\" cadastrado como convênio, só com seção de códigos vazia — é protocolo de exame (TAVI), não convênio."
+   },
+   "situacao": "conflito",
+   "texto_original": "\"Protocolo TAV\" cadastrado como convênio, só com seção de códigos vazia — é protocolo de exame (TAVI), não convênio.",
+   "fontes": [
+    "R219",
+    "CV01",
+    "VA08"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-01",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "Convênios sem página",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "texto",
+    "observacao": "Pedido precisa vir AUTORIZADO pelo próprio convênio; Izabel e Sandra não autorizam (Abas 15, Azimutemed, Haoc, Holambra, Santa Tereza, Intermedici, Waldemar Rocha, São Lucas, Unimed)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido precisa vir AUTORIZADO pelo próprio convênio; Izabel e Sandra não autorizam (Abas 15, Azimutemed, Haoc, Holambra, Santa Tereza, Intermedici, Waldemar Rocha, São Lucas, Unimed).",
+   "fontes": [
+    "JS22",
+    "CV02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-02",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "Responsável",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "texto",
+    "observacao": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida.",
+   "fontes": [
+    "JS02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-03",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "Portais",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "portal",
+    "observacao": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
+   "fontes": [
+    "JS20"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-04",
+   "molde": "M03",
+   "molde_nome": "Antecedência de agendamento",
+   "convenio": null,
+   "alvo_original": "Contagem",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "grupo": "regra_geral",
+    "contagem": "uteis",
+    "calendario": "seg-sex sem feriado nacional"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Antecedência conta dias úteis da operadora (seg–sex, sem feriado nacional).",
+   "fontes": [
+    "D11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-05",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": null,
+   "alvo_original": "Contagem",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "dias": null,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Validade de pedido/autorização em dias corridos, começando no dia seguinte.",
+   "fontes": [
+    "D11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-06",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Funcionamento",
+   "alvos": [
+    "UNIDADE"
+   ],
+   "campos": {
+    "texto": "RCC atende todos os dias; domingo só RM; trabalha em feriados."
+   },
+   "situacao": "conflito",
+   "texto_original": "RCC atende todos os dias; domingo só RM; trabalha em feriados.",
+   "fontes": [
+    "D11",
+    "PR05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-07",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Horário RM",
+   "alvos": [
+    "UNIDADE"
+   ],
+   "campos": {
+    "texto": "Dias úteis até 21:30; sábado até ~12:00 (\"conferir\"); domingo não descrito."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Dias úteis até 21:30; sábado até ~12:00 (\"conferir\"); domingo não descrito.",
+   "fontes": [
+    "PR05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-08",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Ocupação",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "texto": "1 horário = 10 min; \"nH\" = n horários."
+   },
+   "situacao": "confirmada",
+   "texto_original": "1 horário = 10 min; \"nH\" = n horários.",
+   "fontes": [
+    "D12"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-09",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "Peso RM",
+   "alvos": [
+    "G_RM"
+   ],
+   "campos": {
+    "peso_max_kg": 180
+   },
+   "situacao": "confirmada",
+   "texto_original": "Limite 180 kg.",
+   "fontes": [
+    "PR05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-10",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "Peso TC",
+   "alvos": [
+    "G_TC"
+   ],
+   "campos": {
+    "peso_max_kg": 170
+   },
+   "situacao": "confirmada",
+   "texto_original": "Limite 170 kg.",
+   "fontes": [
+    "PR06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-11",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "Peso RX panorâmico",
+   "alvos": [
+    "RX_PANORAMICA"
+   ],
+   "campos": {
+    "peso_max_kg": 100
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Perguntar o peso; aparelho até 100 kg (texto diz membros SUPERIORES; catálogo só tem panorâmica de INFERIORES).",
+   "fontes": [
+    "CD10"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-12",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Toda RM",
+   "alvos": [
+    "G_RM"
+   ],
+   "campos": {
+    "texto": "Jejum de sólidos 2h; água até 1h antes; retirar metais; cabelo seco; chegar 30 min antes; trazer exames anteriores."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Jejum de sólidos 2h; água até 1h antes; retirar metais; cabelo seco; chegar 30 min antes; trazer exames anteriores.",
+   "fontes": [
+    "PR05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-13",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Toda TC",
+   "alvos": [
+    "G_TC"
+   ],
+   "campos": {
+    "texto": "Sem preparo (exceto angio); perguntar alergia; chegar 30 min antes."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Sem preparo (exceto angio); perguntar alergia; chegar 30 min antes.",
+   "fontes": [
+    "PR06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-14",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM com tatuagem/micropigmentação recente",
+   "alvos": [
+    "TATUAGEM_RECENTE"
+   ],
+   "campos": {
+    "texto": "Esperar 30 dias."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Esperar 30 dias.",
+   "fontes": [
+    "PR01",
+    "PR02",
+    "PR03",
+    "PR08"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-15",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM",
+   "alvos": [
+    "G_RM"
+   ],
+   "campos": {
+    "texto": "Remover cílios postiços, extensão fio a fio, piercings e Freestyle (sensor de glicose)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Remover cílios postiços, extensão fio a fio, piercings e Freestyle (sensor de glicose).",
+   "fontes": [
+    "PR01",
+    "PR02",
+    "PR03",
+    "PR08"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-16",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Entero-RM",
+   "alvos": [
+    "RM_ENTERO"
+   ],
+   "campos": {
+    "texto": "Jejum 4h; chegar 40 min antes."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Jejum 4h; chegar 40 min antes.",
+   "fontes": [
+    "PR01",
+    "JS05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-17",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM pelve",
+   "alvos": [
+    "RM_PELVE"
+   ],
+   "campos": {
+    "texto": "Jejum 2h; trazer roupa íntima e absorvente; chegar 30 min antes (obrigatório)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Jejum 2h; trazer roupa íntima e absorvente; chegar 30 min antes (obrigatório).",
+   "fontes": [
+    "PR02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-18",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM pelve endometriose",
+   "alvos": [
+    "RM_PELVE_ENDOMETRIOSE"
+   ],
+   "campos": {
+    "texto": "Dieta leve na véspera; Buscopan 5h antes; Phospoenema 2h (opcional); Simeticona 30 gotas 1h; bexiga moderadamente cheia; trazer pedido original e carteirinha."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Dieta leve na véspera; Buscopan 5h antes; Phospoenema 2h (opcional); Simeticona 30 gotas 1h; bexiga moderadamente cheia; trazer pedido original e carteirinha.",
+   "fontes": [
+    "PR03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-19",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM pelve endometriose",
+   "alvos": [
+    "RM_PELVE_ENDOMETRIOSE"
+   ],
+   "campos": {
+    "texto": "Quem toma ferro (oral ou EV) só agenda 5 dias após parar."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Quem toma ferro (oral ou EV) só agenda 5 dias após parar.",
+   "fontes": [
+    "PR03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-20",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM cardíaca",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "texto": "Jejum 2h; sem cafeína/álcool/cigarro 24h; trazer exames do coração; chegar 30 min."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Jejum 2h; sem cafeína/álcool/cigarro 24h; trazer exames do coração; chegar 30 min.",
+   "fontes": [
+    "PR04"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-21",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM cardíaca",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "texto": "Só RM 3, horário 07:30–10:10, horários reservados (texto também menciona RM 4)."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Só RM 3, horário 07:30–10:10, horários reservados (texto também menciona RM 4).",
+   "fontes": [
+    "PR04"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-22",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "RM cardíaca / angio-TC coronárias / talassemia",
+   "alvos": [
+    "RM_CORACAO",
+    "ANGIO_TC_CORONARIAS",
+    "RM_TALASSEMIA"
+   ],
+   "campos": {
+    "texto": "Médico Dr. Juliano."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Médico Dr. Juliano.",
+   "fontes": [
+    "PR04",
+    "PR10",
+    "EQ03"
+   ],
+   "resposta": "Dr. Juliano de Lara Fernandes, CRM 94.129 (RESP-5)."
+  },
+  {
+   "id": "RCC-23",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Colangio-RM",
+   "alvos": [
+    "COLANGIO_RM"
+   ],
+   "campos": {
+    "texto": "Jejum absoluto 8h inclusive água; perguntar alergia a contraste e metal no corpo; chegar 30 min."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Jejum absoluto 8h inclusive água; perguntar alergia a contraste e metal no corpo; chegar 30 min.",
+   "fontes": [
+    "PR08",
+    "JS05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-24",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Colangio-RM",
+   "alvos": [
+    "COLANGIO_RM"
+   ],
+   "campos": {
+    "texto": "Só RM 1 (texto também menciona RM 4)."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Só RM 1 (texto também menciona RM 4).",
+   "fontes": [
+    "PR08"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-25",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "RM próstata",
+   "alvos": [
+    "RM_PROSTATA"
+   ],
+   "campos": {
+    "condicao": "biópsia/cirurgia recente (sem prazo definido)"
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Verificar biópsia/cirurgia recente (sem prazo definido).",
+   "fontes": [
+    "PR09"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-26",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "RM próstata",
+   "alvos": [
+    "RM_PROSTATA"
+   ],
+   "campos": {
+    "texto": "Dieta leve; jejum 2h; não urinar 30 min antes; Phosfoenema 2h; Buscopan 5h; preparo enviado SÓ por WhatsApp."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Dieta leve; jejum 2h; não urinar 30 min antes; Phosfoenema 2h; Buscopan 5h; preparo enviado SÓ por WhatsApp.",
+   "fontes": [
+    "PR09"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-27",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM próstata",
+   "alvos": [
+    "RM_PROSTATA"
+   ],
+   "campos": {
+    "texto": "RM 3 com 3 horários; com marcapasso → RM 2 com 3 horários."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM 3 com 3 horários; com marcapasso → RM 2 com 3 horários.",
+   "fontes": [
+    "PR09",
+    "EQ05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-28",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "texto": "Preço R$ 2.200 (preparo) × R$ 2.330 (tabela)."
+   },
+   "situacao": "conflito",
+   "texto_original": "Preço R$ 2.200 (preparo) × R$ 2.330 (tabela).",
+   "fontes": [
+    "PR10",
+    "VA01"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-29",
+   "molde": "M04",
+   "molde_nome": "Prazo de análise da operadora",
+   "convenio": null,
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "dias_min": 3,
+    "dias_max": 4,
+    "contagem": "uteis"
+   },
+   "situacao": "conflito",
+   "texto_original": "\"Prazo de liberação 3 a 4 dias úteis\" — choca com prazos por convênio.",
+   "fontes": [
+    "PR10"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-30",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "texto": "TC 2, seg–sex, só manhã até 11:30, não atende sábado."
+   },
+   "situacao": "confirmada",
+   "texto_original": "TC 2, seg–sex, só manhã até 11:30, não atende sábado.",
+   "fontes": [
+    "PR10"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-31",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "texto": "Jejum 2h; sem cafeína 24h; perguntar alergia a frutos do mar/iodo e qual reação; \"preparo de PA\" (conferir)."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Jejum 2h; sem cafeína 24h; perguntar alergia a frutos do mar/iodo e qual reação; \"preparo de PA\" (conferir).",
+   "fontes": [
+    "PR10"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-32",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Doppler renal",
+   "alvos": [
+    "DOPPLER_RENAL"
+   ],
+   "campos": {
+    "texto": "Luftal 40 gotas véspera 15h + 40 gotas 1h antes; jejum 8h; água pouca após Luftal; chegar 20 min."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Luftal 40 gotas véspera 15h + 40 gotas 1h antes; jejum 8h; água pouca após Luftal; chegar 20 min.",
+   "fontes": [
+    "PR11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-33",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Doppler renal",
+   "alvos": [
+    "DOPPLER_RENAL"
+   ],
+   "campos": {
+    "texto": "Agendas Dra. Lílian e Dr. Leandro."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendas Dra. Lílian e Dr. Leandro.",
+   "fontes": [
+    "PR11",
+    "MD07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-34",
+   "molde": "INFO",
+   "molde_nome": "Informativo (sem regra)",
+   "convenio": null,
+   "alvo_original": "Doppler renal",
+   "alvos": [
+    "DOPPLER_RENAL"
+   ],
+   "campos": {
+    "texto": "\"Válido a partir de 19/08\" sem ano."
+   },
+   "situacao": "vencida",
+   "texto_original": "\"Válido a partir de 19/08\" sem ano.",
+   "fontes": [
+    "PR11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-35",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Escore de cálcio",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "texto": "Agendar em TC 2 — mas TC I também lista \"Escore (Dr. Pinho)\"."
+   },
+   "situacao": "conflito",
+   "texto_original": "Agendar em TC 2 — mas TC I também lista \"Escore (Dr. Pinho)\".",
+   "fontes": [
+    "PR07",
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-36",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Neuroestimulador",
+   "alvos": [
+    "NEUROESTIMULADOR"
+   ],
+   "campos": {
+    "texto": "Agendar no RM 4."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendar no RM 4.",
+   "fontes": [
+    "JS05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-37",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Casa de Saúde, operado de tumor",
+   "alvos": [
+    "OPERADO_TUMOR"
+   ],
+   "campos": {
+    "texto": "Reservar 2 horários (nota duplicada como \"RM Unidade 2\")."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Reservar 2 horários (nota duplicada como \"RM Unidade 2\").",
+   "fontes": [
+    "JS05",
+    "EQ06"
+   ],
+   "resposta": null,
+   "resolucao": "duplicada unificada (decisão técnica)"
+  },
+  {
+   "id": "RCC-38",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Joelho acima de 90 kg",
+   "alvos": [
+    "JOELHO_90KG"
+   ],
+   "campos": {
+    "texto": "2 horários (RM 2)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "2 horários (RM 2).",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-39",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Gestante",
+   "alvos": [
+    "GESTANTE"
+   ],
+   "campos": {
+    "texto": "RM 2, 2 horários."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM 2, 2 horários.",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-40",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Corpo total (mieloma 10H / Li-Fraumeni 7H)",
+   "alvos": [
+    "CORPO_TOTAL_RM4"
+   ],
+   "campos": {
+    "texto": "RM 4, só manhã."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM 4, só manhã.",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-41",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Angio arterial RM 3",
+   "alvos": [
+    "ANGIO_ARTERIAL_RM3"
+   ],
+   "campos": {
+    "texto": "Pedidos do Dr. Bacin / Dr. Tomas: 3 horários."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedidos do Dr. Bacin / Dr. Tomas: 3 horários.",
+   "fontes": [
+    "EQ03",
+    "MD04"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-42",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM coração",
+   "alvos": [
+    "RM_CORACAO"
+   ],
+   "campos": {
+    "texto": "Unimed (cód. 46) × outros convênios — mesma duração, diferença não explicada; com marcapasso → RM 1."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Unimed (cód. 46) × outros convênios — mesma duração, diferença não explicada; com marcapasso → RM 1.",
+   "fontes": [
+    "EQ03",
+    "EQ05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-43",
+   "molde": "M16",
+   "molde_nome": "Substituição (autorizar como)",
+   "convenio": null,
+   "alvo_original": "Arcos costais",
+   "alvos": [
+    "ARCOS_COSTAIS"
+   ],
+   "campos": {
+    "autorizar_como": [
+     "RM_TORAX"
+    ],
+    "codigos": [],
+    "uso": "agendamento"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendar como RM de tórax.",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-44",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Abdome superior com próstata",
+   "alvos": [
+    "ABDOME_SUP_COM_PROSTATA"
+   ],
+   "campos": {
+    "texto": "Quando tiver RM próstata, abdome superior vai no RM 3 (2 horários)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Quando tiver RM próstata, abdome superior vai no RM 3 (2 horários).",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-45",
+   "molde": "M20",
+   "molde_nome": "Quantidade a autorizar",
+   "convenio": null,
+   "alvo_original": "Coxofemoral",
+   "alvos": [
+    "COXOFEMORAL"
+   ],
+   "campos": {
+    "conta_por": "lado"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Conta por lado.",
+   "fontes": [
+    "EQ03"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-46",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM 4 cóccix / púbis",
+   "alvos": [
+    "RM_COCCIX_PUBIS"
+   ],
+   "campos": {
+    "texto": "Duas durações (1H e 2H) na mesma máquina."
+   },
+   "situacao": "conflito",
+   "texto_original": "Duas durações (1H e 2H) na mesma máquina.",
+   "fontes": [
+    "EQ01"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-47",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM Unidade 2, TC I, TC II",
+   "alvos": [
+    "MAQUINAS_SEM_TEMPO"
+   ],
+   "campos": {
+    "texto": "Exames sem tempo cadastrado."
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Exames sem tempo cadastrado.",
+   "fontes": [
+    "EQ07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-48",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Contraste",
+   "alvos": [
+    "CONTRASTE"
+   ],
+   "campos": {
+    "texto": "RM usa gadolínio; TC usa iodado; \"protocolo sujeito a confirmação\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM usa gadolínio; TC usa iodado; \"protocolo sujeito a confirmação\".",
+   "fontes": [
+    "JS19"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-49",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Dra. Grace",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "\"Exceto crianças\" × \"não agendar a partir de 18 anos\"."
+   },
+   "situacao": "conflito",
+   "texto_original": "\"Exceto crianças\" × \"não agendar a partir de 18 anos\".",
+   "fontes": [
+    "MD01"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-50",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Dra. Sofia Devito",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "1 US mamas e 1 US transvaginal por período."
+   },
+   "situacao": "confirmada",
+   "texto_original": "1 US mamas e 1 US transvaginal por período.",
+   "fontes": [
+    "MD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-51",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Dra. Sofia Devito",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "Doppler MMII não avalia varizes."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Doppler MMII não avalia varizes.",
+   "fontes": [
+    "MD02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-52",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Médicos sem agenda diária",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "Marcados \"não tem agenda todos os dias\": Ighor, Sofia, Gustavo, Eveline, Grace, Amanda."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Marcados \"não tem agenda todos os dias\": Ighor, Sofia, Gustavo, Eveline, Grace, Amanda.",
+   "fontes": [
+    "MD06",
+    "JS13"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-53",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Dra. Amanda",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "Quartas 18:00–21:30; eventual sábado 10/10 12:30–16:00 (vencida)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Quartas 18:00–21:30; eventual sábado 10/10 12:30–16:00 (vencida).",
+   "fontes": [
+    "MD06"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-54",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Obstétrica",
+   "alvos": [
+    "US_OBSTETRICA"
+   ],
+   "campos": {
+    "texto": "Dra. Sarah (única que fazia) foi apagada — ninguém mais faz obstétrica?"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Dra. Sarah (única que fazia) foi apagada — ninguém mais faz obstétrica?",
+   "fontes": [
+    "MD05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-55",
+   "molde": "M28",
+   "molde_nome": "Orçamento",
+   "convenio": null,
+   "alvo_original": "Parcelamento",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "Até R$300 → 2x; R$300–500 → 3x; acima de R$500 → 6x (faixas se sobrepõem em 300 e 500)."
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Até R$300 → 2x; R$300–500 → 3x; acima de R$500 → 6x (faixas se sobrepõem em 300 e 500).",
+   "fontes": [
+    "UI01",
+    "VA14"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-56",
+   "molde": "M28",
+   "molde_nome": "Orçamento",
+   "convenio": null,
+   "alvo_original": "PIX/dinheiro",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "5% de desconto (não calculado)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "5% de desconto (não calculado).",
+   "fontes": [
+    "UI01"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-57",
+   "molde": "M28",
+   "molde_nome": "Orçamento",
+   "convenio": null,
+   "alvo_original": "Validade do orçamento",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "30 dias da emissão."
+   },
+   "situacao": "confirmada",
+   "texto_original": "30 dias da emissão.",
+   "fontes": [
+    "UI02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-58",
+   "molde": "M28",
+   "molde_nome": "Orçamento",
+   "convenio": null,
+   "alvo_original": "Desconto manual",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "0 a 100% sobre o subtotal."
+   },
+   "situacao": "confirmada",
+   "texto_original": "0 a 100% sobre o subtotal.",
+   "fontes": [
+    "JS15"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-59",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Sócio Remido",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "Tabela própria (Casa de Saúde); pode misturar com Particular no orçamento."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Tabela própria (Casa de Saúde); pode misturar com Particular no orçamento.",
+   "fontes": [
+    "JS10",
+    "JS14",
+    "JS17"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-60",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Itens \"acrescentado\"",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "US pélvico, TC segmento adicional, escore — só junto com outro exame."
+   },
+   "situacao": "confirmada",
+   "texto_original": "US pélvico, TC segmento adicional, escore — só junto com outro exame.",
+   "fontes": [
+    "VA07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-61",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Tomossíntese com pedido de mamografia",
+   "alvos": [
+    "TOMOSSINTESE"
+   ],
+   "campos": {
+    "texto": "R$ 510 (preço condicional)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "R$ 510 (preço condicional).",
+   "fontes": [
+    "VA07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-62",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Primovist",
+   "alvos": [
+    "PRIMOVIST"
+   ],
+   "campos": {
+    "texto": "Adicional R$ 565."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Adicional R$ 565.",
+   "fontes": [
+    "VA07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-63",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Serviços",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "2ª via TC/RM R$100; demais R$80; CD R$65; SEDEX R$30."
+   },
+   "situacao": "confirmada",
+   "texto_original": "2ª via TC/RM R$100; demais R$80; CD R$65; SEDEX R$30.",
+   "fontes": [
+    "VA09"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-64",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Itens R$ 0,00",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "RM membros inferiores/superiores \"PART\"."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM membros inferiores/superiores \"PART\".",
+   "fontes": [
+    "VA03"
+   ],
+   "resposta": "Itens zerados excluídos da tabela pela equipe (RESP-7)."
+  },
+  {
+   "id": "RCC-65",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "\"Não usar\"",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "RM abdome e pelve (abd. total) R$ 1.400."
+   },
+   "situacao": "confirmada",
+   "texto_original": "RM abdome e pelve (abd. total) R$ 1.400.",
+   "fontes": [
+    "VA04"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-66",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Duplicados de preço",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "Carótidas, venoso MI, órgão isolado, TC abdome total, RM pênis ×3, TC órbitas, TC pescoço."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Carótidas, venoso MI, órgão isolado, TC abdome total, RM pênis ×3, TC órbitas, TC pescoço.",
+   "fontes": [
+    "VA05"
+   ],
+   "resposta": null,
+   "resolucao": "duplicada unificada (decisão técnica)"
+  },
+  {
+   "id": "RCC-67",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Escore",
+   "alvos": [
+    "ESCORE_CALCIO"
+   ],
+   "campos": {
+    "texto": "R$ 715 (TC tórax escore) × R$ 350 (Dr. Pinho) × R$ 300 (Remido acrescentado)."
+   },
+   "situacao": "conflito",
+   "texto_original": "R$ 715 (TC tórax escore) × R$ 350 (Dr. Pinho) × R$ 300 (Remido acrescentado).",
+   "fontes": [
+    "VA02"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-68",
+   "molde": "SIS",
+   "molde_nome": "Sistema / acesso",
+   "convenio": null,
+   "alvo_original": "Acesso",
+   "alvos": [
+    "SISTEMA"
+   ],
+   "campos": {
+    "texto": "Perfis Admin e Só pesquisa; login obrigatório; senha mínima 6 (subir no sistema novo)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Perfis Admin e Só pesquisa; login obrigatório; senha mínima 6 (subir no sistema novo).",
+   "fontes": [
+    "JS27",
+    "JS29",
+    "JS30",
+    "UI05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-69",
+   "molde": "SIS",
+   "molde_nome": "Sistema / acesso",
+   "convenio": null,
+   "alvo_original": "LGPD",
+   "alvos": [
+    "SISTEMA"
+   ],
+   "campos": {
+    "texto": "Orçamento guarda nome, CPF e WhatsApp do paciente; CPF sai no PDF/JPEG."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Orçamento guarda nome, CPF e WhatsApp do paciente; CPF sai no PDF/JPEG.",
+   "fontes": [
+    "UI04",
+    "JS16"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-70",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "WhatsApp agendamento",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "texto",
+    "observacao": "(19) 99790-9463; número do paciente sem DDI recebe 55."
+   },
+   "situacao": "confirmada",
+   "texto_original": "(19) 99790-9463; número do paciente sem DDI recebe 55.",
+   "fontes": [
+    "UI03",
+    "JS16"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-71",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": null,
+   "alvo_original": "Códigos com regra no nome",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "Códigos com regra no nome (exame de base, complementar, por feto, idade)"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Reconstrução 3D e punção para contraste: acrescentar o exame de base; fluxo liquórico é complementar; ovulação 3+ exames; uretrocistografia criança até 12 anos; obstétrica gemelar por feto.",
+   "fontes": [
+    "CD11",
+    "CD05"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-72",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": null,
+   "alvo_original": "Códigos sem exame ligado",
+   "alvos": [
+    "CODIGOS"
+   ],
+   "campos": {
+    "texto": "364 códigos sem exame ligado"
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "364 códigos de pacote/AMB sem equivalência com o catálogo.",
+   "fontes": [
+    "CD07"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-73",
+   "molde": "M12",
+   "molde_nome": "Modalidades que o convênio autoriza",
+   "convenio": null,
+   "alvo_original": "Escopo das regras de convênio",
+   "alvos": [
+    "TODOS"
+   ],
+   "campos": {
+    "modalidades": null,
+    "canal": null,
+    "observacao": "Tela do convênio diz \"Ressonância Magnética e Tomografia Computadorizada\" — US, RX, mamo, densito e doppler seguem quais regras de autorização?"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Tela do convênio diz \"Ressonância Magnética e Tomografia Computadorizada\" — US, RX, mamo, densito e doppler seguem quais regras de autorização?",
+   "fontes": [
+    "JS21"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-74",
+   "molde": "M27",
+   "molde_nome": "Preço",
+   "convenio": null,
+   "alvo_original": "Sócio Remido sem preço",
+   "alvos": [
+    "ORCAMENTO"
+   ],
+   "campos": {
+    "texto": "Exames sem preço na tabela Remido (ex.: angio-RM de membros, incidências adicionais de RX) — o que fazer?"
+   },
+   "situacao": "sem_informacao",
+   "texto_original": "Exames sem preço na tabela Remido (ex.: angio-RM de membros, incidências adicionais de RX) — o que fazer?",
+   "fontes": [
+    "VA13"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-75",
+   "molde": "M20",
+   "molde_nome": "Quantidade a autorizar",
+   "convenio": null,
+   "alvo_original": "Marcação pré-cirúrgica mama 40808190",
+   "alvos": [
+    "MARCACAO_PRE_CIRURGICA"
+   ],
+   "campos": {
+    "max_nodulos_por_mama": 3
+   },
+   "situacao": "confirmada",
+   "texto_original": "Máximo de 3 nódulos por mama.",
+   "fontes": [
+    "CD11"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-22",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "codigos": [
+     "64625885"
+    ],
+    "status": "ativo",
+    "nao_usar": [
+     "64625845"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Usar o pacote 64625885 (o 64625845 não se usa).",
+   "fontes": [
+    "RESP-1"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "HAP-17",
+   "molde": "M06",
+   "molde_nome": "Conselho do solicitante",
+   "convenio": "hapvida",
+   "alvo_original": "Solicitante",
+   "alvos": [
+    "SOLICITANTE"
+   ],
+   "campos": {
+    "conselhos": [
+     {
+      "conselho": "CRO",
+      "aceita": true,
+      "restricao": null
+     },
+     {
+      "conselho": "CRM",
+      "aceita": true,
+      "restricao": null
+     }
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita CRO e CRM.",
+   "fontes": [
+    "RESP-2"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-12",
+   "molde": "M01",
+   "molde_nome": "Validade do pedido",
+   "convenio": "mediservice",
+   "alvo_original": "Pedido e autorização",
+   "alvos": [
+    "PEDIDO",
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": 90,
+    "contagem": "corridos"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Validade 90 dias.",
+   "fontes": [
+    "RESP-3"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-13",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "mediservice",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita_copia": false,
+    "aceita": [
+     "original",
+     "digitalizado"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não aceita cópia: só pedido original ou digitalizado.",
+   "fontes": [
+    "RESP-3"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-14",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": "mediservice",
+   "alvo_original": "Mamografia",
+   "alvos": [
+    "MAMOGRAFIA"
+   ],
+   "campos": {
+    "idade_min": 40,
+    "idade_max": 69
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Só de 40 a 69 anos (só Mediservice? confirmar).",
+   "fontes": [
+    "RESP-3"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "MED-15",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "mediservice",
+   "alvo_original": "Eco aparelho urinário",
+   "alvos": [
+    "US_APARELHO_URINARIO"
+   ],
+   "campos": {
+    "codigos": [
+     "40901769"
+    ],
+    "alternativos": false,
+    "status": "ativo"
+   },
+   "situacao": "a_confirmar",
+   "texto_original": "Autorizar com 40901769 (mas Mediservice \"só autoriza TC no Orizon\" — por onde autoriza US?).",
+   "fontes": [
+    "RESP-3"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-76",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "Unidades",
+   "alvos": [
+    "UNIDADE"
+   ],
+   "campos": {
+    "canal": "texto",
+    "observacao": "Norte Sul (Av. José de Souza Campos, 840), Hospital Casa de Saúde (Praça Dr. Tóffoli, 28) e Barão Geraldo – Centro de Oncologia de Campinas (Rua Alberto de Salvo, 311), com telefones e horários."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Norte Sul (Av. José de Souza Campos, 840), Hospital Casa de Saúde (Praça Dr. Tóffoli, 28) e Barão Geraldo – Centro de Oncologia de Campinas (Rua Alberto de Salvo, 311), com telefones e horários.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-77",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Casa de Saúde",
+   "alvos": [
+    "UNIDADE"
+   ],
+   "campos": {
+    "texto": "Atende seg–sex 7h–17h30 e sábado 7h–11h (sem domingo)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Atende seg–sex 7h–17h30 e sábado 7h–11h (sem domingo).",
+   "fontes": [
+    "RESP-4"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-78",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Barão Geraldo (COC)",
+   "alvos": [
+    "UNIDADE"
+   ],
+   "campos": {
+    "texto": "Atende seg–sex 8h–12h e 13h–16h."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Atende seg–sex 8h–12h e 13h–16h.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-79",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": null,
+   "alvo_original": "WhatsApp médicos",
+   "alvos": [
+    "CANAL"
+   ],
+   "campos": {
+    "canal": "texto",
+    "observacao": "Norte Sul: (19) 99642-6828."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Norte Sul: (19) 99642-6828.",
+   "fontes": [
+    "RESP-4"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-80",
+   "molde": "M25",
+   "molde_nome": "Médico",
+   "convenio": null,
+   "alvo_original": "Dr. Juliano",
+   "alvos": [
+    "MEDICO"
+   ],
+   "campos": {
+    "texto": "Dr. Juliano de Lara Fernandes, CRM 94.129."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Dr. Juliano de Lara Fernandes, CRM 94.129.",
+   "fontes": [
+    "RESP-5"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "BRA-32",
+   "molde": "M11",
+   "molde_nome": "Plano / rede",
+   "convenio": "bradesco",
+   "alvo_original": "Redes",
+   "alvos": [
+    "PLANO"
+   ],
+   "campos": {
+    "atende": true,
+    "planos": "92 redes da lista"
+   },
+   "situacao": "confirmada",
+   "texto_original": "As 92 redes da lista são ATENDIDAS.",
+   "fontes": [
+    "RESP-6"
+   ],
+   "resposta": null
+  }
+ ]
+}

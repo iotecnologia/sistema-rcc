@@ -1,0 +1,562 @@
+[
+ {
+  "medico_id": 1,
+  "exame_nome": "Bolsa Escrotal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 1,
+  "exame_nome": "Tireoide",
+  "exame_id": null
+ },
+ {
+  "medico_id": 1,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 1,
+  "exame_nome": "Próstata",
+  "exame_id": null
+ },
+ {
+  "medico_id": 1,
+  "exame_nome": "Vias Urinárias",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Bolsa Escrotal / Sem e com doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Próstata via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Vias Urinárias",
+  "exame_id": null
+ },
+ {
+  "medico_id": 2,
+  "exame_nome": "Doppler de membros inferiores (não avalia varizes)",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Mamas Masculina",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Axilas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Parótidas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 3,
+  "exame_nome": "Cervical",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Axilas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 4,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Parede Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Bolsa Escrotal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Inguinal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Pescoço",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Tireoide",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Cervical",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Ombro/ Cotovelo",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Próstata",
+  "exame_id": null
+ },
+ {
+  "medico_id": 5,
+  "exame_nome": "Vias Urinárias",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 6,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Cervical",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Glândulas Salivares",
+  "exame_id": null
+ },
+ {
+  "medico_id": 7,
+  "exame_nome": "Parótidas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 8,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Mamas Masculina",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Axilas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 9,
+  "exame_nome": "Eco mamaria com doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 10,
+  "exame_nome": "Articulação/ Músculo (exceto crianças)",
+  "exame_id": null
+ },
+ {
+  "medico_id": 10,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 10,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 10,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 10,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 11,
+  "exame_nome": "Doppler de carótidas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 11,
+  "exame_nome": "Doppler de Membros inferiores",
+  "exame_id": null
+ },
+ {
+  "medico_id": 11,
+  "exame_nome": "Doppler de Membros Superiores",
+  "exame_id": null
+ },
+ {
+  "medico_id": 11,
+  "exame_nome": "Doppler Renal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 11,
+  "exame_nome": "Doppler Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Mamas Masculina",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 12,
+  "exame_nome": "Axilas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Paratireóide",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 13,
+  "exame_nome": "Glândulas Salivares",
+  "exame_id": null
+ },
+ {
+  "medico_id": 14,
+  "exame_nome": "Doppler de carótidas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 14,
+  "exame_nome": "Doppler de Membros inferiores",
+  "exame_id": null
+ },
+ {
+  "medico_id": 14,
+  "exame_nome": "Doppler de Membros Superiores",
+  "exame_id": null
+ },
+ {
+  "medico_id": 14,
+  "exame_nome": "Doppler Renal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 14,
+  "exame_nome": "Doppler Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Abdome Total+ superior+ inferior",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Próstata Via Abdominal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Tireoide/ Tireoide com Doppler",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 15,
+  "exame_nome": "Mama",
+  "exame_id": null
+ },
+ {
+  "medico_id": 16,
+  "exame_nome": "Transvaginal",
+  "exame_id": null
+ },
+ {
+  "medico_id": 16,
+  "exame_nome": "Mamas",
+  "exame_id": null
+ },
+ {
+  "medico_id": 16,
+  "exame_nome": "Tireóide",
+  "exame_id": null
+ },
+ {
+  "medico_id": 16,
+  "exame_nome": "Abdome Total",
+  "exame_id": null
+ },
+ {
+  "medico_id": 16,
+  "exame_nome": "Aparelho Urinário",
+  "exame_id": null
+ },
+ {
+  "medico_id": 17,
+  "exame_nome": "Angio Tomo de Coronárias",
+  "exame_id": null
+ },
+ {
+  "medico_id": 17,
+  "exame_nome": "RM Coração",
+  "exame_id": null
+ }
+]

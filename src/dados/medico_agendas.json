@@ -1,0 +1,20 @@
+[
+ {
+  "medico_id": 16,
+  "tipo": "recorrente",
+  "dia_semana": "quarta",
+  "data": null,
+  "inicio": "18:00",
+  "fim": "21:30",
+  "observacao": "Ela irá atender de quartas"
+ },
+ {
+  "medico_id": 16,
+  "tipo": "eventual",
+  "dia_semana": null,
+  "data": "2026-10-10",
+  "inicio": "12:30",
+  "fim": "16:00",
+  "observacao": "Sábado 10/10 (já vencida — some sozinha)"
+ }
+]

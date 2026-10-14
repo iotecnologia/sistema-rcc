@@ -1,0 +1,290 @@
+[
+ {
+  "convenio_id": 2,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 4,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 2,
+  "grupo": "articulacao",
+  "tipo": "agendamento",
+  "dias": 4,
+  "contagem": "uteis",
+  "qtd_minima": 3,
+  "observacao": "Mais de 2 articulações"
+ },
+ {
+  "convenio_id": 2,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 3,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 4,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 3,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 11,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 11,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 10,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 14,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": "Todos os pedidos vão para auditoria"
+ },
+ {
+  "convenio_id": 16,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 2,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 12,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 7,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": "Coronárias e RM cardíaca"
+ },
+ {
+  "convenio_id": 12,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 18,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 1,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 4,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 1,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 6,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 10,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 5,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 10,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 5,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 5,
+  "grupo": "angio",
+  "tipo": "analise",
+  "dias": 21,
+  "contagem": "corridos",
+  "qtd_minima": null,
+  "observacao": "Angio TC e Angio RM: até 21 dias para autorizar (D18)"
+ },
+ {
+  "convenio_id": 13,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 8,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 8,
+  "grupo": "cardiaco",
+  "tipo": "analise",
+  "dias": 5,
+  "contagem": "corridos",
+  "qtd_minima": null,
+  "observacao": "Coronárias e RM cardíaca: até 5 dias para autorizar"
+ },
+ {
+  "convenio_id": 17,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 17,
+  "grupo": "angio",
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 17,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 4,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 10,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 4,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 9,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 9,
+  "grupo": "cardiaco",
+  "tipo": "apos_autorizacao",
+  "dias": null,
+  "contagem": "corridos",
+  "qtd_minima": null,
+  "observacao": "Coronárias: não agendar antes de autorizar"
+ },
+ {
+  "convenio_id": 7,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 7,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 3,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ },
+ {
+  "convenio_id": 15,
+  "grupo": null,
+  "tipo": "agendamento",
+  "dias": 2,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": null
+ }
+]

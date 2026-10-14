@@ -1,0 +1,43 @@
+/* Complementos do mock funcional (o resto vem de rcc.css, igual ao protótipo v3) */
+html, body, #root { margin: 0; height: 100%; }
+a { color: var(--link); }
+.faixa.ok { background: var(--st-ok-bg); color: var(--st-ok-t); }
+.faixa.at { background: var(--st-at-bg); color: var(--st-at-t); }
+.faixa.no { background: var(--st-no-bg); color: var(--st-no-t); }
+.faixa ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; font-weight: 600; }
+.faixa .txt { display: grid; }
+.lista-regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.lista-regras li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.45; }
+.lista-regras li .tag { flex: none; margin-top: 1px; }
+.orig { font-size: 11.5px; color: var(--texto-suave); margin-top: 2px; }
+.qtd { display: inline-flex; align-items: center; gap: 4px; margin-left: 4px; }
+.qtd button { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--borda); background: var(--painel-2); cursor: pointer; padding: 0; }
+.qtd span { min-width: 16px; text-align: center; font-weight: 700; }
+.blocos { display: grid; gap: 14px; }
+.pad { padding: 14px 16px; }
+.grade-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.mini { font-size: 12px; color: var(--texto-suave); }
+.preparo-txt { white-space: pre-line; font-size: 13px; line-height: 1.5; }
+details > summary { cursor: pointer; font-weight: 600; }
+.abas { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.abas button { height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel); color: var(--texto); font-weight: 600; cursor: pointer; }
+.abas button.on { background: var(--destaque); border-color: var(--destaque); color: var(--destaque-texto); }
+.aviso-mock { font-size: 12px; color: var(--texto-suave); border: 1px dashed var(--borda); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; }
+.tot { display: flex; justify-content: space-between; padding: 10px 16px; border-top: 1px solid var(--linha); font-size: 14px; }
+.tot.grande { font-size: 18px; font-weight: 800; }
+.so-impressao { display: none; }
+
+/* Impressão / PDF: papel branco, texto preto, negrito só em título e cabeçalho de coluna */
+@media print {
+  .lateral, .topo, .status, .acoes-pagina, .barra, .chips, .sugestoes, .passos, .rodape-etapa, .nao-imprimir { display: none !important; }
+  .app { display: block !important; background: #fff !important; color: #000 !important; }
+  .conteudo { padding: 0 !important; overflow: visible !important; }
+  .bloco, .kpi, .etapa, .faixa { border: 1px solid #999 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; break-inside: avoid; }
+  .kpi::before { display: none; }
+  .tag { background: #fff !important; color: #000 !important; border: 1px solid #999; font-weight: 400; }
+  .grade2 { grid-template-columns: 1fr !important; }
+  table.tab th { background: #fff !important; color: #000 !important; }
+  table.tab td b, .lista-regras b, .checks li.forte { font-weight: 400 !important; }
+  .so-impressao { display: block; margin-bottom: 12px; }
+  a { color: #000 !important; text-decoration: none; }
+}

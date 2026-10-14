@@ -1,0 +1,50 @@
+[
+ {
+  "arquivo": "arquivos/guia-medicos.html",
+  "tipo": "guia_medicos",
+  "convenio_id": null,
+  "tamanho_kb": 40
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-economus.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 5,
+  "tamanho_kb": 563
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-portoseguro.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 15,
+  "tamanho_kb": 45
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-hapvida.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 18,
+  "tamanho_kb": 188
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-cabesp.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 11,
+  "tamanho_kb": 461
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-petrobras.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 8,
+  "tamanho_kb": 120
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-saudecaixa.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 4,
+  "tamanho_kb": 37
+ },
+ {
+  "arquivo": "arquivos/guia-transcricao-proasa.pdf",
+  "tipo": "guia_sp_sadt",
+  "convenio_id": 10,
+  "tamanho_kb": 379
+ }
+]

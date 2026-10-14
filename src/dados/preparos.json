@@ -1,0 +1,68 @@
+[
+ {
+  "id": 1,
+  "titulo": "Preparo — Entero-Ressonância",
+  "texto": "• Jejum de 4 horas .\n• Água e medicamentos podem ser tomados até 1 hora antes do exame.\n• Chegar 40 minutos antes para o preparo do exame.\n• Comparecer com os cabelos secos, sem uso de gel ou cremes.\n• Tatuagem, maquiagem definitiva e micropigmentação recentes: esperar 30 dias para realizar o exame.\n• Cílios postiços, piercings e Freestyle (marcador de glicose dérmico) deverão ser removidos.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 2,
+  "titulo": "Preparo — Ressonância Magnética da Pelve",
+  "texto": "No dia do exame:\n• Jejum de 2 horas ; água pode ser tomada até 1 hora antes .\n• Trazer exames anteriores da região a ser avaliada.\n• Trazer uma troca de roupa íntima e absorvente.\n• Comparecer com os cabelos secos, sem uso de gel ou cremes.\n• Tatuagem, maquiagem definitiva e micropigmentação recentes: esperar 30 dias .\n• Cílios postiços, piercings e Freestyle (marcador de glicose dérmico) deverão ser removidos.\n• É obrigatório chegar 30 minutos antes para os procedimentos do exame.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 3,
+  "titulo": "Preparo para Ressonância Magnética da Pelve — Pesquisa de Endometriose",
+  "texto": "Para melhor qualidade do exame, seguir as orientações abaixo:\n• Alimentação na véspera: preferir alimentação leve (arroz, frango, peixe, massas simples, sopas).\n• Evitar alimentos que causam gases: açaí, feijão, lentilha, brócolis, couve-flor, repolho, milho, frituras e bebidas gaseificadas.\n• Jejum de 2 horas antes do exame.\n• Tomar 1 comprimido de Buscopan simples ou composto 5 horas antes do exame (diminuir movimento intestinal).\n• Pode ser utilizado Phospoenema ou similar, 2 horas antes do exame.\n• Tomar 30 gotas de Simeticona (Luftal®) 1 hora antes do exame.\n• Comparecer com a bexiga moderadamente cheia ; evitar urinar nos 30 minutos anteriores.\n• Medicamentos de uso contínuo podem ser tomados normalmente.\n• Pacientes que fazem reposição de ferro por via oral (ex.: Noripurum) ou infusão por via EV (ex.: Ferinjet): agendar o exame após 5 dias de interrupção do medicamento .\n• Comparecer com os cabelos secos, sem uso de gel ou cremes.\n• Tatuagem, maquiagem definitiva e micropigmentação recentes: esperar 30 dias .\n• Cílios postiços, Freestyle (marcador de glicose dérmico) e piercings deverão ser removidos.\n• Trazer pedido médico original e carteirinha.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 4,
+  "titulo": "Preparo — Ressonância Cardíaca",
+  "texto": "• Jejum de 2 horas antes do exame.\n• Suspender por 24 horas antes : qualquer alimento que contenha cafeína (café, chocolate, refrigerante, bebidas alcoólicas, cigarros, etc.).\n• Se houver, trazer exames realizados anteriormente (referentes ao coração).\n• Chegar com 30 min de antecedência.\n• Horário de agendamento: 07:30 às 10:10 .\n• Agendar apenas na RM 3 (conferir — anotação também menciona \"4\"); a agenda já tem horários reservados especificamente para esse exame.\n• Médico que realiza: Dr. Juliano .",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 5,
+  "titulo": "Preparo — Ressonância (geral)",
+  "texto": "• Jejum absoluto de sólidos 2 horas antes do exame; água liberada até 1 hora antes .\n• Chegar com 30 min de antecedência.\n• Se houver, trazer exames realizados anteriormente.\n• Horário de agendamento: até 21:30 (dias úteis) / sábado até aprox. 12:00 (conferir horário exato de sábado).\n• Retirar todos os metais antes do exame.\n• Comparecer com os cabelos secos.\n• Peso limite do aparelho de RM: 180 kg .\n• Posição: dorsal (conferir anotação \"sempre torácica\").",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 6,
+  "titulo": "Preparo — Tomografia (geral)",
+  "texto": "• Não tem preparo , exceto quando for Angiotomografia.\n• Peso limite do aparelho de TC: 170 kg .\n• Perguntar sempre sobre alergia (anotação sem resposta registrada — confirmar critério).\n• Chegar com 30 min de antecedência.\n• Se houver, trazer exames realizados anteriormente.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 7,
+  "titulo": "TC Tórax — Escore de Cálcio",
+  "texto": "• Sem preparo.\n• Agendar em TC 2 .",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 8,
+  "titulo": "Preparo — Colangio-Ressonância (Colangio-RM)",
+  "texto": "• Jejum absoluto de 8 horas , inclusive água.\n• Comparecer com os cabelos secos, sem uso de gel ou cremes.\n• Tatuagem, maquiagem definitiva e micropigmentação recentes: esperar 30 dias .\n• Cílios postiços, extensão de cílios fio a fio, piercings e Freestyle (marcador de glicose dérmico) deverão ser removidos.\n• Trazer exames anteriores da região a ser avaliada, pedido médico original e carteirinha.\n• Chegar 30 minutos antes para preenchimento do questionário e preparação do exame.\n• Agendar apenas na RM 1 (conferir — anotação também menciona \"4\").\n• Perguntar sempre sobre alergia a contraste e se o paciente tem algum metal no corpo.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 9,
+  "titulo": "Preparo — Ressonância de Próstata",
+  "texto": "Atenção: verificar se o paciente fez biópsia ou cirurgia de próstata recente.\n• Preferir alimentos leves na véspera do exame.\n• Jejum de 2 horas .\n• NÃO esvaziar a bexiga 30 min antes do exame.\n• Fazer lavagem via retal com Phosfoenema (laxante/solução retal) 2 horas antes do exame (para limpar o intestino).\n• Tomar 1 comprimido de Buscopan simples ou composto, 5 horas antes do exame.\n• Chegar com 30 min de antecedência.\n• Se houver, trazer exames realizados anteriormente (PSA/biópsia/anatomopatológico/ultrassom).\n• O preparo dessa RM é enviado somente pelo WhatsApp.\nAgendar na RM 3 com 3 horários\nQuando paciente tem marcapasso agendar na RM 2 com 3 horários.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 10,
+  "titulo": "Preparo — Angiotomografia de Coronárias",
+  "texto": "• Jejum de 2 horas antes do exame.\n• Suspender por 24 horas antes : qualquer alimento que contenha cafeína (café, chocolate, refrigerante, bebidas alcoólicas, cigarros, etc.).\n• Se houver, trazer exames realizados anteriormente (referentes ao coração).\n• Chegar com 30 min de antecedência.\n• TC2 com preparo de PA (conferir sigla/orientação de pressão arterial).\n• Valor: R$2.200,00 ; prazo de liberação: 3 a 4 dias úteis .\n• Agendar em TC 2 , com Dr. Juliano , de segunda a sexta, somente no período da manhã, até 11:30 . Não atende aos sábados.\n• Perguntar sempre se o paciente é alérgico a frutos do mar / iodo — se sim, qual a reação alérgica.",
+  "vigencia_inicio": null
+ },
+ {
+  "id": 11,
+  "titulo": "Preparo — Doppler Renal",
+  "texto": "• Válido a partir de 19/08 .\n• Tomar 40 gotas de Luftal na véspera do exame, às 15:00h .\n• No dia do exame, fazer jejum de 8 horas e tomar mais 40 gotas de Luftal 1 hora antes do exame.\n• Após tomar o Luftal no dia do exame, fica liberada a ingestão de água (pouca quantidade).\n• Chegar com 20 min de antecedência.\n• Se houver, trazer exames realizados anteriormente.\n• Agendar na agenda: Dra. Liliam e Dr. Leandro .",
+  "vigencia_inicio": "19/08"
+ }
+]

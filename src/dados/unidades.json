@@ -1,0 +1,38 @@
+[
+ {
+  "id": 1,
+  "nome": "Norte Sul",
+  "apelido": "Norte Sul (sede)",
+  "observacao": "Unidade principal",
+  "endereco": "Av. José de Souza Campos, 840",
+  "cep": "13092-123",
+  "cidade": "Campinas/SP",
+  "telefones": "(19) 3753-5700",
+  "whatsapp": "Pacientes (19) 99790-9463 · Médicos (19) 99642-6828",
+  "horario_atendimento": "Telefone/WhatsApp: segunda a sexta 7h às 19h; demais horários (texto do site incompleto)"
+ },
+ {
+  "id": 2,
+  "nome": "Hospital Casa de Saúde",
+  "apelido": "Casa de Saúde",
+  "observacao": "Mesma unidade chamada de \"RM Unidade 2\" (D15)",
+  "endereco": "Praça Dr. Tóffoli, 28",
+  "cep": "13015-240",
+  "cidade": "Campinas/SP",
+  "telefones": "(19) 3736-3481 Radiologia · (19) 3739-3333 RM e TC",
+  "whatsapp": "(19) 99891-5235",
+  "horario_atendimento": "Segunda a sexta 7h às 17h30; sábado 7h às 11h"
+ },
+ {
+  "id": 3,
+  "nome": "Barão Geraldo – Centro de Oncologia de Campinas",
+  "apelido": "COC Barão Geraldo",
+  "observacao": "",
+  "endereco": "Rua Alberto de Salvo, 311",
+  "cep": "13064-670",
+  "cidade": "Campinas/SP",
+  "telefones": "(19) 3787-3400 · (19) 3787-3432",
+  "whatsapp": null,
+  "horario_atendimento": "Segunda a sexta 8h às 12h e 13h às 16h"
+ }
+]

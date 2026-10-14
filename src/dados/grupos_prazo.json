@@ -1,0 +1,17 @@
+[
+ {
+  "id": 1,
+  "slug": "cardiaco",
+  "nome": "Cardíaco"
+ },
+ {
+  "id": 2,
+  "slug": "angio",
+  "nome": "Angio"
+ },
+ {
+  "id": 3,
+  "slug": "articulacao",
+  "nome": "Articulação"
+ }
+]

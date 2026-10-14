@@ -1,0 +1,2806 @@
+[
+ {
+  "id": 1,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ABDOMEN AGUDO",
+  "subgrupo": "Raio-X",
+  "valor": 235.0,
+  "exame_id": null
+ },
+ {
+  "id": 2,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ABDOMEN SIMPLES",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 3,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ANTEBRACO- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 4,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ARTICULACAO COXO FEMORAL (QUADRIL)",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 5,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ARTICULACAO ESCAPULO (OMBRO UNILATERAL)- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 6,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ARTICULACAO SACROILIACA - 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 195.0,
+  "exame_id": null
+ },
+ {
+  "id": 7,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ARTICULACAO TEMPOROMANDIBULAR - BILATERAL",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 8,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ARTICULACAO TIBIOTARSICA (TORNOZELO)",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 9,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "BACIA",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 10,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": ". - BACIA 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 195.0,
+  "exame_id": null
+ },
+ {
+  "id": 11,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "BRACO -2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 12,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CALCANEO -2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 13,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CAVUM - 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 14,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CLAVICULA- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 15,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA CERVICAL - 3 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 16,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA CERVICAL 5 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 275.0,
+  "exame_id": null
+ },
+ {
+  "id": 17,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA DORSAL ( TORACICA ) - 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 18,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA DORSAL 4 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 275.0,
+  "exame_id": null
+ },
+ {
+  "id": 19,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA DORSO-LOMBAR PARA ESCOLIOSE 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 320.0,
+  "exame_id": null
+ },
+ {
+  "id": 20,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA LOMBO SACRA",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 21,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA LOMBO SACRA 05 POS",
+  "subgrupo": "Raio-X",
+  "valor": 275.0,
+  "exame_id": null
+ },
+ {
+  "id": 22,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COLUNA TOTAL PARA ESCOLIOSE",
+  "subgrupo": "Raio-X",
+  "valor": 320.0,
+  "exame_id": null
+ },
+ {
+  "id": 23,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CORPO INTEIRO - INVENTÁRIO ÓSSEO",
+  "subgrupo": "Raio-X",
+  "valor": 1320.0,
+  "exame_id": null
+ },
+ {
+  "id": 24,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COSTELAS- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 25,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COTOVELO- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 26,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "COXA- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 27,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CRANIO",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 28,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CRANIO 3 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 29,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "CRANIO 4 POS",
+  "subgrupo": "Raio-X",
+  "valor": 235.0,
+  "exame_id": null
+ },
+ {
+  "id": 30,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ESCANOMETRIA",
+  "subgrupo": "Raio-X",
+  "valor": 345.0,
+  "exame_id": null
+ },
+ {
+  "id": 31,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "ESTERNO- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 32,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "INCIDENCIA ADICIONAL COLUNA",
+  "subgrupo": "Raio-X",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 33,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "INCIDENCIA ADICIONAL CRANIO OU FACE",
+  "subgrupo": "Raio-X",
+  "valor": 60.0,
+  "exame_id": null
+ },
+ {
+  "id": 34,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "INCIDENCIA ADICIONAL MEMBRO INFERIOR",
+  "subgrupo": "Raio-X",
+  "valor": 75.0,
+  "exame_id": null
+ },
+ {
+  "id": 35,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "INCIDENCIA ADICIONAL MEMBRO SUPERIOR",
+  "subgrupo": "Raio-X",
+  "valor": 60.0,
+  "exame_id": null
+ },
+ {
+  "id": 36,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "JOELHO (UNILATERAL) 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 37,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "JOELHO (UNILATERAL) 3 POS (PATELA)",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 38,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "MAO- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 39,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "MÃOS AP",
+  "subgrupo": "Raio-X",
+  "valor": 145.0,
+  "exame_id": null
+ },
+ {
+  "id": 40,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "MAOS E PUNHOS PARA IDADE OSSEA",
+  "subgrupo": "Raio-X",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 41,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "OMOPLATA",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 42,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "OSSOS DA FACE - 4 POS",
+  "subgrupo": "Raio-X",
+  "valor": 275.0,
+  "exame_id": null
+ },
+ {
+  "id": 43,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "OUVIDO (MASTÓIDE)",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 44,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "PANORAMICA DE MEMBROS INFERIORES",
+  "subgrupo": "Raio-X",
+  "valor": 270.0,
+  "exame_id": null
+ },
+ {
+  "id": 45,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "PE - 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 165.0,
+  "exame_id": null
+ },
+ {
+  "id": 46,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "PERNA- 2 INCIDENCIAS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 47,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "PUNHO (UNILATERAL)",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 48,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "SACRO COCCIX",
+  "subgrupo": "Raio-X",
+  "valor": 195.0,
+  "exame_id": null
+ },
+ {
+  "id": 49,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": ". - SEIOS DA FACE - 1 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 50,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "SEIOS DA FACE - 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 205.0,
+  "exame_id": null
+ },
+ {
+  "id": 51,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "SEIOS DA FACE - 3 POS",
+  "subgrupo": "Raio-X",
+  "valor": 250.0,
+  "exame_id": null
+ },
+ {
+  "id": 52,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": ". - SEIOS DA FACE - 4 POS",
+  "subgrupo": "Raio-X",
+  "valor": 275.0,
+  "exame_id": null
+ },
+ {
+  "id": 53,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "SELA TÚRCICA",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 54,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "TORAX 1 POS",
+  "subgrupo": "Raio-X",
+  "valor": 175.0,
+  "exame_id": null
+ },
+ {
+  "id": 55,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "TORAX 2 POS",
+  "subgrupo": "Raio-X",
+  "valor": 250.0,
+  "exame_id": null
+ },
+ {
+  "id": 56,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "TORAX 3 POS",
+  "subgrupo": "Raio-X",
+  "valor": 300.0,
+  "exame_id": null
+ },
+ {
+  "id": 57,
+  "tabela_id": 1,
+  "grupo": "raiox",
+  "procedimento": "TORAX 4 POS",
+  "subgrupo": "Raio-X",
+  "valor": 385.0,
+  "exame_id": null
+ },
+ {
+  "id": 58,
+  "tabela_id": 1,
+  "grupo": "biopsia",
+  "procedimento": "BIOPSIA DE FRAGMENTOS",
+  "subgrupo": "Biópsia — RCC",
+  "valor": 1060.0,
+  "exame_id": null
+ },
+ {
+  "id": 59,
+  "tabela_id": 1,
+  "grupo": "biopsia",
+  "procedimento": ". - BIOPSIA DE TIREÓIDE - HONORÁRIOS MÉDICOS",
+  "subgrupo": "Biópsia — RCC",
+  "valor": 1215.0,
+  "exame_id": null
+ },
+ {
+  "id": 60,
+  "tabela_id": 1,
+  "grupo": "biopsia",
+  "procedimento": ". - BIOPSIA INCISIONAL DE MAMA",
+  "subgrupo": "Biópsia — RCC",
+  "valor": 1060.0,
+  "exame_id": null
+ },
+ {
+  "id": 61,
+  "tabela_id": 1,
+  "grupo": "biopsia",
+  "procedimento": "BIOPSIA PERCUTÂNEA DE FRAGMENTO MAMÁRIO",
+  "subgrupo": "Biópsia — RCC",
+  "valor": 1060.0,
+  "exame_id": null
+ },
+ {
+  "id": 62,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COL. ART. MEMB SUP. - UNI.",
+  "subgrupo": "Doppler Colorido",
+  "valor": 425.0,
+  "exame_id": null
+ },
+ {
+  "id": 63,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COL. ART. MEMBRO INF.- UNI.",
+  "subgrupo": "Doppler Colorido",
+  "valor": 425.0,
+  "exame_id": null
+ },
+ {
+  "id": 64,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COL. ARTÉRIAIS VICERAIS - SUP. - INF.",
+  "subgrupo": "Doppler Colorido",
+  "valor": 500.0,
+  "exame_id": null
+ },
+ {
+  "id": 65,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COL. ORG. OU EST.ISOL.( INCL. CORACAO)",
+  "subgrupo": "Doppler Colorido",
+  "valor": 400.0,
+  "exame_id": null
+ },
+ {
+  "id": 66,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COL. VASOS CERV. - CARÓTIDAS E VERT.",
+  "subgrupo": "Doppler Colorido",
+  "valor": 500.0,
+  "exame_id": null,
+  "nomes_alternativos": [
+   "ECODOPPLER COL. VASOS CERV.-CAROTIDAS E VERTEBRAIS"
+  ]
+ },
+ {
+  "id": 67,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COLOR VENOSO MI - UNI.",
+  "subgrupo": "Doppler Colorido",
+  "valor": 425.0,
+  "exame_id": null,
+  "nomes_alternativos": [
+   "ECODOPPLER COLORIDO VENOSO DE MEMBRO INFERIOR - UNILATERAL",
+   "ECODOPPLER COLORIDO VENOSO MEMBRO INFERIOR - UNILATERAL"
+  ]
+ },
+ {
+  "id": 68,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COLORIDO AORTA E ARTÉRIAS RENAIS",
+  "subgrupo": "Doppler Colorido",
+  "valor": 590.0,
+  "exame_id": null
+ },
+ {
+  "id": 69,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COLORIDO AORTA E ILÍACAS",
+  "subgrupo": "Doppler Colorido",
+  "valor": 590.0,
+  "exame_id": null
+ },
+ {
+  "id": 70,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COLORIDO ARTERIAL DE MEMBRO SUPERIOR - UNIL",
+  "subgrupo": "Doppler Colorido",
+  "valor": 425.0,
+  "exame_id": null
+ },
+ {
+  "id": 71,
+  "tabela_id": 1,
+  "grupo": "doppler",
+  "procedimento": "ECODOPPLER COLORIDO ORGÃO OU ESTRUTURA ISOLADA",
+  "subgrupo": "Doppler Colorido",
+  "valor": 400.0,
+  "exame_id": null
+ },
+ {
+  "id": 72,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "TOMOGRAFIA",
+  "subgrupo": "2ª via de exame",
+  "valor": 100.0,
+  "exame_id": null
+ },
+ {
+  "id": 73,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "RESSONÂNCIA",
+  "subgrupo": "2ª via de exame",
+  "valor": 100.0,
+  "exame_id": null
+ },
+ {
+  "id": 74,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "RX",
+  "subgrupo": "2ª via de exame",
+  "valor": 80.0,
+  "exame_id": null
+ },
+ {
+  "id": 75,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "ECOGRAFIA",
+  "subgrupo": "2ª via de exame",
+  "valor": 80.0,
+  "exame_id": null
+ },
+ {
+  "id": 76,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "MAMOGRAFIA",
+  "subgrupo": "2ª via de exame",
+  "valor": 80.0,
+  "exame_id": null
+ },
+ {
+  "id": 77,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "DENSITOMETRIA",
+  "subgrupo": "2ª via de exame",
+  "valor": 80.0,
+  "exame_id": null
+ },
+ {
+  "id": 78,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "DOPPLER",
+  "subgrupo": "2ª via de exame",
+  "valor": 80.0,
+  "exame_id": null
+ },
+ {
+  "id": 79,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "GRAVAÇÃO DE CD",
+  "subgrupo": "2ª via de exame",
+  "valor": 65.0,
+  "exame_id": null
+ },
+ {
+  "id": 80,
+  "tabela_id": 1,
+  "grupo": "servicos",
+  "procedimento": "ENVIO DE SEDEX",
+  "subgrupo": "2ª via de exame",
+  "valor": 30.0,
+  "exame_id": null
+ },
+ {
+  "id": 81,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "DENSITOMETRIA OSSEA - 1 SEGMENTO",
+  "subgrupo": "Densitometria óssea",
+  "valor": 145.0,
+  "exame_id": null
+ },
+ {
+  "id": 82,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "DENSITOMETRIA OSSEA - 3 SEGMENTOS",
+  "subgrupo": "Densitometria óssea",
+  "valor": 385.0,
+  "exame_id": null
+ },
+ {
+  "id": 83,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "DENSITOMETRIA OSSEA - CORPO INTEIRO",
+  "subgrupo": "Densitometria óssea",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 84,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "DENSITOMETRIA OSSEA COLUNA E FEMUR",
+  "subgrupo": "Densitometria óssea",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 85,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAGNIFICAÇÃO (AMPLIAÇÃO) MAMÁRIA BILATERAL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 375.0,
+  "exame_id": null
+ },
+ {
+  "id": 86,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAGNIFICAÇÃO (AMPLIAÇÃO) MAMÁRIA UNILATERAL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 215.0,
+  "exame_id": null
+ },
+ {
+  "id": 87,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAMOGRAFIA DIGITAL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 300.0,
+  "exame_id": null
+ },
+ {
+  "id": 88,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAMOGRAFIA DIGITAL + MAGNIFICAÇÃO BIL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 670.0,
+  "exame_id": null
+ },
+ {
+  "id": 89,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAMOGRAFIA DIGITAL + MAGNIFICAÇÃO UNI",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 510.0,
+  "exame_id": null
+ },
+ {
+  "id": 90,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "MAMOGRAFIA DIGITAL + TOMOSSÍNTESE",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 735.0,
+  "exame_id": null
+ },
+ {
+  "id": 91,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "TOMOSSÍNTESE COM PEDIDO DE MAMOGRAFIA",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 510.0,
+  "exame_id": null
+ },
+ {
+  "id": 92,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "TOMOSSÍNTESE MAMÁRIA BILATERAL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 735.0,
+  "exame_id": null
+ },
+ {
+  "id": 93,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "TOMOSSÍNTESE MAMÁRIA UNILATERAL",
+  "subgrupo": "Mamografia / Tomossíntese",
+  "valor": 400.0,
+  "exame_id": null
+ },
+ {
+  "id": 94,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ABDOME INFERIOR -FEM. (BEX.,ÚTERO,OV. E ANEX)",
+  "subgrupo": "Ultrassonografia",
+  "valor": 215.0,
+  "exame_id": null
+ },
+ {
+  "id": 95,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ABDOME INFERIOR MASCULINO - PROSTATICA",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 96,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ABDOME SUPERIOR - FIG.-V. BIL.-VESÍC-PANC.-BAÇO",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 97,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ABDOME TOTAL",
+  "subgrupo": "Ultrassonografia",
+  "valor": 300.0,
+  "exame_id": null
+ },
+ {
+  "id": 98,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO APARELHO URINARIO",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 99,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ARTICULAR",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 100,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO BOLSA ESCROTAL",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 101,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO BOLSA ESCROTAL COM DOPPLER",
+  "subgrupo": "Ultrassonografia",
+  "valor": 395.0,
+  "exame_id": null
+ },
+ {
+  "id": 102,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ESTR. SUPERF. ( CERV - AXILA - MUS - TENDÃO)",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 103,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO GLANDULAS SALIVARES ( TODAS )",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 104,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO MAMARIA",
+  "subgrupo": "Ultrassonografia",
+  "valor": 185.0,
+  "exame_id": null
+ },
+ {
+  "id": 105,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO OBSTETRICA 1 TRIMESTRE ( ENDOVAGINAL )",
+  "subgrupo": "Ultrassonografia",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 106,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO ORGÃOS SUPERFICIAIS - TIR. - ESC. - PÊNIS - CRANIO",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 107,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO PARTES MOLES",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 108,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO TIREOIDE",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 109,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO TIREOIDE COM DOPPLER",
+  "subgrupo": "Ultrassonografia",
+  "valor": 395.0,
+  "exame_id": null
+ },
+ {
+  "id": 110,
+  "tabela_id": 1,
+  "grupo": "ultrassom",
+  "procedimento": "ECO TRANSVAGINAL",
+  "subgrupo": "Ultrassonografia",
+  "valor": 225.0,
+  "exame_id": null
+ },
+ {
+  "id": 111,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC ABDOME SUPERIOR",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 156
+ },
+ {
+  "id": 112,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC ABDOME TOTAL",
+  "subgrupo": "Tomografia",
+  "valor": 860.0,
+  "exame_id": null,
+  "nomes_alternativos": [
+   "TC ABDOMEM TOTAL"
+  ]
+ },
+ {
+  "id": 113,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC ART.TEMPORO MANDIBULARES",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 114,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC ARTICULACOES (UNILATERAL)",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 115,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC COLUNA 3 SEG",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 116,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC CRANIO ORBITA SELA",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 117,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC FACE OU SEIOS DA FACE",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 151
+ },
+ {
+  "id": 118,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC LARINGE/PESCOÇO/GLAND.SALIVAR/RINOFARINGE",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 119,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC MANDIBULA",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 275
+ },
+ {
+  "id": 120,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC MASTOIDE OU OUVIDO",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 121,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC MAXILA E MANDIBULA",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 122,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC MAXILAR",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 276
+ },
+ {
+  "id": 123,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC ORBITAS",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 124,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC PELVE OU BACIA",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 157
+ },
+ {
+  "id": 125,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC PESCOCO",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 126,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC SEGMENTO APENDICULAR",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": null
+ },
+ {
+  "id": 127,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC TORAX",
+  "subgrupo": "Tomografia",
+  "valor": 545.0,
+  "exame_id": 154
+ },
+ {
+  "id": 128,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "TC TORAX - ESCORE",
+  "subgrupo": "Tomografia",
+  "valor": 715.0,
+  "exame_id": null
+ },
+ {
+  "id": 129,
+  "tabela_id": 1,
+  "grupo": "tomografia",
+  "procedimento": "ESCORE DE CALCIO (DR. PINHO)",
+  "subgrupo": "Tomografia",
+  "valor": 350.0,
+  "exame_id": null
+ },
+ {
+  "id": 130,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "ESPECTROSCOPIA P/RM",
+  "subgrupo": "Ressonância",
+  "valor": 815.0,
+  "exame_id": null
+ },
+ {
+  "id": 131,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "HIDRO-RM (COLANGIORESSONANCIA)",
+  "subgrupo": "Ressonância",
+  "valor": 1670.0,
+  "exame_id": null
+ },
+ {
+  "id": 132,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "PRIMOVIST - CONTRASTE",
+  "subgrupo": "Ressonância",
+  "valor": 565.0,
+  "exame_id": null
+ },
+ {
+  "id": 133,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM FLUXO LIQUORICO (COMO COMPLEMENTAR)",
+  "subgrupo": "Ressonância",
+  "valor": 1670.0,
+  "exame_id": 185
+ },
+ {
+  "id": 134,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM - URO RM (HIDRO-RM)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 135,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ABDOME SUPERIOR + COLANGIO (HIDRO RM)",
+  "subgrupo": "Ressonância",
+  "valor": 1105.0,
+  "exame_id": null
+ },
+ {
+  "id": 136,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ABDOME SUPERIOR",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 137,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ABDOME E PELVIS (ABD. TOTAL) - Não usar",
+  "subgrupo": "Ressonância",
+  "valor": 1400.0,
+  "exame_id": null
+ },
+ {
+  "id": 138,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ARTICULAÇÃO (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 139,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ATM BILAT.",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 140,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM BACIA (ART. SACROILÍACAS)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 141,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM BASE DO CRANIO",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 167
+ },
+ {
+  "id": 142,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM BOLSA ESCROTAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 183
+ },
+ {
+  "id": 143,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM COLUNA CERVICAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 144,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM COLUNA LOMBO-SACRA",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 145,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM COLUNA TORACICA",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 146,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM CORAÇÃO - MORFOLOGICO E FUNCIONAL + PERF. + ESTRESSE",
+  "subgrupo": "Ressonância",
+  "valor": 2755.0,
+  "exame_id": null
+ },
+ {
+  "id": 147,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM CORPO TOTAL",
+  "subgrupo": "Ressonância",
+  "valor": 3400.0,
+  "exame_id": null
+ },
+ {
+  "id": 148,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM COTOVELO OU PUNHO (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 149,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM COXA (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 190
+ },
+ {
+  "id": 150,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM CRANIO",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 151,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM CRANIO P/ PLANEJAMENTO",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 152,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM FACE OU SEIOS DA FACE",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 153,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM JOELHO (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 154,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM MAMA",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 155,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM MÃO UNILATERAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 156,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM OMBRO UNILATERAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 157,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM ORBITA BILATERAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 170
+ },
+ {
+  "id": 158,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM OSSOS TEMPORAIS BILATERAL",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 171
+ },
+ {
+  "id": 159,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM OUVIDOS",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 160,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PARA TALASSEMIA / FERRO",
+  "subgrupo": "Ressonância",
+  "valor": 1340.0,
+  "exame_id": null
+ },
+ {
+  "id": 161,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PÉ (ANTEPÉ) - NÃO INCLUI TORNOZELO",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 192
+ },
+ {
+  "id": 162,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PELVE - (NÃO INCLUI ART. COXOFEMORAIS)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 163,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PÊNIS",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 182,
+  "nomes_alternativos": [
+   "RM PENIS - AMB 92",
+   "RM PENIS - AMB-92"
+  ]
+ },
+ {
+  "id": 164,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PERNA (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 191
+ },
+ {
+  "id": 165,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PESCOÇO",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 166,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PLEXO BRAQUIAL ( UNILATERAL )",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 167,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PROSTATA",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 168,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM PUNHO (UNILATERAL)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 169,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM SELA TURCICA (HIPOFISE)",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": 166
+ },
+ {
+  "id": 170,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM TORAX",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 171,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "RM TORNOZELO UNILATERAL - ARTICULAR",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
+  "id": 172,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO (CRÂNIO ,PESC.,TORAX, ABDOME SUPERIOR/PELVE )",
+  "subgrupo": "Angiotomografia",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 173,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO ABDOMEN TOTAL",
+  "subgrupo": "Angiotomografia",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 174,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO AORTA ABDOMINAL",
+  "subgrupo": "Angiotomografia",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 175,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO AORTA TORÁCICA",
+  "subgrupo": "Angiotomografia",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 176,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO AORTA TORX/ABD/MMII (TAVI)",
+  "subgrupo": "Angiotomografia",
+  "valor": 2785.0,
+  "exame_id": null
+ },
+ {
+  "id": 177,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO ART. MEMBRO SUPERIOR",
+  "subgrupo": "Angiotomografia",
+  "valor": 1435.0,
+  "exame_id": null
+ },
+ {
+  "id": 178,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO ARTERIAL DE MEMBRO INFERIOR",
+  "subgrupo": "Angiotomografia",
+  "valor": 1435.0,
+  "exame_id": null
+ },
+ {
+  "id": 179,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO ARTERIAL DO PESCOÇO",
+  "subgrupo": "Angiotomografia",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 180,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO CORONARIANA",
+  "subgrupo": "Angiotomografia",
+  "valor": 2330.0,
+  "exame_id": null
+ },
+ {
+  "id": 181,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO TAVI + CORONARIA",
+  "subgrupo": "Angiotomografia",
+  "valor": 2785.0,
+  "exame_id": null
+ },
+ {
+  "id": 182,
+  "tabela_id": 1,
+  "grupo": "angiotomografia",
+  "procedimento": "ANGIOTOMO VENOSA DE MEMBRO SUPERIOR",
+  "subgrupo": "Angiotomografia",
+  "valor": 1435.0,
+  "exame_id": null
+ },
+ {
+  "id": 183,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM + RESSONANCIA",
+  "subgrupo": "Angioressonância",
+  "valor": 1910.0,
+  "exame_id": null
+ },
+ {
+  "id": 184,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ABDOME + PELVIS",
+  "subgrupo": "Angioressonância",
+  "valor": 1910.0,
+  "exame_id": null
+ },
+ {
+  "id": 185,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM AORTA ABDOMINAL",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 186,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM AORTA TORACICA AMB/92",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 187,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTERIAL DE ABDOME SUPERIOR",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 221
+ },
+ {
+  "id": 188,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTERIAL DE CRANIO",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 223
+ },
+ {
+  "id": 189,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTERIAL DE MEMBRO INFERIOR (UNILATERAL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 225
+ },
+ {
+  "id": 190,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTERIAL DE MEMBRO SUPERIOR (UNILATERAL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 191,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTERIAL DE PESCOÇO",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 228
+ },
+ {
+  "id": 192,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM ARTÉRIAS RENAIS",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 193,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM CRANIO + CARÓTIDAS",
+  "subgrupo": "Angioressonância",
+  "valor": 1910.0,
+  "exame_id": null
+ },
+ {
+  "id": 194,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM DE AORTA ABD + MMII",
+  "subgrupo": "Angioressonância",
+  "valor": 2015.0,
+  "exame_id": null
+ },
+ {
+  "id": 195,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM DE ARCO AORTICO",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 196,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM DE CARÓTIDAS",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 197,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM DE MEMBROS SUPERIORES (BIL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1150.0,
+  "exame_id": null
+ },
+ {
+  "id": 198,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM DE TORAX",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 199,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM MEBROS INFERIORES (BIL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1150.0,
+  "exame_id": null
+ },
+ {
+  "id": 200,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM TORAX + ABDOME SUPERIOR",
+  "subgrupo": "Angioressonância",
+  "valor": 1910.0,
+  "exame_id": null
+ },
+ {
+  "id": 201,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM VENOSA DE CRANIO",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 224
+ },
+ {
+  "id": 202,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM VENOSA DE MEMBRO INFERIOR (UNILATERAL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 426
+ },
+ {
+  "id": 203,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM VENOSA DE MEMBRO SUPERIOR (UNILATERAL)",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": null
+ },
+ {
+  "id": 204,
+  "tabela_id": 1,
+  "grupo": "angioressonancia",
+  "procedimento": "ANGIO-RM VENOSA DE PESCOÇO",
+  "subgrupo": "Angioressonância",
+  "valor": 1050.0,
+  "exame_id": 229
+ },
+ {
+  "id": 205,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX crânio - 2 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 1
+ },
+ {
+  "id": 206,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX crânio - 3 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 2
+ },
+ {
+  "id": 207,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX crânio - 4 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 3
+ },
+ {
+  "id": 208,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX de seios da face",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 209,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX de sela túrcica",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 210,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX de ossos da face",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 211,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX adenoides ou cavum",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 12
+ },
+ {
+  "id": 212,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna cervical - 3 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 19
+ },
+ {
+  "id": 213,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna cervical - 5 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 20
+ },
+ {
+  "id": 214,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna dorsal - 2 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 21
+ },
+ {
+  "id": 215,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna lombossacra - 3 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 216,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna lombossacra - 5 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 217,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX sacro/cóccix",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 25
+ },
+ {
+  "id": 218,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coluna total - escoliose",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": null
+ },
+ {
+  "id": 219,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX esterno",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 30
+ },
+ {
+  "id": 220,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX articulação esternoclavicular",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 31
+ },
+ {
+  "id": 221,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX costelas - por hemitórax",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 32
+ },
+ {
+  "id": 222,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX clavícula",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 33
+ },
+ {
+  "id": 223,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX omoplata ou escápula",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 34
+ },
+ {
+  "id": 224,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX articulação escapuloumeral (ombro)",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 36
+ },
+ {
+  "id": 225,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX braço",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 37
+ },
+ {
+  "id": 226,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX cotovelo",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 38
+ },
+ {
+  "id": 227,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX antebraço",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 39
+ },
+ {
+  "id": 228,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX punho",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 40
+ },
+ {
+  "id": 229,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX mão ou quirodáctilo",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 41
+ },
+ {
+  "id": 230,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX mãos e punhos para idade óssea",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 42
+ },
+ {
+  "id": 231,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX bacia",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 44
+ },
+ {
+  "id": 232,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX articulações sacroilíacas",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 45
+ },
+ {
+  "id": 233,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX articulação coxofemoral (quadril)",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 46
+ },
+ {
+  "id": 234,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX coxa",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 47
+ },
+ {
+  "id": 235,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX joelho",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 48
+ },
+ {
+  "id": 236,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX patela",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 49
+ },
+ {
+  "id": 237,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX perna",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 50
+ },
+ {
+  "id": 238,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX articulação tibiotársica (tornozelo)",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 51
+ },
+ {
+  "id": 239,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX pé ou pododáctilo",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 52
+ },
+ {
+  "id": 240,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX calcâneo",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 53
+ },
+ {
+  "id": 241,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX tórax - 1 incidência",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 57
+ },
+ {
+  "id": 242,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX tórax - 2 incidências",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 58
+ },
+ {
+  "id": 243,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX abdome simples",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 87
+ },
+ {
+  "id": 244,
+  "tabela_id": 2,
+  "grupo": "raiox",
+  "procedimento": "RX abdome agudo",
+  "subgrupo": "Radiografia (RX)",
+  "valor": 45.0,
+  "exame_id": 88
+ },
+ {
+  "id": 245,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Ultrassom - valor geral",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 246,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US articulação",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 247,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US aparelho urinário",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 248,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US abdome total",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 160.0,
+  "exame_id": null
+ },
+ {
+  "id": 249,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US abdome inferior",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 250,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US abdome superior",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 251,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Ultrassom de mamas",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 252,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US próstata",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 253,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US transvaginal",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 254,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US tireoide",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 255,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US bolsa escrotal",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 256,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler venoso de MMII",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 257,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler venoso de MMSS",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 258,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler arterial de MMII",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 259,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler arterial de MMSS",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 260,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler de aorta e artérias renais",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 261,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler de aorta ilíacas",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 262,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Doppler de carótidas",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 170.0,
+  "exame_id": null
+ },
+ {
+  "id": 263,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "US pélvico - acrescentado",
+  "subgrupo": "Ultrassom e Doppler",
+  "valor": 85.0,
+  "exame_id": null
+ },
+ {
+  "id": 264,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Mamografia",
+  "subgrupo": "Outros exames",
+  "valor": 110.0,
+  "exame_id": null
+ },
+ {
+  "id": 265,
+  "tabela_id": 2,
+  "grupo": "ultrassom",
+  "procedimento": "Densitometria - 2 segmentos",
+  "subgrupo": "Outros exames",
+  "valor": 110.0,
+  "exame_id": null
+ },
+ {
+  "id": 266,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC crânio, órbitas ou sela túrcica",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 267,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC ouvidos ou mastoides",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 268,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC face ou seios da face",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": 151
+ },
+ {
+  "id": 269,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC articulações temporomandibulares",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": 152
+ },
+ {
+  "id": 270,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC pescoço",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 271,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC tórax",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": 154
+ },
+ {
+  "id": 272,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC abdome total",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 273,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC abdome superior",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": 156
+ },
+ {
+  "id": 274,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC pelve ou bacia",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": 157
+ },
+ {
+  "id": 275,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC coluna - cervical, dorsal ou lombar",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 276,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC segmento apendicular - braço, antebraço, mão, coxa, perna ou pé",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 277,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC - crânio, pescoço, tórax, abdome superior ou pelve; arterial ou venosa",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 530.0,
+  "exame_id": null
+ },
+ {
+  "id": 278,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC de aorta torácica",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 530.0,
+  "exame_id": null
+ },
+ {
+  "id": 279,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC de aorta abdominal",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 530.0,
+  "exame_id": null
+ },
+ {
+  "id": 280,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC coronárias",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 1625.0,
+  "exame_id": null
+ },
+ {
+  "id": 281,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC de MMII",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 750.0,
+  "exame_id": null
+ },
+ {
+  "id": 282,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Angio TC de MMSS",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 750.0,
+  "exame_id": null
+ },
+ {
+  "id": 283,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "TC segmento adicional - acrescentado",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 265.0,
+  "exame_id": null
+ },
+ {
+  "id": 284,
+  "tabela_id": 2,
+  "grupo": "tomografia",
+  "procedimento": "Escore de cálcio - acrescentado",
+  "subgrupo": "Tomografia Computadorizada (CT)",
+  "valor": 300.0,
+  "exame_id": null
+ },
+ {
+  "id": 285,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM crânio",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 286,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM sela túrcica",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 287,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM base de crânio",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 288,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM órbitas",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 289,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM ossos temporais",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 290,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM seios da face",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 291,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM ATM",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 292,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM pescoço",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 293,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM tórax",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 294,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM mama",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 690.0,
+  "exame_id": null
+ },
+ {
+  "id": 295,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM abdome superior",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 296,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM pelve ou bacia",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 297,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM pênis",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": 182
+ },
+ {
+  "id": 298,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM bolsa escrotal",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": 183
+ },
+ {
+  "id": 299,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM coluna - cervical, dorsal ou lombar",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 300,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM plexo braquial",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 301,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM segmento apendicular",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 302,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM mão",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 303,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM bacia",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 304,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM perna",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 305,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM tornozelo ou pé",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 306,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM articulação",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 307,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "Angio RM - crânio, pescoço, tórax, abdome superior ou pelve",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": null
+ },
+ {
+  "id": 308,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "Angio RM de aorta torácica",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": 217
+ },
+ {
+  "id": 309,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "Angio RM de aorta abdominal",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 480.0,
+  "exame_id": 218
+ },
+ {
+  "id": 310,
+  "tabela_id": 2,
+  "grupo": "ressonancia",
+  "procedimento": "RM coração",
+  "subgrupo": "Ressonância Magnética (RM)",
+  "valor": 1700.0,
+  "exame_id": null
+ }
+]

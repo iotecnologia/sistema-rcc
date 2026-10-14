@@ -1,0 +1,614 @@
+[
+ {
+  "convenio_id": 1,
+  "nome": "SISTEL",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PRATA",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE NACIONAL FLEX",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERFIL CPS",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERFIL SÃO PAULO",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "LIVRE ESCOLHA",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EFETIVO II",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE PLENO",
+  "atende": true,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "ABB INTERNACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "ABB NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "AMS POLO - AMS NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "AMS POLO - NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "AZALEIA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "CLINIC",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EFETIVO PLUS E",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EFETIVO PLUS Q",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "ELETROPAULO I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "ELETROPAULO II",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EMBRAER EXCLUSIVO",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EMBRAER NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EMBRAER PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "EMBRAER SELECT",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "FLEURY",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "FLEURY I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "FLEURY NACIONAL I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "FLEURY NACIONAL II",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "FLEURY NACIONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "IBM NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "IBM NACIONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "INTEGRADA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "INTEGRADA PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "KYNDRYL NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "KYNDRYL NACIONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "MOINHOS DE VENTO",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL ESPECIAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL II",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL III",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL RN2P",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL SL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NACIONAL 25",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NSN NACIONAL - NSN",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "NSN NACIONAL PLUS - NSN PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "ORQUIDEA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL ESSENCIAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL FUNC BR",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL FUNC BR+",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL IX",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL V",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL VII",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL VIII",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL XIII",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 21",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 22",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 23",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 24",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 26",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 400",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 500",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 600",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 700",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PLENO 231",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PLENO 232",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PREFERENCIAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PREMIUM",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE BRASKEM - NACIONAL I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE CSN INTERNACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE FIPECQ",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE GLOBO INTERNACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE GLOBO NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE IDEAL I",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE IDEAL II",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE IDEAL NAC",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE INTERNACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE MUTUA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE NACIONAL CSN",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE SCANIA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE SINERGY PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE SINERGY TOP",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE SISTEL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "REDE VIVO NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "RSC IDEAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "RSC NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SANTANDER MASTER",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SANTANDER TOP",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SAUDE BRADESCO - NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SCHULZ",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SIEMENS NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SIEMENS NACIONAL PLUS",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SMS NC",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "SMS NP",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "TCS/BRASIL TELECOM NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "TIM NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "TULIPA",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "VOTORANTIN",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "WHIRLPOOL NACIONAL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "XEROX DO BRASIL",
+  "atende": true,
+  "origem": "Lista de redes"
+ },
+ {
+  "convenio_id": 9,
+  "nome": "CLÁSSICO 100",
+  "atende": false,
+  "origem": "seção avulsa"
+ },
+ {
+  "convenio_id": 9,
+  "nome": "ESPECIAL 100",
+  "atende": true,
+  "origem": "seção avulsa"
+ }
+]

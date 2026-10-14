@@ -1,0 +1,1432 @@
+[
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Abdome Superior",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Abdome Total",
+  "exame_id": null,
+  "horarios": 5,
+  "minutos": 50,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Colangio (Hidro)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Entero RM",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Colangio + Abdômen Superior",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Colangio + Abd. Total",
+  "exame_id": null,
+  "horarios": 5,
+  "minutos": 50,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Primovist",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Crânio",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Crânio (Esclerose/Parkinson)",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Base do Crânio",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Planejamento",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Sela Túrcica (Hipófise)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Face",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "RM Coração c/ Marca-passo",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Talassemia (Ag. Rotina Dr. Juliano)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Pescoço",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Ouvido",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Órbita",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Pelve Feminina",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Fístula Fem/Masc",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "RM Mama",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Colunas (Cerv./Lombar/Dorsal)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Bolsa Escrotal",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Pênis",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Angio MMII",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Angio de Angio Abd.",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 1,
+  "exame_nome": "Angio Membro Sup. (exceto mão)",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "RM Tórax",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Arcos Costais (Ag. RM do Tórax)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Ombro",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Escápula",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Colunas (Cerv./Lombar/Dorsal)",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Plexo Braquial",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Plexo Sacral",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Quadril/Bacia",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Sacroilíaca",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Cóccix",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Púbis",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Braço",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Antebraço",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Cotovelo",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Tornozelo",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Mão",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Punho",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Coxo-femural (cada lado)",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Coxa",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Perna",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Pé/Antepé",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Joelho (+90kg)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": "+90kg",
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Joelho",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Pelve Fem.",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 2,
+  "exame_nome": "Gestante",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Crânio",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Crânio (Esclerose/Parkinson)",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Crânio + Espectroscopia",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Sela Túrcica (Hipófise)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Base do Crânio / Planejamento",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Crânio + Fluxo + Fluxo Liquórico",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "RM Coração (Unimed Cód. 46)",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "RM Coração (outros convênios)",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Face",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Órbita",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Pescoço",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Pênis/Bolsa Escrotal",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Ouvido/Ossos Temporais",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Pelve Masculina/Fístula",
+  "exame_id": null,
+  "horarios": 4,
+  "minutos": 40,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Próstata",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Abdome Superior (quando tiver próstata)",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio RM Crânio Arterial",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio RM Crânio Venosa",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Mão",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Pelve",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Pescoço",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Abdome Superior",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Aorta Tor.",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 3,
+  "exame_nome": "Angio Art. (Dr. Bacin/Dr. Tomas)",
+  "exame_id": null,
+  "horarios": 3,
+  "minutos": 30,
+  "contraste": "sim",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "ATM",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Peitoral Maior",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Tórax",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Esterno",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Tornozelo",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Perna",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Joelho",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Plexo Braquial",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Cóccix",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Púbis",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Pé/Antepé",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Bacia",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Plexo Sacral",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Colunas (Cerv./Lombar/Dorsal)",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Ombro/Escápula",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Cotovelo",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Braço",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Antebraço",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Cóccix",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Púbis",
+  "exame_id": null,
+  "horarios": 2,
+  "minutos": 20,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Punho",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Mão",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Quadril/Bacia",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Coxa",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Sacroilíaca",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Coxo-femural (cada lado)",
+  "exame_id": null,
+  "horarios": 1,
+  "minutos": 10,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Corpo Total Mieloma Múltiplo (manhã)",
+  "exame_id": null,
+  "horarios": 10,
+  "minutos": 100,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": "manhã"
+ },
+ {
+  "equipamento_id": 4,
+  "exame_nome": "Corpo Total LI Fraumeni (manhã)",
+  "exame_id": null,
+  "horarios": 7,
+  "minutos": 70,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": "manhã"
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Dorsal ou Torácica por Segmento",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Coxa ou Fêmur",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Quadril",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Punho",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Quadril Bilateral",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Punho Bilateral",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Ombro",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Joelho",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Bacia",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Articulação Sacra Ilíaca",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Coluna Lombar",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Coluna Cervical",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Crânio",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Órbita",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Angio Arterial",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Ouvidos / Mastoide – Ossos Temporais",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Hipófise",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 5,
+  "exame_nome": "Sela Túrcica",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC ABDOME SUPERIOR",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC ABDOME TOTAL",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC ART.TEMPORO MANDIBULARES",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC ARTICULACOES",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC COLUNA 3 SEG",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC CRANIO ORBITA SELA",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC FACE OU SEIOS DA FACE",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC LARINGE/PESCOÇO/GLAND.SALIVAR/RINOFARINGE",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC MANDIBULA",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC MASTOIDE OU OUVIDO",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC MAXILA E MANDIBULA",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC MAXILAR",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC ORBITAS",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC PELVE OU BACIA",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC PESCOCO",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC SEGMENTO APENDICULAR",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "TC TORAX",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 6,
+  "exame_nome": "ESCORE DE CALCIO (DR. PINHO)",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 7,
+  "exame_nome": "Angiotomografia",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": "iodado",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 7,
+  "exame_nome": "Coronárias",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": "iodado",
+  "condicao_paciente": null,
+  "periodo": null
+ },
+ {
+  "equipamento_id": 7,
+  "exame_nome": "Tomografia para Escore de Cálcio",
+  "exame_id": null,
+  "horarios": null,
+  "minutos": null,
+  "contraste": null,
+  "condicao_paciente": null,
+  "periodo": null
+ }
+]

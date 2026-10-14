@@ -1,0 +1,382 @@
+[
+ {
+  "id": 1,
+  "unidade_id": 1,
+  "setor": "Outros",
+  "local": "Setor de autorização",
+  "numeros": [
+   "5767"
+  ]
+ },
+ {
+  "id": 2,
+  "unidade_id": 1,
+  "setor": "Outros",
+  "local": "Limpeza",
+  "numeros": [
+   "5729"
+  ]
+ },
+ {
+  "id": 3,
+  "unidade_id": 1,
+  "setor": "Outros",
+  "local": "FATURAMENTO",
+  "numeros": null
+ },
+ {
+  "id": 4,
+  "unidade_id": 1,
+  "setor": "Térreo",
+  "local": "Manobristas",
+  "numeros": [
+   "5711"
+  ]
+ },
+ {
+  "id": 5,
+  "unidade_id": 1,
+  "setor": "Térreo",
+  "local": "Recepção",
+  "numeros": [
+   "5710",
+   "5730"
+  ]
+ },
+ {
+  "id": 6,
+  "unidade_id": 1,
+  "setor": "Térreo",
+  "local": "Entrega de resultados",
+  "numeros": [
+   "5705"
+  ]
+ },
+ {
+  "id": 7,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Recepção",
+  "numeros": [
+   "5701",
+   "5713"
+  ]
+ },
+ {
+  "id": 8,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Corredor",
+  "numeros": [
+   "5714"
+  ]
+ },
+ {
+  "id": 9,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Sala dos médicos",
+  "numeros": [
+   "5702"
+  ]
+ },
+ {
+  "id": 10,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Sala de doppler",
+  "numeros": [
+   "5740"
+  ]
+ },
+ {
+  "id": 11,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Sala densitometria óssea",
+  "numeros": [
+   "5718"
+  ]
+ },
+ {
+  "id": 12,
+  "unidade_id": 1,
+  "setor": "1° andar",
+  "local": "Sala almoxarifado",
+  "numeros": [
+   "5709"
+  ]
+ },
+ {
+  "id": 13,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "Recepção",
+  "numeros": [
+   "5703",
+   "5721"
+  ]
+ },
+ {
+  "id": 14,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "Sala envelopamento",
+  "numeros": [
+   "5722"
+  ]
+ },
+ {
+  "id": 15,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "Sala dos médicos",
+  "numeros": [
+   "5704"
+  ]
+ },
+ {
+  "id": 16,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "CT I",
+  "numeros": [
+   "5724"
+  ]
+ },
+ {
+  "id": 17,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "RM I",
+  "numeros": [
+   "5725"
+  ]
+ },
+ {
+  "id": 18,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "RM II",
+  "numeros": [
+   "5735"
+  ]
+ },
+ {
+  "id": 19,
+  "unidade_id": 1,
+  "setor": "2° andar",
+  "local": "RX",
+  "numeros": [
+   "5723"
+  ]
+ },
+ {
+  "id": 20,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "Recepção",
+  "numeros": [
+   "5743",
+   "5744"
+  ]
+ },
+ {
+  "id": 21,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "CT II",
+  "numeros": [
+   "5741"
+  ]
+ },
+ {
+  "id": 22,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "RM III",
+  "numeros": [
+   "5736"
+  ]
+ },
+ {
+  "id": 23,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "RM IV",
+  "numeros": [
+   "5772"
+  ]
+ },
+ {
+  "id": 24,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "Sala Dra. Bruna",
+  "numeros": [
+   "5765"
+  ]
+ },
+ {
+  "id": 25,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "Sala Dr. Gustavo",
+  "numeros": [
+   "5752"
+  ]
+ },
+ {
+  "id": 26,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "RH Gisely",
+  "numeros": [
+   "5733"
+  ]
+ },
+ {
+  "id": 27,
+  "unidade_id": 1,
+  "setor": "3° andar",
+  "local": "Administração Tânia",
+  "numeros": [
+   "5706"
+  ]
+ },
+ {
+  "id": 28,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "Roseli",
+  "numeros": [
+   "5700"
+  ]
+ },
+ {
+  "id": 29,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5770"
+  ]
+ },
+ {
+  "id": 30,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5751"
+  ]
+ },
+ {
+  "id": 31,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5747"
+  ]
+ },
+ {
+  "id": 32,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5755"
+  ]
+ },
+ {
+  "id": 33,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5727"
+  ]
+ },
+ {
+  "id": 34,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5728"
+  ]
+ },
+ {
+  "id": 35,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5732"
+  ]
+ },
+ {
+  "id": 36,
+  "unidade_id": 1,
+  "setor": "Call center",
+  "local": "CALL CENTER",
+  "numeros": [
+   "5788"
+  ]
+ },
+ {
+  "id": 37,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "RENATA UNIMED",
+  "numeros": [
+   "5780"
+  ]
+ },
+ {
+  "id": 38,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "LEILA",
+  "numeros": [
+   "5781"
+  ]
+ },
+ {
+  "id": 39,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "MAISA",
+  "numeros": [
+   "5782"
+  ]
+ },
+ {
+  "id": 40,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "ALEXANDRA",
+  "numeros": [
+   "5783"
+  ]
+ },
+ {
+  "id": 41,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "RENATA BRADESCO",
+  "numeros": [
+   "5784"
+  ]
+ },
+ {
+  "id": 42,
+  "unidade_id": 1,
+  "setor": "FATURAMENTO",
+  "local": "JOCELI",
+  "numeros": [
+   "5785"
+  ]
+ }
+]

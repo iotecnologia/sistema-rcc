@@ -1,0 +1,47 @@
+[
+ {
+  "id": 1,
+  "escopo": "equipamento",
+  "referencia": null,
+  "texto": "Colangio RM (Hidro RM) — jejum 8h absoluto.",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "equipamentosNotes"
+ },
+ {
+  "id": 2,
+  "escopo": "equipamento",
+  "referencia": null,
+  "texto": "Entero RM — chegar 40 minutos antes.",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "equipamentosNotes"
+ },
+ {
+  "id": 3,
+  "escopo": "equipamento",
+  "referencia": "RM 4",
+  "texto": "Paciente com neuroestimulador — agendar no RM4 (exame mais rápido).",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "equipamentosNotes"
+ },
+ {
+  "id": 4,
+  "escopo": "equipamento",
+  "referencia": "RM Unidade 2",
+  "texto": "Casa de Saúde — se o paciente for operado de tumor, reservar 2 horários.",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "equipamentosNotes"
+ },
+ {
+  "id": 5,
+  "escopo": "exame",
+  "referencia": "RX panorâmico de membros superiores",
+  "texto": "Perguntar o peso do paciente. O equipamento suporta até 100 kg.",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "linha falsa \"RX\" do catálogo"
+ }
+]
