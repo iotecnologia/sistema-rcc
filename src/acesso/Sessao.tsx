@@ -1,4 +1,4 @@
-// Login por e-mail + cargo. Mock: sem senha (a senha entra com o servidor, Fase 3).
+// Login por e-mail + cargo. Mock: a senha não é conferida (repositório público); a senha de verdade entra com o servidor (Fase 3).
 // Sessão some ao fechar o navegador (sessionStorage). Cadastro de cargos/usuários fica no navegador até existir o servidor.
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import base from '../dados/acesso.json';
@@ -12,7 +12,7 @@ interface Sessao extends Acesso {
   entrar(email: string): boolean; sair(): void; pode(pagina: string): boolean; salvar(a: Acesso): void;
 }
 
-const CHAVE_CAD = 'analiza:acesso';
+const CHAVE_CAD = 'analiza:acesso-v2';
 const CHAVE_SES = 'analiza:sessao';
 const ler = <T,>(s: Storage, k: string, p: T): T => { try { const v = s.getItem(k); return v ? (JSON.parse(v) as T) : p; } catch { return p; } };
 const gravar = (s: Storage, k: string, v: unknown) => { try { if (v === null) s.removeItem(k); else s.setItem(k, JSON.stringify(v)); } catch { /* sem armazenamento */ } };

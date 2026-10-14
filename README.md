@@ -59,16 +59,23 @@ Regra das camadas: **tela só chama `regras/`**, **`regras/` só recebe `BaseDad
 
 ## Telas
 
-Login pelo **e-mail**. Cada usuário tem um **cargo**, e o cargo define quais páginas abrem (página sem permissão aparece com cadeado).
-Cargos e usuários são cadastro em **Usuários e cargos** (só Administrador). Usuários de exemplo: `admin@rcc.exemplo`, `autorizacao@rcc.exemplo`, `atendimento@rcc.exemplo`.
+Login pelo **e-mail** da clínica. Cada usuário tem um **cargo**; o cargo define as páginas do menu.
+Mock (repositório público): a senha não é conferida. Usuários de exemplo: `admin@rcc.exemplo` (Administradora) e `atendimento@rcc.exemplo` (Atendimento).
 
-| Grupo | Páginas |
+| Menu | O que faz |
 |---|---|
-| Atendimento | Agendar (uma etapa por vez, resultado em 3 blocos) · Regras do convênio · Orçamento · Preparos · Telefones e endereços |
-| Autorização | Consulta completa · Convênios · Exames e códigos |
-| Cadastros | Médicos · Máquinas · Regras a confirmar · Usuários e cargos |
+| Visão geral | números da base, últimas consultas deste computador, avisos (agenda eventual, feriado) |
+| Consultar | convênio + exames (+ data do pedido, se tiver) → situação, datas, códigos, o que o pedido precisa ter, preparo |
+| **Autorização** · Convênios | cartões dos convênios com regras + resumo ao lado; os sem regras aparecem numa linha ("pedido vem autorizado") |
+| Agendar passo a passo | convênio → plano → exames → pedido médico → resultado, com travas (data do pedido opcional) |
+| Exames | só aparece depois da busca; código em cada convênio, máquina, preço particular, preparo |
+| Janela de agendamento | calendário de quando até quando dá para agendar |
+| **Atendimento** · Orçamento | desconto e parcelas automáticos pela forma de pagamento (cartão / PIX ou dinheiro) |
+| Médicos · Unidades e máquinas · Ramais | médicos e ramais só aparecem depois da busca |
+| **Administração** · Cadastros · Usuários | só administradora |
 
-Imprimir/PDF abre o **relatório** (cartão do Analiza antigo: cabeçalho RCC, título, paciente/data/atendente, conteúdo, total) e imprime só ele, preto no branco. WhatsApp e copiar mandam o texto.
+A busca entende o nome falado: "resso joelho", "tomo de tórax", "ultrassom barriga" (`src/regras/busca.ts`).
+Imprimir/PDF abre o **relatório** (cartão do Analiza antigo) e imprime só ele, preto no branco.
 
 ## Como as regras funcionam
 
@@ -89,7 +96,8 @@ Depois de gerar a base: copie os JSON para `src/dados/` e rode `npm test` antes 
 
 ## Limitações conhecidas (mock)
 
-- Login sem senha no mock (o repositório é público). A senha entra com o servidor (Fase 3). Cargos e usuários editados ficam salvos só no navegador até lá.
+- Login: a senha não é conferida no mock (o repositório é público). A senha entra com o servidor (Fase 3). Cargos e usuários editados ficam salvos só no navegador até lá.
+- Logos dos convênios: por enquanto, sigla colorida.
 - Máquina e médico são ligados ao exame **pelo nome**; 9 exames de RM/TC ainda não têm máquina (escanometria, radiocirurgia, planejamento oncológico, perfusão, reconstrução 3D, endorretal, PET, urotomografia). O teste `varredura` lista esses casos.
 - Os dados estão em JSON dentro do app; edição só pelo pipeline até a Fase 3.
-- Respostas pendentes da RCC (40 perguntas) aparecem em "Regras a confirmar".
+- Regras ainda não confirmadas pela RCC não aparecem como alerta: serão confirmadas antes de ir para produção.

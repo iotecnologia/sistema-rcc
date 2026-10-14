@@ -87,7 +87,7 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
   }
   const todas = [...geral.itens, ...exames.flatMap((e) => e.autorizacao.regras), ...combinacao];
   const pendentes = todas.filter((r) => PROBLEMA.includes(r.situacao)).filter((r, i, a) => a.findIndex((x) => x.id === r.id) === i);
-  if (situacao === 'pode_agendar' && (pendentes.length || janela.semInformacao.length)) { situacao = 'atencao'; motivos.push('Há regras a confirmar ou sem informação (veja abaixo)'); }
+  // regras ainda não confirmadas NÃO mudam a situação: a confirmação acontece antes de o sistema ir para produção
   return { convenio, geral, exames, combinacao, janela, situacao, motivos, pendentes };
 }
 

@@ -1,57 +1,57 @@
-// Exames: catálogo (TUSS) e, para o exame escolhido, como ele fica em CADA convênio + máquina e preparo.
+// Exames: só aparece algo depois da busca (pelo nome falado). Escolhido o exame: código em cada convênio, onde fazer, preço e preparo.
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
-import { autorizacaoDoExame } from '../regras/autorizacao';
+import { buscarExames, precoDoExame, type Achado } from '../regras/busca';
 import { agendaDoExame } from '../regras/agenda';
-import { norm } from '../regras/contexto';
+import { ondeTexto } from '../componentes/ResultadoView';
+import { brl } from '../util/formato';
+import { parcelas } from './Orcamento';
 
 export function Exames() {
   const b = useBase();
   const [q, setQ] = useState('');
-  const [mod, setMod] = useState('');
-  const [sel, setSel] = useState<number | null>(null);
-  const mods = [...new Set(b.exames.map((e) => e.modalidade))].sort();
-  const lista = useMemo(() => {
-    const p = norm(q).split(/\s+/).filter(Boolean);
-    return b.exames.filter((e) => (!mod || e.modalidade === mod) && p.every((x) => norm(`${e.nome} ${e.tuss ?? ''}`).includes(x))).slice(0, 200);
-  }, [b, q, mod]);
-  const e = sel ? b.exames.find((x) => x.id === sel) : null;
-  const porConv = useMemo(() => (e ? b.convenios.filter((c) => c.tem_regras).map((c) => ({ c, a: autorizacaoDoExame(b, c.slug, e) })) : []), [b, e]);
+  const [sel, setSel] = useState<Achado | null>(null);
+  const achados = useMemo(() => buscarExames(b, q, 12), [b, q]);
+  const e = sel?.exame;
+  const codigos = e ? b.codigos.filter((c) => c.exame_id === e.id) : [];
   const ag = e ? agendaDoExame(b, e) : null;
+  const part = e ? precoDoExame(b, e, 1, sel?.rotulo) : null;
+  const remido = e ? precoDoExame(b, e, 2, sel?.rotulo) : null;
+  const conv = (id: number) => b.convenios.find((c) => c.id === id);
 
   return (
     <>
-      <TituloPagina titulo={e ? e.nome : 'Exames'} sub={e ? `TUSS ${e.tuss ?? '—'} · ${e.modalidade}` : `${b.exames.length} exames no catálogo (TUSS). Escolha um para ver como ele fica em cada convênio.`}>
-        {e && <button type="button" className="btn2 ic" onClick={() => setSel(null)} title="Voltar para a lista" aria-label="Voltar para a lista"><Icone n="volta" /></button>}
-      </TituloPagina>
-      {!e && <>
-        <div className="barra">
-          <label className="cp f" style={{ flex: '2 1 320px' }}><span>Buscar</span><Icone n="busca" /><input type="search" value={q} onChange={(x) => setQ(x.target.value)} placeholder="Nome ou código TUSS…" /></label>
-          <label className="cp" style={{ flex: '0 1 220px' }}><span>Modalidade</span><select value={mod} onChange={(x) => setMod(x.target.value)}><option value="">Todas</option>{mods.map((m) => <option key={m}>{m}</option>)}</select></label>
+      <TituloPagina titulo="Exames" sub="Busque o exame do jeito que o paciente falou. Nada aparece antes da busca." />
+      <div className="barra"><label className="cp f" style={{ flex: '1 1 360px' }}><span>Buscar exame</span><Icone n="busca" />
+        <input type="search" autoFocus value={q} onChange={(x) => { setQ(x.target.value); setSel(null); }} placeholder="ex.: resso joelho, tomo de tórax, ultrassom abdome" /></label></div>
+      {!q.trim() ? <div className="bloco"><Vazio>Digite o exame. Ex.: “resso joelho”.</Vazio></div> : !achados.length ? <div className="bloco"><Vazio>Nenhum exame encontrado para “{q}”.</Vazio></div> : (
+        <div className="grade2">
+          <div className="pilha">
+            <Bloco titulo="Encontrado" extra={<span className="mut" style={{ fontSize: 12 }}>{achados.length} exame{achados.length > 1 ? 's' : ''}</span>}>
+              <table className="tab"><tbody>{achados.map((a) => (
+                <tr key={a.exame.id} className="clic" onClick={() => setSel(a)} style={sel?.exame.id === a.exame.id ? { background: 'var(--hover)' } : undefined}>
+                  <td><b>{a.rotulo}</b><div className="mut" style={{ fontSize: 12 }}>{a.rotulo !== a.exame.nome ? a.exame.nome + ' · ' : ''}TUSS {a.exame.tuss ?? '—'}</div></td>
+                </tr>
+              ))}</tbody></table>
+            </Bloco>
+            {e && <Bloco titulo="Código em cada convênio">
+              {codigos.length ? <table className="tab"><thead><tr><th>Convênio</th><th>Código</th><th>Tipo</th></tr></thead>
+                <tbody>{codigos.map((c) => { const cv = conv(c.convenio_id); return (
+                  <tr key={c.id}><td><Link to={`/consultar?convenio=${cv?.slug}&exame=${e.id}`}>{cv?.nome}</Link></td><td><span className="cod">{c.codigo}</span></td><td>{c.tipo === 'PACOTE' ? 'pacote' : c.tipo}</td></tr>
+                ); })}</tbody></table> : <Vazio>Nenhum convênio tem código próprio cadastrado: autorizar pelo TUSS {e.tuss ?? ''}.</Vazio>}
+            </Bloco>}
+          </div>
+          {e && ag ? <div className="pilha">
+            <Bloco titulo="Onde e quanto tempo"><div className="pad">{ondeTexto({ agenda: ag })}{ag.maquinas[0] && <div className="mut" style={{ fontSize: 12, marginTop: 4 }}>Peso máximo {ag.maquinas[0].pesoMaxKg} kg</div>}</div></Bloco>
+            <Bloco titulo="Particular"><div className="pad">{part ? <><b style={{ fontSize: 20 }}>{brl(part.valor)}</b> · até {parcelas(part.valor)}x
+              <div className="mut" style={{ fontSize: 12, marginTop: 4 }}>PIX ou dinheiro: {brl(part.valor * 0.95)}{remido ? ` · Sócio Remido: ${brl(remido.valor)}` : ''}</div></> : <span className="mut">Sem preço particular cadastrado para este exame.</span>}</div></Bloco>
+            <Bloco titulo="Preparo">{ag.preparos.length ? <div className="pad">{ag.preparos.map((p) => <details key={p.id}><summary>{p.titulo}</summary><div className="preparo-txt">{p.texto}</div></details>)}</div> : <Vazio>Sem preparo.</Vazio>}</Bloco>
+          </div> : <div className="bloco"><Vazio>Clique no exame para ver o código em cada convênio, onde fazer, o preço e o preparo.</Vazio></div>}
         </div>
-        <Bloco titulo={`${lista.length}${lista.length === 200 ? '+' : ''} exames`}>
-          <table className="tab"><thead><tr><th>TUSS</th><th>Exame</th><th>Modalidade</th></tr></thead>
-            <tbody>{lista.map((x) => <tr key={x.id} className="clic" onClick={() => setSel(x.id)}><td className="cod">{x.tuss ?? '—'}</td><td>{x.nome}</td><td className="mut">{x.modalidade}</td></tr>)}</tbody></table>
-        </Bloco>
-      </>}
-      {e && ag && <div className="grade2">
-        <Bloco titulo="Em cada convênio">
-          <table className="tab"><thead><tr><th>Convênio</th><th>Código</th><th>Cobertura</th><th>Regras</th></tr></thead>
-            <tbody>{porConv.map(({ c, a }) => (
-              <tr key={c.slug}><td><Link to={`/consultar?convenio=${c.slug}&exame=${e.id}`}>{c.nome}</Link></td>
-                <td>{a.codigos.length ? a.codigos.map((x) => <div key={x.codigo} className="cod">{x.codigo}</div>) : <span className="mut">—</span>}</td>
-                <td className={a.cobertura === 'sem_informacao' ? 'mut' : ''}>{a.coberturaTexto}</td><td>{a.regras.length ? a.regras.map((r) => <div key={r.id} className="mini">• {r.texto}</div>) : <span className="mut">—</span>}</td></tr>
-            ))}</tbody></table>
-        </Bloco>
-        <div className="pilha">
-          <Bloco titulo="Máquinas"><div className="pad">{ag.maquinas.length ? ag.maquinas.map((m, i) => <div key={i}>{m.maquina}: {m.exameNaMaquina}{m.horarios ? ` · ${m.horarios} horário(s)` : ''}</div>) : <span className="mut">Nenhuma máquina cadastrada.</span>}</div></Bloco>
-          <Bloco titulo="Médicos (US)"><div className="pad">{ag.medicos.length ? ag.medicos.map((m) => <div key={m.medico}>{m.medico}</div>) : <span className="mut">—</span>}</div></Bloco>
-          <Bloco titulo="Preparo">{ag.preparos.length ? <div className="pad">{ag.preparos.map((p) => <details key={p.id}><summary>{p.titulo}</summary><div className="preparo-txt">{p.texto}</div></details>)}</div> : <Vazio>Sem preparo cadastrado.</Vazio>}</Bloco>
-        </div>
-      </div>}
+      )}
     </>
   );
 }

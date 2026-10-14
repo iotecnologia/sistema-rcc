@@ -1,17 +1,18 @@
 // Agendar (página de Atendimento), com TRAVAS: só avança quando a etapa está certa.
-// 1 Convênio · 2 Plano · 3 Pedido médico · 4 Exames e paciente · 5 Resultado
+// 1 Convênio · 2 Plano · 3 Exames e paciente · 4 Pedido médico · 5 Resultado (igual ao protótipo aprovado)
 import { useMemo, useState, type ReactNode } from 'react';
 import { useBase } from '../componentes/Dados';
 import { BotoesSaida, TituloPagina } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
-import { ResultadoSimples, relatorioAgendamento } from '../componentes/ResultadoSimples';
+import { relatorioAgendamento } from '../componentes/ResultadoSimples';
+import { ResultadoView } from '../componentes/ResultadoView';
 import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { br, hojeIso, somarDias } from '../regras/calendario';
 import { modalidadeBase } from '../regras/contexto';
 
 type SN = 'sim' | 'nao' | null;
-const PASSOS = ['Convênio', 'Plano', 'Pedido médico', 'Exames e paciente', 'Resultado'];
+const PASSOS = ['Convênio', 'Plano', 'Exames', 'Pedido médico', 'Resultado'];
 
 function SimNao({ v, set }: { v: SN; set: (x: SN) => void }) {
   return (
@@ -56,15 +57,14 @@ export function PassoAPasso() {
   if (cfg?.exige_cid) perguntas.push({ k: 'cid', txt: 'Todos os exames têm CID ou indicação clínica?', precisa: 'sim' });
   if (cfg?.aceita_multipla_escolha === false) perguntas.push({ k: 'multipla', txt: 'O pedido é de múltipla escolha (exames marcados com X)?', precisa: 'nao' });
   if (cfg?.aceita_outro_estado === false) perguntas.push({ k: 'estado', txt: 'O médico é de OUTRO estado (CRM fora de SP)?', precisa: 'nao' });
-  const trava3 = !dataPedido ? 'Digite a data do pedido médico'
-    : dataPedido > hoje ? 'A data do pedido está no futuro — confira'
-    : pedidoVence && pedidoVence < hoje ? `Pedido VENCIDO em ${br(pedidoVence)} — o paciente precisa de um pedido novo`
+  const trava3 = dataPedido && dataPedido > hoje ? 'A data do pedido está no futuro — confira'
+    : dataPedido && pedidoVence && pedidoVence < hoje ? `Pedido VENCIDO em ${br(pedidoVence)} — o paciente precisa de um pedido novo`
     : conselhos.length && !conselho ? 'Escolha o conselho do médico que pediu (está no carimbo)'
     : consSel && !consSel.aceita ? `Este convênio NÃO aceita pedido de ${consSel.conselho}`
     : perguntas.find((p) => R(p.k) === null) ? 'Responda todas as perguntas'
     : perguntas.find((p) => R(p.k) !== p.precisa) ? 'O pedido não está de acordo com a regra do convênio (veja em vermelho)' : null;
 
-  const resultado = useMemo(() => (c && exames.length && dataPedido ? consultar(b, { convenio: conv, exames, dataPedido, hoje }) : null),
+  const resultado = useMemo(() => (c && exames.length ? consultar(b, { convenio: conv, exames, dataPedido: dataPedido || null, hoje }) : null),
     [b, c, conv, exames, dataPedido, hoje]);
   const pesoN = Number(peso) || 0;
   const limites = [...new Set(exames.map((x) => modalidadeBase(b.exames.find((e) => e.id === x.exameId)!)))]
@@ -74,7 +74,7 @@ export function PassoAPasso() {
     : resultado?.situacao === 'nao_pode' && !resultado.janela.pedidoVencido ? resultado.motivos.join(' · ')
     : passouPeso ? `Peso acima do limite da ${passouPeso.m} (${passouPeso.kg} kg)` : null;
 
-  const travas = [trava1, trava2, trava3, trava4, null];
+  const travas = [trava1, trava2, trava4, trava3, null];
   const podeIr = (i: number) => travas.slice(0, i).every((t) => !t);
 
   return (
@@ -120,11 +120,11 @@ export function PassoAPasso() {
           {trava2 && planos.length > 0 ? <Trava>{trava2}</Trava> : planoSel && <Certo>Plano {planoSel.nome}: atende</Certo>}
         </>}
 
-        {passo === 2 && <>
+        {passo === 3 && <>
           <h2>Confira o pedido médico</h2>
-          <label className="campo" style={{ maxWidth: 260 }}>Data do pedido<input type="date" value={dataPedido} max={hoje} onChange={(e) => setDataPedido(e.target.value)} style={{ paddingLeft: 12 }} /></label>
+          <label className="campo" style={{ maxWidth: 360 }}>Data do pedido (se tiver)<input type="date" value={dataPedido} max={hoje} onChange={(e) => setDataPedido(e.target.value)} style={{ paddingLeft: 12 }} /></label>
           {pedidoVence && <p className="ajuda">Pedido vale até <b>{br(pedidoVence)}</b> ({cfg?.validade_pedido_dias} dias corridos).</p>}
-          {!cfg?.validade_pedido_dias && dataPedido && <p className="ajuda">Validade do pedido: sem informação para este convênio — confirmar com {c?.responsavel}.</p>}
+          {!dataPedido && <p className="ajuda">Pedido sem data? Deixe em branco. Confirme com {c?.responsavel ?? 'o convênio'} se ele aceita pedido sem data.</p>}
           {conselhos.length > 0 && (
             <label className="campo" style={{ maxWidth: 420 }}>Conselho do médico que pediu
               <select value={conselho} onChange={(e) => setConselho(e.target.value)}>
@@ -142,15 +142,22 @@ export function PassoAPasso() {
           {trava3 ? <Trava>{trava3}</Trava> : <Certo>Pedido conferido.</Certo>}
         </>}
 
-        {passo === 3 && <>
-          <h2>Quais exames? E o paciente</h2>
+        {passo === 2 && <>
+          <h2>Quais exames estão no pedido médico?</h2>
           <div className="barra" style={{ margin: 0 }}><SeletorExames convenio={conv} escolhidos={exames} mudar={setExames} /></div>
           <label className="campo" style={{ maxWidth: 220 }}>Peso do paciente (kg)<input type="number" min={0} value={peso} onChange={(e) => setPeso(e.target.value)} style={{ paddingLeft: 12 }} /></label>
           {resultado && resultado.exames.flatMap((e) => e.agenda.avisosPaciente).filter((a, i, arr) => arr.findIndex((y) => y.id === a.id) === i).map((a) => <div key={a.id} className="mini">• {a.texto}</div>)}
           {trava4 ? <Trava>{trava4}</Trava> : <Certo>Exames liberados para continuar.</Certo>}
         </>}
 
-        {passo === 4 && resultado && <ResultadoSimples r={resultado} />}
+        {passo === 4 && resultado && <>
+          <div className={'faixa ' + (resultado.situacao === 'nao_pode' ? 'no' : resultado.situacao === 'atencao' ? 'at' : 'ok')} style={{ marginBottom: 16 }}>
+            <Icone n={resultado.situacao === 'nao_pode' ? 'x' : 'ok'} />
+            <div className="txt"><b style={{ fontSize: 20 }}>{resultado.situacao === 'nao_pode' ? 'NÃO AGENDAR' : resultado.situacao === 'atencao' ? 'ATENÇÃO' : 'PODE AGENDAR'}</b>
+              <span>{resultado.situacao === 'nao_pode' ? resultado.motivos.join(' · ') : 'Pedido conferido. Siga os códigos e as datas abaixo.'}</span></div>
+          </div>
+          <ResultadoView r={resultado} dataPedido={dataPedido || null} />
+        </>}
 
         <div className="rodape-etapa">
           <button type="button" className="btn-grande" disabled={passo === 0} onClick={() => setPasso(passo - 1)}><Icone n="volta" />Voltar</button>

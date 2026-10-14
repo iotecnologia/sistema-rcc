@@ -10,6 +10,8 @@ const P: Record<string, string[]> = {
   ramal: ['M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z'],
   orcamento: ['M12 2v20', 'M17 6H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H6'],
   pendencia: ['M12 3l10 18H2z', 'M12 10v5', 'M12 18h.01'],
+  lista: ['M9 6h11', 'M9 12h11', 'M9 18h11', 'M4 6h.01', 'M4 12h.01', 'M4 18h.01'],
+  chave: ['M8 15a4 4 0 1 0 0-.01', 'M11 12l9-9', 'M17 6l3 3', 'M14 9l2 2'],
   tema: ['M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z'],
   sair: ['M15 4h4v16h-4', 'M10 8l-4 4 4 4', 'M6 12h11'],
   imprimir: ['M6 9V3h12v6', 'M6 18H4v-7h16v7h-2', 'M6 14h12v7H6z'],

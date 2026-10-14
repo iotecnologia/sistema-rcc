@@ -1,10 +1,10 @@
-// Busca de exame no catálogo + exames escolhidos (com quantidade, para articulação/coluna/bilateral).
+// Busca de exame pelo nome falado (regras/busca.ts) + exames escolhidos (com quantidade, para articulação/coluna/bilateral).
 import { useMemo, useState } from 'react';
 import { useBase } from './Dados';
 import { Icone } from './Icone';
-import { norm } from '../regras/contexto';
+import { buscarExames } from '../regras/busca';
 
-export interface Escolhido { exameId: number; quantidade: number }
+export interface Escolhido { exameId: number; quantidade: number; rotulo?: string }
 
 const ROTULO: Record<string, string> = { RESSONANCIA: 'RM', ANGIORRESSONANCIA: 'Angio-RM', TOMOGRAFIA: 'TC', ANGIOTOMOGRAFIA: 'Angio-TC',
   ULTRASSOM: 'US', DOPPLER: 'Doppler', RX: 'RX', MAMOGRAFIA: 'Mamo', DENSITOMETRIA: 'Densito', OUTROS: 'Outros', PROCEDIMENTO: 'Proced.' };
@@ -16,18 +16,12 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
   const [q, setQ] = useState('');
   const conv = b.convenios.find((c) => c.slug === convenio);
   const comCodigo = useMemo(() => new Set(conv ? b.codigos.filter((c) => c.convenio_id === conv.id && c.exame_id).map((c) => c.exame_id) : []), [b, conv]);
-  const sugestoes = useMemo(() => {
-    const t = norm(q.trim());
-    if (t.length < 2) return [];
-    const palavras = t.split(/\s+/);
-    return b.exames
-      .filter((e) => !escolhidos.some((x) => x.exameId === e.id))
-      .filter((e) => { const h = norm(`${e.nome} ${e.tuss ?? ''} ${ROTULO[e.modalidade] ?? ''}`); return palavras.every((p) => h.includes(p)); })
-      .sort((a, b2) => Number(comCodigo.has(b2.id)) - Number(comCodigo.has(a.id)))
-      .slice(0, 8);
-  }, [b, q, escolhidos, comCodigo]);
+  const sugestoes = useMemo(() => buscarExames(b, q, 30)
+    .filter((x) => !escolhidos.some((y) => y.exameId === x.exame.id))
+    .sort((a, c) => Number(comCodigo.has(c.exame.id)) - Number(comCodigo.has(a.exame.id)))
+    .slice(0, 8), [b, q, escolhidos, comCodigo]);
 
-  const add = (id: number) => { mudar([...escolhidos, { exameId: id, quantidade: 1 }]); setQ(''); };
+  const add = (id: number, rotulo: string) => { mudar([...escolhidos, { exameId: id, quantidade: 1, rotulo }]); setQ(''); };
   const qtd = (id: number, d: number) => mudar(escolhidos.map((x) => (x.exameId === id ? { ...x, quantidade: Math.max(1, x.quantidade + d) } : x)));
   const tirar = (id: number) => mudar(escolhidos.filter((x) => x.exameId !== id));
 
@@ -37,14 +31,14 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
         <span><span className="passo">2</span>Exame</span>
         <Icone n="busca" />
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} disabled={desativado} autoComplete="off"
-          placeholder={desativado ? 'Escolha o convênio primeiro' : 'Digite o exame ou o código TUSS… ex.: RM joelho, 41001230'} />
+          placeholder={desativado ? 'Escolha o convênio primeiro' : 'Digite como o paciente falou (ex.: resso joelho, tomo de tórax)'} />
       </label>
       {sugestoes.length > 0 && (
         <div className="sugestoes" role="listbox" aria-label="Exames encontrados" style={{ flexBasis: '100%', margin: 0 }}>
-          {sugestoes.map((e) => (
-            <button type="button" key={e.id} onClick={() => add(e.id)}>
-              <Icone n="mais" />{e.nome}
-              <small>{ROTULO[e.modalidade] ?? e.modalidade}{e.tuss ? ` · TUSS ${e.tuss}` : ''}{comCodigo.has(e.id) ? ' · tem código no convênio' : ''}</small>
+          {sugestoes.map(({ exame: e, rotulo }) => (
+            <button type="button" key={e.id} onClick={() => add(e.id, rotulo)}>
+              <Icone n="mais" />{rotulo}
+              <small>{rotulo !== e.nome ? e.nome + ' · ' : ''}{ROTULO[e.modalidade] ?? e.modalidade}{e.tuss ? ` · TUSS ${e.tuss}` : ''}</small>
             </button>
           ))}
         </div>
@@ -55,7 +49,7 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
             const e = b.exames.find((y) => y.id === x.exameId)!;
             return (
               <span className="chip" key={x.exameId}>
-                {e.nome}
+                {x.rotulo ?? e.nome}
                 <span className="qtd" title="Quantidade (ex.: lados, articulações, segmentos)">
                   <button type="button" onClick={() => qtd(x.exameId, -1)} aria-label="Diminuir quantidade"><Icone n="menos" /></button>
                   <span>{x.quantidade}</span>

@@ -50,7 +50,7 @@ export function Usuarios() {
         <Bloco titulo="Cargos e páginas" extra={<button type="button" className="btn2 ic" disabled={!ed} onClick={novoCargo} title="Novo cargo" aria-label="Novo cargo"><Icone n="mais" /></button>}>
           <div style={{ overflowX: 'auto' }}>
             <table className="tab matriz"><thead>
-              <tr><th rowSpan={2}>Cargo</th>{GRUPOS.map((g) => <th key={g} colSpan={PAGINAS.filter((p) => p.grupo === g).length}>{g}</th>)}<th rowSpan={2} /></tr>
+              <tr><th rowSpan={2}>Cargo</th>{GRUPOS.map((g) => <th key={g || 'geral'} colSpan={PAGINAS.filter((p) => p.grupo === g).length}>{g || 'Geral'}</th>)}<th rowSpan={2} /></tr>
               <tr>{PAGINAS.map((p) => <th key={p.id} className="rot-pag">{p.nome}</th>)}</tr>
             </thead>
               <tbody>{cargos.map((c) => {

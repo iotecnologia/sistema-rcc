@@ -8,20 +8,20 @@ import { repoJson } from './repositorio/repo-json';
 import { SessaoProvider, useSessao } from './acesso/Sessao';
 import { PAGINAS } from './acesso/paginas';
 import { Login } from './telas/Login';
-import { PassoAPasso } from './telas/PassoAPasso';
-import { RegrasConvenio } from './telas/RegrasConvenio';
-import { Orcamento } from './telas/Orcamento';
-import { Contatos, Maquinas, Medicos, Preparos } from './telas/Atendimento';
+import { VisaoGeral } from './telas/VisaoGeral';
 import { Consultar } from './telas/Consultar';
 import { Convenios } from './telas/Convenios';
+import { PassoAPasso } from './telas/PassoAPasso';
 import { Exames } from './telas/Exames';
-import { Pendencias } from './telas/Pendencias';
+import { Janela } from './telas/Janela';
+import { Orcamento } from './telas/Orcamento';
+import { Medicos, Ramais, Unidades } from './telas/Atendimento';
+import { Cadastros } from './telas/Cadastros';
 import { Usuarios } from './telas/Usuarios';
 
 const TELAS: Record<string, ReactNode> = {
-  agendar: <PassoAPasso />, convenio: <RegrasConvenio />, orcamento: <Orcamento />, preparos: <Preparos />, contatos: <Contatos />,
-  consultar: <Consultar />, convenios: <Convenios />, exames: <Exames />,
-  medicos: <Medicos />, maquinas: <Maquinas />, pendencias: <Pendencias />, usuarios: <Usuarios />,
+  inicio: <VisaoGeral />, consultar: <Consultar />, convenios: <Convenios />, agendar: <PassoAPasso />, exames: <Exames />, janela: <Janela />,
+  orcamento: <Orcamento />, medicos: <Medicos />, unidades: <Unidades />, ramais: <Ramais />, cadastros: <Cadastros />, usuarios: <Usuarios />,
 };
 
 function Rotas() {
@@ -31,9 +31,9 @@ function Rotas() {
   return (
     <Routes>
       <Route element={<Shell />}>
-        <Route index element={inicio ? <Navigate to={inicio.rota} replace /> : <Vazio>Seu cargo não tem nenhuma página liberada. Fale com o administrador.</Vazio>} />
+        <Route index element={inicio ? <Navigate to={inicio.rota} replace /> : <Vazio>Seu cargo não tem nenhuma página liberada. Fale com a administração.</Vazio>} />
         {PAGINAS.map((p) => (
-          <Route key={p.id} path={p.rota.slice(1)} element={s.pode(p.id) ? TELAS[p.id] : <Vazio>Sem permissão para abrir “{p.nome}”. Fale com o administrador.</Vazio>} />
+          <Route key={p.id} path={p.rota.slice(1)} element={s.pode(p.id) ? TELAS[p.id] : <Vazio>Sem permissão para abrir “{p.nome}”. Fale com a administração.</Vazio>} />
         ))}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
