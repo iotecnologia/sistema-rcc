@@ -39,7 +39,7 @@ export function VisaoGeral() {
       </TituloPagina>
       <QuadroAvisos />
 
-      <section className="bloco consulta-rapida">
+      <section className="bloco consulta-rapida" style={{ overflow: 'visible', position: 'relative', zIndex: 5 }}>
         <div className="bloco-cab"><h3>Consulta rápida</h3><span className="mut" style={{ fontSize: 12 }}>escolha o convênio e digite o exame como o paciente falou</span></div>
         <div className="barra" style={{ margin: 0, padding: '12px 16px' }}>
           <ComboConvenio valor={conv} mudar={setConv} flex="0 1 300px" />
