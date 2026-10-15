@@ -1,9 +1,10 @@
 // Resultado da consulta (igual ao protótipo aprovado): situação e datas no topo; à esquerda como autorizar e quando/onde;
 // à direita o que o pedido precisa ter e o que falar ao paciente. Sem código de regra, sem "fonte", sem etiqueta técnica.
+import { useState, type ReactNode } from 'react';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
-import { Bloco, Kpi } from './Comuns';
+import { Kpi } from './Comuns';
 import { Icone } from './Icone';
 import { useBase } from './Dados';
 import { calcularJanela } from '../regras/janela';
@@ -27,6 +28,29 @@ export function ondeTexto(e: { agenda: AgendaExame }): string {
   return '—';
 }
 
+/** Um passo da linha de raciocínio: número + pergunta + resposta curta. */
+function Passo({ n, titulo, sub, extra, children }: { n: number; titulo: string; sub?: string; extra?: ReactNode; children: ReactNode }) {
+  return (
+    <section className="passo-bloco">
+      <div className="passo-num">{n}</div>
+      <div className="passo-corpo"><h3>{titulo}{(sub || extra) && <small>{sub}{extra}</small>}</h3>{children}</div>
+    </section>
+  );
+}
+
+/** Lista curta: mostra 3 linhas e o resto em "ver mais". */
+function Lista({ itens, marcador = 'ponto', vazio }: { itens: ReactNode[]; marcador?: 'ponto' | 'check'; vazio?: string }) {
+  const [tudo, setTudo] = useState(false);
+  if (!itens.length) return vazio ? <p className="mut" style={{ margin: 0 }}>{vazio}</p> : null;
+  const mostra = tudo ? itens : itens.slice(0, 3);
+  return (
+    <>
+      <ul className={'passo-lista ' + marcador}>{mostra.map((x, k) => <li key={k}>{x}</li>)}</ul>
+      {itens.length > 3 && <button type="button" className="ver-mais" onClick={() => setTudo(!tudo)}>{tudo ? 'ver menos' : `ver mais (${itens.length - 3})`}</button>}
+    </>
+  );
+}
+
 export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: string | null }) {
   const b = useBase();
   const j = r.janela;
@@ -48,63 +72,61 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             : r.geral.validadePedidoDias ? `pedido vale ${r.geral.validadePedidoDias} dias · informe a data do pedido` : `pedido sem data: confirme com ${resp}`} />
         <Kpi cor="#64748b" rot="Onde autorizar" txt val={<span style={{ fontSize: 17 }}>{r.geral.portal ? r.geral.portal.rotulo : resp}</span>} det={`${r.convenio.nome}${r.geral.portal ? ' · ' + resp : ''}`} />
       </div>
-      {r.motivos.length > 1 && <div className={'faixa ' + (r.situacao === 'nao_pode' ? 'no' : 'at')}><div className="txt"><ul>{r.motivos.map((m) => <li key={m}>{m}</li>)}</ul></div></div>}
-
-      <div className="grade2">
-        <div className="pilha">
-          <Bloco titulo="Como autorizar" extra={<span className="mut" style={{ fontSize: 12 }}>{r.convenio.nome}</span>}>
-            <table className="tab">
-              <thead><tr><th>Exame</th><th>Código</th><th>Observação</th></tr></thead>
-              <tbody>{r.exames.map((e) => {
-                const a = e.autorizacao;
-                const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...a.regras.map((x) => x.texto)];
-                return (
-                  <tr key={a.exame.id}>
-                    <td><b>{a.exame.nome}</b>{e.quantidade > 1 && <div className="mut" style={{ fontSize: 12 }}>quantidade: {e.quantidade}</div>}</td>
-                    <td>{a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código</span>}</td>
-                    <td>{obs.length ? obs.map((o) => <div key={o}>{o}</div>) : a.codigos.some((c) => c.tipo === 'TUSS') ? 'Código TUSS.' : '—'}</td>
-                  </tr>
-                );
-              })}</tbody>
-            </table>
-            {r.combinacao.length > 0 && <div style={{ padding: '10px 16px', fontSize: 13 }}><b>Por causa da combinação de exames:</b>{r.combinacao.map((x) => <div key={x.id}>• {x.texto}</div>)}</div>}
-          </Bloco>
-          <Bloco titulo="Quando e onde">
-            <table className="tab">
-              <thead><tr><th>Exame</th><th>A partir de</th><th>Prazo</th><th>Máquina · médico</th></tr></thead>
-              <tbody>{r.exames.map((e) => {
-                const p = prazoDe(e);
-                return (
-                  <tr key={e.autorizacao.exame.id}>
-                    <td><b>{e.autorizacao.exame.nome}</b>{e.agenda.avisos.map((x) => <div key={x.id} className="mut" style={{ fontSize: 12, marginTop: 3 }}>{x.texto}</div>)}</td>
-                    <td><b>{p?.aPartirDe ? `${nomeDia(p.aPartirDe)} ${br(p.aPartirDe).slice(0, 5)}` : '—'}</b></td>
-                    <td className="mut">{p?.motivo ?? '—'}</td>
-                    <td>{ondeTexto(e)}</td>
-                  </tr>
-                );
-              })}</tbody>
-            </table>
-          </Bloco>
-        </div>
-        <div className="pilha">
-          <Bloco titulo="O pedido médico precisa ter">
-            <ul className="checks">{r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c, i) => (
-              <li key={i}><span className="bx" /><span>{c.texto}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</span></li>
-            ))}</ul>
-          </Bloco>
-          <Bloco titulo="Fale para o paciente">
-            <ul className="feed">{r.exames.map((e) => (
-              <li key={e.autorizacao.exame.id}>
-                <span className="dot"><Icone n="medico" /></span>
-                <div><b>{e.autorizacao.exame.nome}</b>
-                  {e.agenda.preparos.map((p) => <details key={p.id}><summary>{p.titulo}</summary><div className="preparo-txt">{p.texto}</div></details>)}
-                  {e.agenda.avisosPaciente.map((a) => <div key={a.id} style={{ fontSize: 13 }}><b>Pergunte:</b> {a.texto}</div>)}
-                  {!e.agenda.preparos.length && !e.agenda.avisosPaciente.length && <div className="mut" style={{ fontSize: 12 }}>Sem preparo.</div>}
-                </div>
-              </li>
-            ))}</ul>
-          </Bloco>
-        </div>
+      <div className="passos-resultado">
+        <Passo n={1} titulo="Posso agendar?">
+          {r.situacao === 'pode_agendar' && !r.motivos.length ? <p className="ok-frase">Sim. Tudo dentro das regras do convênio.</p>
+            : <Lista itens={r.motivos.map((m) => <span key={m}>{m}</span>)} />}
+        </Passo>
+        <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
+          <Lista marcador="check" itens={[
+            ...r.combinacao.map((x) => <span key={x.id}><b>{x.texto}</b></span>),
+            ...r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <span key={x.id}><b>{e.autorizacao.exame.nome}:</b> {x.texto}</span>)),
+            ...r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => <span key={c.texto}>{c.texto}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</span>),
+          ]} vazio="Nada especial para conferir." />
+        </Passo>
+        <Passo n={3} titulo="Como peço a autorização?" sub={`${resp}${r.geral.portal ? ' · ' : ''}`} extra={r.geral.portal && <a href={r.geral.portal.url} target="_blank" rel="noopener noreferrer">{r.geral.portal.rotulo}</a>}>
+          {r.exames.map((e) => {
+            const a = e.autorizacao;
+            const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...a.regras.filter((x) => x.molde !== 'M18').map((x) => x.texto)];
+            return (
+              <div key={a.exame.id} className="passo-exame">
+                <div className="passo-exame-cab"><b>{a.exame.nome}</b>{e.quantidade > 1 && <span className="mut"> · {e.quantidade}x</span>}
+                  {a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código cadastrado</span>}</div>
+                {obs.length > 0 && <Lista itens={obs.map((o) => <span key={o}>{o}</span>)} />}
+              </div>
+            );
+          })}
+        </Passo>
+        <Passo n={4} titulo="Quando e onde marcar?">
+          {r.exames.map((e) => {
+            const p = prazoDe(e);
+            const internos = e.agenda.avisos.filter((x) => x.molde !== 'M26');
+            return (
+              <div key={e.autorizacao.exame.id} className="passo-exame">
+                <div className="passo-exame-cab"><b>{e.autorizacao.exame.nome}</b>
+                  <span>a partir de <b>{p.aPartirDe ? `${nomeDia(p.aPartirDe)} ${br(p.aPartirDe).slice(0, 5)}` : '—'}</b> <span className="mut">({p.motivo})</span></span></div>
+                <div className="passo-linha"><Icone n="maquina" />{ondeTexto(e)}</div>
+                {internos.length > 0 && <Lista itens={internos.map((x) => <span key={x.id}>{x.texto}</span>)} />}
+              </div>
+            );
+          })}
+        </Passo>
+        <Passo n={5} titulo="O que falo para o paciente?">
+          {r.exames.map((e) => {
+            const prep = e.agenda.avisos.filter((x) => x.molde === 'M26');
+            const nada = !e.agenda.preparos.length && !prep.length && !e.agenda.avisosPaciente.length;
+            return (
+              <div key={e.autorizacao.exame.id} className="passo-exame">
+                <div className="passo-exame-cab"><b>{e.autorizacao.exame.nome}</b></div>
+                {nada ? <p className="mut" style={{ margin: 0 }}>Sem preparo.</p> : <Lista itens={[
+                  ...e.agenda.preparos.map((pp) => <details key={pp.id}><summary>{pp.titulo}</summary><div className="preparo-txt">{pp.texto}</div></details>),
+                  ...prep.map((x) => <span key={x.id}>{x.texto}</span>),
+                  ...e.agenda.avisosPaciente.map((a) => <span key={a.id}><b>Pergunte:</b> {a.texto}</span>),
+                ]} />}
+              </div>
+            );
+          })}
+        </Passo>
       </div>
     </>
   );

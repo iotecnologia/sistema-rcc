@@ -6,9 +6,12 @@ import { Shell } from './componentes/Shell';
 import { Vazio } from './componentes/Comuns';
 import { repoJson } from './repositorio/repo-json';
 import { SessaoProvider, useSessao } from './acesso/Sessao';
+import { AvisosProvider } from './acesso/Avisos';
+import { Avisos } from './telas/Avisos';
 import { PAGINAS } from './acesso/paginas';
 import { Login } from './telas/Login';
 import { VisaoGeral } from './telas/VisaoGeral';
+import { VisaoGeralAnterior } from './telas/VisaoGeralAnterior';
 import { Consultar } from './telas/Consultar';
 import { Convenios } from './telas/Convenios';
 import { PassoAPasso } from './telas/PassoAPasso';
@@ -21,7 +24,7 @@ import { Usuarios } from './telas/Usuarios';
 
 const TELAS: Record<string, ReactNode> = {
   inicio: <VisaoGeral />, consultar: <Consultar />, convenios: <Convenios />, agendar: <PassoAPasso />, exames: <Exames />, janela: <Janela />,
-  orcamento: <Orcamento />, medicos: <Medicos />, unidades: <Unidades />, ramais: <Ramais />, cadastros: <Cadastros />, usuarios: <Usuarios />,
+  orcamento: <Orcamento />, medicos: <Medicos />, unidades: <Unidades />, ramais: <Ramais />, avisos: <Avisos />, cadastros: <Cadastros />, usuarios: <Usuarios />,
 };
 
 function Rotas() {
@@ -35,6 +38,8 @@ function Rotas() {
         {PAGINAS.map((p) => (
           <Route key={p.id} path={p.rota.slice(1)} element={s.pode(p.id) ? TELAS[p.id] : <Vazio>Sem permissão para abrir “{p.nome}”. Fale com a administração.</Vazio>} />
         ))}
+        {/* comparação: versão anterior da Visão geral (decisão pendente) */}
+        <Route path="inicio-anterior" element={s.pode('inicio') ? <VisaoGeralAnterior /> : <Navigate to="/" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
@@ -45,7 +50,7 @@ export default function App() {
   return (
     <DadosProvider repo={repoJson}>
       <SessaoProvider>
-        <HashRouter><Rotas /></HashRouter>
+        <AvisosProvider><HashRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><Rotas /></HashRouter></AvisosProvider>
       </SessaoProvider>
     </DadosProvider>
   );

@@ -1,10 +1,39 @@
 {
   "cargos": [
-    { "id": "administrador", "nome": "Administradora", "paginas": ["*"] },
-    { "id": "atendimento", "nome": "Atendimento", "paginas": ["inicio", "consultar", "convenios", "agendar", "exames", "janela", "orcamento", "medicos", "unidades", "ramais"] }
+    {
+      "id": "administrador",
+      "nome": "Administradora",
+      "paginas": [
+        "*"
+      ]
+    },
+    {
+      "id": "atendimento",
+      "nome": "Atendimento",
+      "paginas": [
+        "inicio",
+        "consultar",
+        "convenios",
+        "agendar",
+        "exames",
+        "janela",
+        "orcamento",
+        "medicos",
+        "unidades",
+        "ramais"
+      ]
+    }
   ],
   "usuarios": [
-    { "email": "admin@rcc.exemplo", "nome": "Administradora", "cargo": "administrador" },
-    { "email": "atendimento@rcc.exemplo", "nome": "Atendimento", "cargo": "atendimento" }
+    {
+      "email": "admin@rcc.exemplo",
+      "nome": "Administradora",
+      "cargo": "administrador"
+    },
+    {
+      "email": "atendimento@rcc.exemplo",
+      "nome": "Atendimento",
+      "cargo": "atendimento"
+    }
   ]
 }

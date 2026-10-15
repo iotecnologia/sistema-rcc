@@ -6,6 +6,7 @@ import { BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
 import { ResultadoView } from '../componentes/ResultadoView';
 import { relatorioAgendamento } from '../componentes/ResultadoSimples';
+import { ComboConvenio } from '../componentes/ComboConvenio';
 import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { hojeIso } from '../regras/calendario';
@@ -15,10 +16,13 @@ export function Consultar() {
   const b = useBase();
   const [params] = useSearchParams();
   const [conv, setConv] = useState(params.get('convenio') ?? '');
-  const [exames, setExames] = useState<Escolhido[]>(params.get('exame') ? [{ exameId: Number(params.get('exame')), quantidade: 1 }] : []);
+  const [exames, setExames] = useState<Escolhido[]>(() => {
+    const lista = (params.get('exames') ?? params.get('exame') ?? '').split(',').filter(Boolean);
+    const rot = params.get('rotulo') ?? undefined;
+    return lista.map((x) => { const [id, q] = x.split('x'); return { exameId: Number(id), quantidade: Number(q) || 1, rotulo: lista.length === 1 ? rot : undefined }; }).filter((x) => b.exames.some((e) => e.id === x.exameId));
+  });
   const [dataPedido, setDataPedido] = useState('');
   const hoje = hojeIso();
-  const convenios = [...b.convenios].sort((a, c) => Number(c.tem_regras) - Number(a.tem_regras) || a.nome.localeCompare(c.nome));
 
   const resultado = useMemo(() => {
     if (!conv || !exames.length) return null;
@@ -28,8 +32,8 @@ export function Consultar() {
   // guarda só o resumo da consulta (convênio + exames) para a Visão geral — nunca dado de paciente
   useEffect(() => {
     if (!resultado) return;
-    const hist = local.ler<{ conv: string; ex: string; quando: string; sit?: string; slug?: string }[]>('historico', []);
-    const item = { conv: resultado.convenio.nome, ex: resultado.exames.map((e) => e.autorizacao.exame.nome).join(' · '), quando: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }), sit: resultado.situacao, slug: resultado.convenio.slug };
+    const hist = local.ler<{ conv: string; ex: string; quando: string; sit?: string; slug?: string; ids?: string }[]>('historico', []);
+    const item = { conv: resultado.convenio.nome, ex: resultado.exames.map((e) => e.autorizacao.exame.nome).join(' · '), quando: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }), sit: resultado.situacao, slug: resultado.convenio.slug, ids: exames.map((x) => `${x.exameId}x${x.quantidade}`).join(',') };
     if (!hist.length || hist[0].conv !== item.conv || hist[0].ex !== item.ex) local.gravar('historico', [item, ...hist].slice(0, 8));
   }, [resultado]);
 
@@ -43,20 +47,14 @@ export function Consultar() {
         <BotoesSaida desativado={!resultado} texto={() => (resultado ? resumoTexto(resultado) : '')} relatorio={() => relatorioAgendamento(resultado!)} />
       </TituloPagina>
 
-      <div className="barra">
-        <label className="cp" style={{ flex: '1 1 240px' }}>
-          <span><span className="passo">1</span>Convênio</span>
-          <select value={conv} onChange={(e) => { setConv(e.target.value); }}>
-            <option value="">Escolha o convênio…</option>
-            {convenios.map((c) => <option key={c.slug} value={c.slug}>{c.nome}{c.tem_regras ? '' : ' (pedido vem autorizado)'}</option>)}
-          </select>
-        </label>
+      <div className="barra-fixa"><div className="barra">
+        <ComboConvenio valor={conv} mudar={setConv} passo={1} flex="1 1 260px" />
         <SeletorExames convenio={conv} escolhidos={exames} mudar={setExames} desativado={!conv} />
-        <label className="cp" style={{ flex: '0 1 190px' }}>
+        <label className="cp data" style={{ flex: '0 1 190px' }}>
           <span><span className="passo">3</span>Data do pedido <small style={{ fontWeight: 400, textTransform: 'none' }}>(se tiver)</small></span>
           <input type="date" value={dataPedido} max={hoje} onChange={(e) => setDataPedido(e.target.value)} disabled={!exames.length} />
         </label>
-      </div>
+      </div></div>
 
       {resultado ? <ResultadoView r={resultado} dataPedido={dataPedido || null} /> : <div className="bloco"><Vazio>{guia}</Vazio></div>}
     </>

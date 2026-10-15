@@ -38,9 +38,9 @@ export function Exames() {
               ))}</tbody></table>
             </Bloco>
             {e && <Bloco titulo="Código em cada convênio">
-              {codigos.length ? <table className="tab"><thead><tr><th>Convênio</th><th>Código</th><th>Tipo</th></tr></thead>
+              {codigos.length ? <table className="tab"><thead><tr><th>Convênio</th><th>Código para autorizar</th></tr></thead>
                 <tbody>{codigos.map((c) => { const cv = conv(c.convenio_id); return (
-                  <tr key={c.id}><td><Link to={`/consultar?convenio=${cv?.slug}&exame=${e.id}`}>{cv?.nome}</Link></td><td><span className="cod">{c.codigo}</span></td><td>{c.tipo === 'PACOTE' ? 'pacote' : c.tipo}</td></tr>
+                  <tr key={c.id}><td><Link to={`/consultar?convenio=${cv?.slug}&exame=${e.id}`}>{cv?.nome}</Link></td><td><span className="cod">{c.codigo}</span>{c.tipo === 'PACOTE' ? <span className="mut"> · pacote</span> : c.tipo === 'AMB' ? <span className="mut"> · AMB</span> : null}</td></tr>
                 ); })}</tbody></table> : <Vazio>Nenhum convênio tem código próprio cadastrado: autorizar pelo TUSS {e.tuss ?? ''}.</Vazio>}
             </Bloco>}
           </div>

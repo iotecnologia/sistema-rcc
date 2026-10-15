@@ -2,12 +2,12 @@
 import { useMemo, useState } from 'react';
 import { useBase } from '../componentes/Dados';
 import { Bloco, BotoesSaida, Kpi, TituloPagina, Vazio } from '../componentes/Comuns';
+import { ComboConvenio } from '../componentes/ComboConvenio';
 import { SeletorExames, type Escolhido } from '../componentes/SeletorExames';
 import { relatorioAgendamento } from '../componentes/ResultadoSimples';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { br, diaSemana, ehFeriado, hojeIso, nomeDia, paraIso, rccAtende, somarDias } from '../regras/calendario';
 import { modalidadeBase } from '../regras/contexto';
-import { temInfo } from './Convenios';
 
 const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
 
@@ -56,14 +56,12 @@ export function Janela() {
       <TituloPagina titulo="Janela de agendamento" sub="Convênio + exames + data do pedido: o calendário mostra de quando até quando dá para agendar.">
         <BotoesSaida desativado={!r} texto={() => (r ? resumoTexto(r) : '')} relatorio={() => relatorioAgendamento(r!)} />
       </TituloPagina>
-      <div className="barra">
-        <label className="cp" style={{ flex: '0 1 260px' }}><span><span className="passo">1</span>Convênio</span>
-          <select value={conv} onChange={(e) => setConv(e.target.value)}><option value="">Escolha o convênio…</option>
-            {[...b.convenios].filter((c) => temInfo(b, c)).sort((x, y) => x.nome.localeCompare(y.nome)).map((c) => <option key={c.slug} value={c.slug}>{c.nome}</option>)}</select></label>
+      <div className="barra-fixa"><div className="barra">
+        <ComboConvenio valor={conv} mudar={setConv} passo={1} flex="0 1 280px" soComRegras />
         <SeletorExames convenio={conv} escolhidos={exames} mudar={setExames} desativado={!conv} />
-        <label className="cp" style={{ flex: '0 1 200px' }}><span><span className="passo">3</span>Data do pedido <small style={{ fontWeight: 400, textTransform: 'none' }}>(se tiver)</small></span>
+        <label className="cp data" style={{ flex: '0 1 200px' }}><span><span className="passo">3</span>Data do pedido <small style={{ fontWeight: 400, textTransform: 'none' }}>(se tiver)</small></span>
           <input type="date" value={dataPedido} max={hoje} onChange={(e) => setDataPedido(e.target.value)} /></label>
-      </div>
+      </div></div>
       {!r ? <div className="bloco"><Vazio>Escolha o convênio e o exame para ver o calendário.</Vazio></div> : <>
         <div className="kpis">
           <Kpi cor="#16a34a" rot="Agendar a partir de" txt val={ini ? `${nomeDia(ini)} ${br(ini).slice(0, 5)}` : '—'} det={r.janela.motivoAPartir} />
