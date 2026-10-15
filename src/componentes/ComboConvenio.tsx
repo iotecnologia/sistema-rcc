@@ -5,8 +5,8 @@ import { Icone } from './Icone';
 import { norm } from '../regras/contexto';
 import { LogoConvenio, temInfo } from '../telas/Convenios';
 
-export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex = '1 1 260px', soComRegras }: {
-  valor: string; mudar: (slug: string) => void; rotulo?: string; passo?: number; flex?: string; soComRegras?: boolean;
+export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex = '1 1 260px' }: {
+  valor: string; mudar: (slug: string) => void; rotulo?: string; passo?: number; flex?: string; /** mantido por compatibilidade: a lista já mostra só convênios com regras */ soComRegras?: boolean;
 }) {
   const b = useBase();
   const [aberto, setAberto] = useState(false);
@@ -14,12 +14,9 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
   const [i, setI] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
   const sel = b.convenios.find((c) => c.slug === valor);
-  // dois grupos: convênios com regras primeiro; depois os que o pedido já vem autorizado
-  const [comRegras, autorizados] = useMemo(() => {
-    const todos = [...b.convenios].filter((c) => norm(c.nome).includes(norm(q))).sort((a, c) => a.nome.localeCompare(c.nome));
-    return [todos.filter((c) => temInfo(b, c)), soComRegras ? [] : todos.filter((c) => !temInfo(b, c))];
-  }, [b, q, soComRegras]);
-  const lista = useMemo(() => [...comRegras, ...autorizados], [comRegras, autorizados]);
+  // só convênios com regras; os de pedido já autorizado ficam fora da lista (estão na página Convênios)
+  const lista = useMemo(() => [...b.convenios].filter((c) => temInfo(b, c) && norm(c.nome).includes(norm(q)))
+    .sort((a, c) => a.nome.localeCompare(c.nome)), [b, q]);
   const escolher = (slug: string) => { mudar(slug); setAberto(false); setQ(''); ref.current?.blur(); };
   const tecla = (e: KeyboardEvent) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); setAberto(true); setI(Math.min(i + 1, lista.length - 1)); }
@@ -42,8 +39,6 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
         <div className="combo-lista" role="listbox">
           {lista.length ? lista.map((c, k) => (
             <Fragment key={c.slug}>
-              {k === 0 && comRegras.length > 0 && <div className="combo-grupo">Convênios com regras</div>}
-              {k === comRegras.length && <div className="combo-grupo">Pedido já vem autorizado</div>}
               <button type="button" role="option" aria-selected={c.slug === valor} className={(k === i ? 'foco ' : '') + (c.slug === valor ? 'sel' : '')}
                 onMouseDown={(e) => { e.preventDefault(); escolher(c.slug); }} onMouseEnter={() => setI(k)}>
                 <LogoConvenio c={c} tam={24} /><span>{c.nome}</span>
