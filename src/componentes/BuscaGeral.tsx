@@ -1,6 +1,6 @@
 // Busca geral do cabeçalho: um campo só, em todas as telas. Acha exame (nome falado), convênio, médico, ramal,
-// unidade/máquina e página. Mostra só o que o cargo libera. Ctrl+K leva para a busca; ↑ ↓ escolhe, Enter abre, Esc fecha.
-import { useEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+// unidade/máquina e página. Mostra só o que o cargo libera. ↑ ↓ escolhe, Enter abre, Esc fecha.
+import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useBase } from './Dados';
 import { Icone } from './Icone';
@@ -23,12 +23,6 @@ export function BuscaGeral() {
   const [i, setI] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
 
-  // Ctrl+K (ou Cmd+K) em qualquer tela
-  useEffect(() => {
-    const f = (e: globalThis.KeyboardEvent) => { if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); ref.current?.focus(); } };
-    window.addEventListener('keydown', f);
-    return () => window.removeEventListener('keydown', f);
-  }, []);
 
   const itens = useMemo<Item[]>(() => {
     const t = q.trim();
@@ -61,7 +55,6 @@ export function BuscaGeral() {
       <input ref={ref} type="search" value={q} placeholder="Buscar exame, convênio, médico, ramal…" autoComplete="off" aria-label="Busca geral"
         onChange={(e) => { setQ(e.target.value); setI(0); setAberto(true); }} onFocus={() => setAberto(true)}
         onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
-      <kbd>Ctrl K</kbd>
       {aberto && q.trim().length >= 2 && (
         <div className="busca-geral-lista" role="listbox">
           {itens.length ? itens.map((it, k) => (
