@@ -1,5 +1,5 @@
 // Campo de convênio: lista suspensa + busca por digitação (com logo). Teclado: ↑ ↓ para escolher, Enter confirma, Esc fecha.
-import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { Fragment, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from './Dados';
 import { Icone } from './Icone';
 import { norm } from '../regras/contexto';
@@ -14,10 +14,12 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
   const [i, setI] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
   const sel = b.convenios.find((c) => c.slug === valor);
-  const lista = useMemo(() => [...b.convenios]
-    .filter((c) => !soComRegras || temInfo(b, c))
-    .filter((c) => norm(c.nome).includes(norm(q)))
-    .sort((a, c) => a.nome.localeCompare(c.nome)), [b, q, soComRegras]);
+  // dois grupos: convênios com regras primeiro; depois os que o pedido já vem autorizado
+  const [comRegras, autorizados] = useMemo(() => {
+    const todos = [...b.convenios].filter((c) => norm(c.nome).includes(norm(q))).sort((a, c) => a.nome.localeCompare(c.nome));
+    return [todos.filter((c) => temInfo(b, c)), soComRegras ? [] : todos.filter((c) => !temInfo(b, c))];
+  }, [b, q, soComRegras]);
+  const lista = useMemo(() => [...comRegras, ...autorizados], [comRegras, autorizados]);
   const escolher = (slug: string) => { mudar(slug); setAberto(false); setQ(''); ref.current?.blur(); };
   const tecla = (e: KeyboardEvent) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); setAberto(true); setI(Math.min(i + 1, lista.length - 1)); }
@@ -39,10 +41,14 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
       {aberto && (
         <div className="combo-lista" role="listbox">
           {lista.length ? lista.map((c, k) => (
-            <button type="button" key={c.slug} role="option" aria-selected={c.slug === valor} className={(k === i ? 'foco ' : '') + (c.slug === valor ? 'sel' : '')}
-              onMouseDown={(e) => { e.preventDefault(); escolher(c.slug); }} onMouseEnter={() => setI(k)}>
-              <LogoConvenio c={c} tam={24} /><span>{c.nome}</span>{!temInfo(b, c) && <small>pedido vem autorizado</small>}
-            </button>
+            <Fragment key={c.slug}>
+              {k === 0 && comRegras.length > 0 && <div className="combo-grupo">Convênios com regras</div>}
+              {k === comRegras.length && <div className="combo-grupo">Pedido já vem autorizado</div>}
+              <button type="button" role="option" aria-selected={c.slug === valor} className={(k === i ? 'foco ' : '') + (c.slug === valor ? 'sel' : '')}
+                onMouseDown={(e) => { e.preventDefault(); escolher(c.slug); }} onMouseEnter={() => setI(k)}>
+                <LogoConvenio c={c} tam={24} /><span>{c.nome}</span>
+              </button>
+            </Fragment>
           )) : <div className="combo-vazio">Nenhum convênio com “{q}”.</div>}
         </div>
       )}

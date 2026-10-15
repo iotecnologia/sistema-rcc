@@ -1,5 +1,4 @@
 // Peças dos avisos da equipe: quadro da Visão geral e janela de aviso urgente (aparece ao entrar).
-import { useState } from 'react';
 import { useAvisos, ROTULO_TIPO, type Aviso } from '../acesso/Avisos';
 import { Icone } from './Icone';
 
@@ -17,24 +16,23 @@ function Cartao({ a, lido, marcar }: { a: Aviso; lido: boolean; marcar: () => vo
   );
 }
 
-export function QuadroAvisos() {
+/** Quadro da Visão geral: só os avisos ainda não lidos. Lidos aparecem só quando a pessoa pede (botão "Avisos lidos"). */
+export function QuadroAvisos({ mostrarLidos = false }: { mostrarLidos?: boolean }) {
   const v = useAvisos();
-  const [verLidos, setVerLidos] = useState(false);
-  if (!v.visiveis.length) return null;
-  // não lidos aparecem abertos; depois do "Li e entendi" o aviso minimiza numa linha só
   const abertos = v.visiveis.filter((a) => !v.leu(a.id));
   const lidos = v.visiveis.filter((a) => v.leu(a.id));
   return (
-    <section className="bloco quadro-avisos">
-      <div className="bloco-cab"><h3>Avisos da equipe</h3>
-        {abertos.length > 0
-          ? <span className="tag t-no">{abertos.length} não lido{abertos.length > 1 ? 's' : ''}</span>
-          : <button type="button" className="ver-mais" style={{ margin: 0 }} onClick={() => setVerLidos(!verLidos)}>{verLidos ? 'esconder' : `ver avisos lidos (${lidos.length})`}</button>}
-      </div>
-      {abertos.length > 0 && <ul className="lista-avisos">{abertos.map((a) => <Cartao key={a.id} a={a} lido={false} marcar={() => v.lido(a.id)} />)}</ul>}
-      {abertos.length > 0 && lidos.length > 0 && <div style={{ padding: '0 16px 12px' }}><button type="button" className="ver-mais" style={{ margin: 0 }} onClick={() => setVerLidos(!verLidos)}>{verLidos ? 'esconder lidos' : `ver avisos lidos (${lidos.length})`}</button></div>}
-      {verLidos && lidos.length > 0 && <ul className="lista-avisos">{lidos.map((a) => <Cartao key={a.id} a={a} lido marcar={() => undefined} />)}</ul>}
-    </section>
+    <>
+      {abertos.length > 0 && <section className="bloco quadro-avisos">
+        <div className="bloco-cab"><h3>Avisos da equipe</h3><span className="tag t-no">{abertos.length} não lido{abertos.length > 1 ? 's' : ''}</span></div>
+        <ul className="lista-avisos">{abertos.map((a) => <Cartao key={a.id} a={a} lido={false} marcar={() => v.lido(a.id)} />)}</ul>
+      </section>}
+      {mostrarLidos && <section className="bloco quadro-avisos">
+        <div className="bloco-cab"><h3>Avisos lidos</h3></div>
+        {lidos.length ? <ul className="lista-avisos">{lidos.map((a) => <Cartao key={a.id} a={a} lido marcar={() => undefined} />)}</ul>
+          : <div className="mut" style={{ padding: '12px 16px', fontSize: 13 }}>Nenhum aviso lido em vigor.</div>}
+      </section>}
+    </>
   );
 }
 
