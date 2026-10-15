@@ -179,7 +179,7 @@ details > summary { cursor: pointer; font-weight: 600; }
 .combo-lista small { margin-left: auto; font-size: 11px; color: var(--texto-suave); font-weight: 400; }
 .combo-vazio { padding: 12px; font-size: 13px; color: var(--texto-suave); font-weight: 400; }
 /* ---------- Linha de busca sempre visível no topo */
-.barra-fixa { position: sticky; top: -20px; z-index: 20; margin: 0 -22px 14px; padding: 8px 22px; background: var(--bg); }
+.barra-fixa { position: sticky; top: calc(var(--alt-tit, 0px) - 20px); z-index: 20; margin: 0 -22px 14px; padding: 8px 22px; background: var(--bg); }
 .barra-fixa .barra { margin-bottom: 0; box-shadow: var(--sombra); }
 /* Linha de busca: convênio, exame e data SEMPRE na mesma linha; exames escolhidos e sugestões embaixo */
 .barra-fixa .barra { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr) minmax(150px, 190px); align-items: end; }
@@ -223,16 +223,18 @@ details > summary { cursor: pointer; font-weight: 600; }
 
 .btn2.ativo { background: var(--hover); border-color: var(--texto-suave); }
 
-/* Busca geral no cabeçalho */
-.busca-geral { position: relative; flex: 0 1 440px; display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 10px; margin-left: 12px; border: 1px solid var(--borda); border-radius: 10px; background: var(--bg); color: var(--texto-suave); }
-.busca-geral:focus-within { border-color: var(--texto-suave); }
+/* Busca geral no cabeçalho: discreta, na cor do topo, no centro */
+.topo { position: relative; }
+.busca-geral { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, 38%); display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 10px; border: 1px solid var(--linha); border-radius: 9px; background: var(--painel); color: var(--texto-suave); }
+.busca-geral:focus-within { border-color: var(--borda); }
 .busca-geral input:focus, .busca-geral input:focus-visible { outline: none !important; border: 0 !important; box-shadow: none !important; }
-.busca-geral > svg { width: 16px; height: 16px; flex: none; }
-.busca-geral input { flex: 1; min-width: 0; border: 0 !important; outline: 0; background: transparent !important; color: var(--texto); font: inherit; font-size: 14px; padding: 0 !important; box-shadow: none !important; }
-.busca-geral kbd { font: 600 11px/1 inherit; font-family: inherit; color: var(--texto-suave); border: 1px solid var(--borda); border-radius: 6px; padding: 3px 6px; white-space: nowrap; }
+.busca-geral > svg { width: 15px; height: 15px; flex: none; }
+.busca-geral input { flex: 1; min-width: 0; border: 0 !important; outline: 0; background: transparent !important; color: var(--texto); font: inherit; font-size: 13.5px; padding: 0 !important; box-shadow: none !important; }
 .busca-geral-lista { position: absolute; z-index: 60; top: calc(100% + 6px); left: 0; right: 0; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); max-height: 420px; overflow: auto; padding-bottom: 4px; }
 .busca-geral-lista button { display: flex; align-items: baseline; gap: 10px; width: 100%; padding: 8px 12px; border: 0; background: transparent; cursor: pointer; text-align: left; font: inherit; font-size: 14px; color: var(--texto); }
 .busca-geral-lista button.foco { background: var(--hover); }
 .busca-geral-lista button small { margin-left: auto; font-size: 12px; color: var(--texto-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
 .busca-geral-lista > div:first-child .combo-grupo { border-top: 0; }
-@media (max-width: 900px) { .busca-geral kbd { display: none; } .busca-geral { margin-left: 0; } }
+
+/* Linha do título (saudação + botões) congelada: a tela rola abaixo dela */
+.conteudo > .tit-pagina { position: sticky; top: -20px; z-index: 25; background: var(--bg); margin: -20px -22px 0; padding: 20px 22px 18px; }
