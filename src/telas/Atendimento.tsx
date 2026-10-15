@@ -1,11 +1,20 @@
 // Atendimento: Médicos, Unidades e máquinas, Ramais. Nada de lista despejada: médicos e ramais só aparecem depois da busca.
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
 import { norm } from '../regras/contexto';
 import { palavras } from '../regras/busca';
 import { br, hojeIso } from '../regras/calendario';
+
+/** Busca que veio do cabeçalho (?q=) já entra preenchida. */
+function useQ(): [string, (v: string) => void] {
+  const [params] = useSearchParams();
+  const [q, setQ] = useState(params.get('q') ?? '');
+  useEffect(() => { const v = params.get('q'); if (v !== null) setQ(v); }, [params]);
+  return [q, setQ];
+}
 
 const casa = (texto: string, q: string) => { const h = norm(texto); return palavras(q).every((f) => f.some((x) => h.includes(x))); };
 
@@ -15,7 +24,7 @@ function Busca({ rot, q, setQ, ph }: { rot: string; q: string; setQ: (v: string)
 
 export function Medicos() {
   const b = useBase();
-  const [q, setQ] = useState('');
+  const [q, setQ] = useQ();
   const hoje = hojeIso();
   const lista = q.trim().length < 2 ? [] : b.medicos.filter((m) => casa(m.nome + ' ' + b.medicoExames.filter((x) => x.medico_id === m.id).map((x) => x.exame_nome).join(' '), q));
   return (
@@ -42,7 +51,9 @@ export function Medicos() {
 
 export function Unidades() {
   const b = useBase();
-  const [eq, setEq] = useState(b.equipamentos[0]?.id ?? 0);
+  const [params] = useSearchParams();
+  const [eq, setEq] = useState(Number(params.get('eq')) || (b.equipamentos[0]?.id ?? 0));
+  useEffect(() => { const v = Number(params.get('eq')); if (v) setEq(v); }, [params]);
   const itens = b.equipamentoExames.filter((x) => x.equipamento_id === eq);
   const q = b.equipamentos.find((x) => x.id === eq);
   return (
@@ -70,7 +81,7 @@ export function Unidades() {
 
 export function Ramais() {
   const b = useBase();
-  const [q, setQ] = useState('');
+  const [q, setQ] = useQ();
   const lista = q.trim().length < 2 ? [] : b.ramais.filter((r) => casa(`${r.setor ?? ''} ${r.local} ${(r.numeros ?? []).join(' ')}`, q));
   const grupo = (r: (typeof lista)[number]) => `${r.setor ?? 'Geral'}`;
   const grupos = [...new Set(lista.map(grupo))];
