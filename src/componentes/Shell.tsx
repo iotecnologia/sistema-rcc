@@ -8,6 +8,7 @@ import { useSessao } from '../acesso/Sessao';
 import { GRUPOS, PAGINAS } from '../acesso/paginas';
 import { useAvisos } from '../acesso/Avisos';
 import { JanelaUrgente } from './AvisosEquipe';
+import { BuscaGeral } from './BuscaGeral';
 
 export function Shell() {
   const s = useSessao();
@@ -37,6 +38,7 @@ export function Shell() {
       </aside>
       <header className="topo">
         <div className="migalha">Início{atual && <> &nbsp;/&nbsp; <b>{atual.nome}</b></>}</div>
+        <BuscaGeral />
         <div className="topo-dir">
           <button type="button" className="icone-btn sino" onClick={() => nav('/inicio')} title={av.naoLidos.length ? `${av.naoLidos.length} aviso(s) não lido(s)` : 'Avisos da equipe'} aria-label="Avisos da equipe"><Icone n="sino" />{av.naoLidos.length > 0 && <span className="bolinha">{av.naoLidos.length}</span>}</button>
           <button type="button" className="icone-btn" onClick={trocarTema} title="Tema claro/escuro" aria-label="Alternar tema claro ou escuro"><Icone n="tema" /></button>
