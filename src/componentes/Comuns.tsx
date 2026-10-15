@@ -1,5 +1,5 @@
 // Peças pequenas reaproveitadas em várias telas.
-import type { ReactNode } from 'react';
+import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import type { Situacao } from '../tipos/modelos';
 
 const SIT: Record<string, [string, string]> = {
@@ -12,8 +12,18 @@ export function TagSituacao({ s }: { s: Situacao | string }) {
 }
 
 export function TituloPagina({ titulo, sub, children }: { titulo: string; sub?: string; children?: ReactNode }) {
+  // a linha do título fica congelada no topo; a altura dela vai para --alt-tit (a barra fixa do Consultar/Janela gruda logo abaixo)
+  const ref = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    const el = ref.current; const pai = el?.closest<HTMLElement>('.conteudo');
+    if (!el || !pai) return;
+    const medir = () => pai.style.setProperty('--alt-tit', `${el.offsetHeight}px`);
+    medir();
+    const ro = new ResizeObserver(medir); ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
   return (
-    <div className="tit-pagina">
+    <div className="tit-pagina" ref={ref}>
       <div><h1>{titulo}</h1>{sub && <p>{sub}</p>}</div>
       {children && <div className="acoes-pagina">{children}</div>}
     </div>
