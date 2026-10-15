@@ -1,6 +1,6 @@
 // Exames: só aparece algo depois da busca (pelo nome falado). Escolhido o exame: código em cada convênio, onde fazer, preço e preparo.
-import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
@@ -14,6 +14,14 @@ export function Exames() {
   const b = useBase();
   const [q, setQ] = useState('');
   const [sel, setSel] = useState<Achado | null>(null);
+  const [params] = useSearchParams();
+  // veio da busca geral do cabeçalho: já abre o exame escolhido
+  useEffect(() => {
+    const ex = b.exames.find((x) => x.id === Number(params.get('id')));
+    if (!ex) return;
+    const rot = params.get('rotulo') ?? ex.nome;
+    setQ(rot); setSel({ exame: ex, rotulo: rot });
+  }, [b, params]);
   const achados = useMemo(() => buscarExames(b, q, 12), [b, q]);
   const e = sel?.exame;
   const codigos = e ? b.codigos.filter((c) => c.exame_id === e.id) : [];
