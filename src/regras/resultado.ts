@@ -73,7 +73,7 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
   const motivos: string[] = []; let situacao: Situacao_Geral = 'pode_agendar';
   if (!convenio.tem_regras) {
     situacao = 'atencao';
-    motivos.push('Convênio sem regras cadastradas na RCC: o pedido precisa vir AUTORIZADO pelo próprio convênio');
+    motivos.push(`${convenio.nome}: o pedido já vem AUTORIZADO pelo próprio convênio. Antes de agendar, confira na guia autorizada: nome do paciente, exame autorizado e validade da senha.`);
   }
   if (janela.pedidoVencido) { situacao = 'nao_pode'; motivos.push(`Pedido vencido em ${br(janela.pedidoValeAte)} — pedir um pedido novo ao paciente`); }
   for (const e of exames) if (coberturaImpede(e.autorizacao.cobertura))

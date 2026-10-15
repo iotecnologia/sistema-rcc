@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { useBase } from './Dados';
 import { Icone } from './Icone';
 import { buscarExames } from '../regras/busca';
+import { tussTexto } from '../util/formato';
 
 export interface Escolhido { exameId: number; quantidade: number; rotulo?: string }
 
@@ -38,7 +39,7 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
           {sugestoes.map(({ exame: e, rotulo }) => (
             <button type="button" key={e.id} onClick={() => add(e.id, rotulo)}>
               <Icone n="mais" />{rotulo}
-              <small>{rotulo !== e.nome ? e.nome + ' · ' : ''}{ROTULO[e.modalidade] ?? e.modalidade}{e.tuss ? ` · TUSS ${e.tuss}` : ''}</small>
+              <small>{rotulo !== e.nome ? e.nome + ' · ' : ''}{ROTULO[e.modalidade] ?? e.modalidade}{e.tuss ? ` · ${tussTexto(e)}` : ''}</small>
             </button>
           ))}
         </div>

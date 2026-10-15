@@ -37,15 +37,15 @@ function Passo({ n, titulo, sub, extra, children }: { n: number; titulo: string;
   );
 }
 
-/** Lista curta: mostra 3 linhas e o resto em "ver mais". */
-function Lista({ itens, marcador = 'ponto', vazio }: { itens: ReactNode[]; marcador?: 'ponto' | 'check'; vazio?: string }) {
+/** Lista curta: mostra 3 linhas e o resto em "ver mais" (o passo 5 mostra tudo aberto). */
+function Lista({ itens, marcador = 'ponto', vazio, limite = 3 }: { itens: ReactNode[]; marcador?: 'ponto' | 'check'; vazio?: string; limite?: number }) {
   const [tudo, setTudo] = useState(false);
   if (!itens.length) return vazio ? <p className="mut" style={{ margin: 0 }}>{vazio}</p> : null;
-  const mostra = tudo ? itens : itens.slice(0, 3);
+  const mostra = tudo ? itens : itens.slice(0, limite);
   return (
     <>
       <ul className={'passo-lista ' + marcador}>{mostra.map((x, k) => <li key={k}>{x}</li>)}</ul>
-      {itens.length > 3 && <button type="button" className="ver-mais" onClick={() => setTudo(!tudo)}>{tudo ? 'ver menos' : `ver mais (${itens.length - 3})`}</button>}
+      {itens.length > limite && <button type="button" className="ver-mais" onClick={() => setTudo(!tudo)}>{tudo ? 'ver menos' : `ver mais (${itens.length - limite})`}</button>}
     </>
   );
 }
@@ -62,8 +62,20 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
     <>
       <div className="passos-resultado">
         <Passo n={1} titulo="Posso agendar?">
-          {r.situacao === 'pode_agendar' && !r.motivos.length ? <p className="ok-frase">Sim. Tudo dentro das regras do convênio.</p>
-            : <Lista itens={r.motivos.map((m) => <span key={m}>{m}</span>)} />}
+          <p className={'resposta-1 ' + r.situacao}>{r.situacao === 'pode_agendar' ? 'Sim, pode agendar.' : r.situacao === 'atencao' ? 'Pode agendar, mas veja antes:' : 'Não agende.'}</p>
+          <ul className="passo-lista ponto">
+            {r.motivos.map((m) => <li key={m}>{m}</li>)}
+            {r.situacao !== 'nao_pode' && !r.convenio.tem_regras && <li>Pode marcar assim que o paciente trouxer a guia autorizada, <b>dentro da validade da senha</b> escrita nela.</li>}
+            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>Primeiro dia para marcar: {j.agendarAPartirDe
+              ? <><b>{nomeDia(j.agendarAPartirDe)} {br(j.agendarAPartirDe).slice(0, 5)}</b> <span className="mut">· {j.motivoAPartir}</span></>
+              : <b>só depois que o convênio autorizar</b>}</li>}
+            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>{j.pedidoValeAte
+              ? <>Último dia para marcar: <b>{nomeDia(j.pedidoValeAte)} {br(j.pedidoValeAte).slice(0, 5)}</b> <span className="mut">· pedido vale {r.geral.validadePedidoDias} dias</span></>
+              : r.geral.pedidoSemPrazo ? <>Último dia: o pedido não tem prazo de validade.</>
+                : r.geral.validadePedidoDias ? <>Último dia: informe a <b>data do pedido</b> lá em cima (o pedido vale {r.geral.validadePedidoDias} dias).</>
+                  : <>Último dia: validade do pedido sem informação, confirme com {resp}.</>}</li>}
+            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>Depois: confira o pedido (passo 2) e peça a autorização (passo 3).</li>}
+          </ul>
         </Passo>
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
           <Lista marcador="check" itens={[
@@ -85,7 +97,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             );
           })}
         </Passo>
-        <Passo n={4} titulo="Quando e onde marcar?" sub={j.pedidoValeAte ? `${j.pedidoVencido ? 'Pedido venceu em' : 'Agendar até'} ${nomeDia(j.pedidoValeAte)} ${br(j.pedidoValeAte).slice(0, 5)}` : undefined}>
+        <Passo n={4} titulo="Quando e onde marcar?">
           {r.exames.map((e) => {
             const p = prazoDe(e);
             const internos = e.agenda.avisos.filter((x) => x.molde !== 'M26');
@@ -107,10 +119,10 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
               <div key={e.autorizacao.exame.id} className="passo-exame">
                 <div className="passo-exame-cab"><b>{e.autorizacao.exame.nome}</b></div>
                 {nada ? <p className="mut" style={{ margin: 0 }}>Sem preparo.</p> : <Lista itens={[
-                  ...e.agenda.preparos.map((pp) => <details key={pp.id}><summary>{pp.titulo}</summary><div className="preparo-txt">{pp.texto}</div></details>),
+                  ...e.agenda.preparos.map((pp) => <div key={pp.id}><b>{pp.titulo.replace(/^Preparo\s*[—-]\s*/i, 'Preparo: ')}</b><div className="preparo-txt">{pp.texto}</div></div>),
                   ...prep.map((x) => <span key={x.id}>{x.texto}</span>),
                   ...e.agenda.avisosPaciente.map((a) => <span key={a.id}><b>Pergunte:</b> {a.texto}</span>),
-                ]} />}
+                ]} limite={99} />}
               </div>
             );
           })}

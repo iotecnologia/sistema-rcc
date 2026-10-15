@@ -7,7 +7,7 @@ import { Icone } from '../componentes/Icone';
 import { buscarExames, precoDoExame, type Achado } from '../regras/busca';
 import { agendaDoExame } from '../regras/agenda';
 import { ondeTexto } from '../componentes/ResultadoView';
-import { brl } from '../util/formato';
+import { brl, tussTexto } from '../util/formato';
 import { parcelas } from './Orcamento';
 
 export function Exames() {
@@ -41,7 +41,7 @@ export function Exames() {
             <Bloco titulo="Encontrado" extra={<span className="mut" style={{ fontSize: 12 }}>{achados.length} exame{achados.length > 1 ? 's' : ''}</span>}>
               <table className="tab"><tbody>{achados.map((a) => (
                 <tr key={a.exame.id} className="clic" onClick={() => setSel(a)} style={sel?.exame.id === a.exame.id ? { background: 'var(--hover)' } : undefined}>
-                  <td><b>{a.rotulo}</b><div className="mut" style={{ fontSize: 12 }}>{a.rotulo !== a.exame.nome ? a.exame.nome + ' · ' : ''}TUSS {a.exame.tuss ?? '—'}</div></td>
+                  <td><b>{a.rotulo}</b><div className="mut" style={{ fontSize: 12 }}>{a.rotulo !== a.exame.nome ? a.exame.nome + ' · ' : ''}{tussTexto(a.exame)}</div></td>
                 </tr>
               ))}</tbody></table>
             </Bloco>
@@ -49,7 +49,7 @@ export function Exames() {
               {codigos.length ? <table className="tab"><thead><tr><th>Convênio</th><th>Código para autorizar</th></tr></thead>
                 <tbody>{codigos.map((c) => { const cv = conv(c.convenio_id); return (
                   <tr key={c.id}><td><Link to={`/consultar?convenio=${cv?.slug}&exame=${e.id}`}>{cv?.nome}</Link></td><td><span className="cod">{c.codigo}</span>{c.tipo === 'PACOTE' ? <span className="mut"> · pacote</span> : c.tipo === 'AMB' ? <span className="mut"> · AMB</span> : null}</td></tr>
-                ); })}</tbody></table> : <Vazio>Nenhum convênio tem código próprio cadastrado: autorizar pelo TUSS {e.tuss ?? ''}.</Vazio>}
+                ); })}</tbody></table> : <Vazio>Nenhum convênio tem código próprio cadastrado: autorizar pelo {e.tuss_a_confirmar ? `código ${e.tuss} (TUSS a confirmar)` : `TUSS ${e.tuss ?? ''}`}.</Vazio>}
             </Bloco>}
           </div>
           {e && ag ? <div className="pilha">

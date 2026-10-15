@@ -1221,7 +1221,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC ABDOME SUPERIOR",
+  "exame_nome": "TC abdome superior",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1231,7 +1231,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC ABDOME TOTAL",
+  "exame_nome": "TC abdome total",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1241,7 +1241,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC ART.TEMPORO MANDIBULARES",
+  "exame_nome": "TC art.têmporo mandibulares",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1251,7 +1251,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC ARTICULACOES",
+  "exame_nome": "TC articulações",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1261,7 +1261,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC COLUNA 3 SEG",
+  "exame_nome": "TC coluna 3 seg",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1271,7 +1271,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC CRANIO ORBITA SELA",
+  "exame_nome": "TC crânio órbita sela",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1281,7 +1281,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC FACE OU SEIOS DA FACE",
+  "exame_nome": "TC face ou seios da face",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1291,7 +1291,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC LARINGE/PESCOÇO/GLAND.SALIVAR/RINOFARINGE",
+  "exame_nome": "TC laringe/pescoço/gland.salivar/rinofaringe",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1301,7 +1301,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC MANDIBULA",
+  "exame_nome": "TC mandibula",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1311,7 +1311,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC MASTOIDE OU OUVIDO",
+  "exame_nome": "TC mastoide ou ouvido",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1321,7 +1321,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC MAXILA E MANDIBULA",
+  "exame_nome": "TC maxila e mandibula",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1331,7 +1331,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC MAXILAR",
+  "exame_nome": "TC maxilar",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1341,7 +1341,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC ORBITAS",
+  "exame_nome": "TC órbitas",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1351,7 +1351,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC PELVE OU BACIA",
+  "exame_nome": "TC pelve ou bacia",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1361,7 +1361,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC PESCOCO",
+  "exame_nome": "TC pescoço",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1371,7 +1371,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC SEGMENTO APENDICULAR",
+  "exame_nome": "TC segmento apendicular",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1381,7 +1381,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "TC TORAX",
+  "exame_nome": "TC tórax",
   "exame_id": null,
   "horarios": null,
   "minutos": null,
@@ -1391,7 +1391,7 @@
  },
  {
   "equipamento_id": 6,
-  "exame_nome": "ESCORE DE CALCIO (DR. PINHO)",
+  "exame_nome": "Escore de cálcio (dr. pinho)",
   "exame_id": null,
   "horarios": null,
   "minutos": null,

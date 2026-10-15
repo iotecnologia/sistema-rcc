@@ -235,3 +235,9 @@ details > summary { cursor: pointer; font-weight: 600; }
 .busca-geral-lista button.foco { background: var(--hover); }
 .busca-geral-lista button small { margin-left: auto; font-size: 12px; color: var(--texto-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
 .busca-geral-lista > div:first-child .combo-grupo { border-top: 0; }
+
+/* Passo 1: resposta direta, com cor da situação */
+.resposta-1 { margin: 0 0 6px; font-size: 16px; font-weight: 800; }
+.resposta-1.pode_agendar { color: var(--st-ok-t); }
+.resposta-1.atencao { color: var(--st-at-t); }
+.resposta-1.nao_pode { color: var(--st-no-t); }

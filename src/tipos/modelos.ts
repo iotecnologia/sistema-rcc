@@ -30,7 +30,7 @@ export interface ConvenioPrazo {
 export interface ConvenioConselho { convenio_id: Id; conselho: string; aceita: boolean; restricao: string | null; }
 export interface Plano { convenio_id: Id; nome: string; atende: boolean | null; origem: string; }
 
-export interface Exame { id: Id; tuss: string | null; nome: string; modalidade: string; origem: string; ativo: boolean; }
+export interface Exame { id: Id; tuss: string | null; nome: string; modalidade: string; origem: string; ativo: boolean; tuss_a_confirmar?: boolean; }
 export interface GrupoPrazo { id: Id; slug: string; nome: string; }
 export interface ExameGrupo { exame_id: Id; grupo_id: Id; }
 

@@ -1,12 +1,11 @@
-// Campo de convênio: lista suspensa + busca por digitação (com logo). Teclado: ↑ ↓ para escolher, Enter confirma, Esc fecha.
+// Campo de convênio: só digitar o nome (sem lista suspensa). As opções aparecem enquanto digita. ↑ ↓ escolhe, Enter confirma, Esc fecha.
 import { Fragment, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from './Dados';
-import { Icone } from './Icone';
 import { norm } from '../regras/contexto';
 import { LogoConvenio, temInfo } from '../telas/Convenios';
 
-export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex = '1 1 260px' }: {
-  valor: string; mudar: (slug: string) => void; rotulo?: string; passo?: number; flex?: string; /** mantido por compatibilidade: a lista já mostra só convênios com regras */ soComRegras?: boolean;
+export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex = '1 1 260px', soComRegras }: {
+  valor: string; mudar: (slug: string) => void; rotulo?: string; passo?: number; flex?: string; soComRegras?: boolean;
 }) {
   const b = useBase();
   const [aberto, setAberto] = useState(false);
@@ -14,9 +13,9 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
   const [i, setI] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
   const sel = b.convenios.find((c) => c.slug === valor);
-  // só convênios com regras; os de pedido já autorizado ficam fora da lista (estão na página Convênios)
-  const lista = useMemo(() => [...b.convenios].filter((c) => temInfo(b, c) && norm(c.nome).includes(norm(q)))
-    .sort((a, c) => a.nome.localeCompare(c.nome)), [b, q]);
+  // todos os convênios (os de pedido já autorizado também); só aparecem depois que a pessoa digita
+  const lista = useMemo(() => (q.trim() ? [...b.convenios].filter((c) => (!soComRegras || temInfo(b, c)) && norm(c.nome).includes(norm(q.trim())))
+    .sort((a, c) => a.nome.localeCompare(c.nome)) : []), [b, q, soComRegras]);
   const escolher = (slug: string) => { mudar(slug); setAberto(false); setQ(''); ref.current?.blur(); };
   const tecla = (e: KeyboardEvent) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); setAberto(true); setI(Math.min(i + 1, lista.length - 1)); }
@@ -29,13 +28,12 @@ export function ComboConvenio({ valor, mudar, rotulo = 'Convênio', passo, flex 
       <span>{passo && <span className="passo">{passo}</span>}{rotulo}</span>
       <div className="combo-campo">
         {sel && !aberto && <span className="combo-logo"><LogoConvenio c={sel} tam={22} /></span>}
-        <input ref={ref} value={aberto ? q : sel?.nome ?? ''} placeholder="Digite ou escolha o convênio…" autoComplete="off"
+        <input ref={ref} value={aberto ? q : sel?.nome ?? ''} placeholder="Digite o nome do convênio…" autoComplete="off"
           className={sel && !aberto ? 'com-logo' : ''}
           onFocus={() => { setAberto(true); setI(0); }} onBlur={() => setTimeout(() => { setAberto(false); setQ(''); }, 150)}
           onChange={(e) => { setQ(e.target.value); setI(0); setAberto(true); }} onKeyDown={tecla} />
-        <button type="button" className="combo-seta" tabIndex={-1} aria-label="Abrir lista de convênios" onMouseDown={(e) => { e.preventDefault(); if (aberto) { ref.current?.blur(); } else ref.current?.focus(); }}><Icone n="seta" /></button>
       </div>
-      {aberto && (
+      {aberto && q.trim() !== '' && (
         <div className="combo-lista" role="listbox">
           {lista.length ? lista.map((c, k) => (
             <Fragment key={c.slug}>

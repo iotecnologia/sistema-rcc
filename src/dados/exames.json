@@ -2,7 +2,7 @@
  {
   "id": 1,
   "tuss": "40801012",
-  "nome": "RX - CRANIO - 2 INCIDENCIAS",
+  "nome": "RX - Crânio - 2 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -10,7 +10,7 @@
  {
   "id": 2,
   "tuss": "40801020",
-  "nome": "RX - CRANIO - 3 INCIDENCIAS",
+  "nome": "RX - Crânio - 3 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -18,7 +18,7 @@
  {
   "id": 3,
   "tuss": "40801039",
-  "nome": "RX - CRANIO - 4 INCIDENCIAS",
+  "nome": "RX - Crânio - 4 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -26,7 +26,7 @@
  {
   "id": 4,
   "tuss": "40801047",
-  "nome": "RX - ORELHA, MASTOIDES OU ROCHEDOS - BILATERAL",
+  "nome": "RX - Orelha, mastoides ou rochedos - bilateral",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -34,7 +34,7 @@
  {
   "id": 5,
   "tuss": "40801055",
-  "nome": "RX - ORBITAS - BILATERAL",
+  "nome": "RX - Órbitas - bilateral",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -42,7 +42,7 @@
  {
   "id": 6,
   "tuss": "40801063",
-  "nome": "RX - SEIOS DA FACE",
+  "nome": "RX - Seios da face",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -50,7 +50,7 @@
  {
   "id": 7,
   "tuss": "40801071",
-  "nome": "RX - SELA TURCICA",
+  "nome": "RX - Sela túrcica",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -58,7 +58,7 @@
  {
   "id": 8,
   "tuss": "40801080",
-  "nome": "RX - MAXILAR INFERIOR",
+  "nome": "RX - Maxilar inferior",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -66,7 +66,7 @@
  {
   "id": 9,
   "tuss": "40801098",
-  "nome": "RX - OSSOS DA FACE",
+  "nome": "RX - Ossos da face",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -74,7 +74,7 @@
  {
   "id": 10,
   "tuss": "40801110",
-  "nome": "RX - ARTICULACAO TEMPOROMANDIBULAR - BILATERAL",
+  "nome": "RX - Articulação temporomandibular - bilateral",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -82,7 +82,7 @@
  {
   "id": 11,
   "tuss": "40801128",
-  "nome": "RX - ADENOIDES OU CAVUM",
+  "nome": "RX - Adenoides ou cavum",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -90,7 +90,7 @@
  {
   "id": 12,
   "tuss": "40801209",
-  "nome": "RX - INCIDENCIA ADICIONAL DE CRANIO OU FACE",
+  "nome": "RX - Incidência adicional de crânio ou face",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -98,7 +98,7 @@
  {
   "id": 13,
   "tuss": "40802019",
-  "nome": "RX - COLUNA CERVICAL - 3 INCIDENCIAS",
+  "nome": "RX - Coluna cervical - 3 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -106,7 +106,7 @@
  {
   "id": 14,
   "tuss": "40802027",
-  "nome": "RX - COLUNA CERVICAL - 5 INCIDENCIAS",
+  "nome": "RX - Coluna cervical - 5 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -114,7 +114,7 @@
  {
   "id": 15,
   "tuss": "40802035",
-  "nome": "RX - COLUNA DORSAL - 2 INCIDENCIAS",
+  "nome": "RX - Coluna dorsal - 2 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -122,7 +122,7 @@
  {
   "id": 16,
   "tuss": "40802043",
-  "nome": "RX - COLUNA DORSAL - 4 INCIDENCIAS",
+  "nome": "RX - Coluna dorsal - 4 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -130,7 +130,7 @@
  {
   "id": 17,
   "tuss": "40802051",
-  "nome": "RX - COLUNA LOMBO-SACRA - 3 INCIDENCIAS",
+  "nome": "RX - Coluna lombo-sacra - 3 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -138,7 +138,7 @@
  {
   "id": 18,
   "tuss": "40802060",
-  "nome": "RX - COLUNA LOMBO-SACRA - 5 INCIDENCIAS",
+  "nome": "RX - Coluna lombo-sacra - 5 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -146,7 +146,7 @@
  {
   "id": 19,
   "tuss": "40802078",
-  "nome": "RX - SACRO-COCCIX",
+  "nome": "RX - Sacro-cóccix",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -154,7 +154,7 @@
  {
   "id": 20,
   "tuss": "40802086",
-  "nome": "RX - COLUNA DORSO-LOMBAR PARA ESCOLIOSE",
+  "nome": "RX - Coluna dorso-lombar para escoliose",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -162,7 +162,7 @@
  {
   "id": 21,
   "tuss": "40802094",
-  "nome": "RX - COLUNA TOTAL PARA ESCOLIOSE (TELESPONDILOGRAFIA)",
+  "nome": "RX - Coluna total para escoliose (telespondilografia)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -170,7 +170,7 @@
  {
   "id": 22,
   "tuss": "40802116",
-  "nome": "RX - INCIDENCIA ADICIONAL DE COLUNA",
+  "nome": "RX - Incidência adicional de coluna",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -178,7 +178,7 @@
  {
   "id": 23,
   "tuss": "40803015",
-  "nome": "RX - ESTERNO",
+  "nome": "RX - Esterno",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -186,7 +186,7 @@
  {
   "id": 24,
   "tuss": "40803023",
-  "nome": "RX - ARTICULACAO ESTERNOCLAVICULAR",
+  "nome": "RX - Articulação esternoclavicular",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -194,7 +194,7 @@
  {
   "id": 25,
   "tuss": "40803031",
-  "nome": "RX - COSTELAS - POR HEMITORAX",
+  "nome": "RX - Costelas - por hemitórax",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -202,7 +202,7 @@
  {
   "id": 26,
   "tuss": "40803040",
-  "nome": "RX - CLAVICULA",
+  "nome": "RX - Clavícula",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -210,7 +210,7 @@
  {
   "id": 27,
   "tuss": "40803058",
-  "nome": "RX - OMOPLATA OU ESCAPULA",
+  "nome": "RX - Omoplata ou escápula",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -218,7 +218,7 @@
  {
   "id": 28,
   "tuss": "40803066",
-  "nome": "RX - ARTICULACAO ACROMIOCLAVICULAR",
+  "nome": "RX - Articulação acromioclavicular",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -226,7 +226,7 @@
  {
   "id": 29,
   "tuss": "40803074",
-  "nome": "RX - ARTICULACAO ESCAPULOUMERAL (OMBRO)",
+  "nome": "RX - Articulação escapuloumeral (ombro)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -234,7 +234,7 @@
  {
   "id": 30,
   "tuss": "40803082",
-  "nome": "RX - BRACO",
+  "nome": "RX - Braço",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -242,7 +242,7 @@
  {
   "id": 31,
   "tuss": "40803090",
-  "nome": "RX - COTOVELO",
+  "nome": "RX - Cotovelo",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -250,7 +250,7 @@
  {
   "id": 32,
   "tuss": "40803104",
-  "nome": "RX - ANTEBRACO",
+  "nome": "RX - Antebraço",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -258,7 +258,7 @@
  {
   "id": 33,
   "tuss": "40803112",
-  "nome": "RX - PUNHO",
+  "nome": "RX - Punho",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -266,7 +266,7 @@
  {
   "id": 34,
   "tuss": "40803120",
-  "nome": "RX - MAO OU QUIRODACTILO",
+  "nome": "RX - Mão ou quirodáctilo",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -274,7 +274,7 @@
  {
   "id": 35,
   "tuss": "40803139",
-  "nome": "RX - MAOS E PUNHOS PARA IDADE OSSEA",
+  "nome": "RX - Mãos e punhos para idade óssea",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -282,7 +282,7 @@
  {
   "id": 36,
   "tuss": "40803147",
-  "nome": "RX - INCIDENCIA ADICIONAL DE MEMBRO SUPERIOR",
+  "nome": "RX - Incidência adicional de membro superior",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -290,7 +290,7 @@
  {
   "id": 37,
   "tuss": "40804011",
-  "nome": "RX - BACIA",
+  "nome": "RX - Bacia",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -298,7 +298,7 @@
  {
   "id": 38,
   "tuss": "40804020",
-  "nome": "RX - ARTICULACOES SACROILIACAS",
+  "nome": "RX - Articulações sacroilíacas",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -306,7 +306,7 @@
  {
   "id": 39,
   "tuss": "40804038",
-  "nome": "RX - ARTICULACAO COXOFEMORAL (QUADRIL)",
+  "nome": "RX - Articulação coxofemoral (quadril)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -314,7 +314,7 @@
  {
   "id": 40,
   "tuss": "40804046",
-  "nome": "RX - COXA",
+  "nome": "RX - Coxa",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -322,7 +322,7 @@
  {
   "id": 41,
   "tuss": "40804054",
-  "nome": "RX - JOELHO",
+  "nome": "RX - Joelho",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -330,7 +330,7 @@
  {
   "id": 42,
   "tuss": "40804062",
-  "nome": "RX - PATELA",
+  "nome": "RX - Patela",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -338,7 +338,7 @@
  {
   "id": 43,
   "tuss": "40804070",
-  "nome": "RX - PERNA",
+  "nome": "RX - Perna",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -346,7 +346,7 @@
  {
   "id": 44,
   "tuss": "40804089",
-  "nome": "RX - ARTICULACAO TIBIOTARSICA (TORNOZELO)",
+  "nome": "RX - Articulação tibiotársica (tornozelo)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -354,7 +354,7 @@
  {
   "id": 45,
   "tuss": "40804097",
-  "nome": "RX - PE OU PODODACTILO",
+  "nome": "RX - Pé ou pododáctilo",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -362,7 +362,7 @@
  {
   "id": 46,
   "tuss": "40804100",
-  "nome": "RX - CALCANEO",
+  "nome": "RX - Calcâneo",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -370,7 +370,7 @@
  {
   "id": 47,
   "tuss": "40804119",
-  "nome": "RX - ESCANOMETRIA",
+  "nome": "RX - Escanometria",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -378,7 +378,7 @@
  {
   "id": 48,
   "tuss": "40804127",
-  "nome": "RX - PANORAMICA DOS MEMBROS INFERIORES",
+  "nome": "RX - Panorâmica dos membros inferiores",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -386,7 +386,7 @@
  {
   "id": 49,
   "tuss": "40804135",
-  "nome": "RX - INCIDENCIA ADICIONAL DE MEMBRO INFERIOR",
+  "nome": "RX - Incidência adicional de membro inferior",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -394,7 +394,7 @@
  {
   "id": 50,
   "tuss": "40805018",
-  "nome": "RX - TORAX - 1 INCIDENCIA",
+  "nome": "RX - Tórax - 1 incidência",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -402,7 +402,7 @@
  {
   "id": 51,
   "tuss": "40805026",
-  "nome": "RX - TORAX - 2 INCIDENCIAS",
+  "nome": "RX - Tórax - 2 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -410,7 +410,7 @@
  {
   "id": 52,
   "tuss": "40805034",
-  "nome": "RX - TORAX - 3 INCIDENCIAS",
+  "nome": "RX - Tórax - 3 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -418,7 +418,7 @@
  {
   "id": 53,
   "tuss": "40805042",
-  "nome": "RX - TORAX - 4 INCIDENCIAS",
+  "nome": "RX - Tórax - 4 incidências",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -426,7 +426,7 @@
  {
   "id": 54,
   "tuss": "40806189",
-  "nome": "RX - TRANSITO COLONICO",
+  "nome": "RX - Trânsito colônico",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -434,7 +434,7 @@
  {
   "id": 55,
   "tuss": "40807010",
-  "nome": "RX - UROGRAFIA VENOSA COM BEXIGA PRE E POS-MICCIONAL",
+  "nome": "RX - Urografia venosa com bexiga pré e pós-miccional",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -442,7 +442,7 @@
  {
   "id": 56,
   "tuss": "40807029",
-  "nome": "RX - PIELOGRAFIA ASCENDENTE",
+  "nome": "RX - Pielografia ascendente",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -450,7 +450,7 @@
  {
   "id": 57,
   "tuss": "40807037",
-  "nome": "RX - UROGRAFIA VENOSA MINUTADA 1-2-3",
+  "nome": "RX - Urografia venosa minutada 1-2-3",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -458,7 +458,7 @@
  {
   "id": 58,
   "tuss": "40807045",
-  "nome": "RX - UROGRAFIA VENOSA COM NEFROTOMOGRAFIA",
+  "nome": "RX - Urografia venosa com nefrotomografia",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -466,7 +466,7 @@
  {
   "id": 59,
   "tuss": "40807053",
-  "nome": "RX - URETROCISTOGRAFIA DE ADULTO",
+  "nome": "RX - Uretrocistografia de adulto",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -474,7 +474,7 @@
  {
   "id": 60,
   "tuss": "40807061",
-  "nome": "RX - URETROCISTOGRAFIA DE CRIANCA (ATE 12 ANOS)",
+  "nome": "RX - Uretrocistografia de criança (até 12 anos)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -482,7 +482,7 @@
  {
   "id": 61,
   "tuss": "40807070",
-  "nome": "RX - TOMOGRAFIA RENAL SEM CONTRASTE",
+  "nome": "RX - Tomografia renal sem contraste",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -490,7 +490,7 @@
  {
   "id": 62,
   "tuss": "40807088",
-  "nome": "RX - PENIS",
+  "nome": "RX - Pênis",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -498,7 +498,7 @@
  {
   "id": 63,
   "tuss": "40807096",
-  "nome": "RX - URETROCISTOGRAFIA RETROGADA",
+  "nome": "RX - Uretrocistografia retrógrada",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -506,7 +506,7 @@
  {
   "id": 64,
   "tuss": "40808017",
-  "nome": "RX - ABDOME SIMPLES",
+  "nome": "RX - Abdome simples",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -514,7 +514,7 @@
  {
   "id": 65,
   "tuss": "40808025",
-  "nome": "RX - ABDOME AGUDO",
+  "nome": "RX - Abdome agudo",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -522,7 +522,7 @@
  {
   "id": 66,
   "tuss": "40808050",
-  "nome": "RX - AMPLIACAO OU MAGNIFICACAO DE LESAO MAMARIA",
+  "nome": "RX - Ampliação ou magnificação de lesão mamária",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -530,7 +530,7 @@
  {
   "id": 67,
   "tuss": "40808114",
-  "nome": "RX - ESQUELETO (INCIDENCIAS BASICAS DE: CRANIO, COLUNA, BACIA E MEMBROS)",
+  "nome": "RX - Esqueleto (incidências básicas de: crânio, coluna, bacia e membros)",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -538,7 +538,7 @@
  {
   "id": 68,
   "tuss": "40808157",
-  "nome": "RX - AVALIACAO DE FRATURAS VERTEBRAIS POR DXA",
+  "nome": "RX - Avaliação de fraturas vertebrais por DXA",
   "modalidade": "RX",
   "origem": "tabela geral",
   "ativo": true
@@ -546,7 +546,7 @@
  {
   "id": 69,
   "tuss": "40901360",
-  "nome": "DOPPLER COLORIDO DE VASOS CERVICAIS ARTERIAIS BILATERAL CAROTIDAS E VERTEBRAIS",
+  "nome": "US - Doppler colorido de vasos cervicais arteriais bilateral carótidas e vertebrais",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -554,7 +554,7 @@
  {
   "id": 70,
   "tuss": "40901378",
-  "nome": "DOPPLER COLORIDO DE VASOS CERVICAIS VENOSOS BILATERAL SUBCLAVIAS E JUGULARES",
+  "nome": "US - Doppler colorido de vasos cervicais venosos bilateral subclávias e jugulares",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -562,7 +562,7 @@
  {
   "id": 71,
   "tuss": "40901386",
-  "nome": "DOPPLER COLORIDO DE ORGAO OU ESTRUTURA ISOLADA",
+  "nome": "US - Doppler colorido de órgão ou estrutura isolada",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -570,7 +570,7 @@
  {
   "id": 72,
   "tuss": "40901394",
-  "nome": "DOPPLER COLORIDO DE AORTA E ARTERIAS RENAIS",
+  "nome": "US - Doppler colorido de aorta e artérias renais",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -578,7 +578,7 @@
  {
   "id": 73,
   "tuss": "40901408",
-  "nome": "DOPPLER COLORIDO DE AORTA E ILIACAS",
+  "nome": "US - Doppler colorido de aorta e ilíacas",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -586,7 +586,7 @@
  {
   "id": 74,
   "tuss": "40901416",
-  "nome": "DOPPLER COLORIDO DE ARTERIAS VISCERAIS MESENTERICAS SUPERIOR E INFERIOR E TRONCO CELIACO",
+  "nome": "US - Doppler colorido de artérias viscerais mesentéricas superior e inferior e tronco celíaco",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -594,7 +594,7 @@
  {
   "id": 75,
   "tuss": "40901432",
-  "nome": "DOPPLER COLORIDO DE VEIA CAVA SUPERIOR OU INFERIOR",
+  "nome": "US - Doppler colorido de veia cava superior ou inferior",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -602,7 +602,7 @@
  {
   "id": 76,
   "tuss": "40901459",
-  "nome": "DOPPLER COLORIDO ARTERIAL DE MEMBRO SUPERIOR - UNILATERAL",
+  "nome": "US - Doppler colorido arterial de membro superior - unilateral",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -610,7 +610,7 @@
  {
   "id": 77,
   "tuss": "40901467",
-  "nome": "DOPPLER COLORIDO VENOSO DE MEMBRO SUPERIOR - UNILATERAL",
+  "nome": "US - Doppler colorido venoso de membro superior - unilateral",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -618,7 +618,7 @@
  {
   "id": 78,
   "tuss": "40901475",
-  "nome": "DOPPLER COLORIDO ARTERIAL DE MEMBRO INFERIOR - UNILATERAL",
+  "nome": "US - Doppler colorido arterial de membro inferior - unilateral",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -626,7 +626,7 @@
  {
   "id": 79,
   "tuss": "40901483",
-  "nome": "DOPPLER COLORIDO VENOSO DE MEMBRO INFERIOR - UNILATERAL",
+  "nome": "US - Doppler colorido venoso de membro inferior - unilateral",
   "modalidade": "DOPPLER",
   "origem": "tabela geral",
   "ativo": true
@@ -634,7 +634,7 @@
  {
   "id": 80,
   "tuss": "40901033",
-  "nome": "US - GLANDULAS SALIVARES TODAS",
+  "nome": "US - Glândulas salivares todas",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -642,7 +642,7 @@
  {
   "id": 81,
   "tuss": "40901114",
-  "nome": "US - MAMAS",
+  "nome": "US - Mamas",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -650,7 +650,7 @@
  {
   "id": 82,
   "tuss": "40901122",
-  "nome": "US - ABDOME TOTAL ABDOME SUPERIOR, RINS, BEXIGA, AORTA, VEIA CAVA INFERIOR E ADRENAIS",
+  "nome": "US - Abdome total abdome superior, rins, bexiga, aorta, veia cava inferior e adrenais",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -658,7 +658,7 @@
  {
   "id": 83,
   "tuss": "40901130",
-  "nome": "US - ABDOME SUPERIOR FIGADO, VIAS BILIARES, VESICULA, PANCREAS E BACO",
+  "nome": "US - Abdome superior fígado, vias biliares, vesícula, pâncreas e baço",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -666,7 +666,7 @@
  {
   "id": 84,
   "tuss": "40901173",
-  "nome": "US - ABDOME INFERIOR MASCULINO (BEXIGA, PROSTATA E VESICULAS SEMINAIS)",
+  "nome": "US - Abdome inferior masculino (bexiga, próstata e vesículas seminais)",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -674,7 +674,7 @@
  {
   "id": 85,
   "tuss": "40901181",
-  "nome": "US - ABDOME INFERIOR FEMININO (BEXIGA, UTERO, OVARIO E ANEXOS)",
+  "nome": "US - Abdome inferior feminino (bexiga, útero, ovário e anexos)",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -682,7 +682,7 @@
  {
   "id": 86,
   "tuss": "40901190",
-  "nome": "US - DERMATOLOGICO - PELE E SUBCUTANEO",
+  "nome": "US - Dermatológico - pele e subcutâneo",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -690,7 +690,7 @@
  {
   "id": 87,
   "tuss": "40901203",
-  "nome": "US - ORGAOS SUPERFICIAIS (TIREOIDE OU ESCROTO OU PENIS OU CRANIO)",
+  "nome": "US - Órgãos superficiais (tireoide ou escroto ou pênis ou crânio)",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -698,7 +698,7 @@
  {
   "id": 88,
   "tuss": "40901211",
-  "nome": "US - ESTRUTURAS SUPERFICIAIS CERVICAL OU AXILA OU MUSCULO OU TENDAO",
+  "nome": "US - Estruturas superficiais cervical ou axila ou músculo ou tendão",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -706,7 +706,7 @@
  {
   "id": 89,
   "tuss": "40901220",
-  "nome": "US - ARTICULAR POR ARTICULACAO",
+  "nome": "US - Articular por articulação",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -714,7 +714,7 @@
  {
   "id": 90,
   "tuss": "40901297",
-  "nome": "US - OBSTETRICA 1A TRIMESTRE ENDOVAGINAL",
+  "nome": "US - Obstétrica 1a trimestre endovaginal",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -722,7 +722,7 @@
  {
   "id": 91,
   "tuss": "40901300",
-  "nome": "US - TRANSVAGINAL (UTERO, OVARIO, ANEXOS E VAGINA)",
+  "nome": "US - Transvaginal (útero, ovário, anexos e vagina)",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -730,7 +730,7 @@
  {
   "id": 92,
   "tuss": "40901319",
-  "nome": "US - TRANSVAGINAL PARA CONTROLE DE OVULACAO 3 OU MAIS EXAMES",
+  "nome": "US - Transvaginal para controle de ovulação 3 ou mais exames",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -738,7 +738,7 @@
  {
   "id": 93,
   "tuss": "40901335",
-  "nome": "US - PROSTATA TRANSRETAL NAO INCLUI ABDOME INFERIOR MASCULINO",
+  "nome": "US - Próstata transretal não inclui abdome inferior masculino",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -746,7 +746,7 @@
  {
   "id": 94,
   "tuss": "40901742",
-  "nome": "US - TRANSRETAL RADIAL",
+  "nome": "US - Transretal radial",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -754,7 +754,7 @@
  {
   "id": 95,
   "tuss": "40901750",
-  "nome": "US - PROSTATA VIA ABDOMINAL",
+  "nome": "US - Próstata via abdominal",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -762,7 +762,7 @@
  {
   "id": 96,
   "tuss": "40901769",
-  "nome": "US - APARELHO URINARIO RINS, URETERES E BEXIGA",
+  "nome": "US - Aparelho urinário rins, ureteres e bexiga",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -770,7 +770,7 @@
  {
   "id": 97,
   "tuss": "40901815",
-  "nome": "US - ORGAO OU ESTRUTURA ISOLADA COM CONTRASTE MICROBOLHAS",
+  "nome": "US - Órgão ou estrutura isolada com contraste microbolhas",
   "modalidade": "ULTRASSOM",
   "origem": "tabela geral",
   "ativo": true
@@ -778,7 +778,7 @@
  {
   "id": 98,
   "tuss": "40808033",
-  "nome": "MAMOGRAFIA CONVENCIONAL BILATERAL",
+  "nome": "Mamografia convencional bilateral",
   "modalidade": "MAMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -786,7 +786,7 @@
  {
   "id": 99,
   "tuss": "40808041",
-  "nome": "MAMOGRAFIA DIGITAL BILATERAL",
+  "nome": "Mamografia digital bilateral",
   "modalidade": "MAMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -794,7 +794,7 @@
  {
   "id": 100,
   "tuss": "41001010",
-  "nome": "TC - CRANIO OU SELA TURCICA OU ORBITAS",
+  "nome": "TC - Crânio ou sela túrcica ou órbitas",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -802,7 +802,7 @@
  {
   "id": 101,
   "tuss": "41001028",
-  "nome": "TC - MASTOIDES OU ORELHAS (OUVIDO)",
+  "nome": "TC - Mastoides ou orelhas (ouvido)",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -810,7 +810,7 @@
  {
   "id": 102,
   "tuss": "41001036",
-  "nome": "TC - FACE OU SEIOS DA FACE",
+  "nome": "TC - Face ou seios da face",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -818,7 +818,7 @@
  {
   "id": 103,
   "tuss": "41001044",
-  "nome": "TC - ARTICULACOES TEMPOROMANDIBULARES",
+  "nome": "TC - Articulações temporomandibulares",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -826,7 +826,7 @@
  {
   "id": 104,
   "tuss": "41001060",
-  "nome": "TC - PESCOCO (PARTES MOLES, LARINGE, TIREOIDE, FARINGE E GLANDULAS SALIVARES)",
+  "nome": "TC - Pescoço (partes moles, laringe, tireoide, faringe e glândulas salivares)",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -834,7 +834,7 @@
  {
   "id": 105,
   "tuss": "41001079",
-  "nome": "TC - TORAX",
+  "nome": "TC - Tórax",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -842,7 +842,7 @@
  {
   "id": 106,
   "tuss": "41001095",
-  "nome": "TC - ABDOME TOTAL (ABDOME SUPERIOR, PELVE E RETROPERITONIO)",
+  "nome": "TC - Abdome total (abdome superior, pelve e retroperitônio)",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -850,7 +850,7 @@
  {
   "id": 107,
   "tuss": "41001109",
-  "nome": "TC - ABDOME SUPERIOR",
+  "nome": "TC - Abdome superior",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -858,7 +858,7 @@
  {
   "id": 108,
   "tuss": "41001117",
-  "nome": "TC - PELVE OU BACIA",
+  "nome": "TC - Pelve ou bacia",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -866,7 +866,7 @@
  {
   "id": 109,
   "tuss": "41001125",
-  "nome": "TC - COLUNA CERVICAL OU DORSAL OU LOMBO-SACRA (ATE 3 SEGMENTOS)",
+  "nome": "TC - Coluna cervical ou dorsal ou lombo-sacra (até 3 segmentos)",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -874,7 +874,7 @@
  {
   "id": 110,
   "tuss": "41001133",
-  "nome": "TC - COLUNA - SEGMENTO ADICIONAL",
+  "nome": "TC - Coluna - segmento adicional",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -882,7 +882,7 @@
  {
   "id": 111,
   "tuss": "41001141",
-  "nome": "TC - ARTICULACAO (ESTERNOCLAVICULAR OU OMBRO OU COTOVELO OU PUNHO OU SACROILIACAS OU COXOFEMORAL OU JOELHO OU TORNOZELO OU PE OU QUADRIL) - UNILATERAL",
+  "nome": "TC - Articulação (esternoclavicular ou ombro ou cotovelo ou punho ou sacroilíacas ou coxofemoral ou joelho ou tornozelo ou pé ou quadril) - unilateral",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -890,7 +890,7 @@
  {
   "id": 112,
   "tuss": "41001150",
-  "nome": "TC - SEGMENTO APENDICULAR (BRACO OU ANTEBRACO OU MAO OU COXA OU PERNA OU PE) - UNILATERAL",
+  "nome": "TC - Segmento apendicular (braço ou antebraço ou mão ou coxa ou perna ou pé) - unilateral",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -898,7 +898,7 @@
  {
   "id": 113,
   "tuss": "41001192",
-  "nome": "TC - ESCANOMETRIA DIGITAL",
+  "nome": "TC - Escanometria digital",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -906,7 +906,7 @@
  {
   "id": 114,
   "tuss": "41001532",
-  "nome": "TC PARA PLANEJAMENTO ONCOLOGICO",
+  "nome": "TC - Planejamento oncológico",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -914,7 +914,7 @@
  {
   "id": 115,
   "tuss": "41101014",
-  "nome": "RM - CRANIO (ENCEFALO)",
+  "nome": "RM - Crânio (encéfalo)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -922,7 +922,7 @@
  {
   "id": 116,
   "tuss": "41101022",
-  "nome": "RM - SELA TURCICA (HIPOFISE)",
+  "nome": "RM - Sela túrcica (hipófise)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -930,7 +930,7 @@
  {
   "id": 117,
   "tuss": "41101030",
-  "nome": "RM - BASE DO CRANIO",
+  "nome": "RM - Base do crânio",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -938,7 +938,7 @@
  {
   "id": 118,
   "tuss": "41101065",
-  "nome": "ESPECTROSCOPIA POR RM",
+  "nome": "RM - Espectroscopia",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -946,7 +946,7 @@
  {
   "id": 119,
   "tuss": "41101073",
-  "nome": "RM - ORBITA BILATERAL",
+  "nome": "RM - Órbita bilateral",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -954,7 +954,7 @@
  {
   "id": 120,
   "tuss": "41101081",
-  "nome": "RM - OSSOS TEMPORAIS BILATERAL",
+  "nome": "RM - Ossos temporais bilateral",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -962,7 +962,7 @@
  {
   "id": 121,
   "tuss": "41101090",
-  "nome": "RM - FACE (INCLUI SEIOS DA FACE)",
+  "nome": "RM - Face (inclui seios da face)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -970,7 +970,7 @@
  {
   "id": 122,
   "tuss": "41101103",
-  "nome": "RM - ARTICULACAO TEMPOROMANDIBULAR (BILATERAL)",
+  "nome": "RM - Articulação temporomandibular (bilateral)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -978,7 +978,7 @@
  {
   "id": 123,
   "tuss": "41101111",
-  "nome": "RM - PESCOCO (NASOFARINGE, OROFARINGE, LARINGE, TRAQUEIA, TIREOIDE, PARATIREOIDE)",
+  "nome": "RM - Pescoço (nasofaringe, orofaringe, laringe, traqueia, tireoide, paratireoide)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -986,7 +986,7 @@
  {
   "id": 124,
   "tuss": "41101120",
-  "nome": "RM - TORAX (MEDIASTINO, PULMAO, PAREDE TORACICA), (ESTERNO)",
+  "nome": "RM - Tórax (mediastino, pulmão, parede torácica), (esterno)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -994,7 +994,7 @@
  {
   "id": 125,
   "tuss": "41101138",
-  "nome": "RM - CORACAO - MORFOLOGICO E FUNCIONAL",
+  "nome": "RM - Coração - morfológico e funcional",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1002,7 +1002,7 @@
  {
   "id": 126,
   "tuss": "41101146",
-  "nome": "RM - CORACAO - MORFOLOGICO E FUNCIONAL + PERFUSAO + ESTRESSE",
+  "nome": "RM - Coração - morfológico e funcional + perfusão + estresse",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1010,7 +1010,7 @@
  {
   "id": 127,
   "tuss": "41101154",
-  "nome": "RM - CORACAO - MORFOLOGICO E FUNCIONAL + PERFUSAO + VIABILIDADE MIOCARDICA",
+  "nome": "RM - Coração - morfológico e funcional + perfusão + viabilidade miocárdica",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1018,7 +1018,7 @@
  {
   "id": 128,
   "tuss": "41101170",
-  "nome": "RM - ABDOME SUPERIOR (FIGADO, PANCREAS, BACO, RINS, SUPRA-RENAIS, RETROPERITONIO)",
+  "nome": "RM - Abdome superior (fígado, pâncreas, baço, rins, supra-renais, retroperitônio)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1026,7 +1026,7 @@
  {
   "id": 129,
   "tuss": "41101189",
-  "nome": "RM - PELVE (NAO INCLUI ARTICULACOES COXOFEMORAIS)",
+  "nome": "RM - Pelve (não inclui articulações coxofemorais)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1034,7 +1034,7 @@
  {
   "id": 130,
   "tuss": "41101200",
-  "nome": "RM - PENIS",
+  "nome": "RM - Pênis",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1042,7 +1042,7 @@
  {
   "id": 131,
   "tuss": "41101219",
-  "nome": "RM - BOLSA ESCROTAL",
+  "nome": "RM - Bolsa escrotal",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1050,7 +1050,7 @@
  {
   "id": 132,
   "tuss": "41101227",
-  "nome": "RM - COLUNA CERVICAL OU DORSAL OU LOMBAR",
+  "nome": "RM - Coluna cervical ou dorsal ou lombar",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1058,7 +1058,7 @@
  {
   "id": 133,
   "tuss": "41101235",
-  "nome": "RM - FLUXO LIQUORICO (COMO COMPLEMENTAR)",
+  "nome": "RM - Fluxo liquórico (como complementar)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1066,7 +1066,7 @@
  {
   "id": 134,
   "tuss": "41101243",
-  "nome": "RM - PLEXO BRAQUIAL (DESFILADEIRO TORACICO) OU LOMBOSSACRAL (NAO INCLUI COLUNA CERVICAL OU LOMBAR)",
+  "nome": "RM - Plexo braquial (desfiladeiro torácico) ou lombossacral (não inclui coluna cervical ou lombar)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1074,7 +1074,7 @@
  {
   "id": 135,
   "tuss": "41101251",
-  "nome": "RM - MEMBRO SUPERIOR UNILATERAL (NAO INCLUI MAO E ARTICULACOES)",
+  "nome": "RM - Membro superior unilateral (não inclui mão e articulações)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1082,7 +1082,7 @@
  {
   "id": 136,
   "tuss": "41101260",
-  "nome": "RM - MAO (NAO INCLUI PUNHO)",
+  "nome": "RM - Mão (não inclui punho)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1090,7 +1090,7 @@
  {
   "id": 137,
   "tuss": "41101278",
-  "nome": "RM - BACIA (ARTICULACOES SACROILIACAS)",
+  "nome": "RM - Bacia (articulações sacroilíacas)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1098,7 +1098,7 @@
  {
   "id": 138,
   "tuss": "41101286",
-  "nome": "RM - COXA (UNILATERAL)",
+  "nome": "RM - Coxa (unilateral)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1106,7 +1106,7 @@
  {
   "id": 139,
   "tuss": "41101294",
-  "nome": "RM - PERNA (UNILATERAL)",
+  "nome": "RM - Perna (unilateral)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1114,7 +1114,7 @@
  {
   "id": 140,
   "tuss": "41101308",
-  "nome": "RM - PE (ANTEPE) - NAO INCLUI TORNOZELO",
+  "nome": "RM - Pé (antepé) - não inclui tornozelo",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1122,7 +1122,7 @@
  {
   "id": 141,
   "tuss": "41101316",
-  "nome": "RM - ARTICULAR (POR ARTICULACAO)",
+  "nome": "RM - Articular (por articulação)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1130,7 +1130,7 @@
  {
   "id": 142,
   "tuss": "41101359",
-  "nome": "HIDRO-RM (COLANGIO-RM OU URO-RM OU MIELO-RM OU SIALO-RM OU CISTOGRAFIA POR RM)",
+  "nome": "RM - Hidro-RM (colangio-RM ou uro-RM ou mielo-RM ou sialo-RM ou cistografia por RM)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1138,7 +1138,7 @@
  {
   "id": 143,
   "tuss": "41101480",
-  "nome": "RM - MAMA (BILATERAL)",
+  "nome": "RM - Mama (bilateral)",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1146,7 +1146,7 @@
  {
   "id": 144,
   "tuss": "41101669",
-  "nome": "RM PARA PLANEJAMENTO ONCOLOGICO",
+  "nome": "RM - Planejamento oncológico",
   "modalidade": "RESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1154,7 +1154,7 @@
  {
   "id": 145,
   "tuss": "40808122",
-  "nome": "DENSITOMETRIA OSSEA (UM SEGMENTO)",
+  "nome": "Densitometria óssea (um segmento)",
   "modalidade": "DENSITOMETRIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1162,7 +1162,7 @@
  {
   "id": 146,
   "tuss": "40808130",
-  "nome": "DENSITOMETRIA OSSEA - ROTINA COLUNA E FEMUR OU DOIS SEGMENTOS",
+  "nome": "Densitometria óssea - rotina coluna e fêmur ou dois segmentos",
   "modalidade": "DENSITOMETRIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1170,7 +1170,7 @@
  {
   "id": 147,
   "tuss": "40808149",
-  "nome": "DENSITOMETRIA OSSEA - CORPO INTEIRO AVALIACAO DE MASSA OSSEA OU DE COMPOSICAO CORPORAL",
+  "nome": "Densitometria óssea - corpo inteiro avaliação de massa óssea ou de composição corporal",
   "modalidade": "DENSITOMETRIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1178,7 +1178,7 @@
  {
   "id": 148,
   "tuss": "41001176",
-  "nome": "ANGIOTOMOGRAFIA DE AORTA TORACICA",
+  "nome": "TC - Angio de aorta torácica",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1186,7 +1186,7 @@
  {
   "id": 149,
   "tuss": "41001184",
-  "nome": "ANGIOTOMOGRAFIA DE AORTA ABDOMINAL",
+  "nome": "TC - Angio de aorta abdominal",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1194,7 +1194,7 @@
  {
   "id": 150,
   "tuss": "41001370",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE CRANIO",
+  "nome": "TC - Angio arterial de crânio",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1202,7 +1202,7 @@
  {
   "id": 151,
   "tuss": "41001389",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE CRANIO",
+  "nome": "TC - Angio venosa de crânio",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1210,7 +1210,7 @@
  {
   "id": 152,
   "tuss": "41001397",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE PESCOCO",
+  "nome": "TC - Angio arterial de pescoço",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1218,7 +1218,7 @@
  {
   "id": 153,
   "tuss": "41001400",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE PESCOCO",
+  "nome": "TC - Angio venosa de pescoço",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1226,7 +1226,7 @@
  {
   "id": 154,
   "tuss": "41001419",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE TORAX",
+  "nome": "TC - Angio arterial de tórax",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1234,7 +1234,7 @@
  {
   "id": 155,
   "tuss": "41001427",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE TORAX",
+  "nome": "TC - Angio venosa de tórax",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1242,7 +1242,7 @@
  {
   "id": 156,
   "tuss": "41001435",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE ABDOME SUPERIOR",
+  "nome": "TC - Angio arterial de abdome superior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1250,7 +1250,7 @@
  {
   "id": 157,
   "tuss": "41001443",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE ABDOME SUPERIOR",
+  "nome": "TC - Angio venosa de abdome superior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1258,7 +1258,7 @@
  {
   "id": 158,
   "tuss": "41001451",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE PELVE",
+  "nome": "TC - Angio arterial de pelve",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1266,7 +1266,7 @@
  {
   "id": 159,
   "tuss": "41001460",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE PELVE",
+  "nome": "TC - Angio venosa de pelve",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1274,7 +1274,7 @@
  {
   "id": 160,
   "tuss": "41001478",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE MEMBRO INFERIOR",
+  "nome": "TC - Angio arterial de membro inferior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1282,7 +1282,7 @@
  {
   "id": 161,
   "tuss": "41001516",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL PULMONAR",
+  "nome": "TC - Angio arterial pulmonar",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1290,7 +1290,7 @@
  {
   "id": 162,
   "tuss": "41001524",
-  "nome": "ANGIOTOMOGRAFIA VENOSA PULMONAR",
+  "nome": "TC - Angio venosa pulmonar",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1298,7 +1298,7 @@
  {
   "id": 163,
   "tuss": "41101332",
-  "nome": "ANGIO-RM DE AORTA TORACICA",
+  "nome": "RM - Angio de aorta torácica",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1306,7 +1306,7 @@
  {
   "id": 164,
   "tuss": "41101340",
-  "nome": "ANGIO-RM DE AORTA ABDOMINAL",
+  "nome": "RM - Angio de aorta abdominal",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1314,7 +1314,7 @@
  {
   "id": 165,
   "tuss": "41101499",
-  "nome": "ANGIO-RM ARTERIAL PULMONAR",
+  "nome": "RM - Angio arterial pulmonar",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1322,7 +1322,7 @@
  {
   "id": 166,
   "tuss": "41101502",
-  "nome": "ANGIO-RM VENOSA PULMONAR",
+  "nome": "RM - Angio venosa pulmonar",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1330,7 +1330,7 @@
  {
   "id": 167,
   "tuss": "41101510",
-  "nome": "ANGIO-RM ARTERIAL DE ABDOME SUPERIOR",
+  "nome": "RM - Angio arterial de abdome superior",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1338,7 +1338,7 @@
  {
   "id": 168,
   "tuss": "41101529",
-  "nome": "ANGIO-RM VENOSA DE ABDOME SUPERIOR",
+  "nome": "RM - Angio venosa de abdome superior",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1346,7 +1346,7 @@
  {
   "id": 169,
   "tuss": "41101537",
-  "nome": "ANGIO-RM ARTERIAL DE CRANIO",
+  "nome": "RM - Angio arterial de crânio",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1354,7 +1354,7 @@
  {
   "id": 170,
   "tuss": "41101545",
-  "nome": "ANGIO-RM VENOSA DE CRANIO",
+  "nome": "RM - Angio venosa de crânio",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1362,7 +1362,7 @@
  {
   "id": 171,
   "tuss": "41101553",
-  "nome": "ANGIO-RM ARTERIAL DE MEMBRO INFERIOR (UNILATERAL)",
+  "nome": "RM - Angio arterial de membro inferior (unilateral)",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1370,7 +1370,7 @@
  {
   "id": 172,
   "tuss": "41101596",
-  "nome": "ANGIO-RM ARTERIAL DE PELVE",
+  "nome": "RM - Angio arterial de pelve",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1378,7 +1378,7 @@
  {
   "id": 173,
   "tuss": "41101600",
-  "nome": "ANGIO-RM VENOSA DE PELVE",
+  "nome": "RM - Angio venosa de pelve",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1386,7 +1386,7 @@
  {
   "id": 174,
   "tuss": "41101618",
-  "nome": "ANGIO-RM ARTERIAL DE PESCOCO",
+  "nome": "RM - Angio arterial de pescoço",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1394,7 +1394,7 @@
  {
   "id": 175,
   "tuss": "41101626",
-  "nome": "ANGIO-RM VENOSA DE PESCOCO",
+  "nome": "RM - Angio venosa de pescoço",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela geral",
   "ativo": true
@@ -1405,7 +1405,8 @@
   "nome": "Estudo de um vaso com doppler pulsado e continuo",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 177,
@@ -1413,7 +1414,8 @@
   "nome": "Estudo de dois vasos com doppler pulcont conven",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 178,
@@ -1421,7 +1423,8 @@
   "nome": "Estudo de tres ou mais vasos com doppler pul.cont. convencional",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 179,
@@ -1429,7 +1432,8 @@
   "nome": "Estudo ultrassonográfico intravascular",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 180,
@@ -1586,7 +1590,7 @@
  {
   "id": 199,
   "tuss": "40902048",
-  "nome": "US -Próstata transretal com biópsia - mais de 8 fragmentos",
+  "nome": "US - Próstata transretal com biópsia - mais de 8 fragmentos",
   "modalidade": "ULTRASSOM",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1602,7 +1606,7 @@
  {
   "id": 201,
   "tuss": "40902064",
-  "nome": "Doppler colorido intra-operatório",
+  "nome": "US - Doppler colorido intra-operatório",
   "modalidade": "DOPPLER",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1738,7 +1742,7 @@
  {
   "id": 218,
   "tuss": "41001168",
-  "nome": "Angiotomografia (crânio ou pescoço ou tórax ou abdome superior ou pelve) - arterial ou venosa",
+  "nome": "TC - Angiotomografia (crânio ou pescoço ou tórax ou abdome superior ou pelve) - arterial ou venosa",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1746,7 +1750,7 @@
  {
   "id": 219,
   "tuss": "41001222",
-  "nome": "TC para PET dedicado oncológico",
+  "nome": "TC - PET dedicado oncológico",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1794,7 +1798,7 @@
  {
   "id": 225,
   "tuss": "41101324",
-  "nome": "Angio-RM (crânio ou pescoço ou tórax ou abdome superior ou pelve) - arterial ou venosa",
+  "nome": "RM - Angio (crânio ou pescoço ou tórax ou abdome superior ou pelve) - arterial ou venosa",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1802,7 +1806,7 @@
  {
   "id": 226,
   "tuss": "41102010",
-  "nome": "Artro-RM (incluir a punção articular) - por articulação",
+  "nome": "RM - Artro (incluir a punção articular) - por articulação",
   "modalidade": "RESSONANCIA",
   "origem": "tabela do convênio cassi",
   "ativo": true
@@ -1813,7 +1817,8 @@
   "nome": "Biópsia de tireóide",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 228,
@@ -1821,7 +1826,8 @@
   "nome": "Punção ou biópsia percutânea de agulha fina - por nódulo (máximo de 3 nódulos por mama)",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 229,
@@ -1829,7 +1835,8 @@
   "nome": "Punção articular diagnóstica ou terapêutica (infiltração) - orientada ou não por método de imagem",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 230,
@@ -1837,7 +1844,8 @@
   "nome": "Punção aspirativa renal para diagnóstico de rejeição (ato médico)",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 231,
@@ -1845,7 +1853,8 @@
   "nome": "Punção biópsia renal percutânea",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 232,
@@ -2197,7 +2206,8 @@
   "nome": "Aterectomia rotacional, direcional ou extracional, com ou sem angioplastia por balão, com ou sem implante de stent",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 276,
@@ -2821,7 +2831,8 @@
   "nome": "Cardiotocografia anteparto",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": true,
+  "tuss_a_confirmar": true
  },
  {
   "id": 354,
@@ -2970,7 +2981,7 @@
  {
   "id": 372,
   "tuss": "41101561",
-  "nome": "ANGIO-RM VENOSA DE MEMBRO INFERIOR (UNILATERAL)",
+  "nome": "RM - Angio venosa de membro inferior (unilateral)",
   "modalidade": "ANGIORRESSONANCIA",
   "origem": "tabela do convênio proasa",
   "ativo": true
@@ -2978,7 +2989,7 @@
  {
   "id": 373,
   "tuss": "41001087",
-  "nome": "TOMOGRAFIA DE TÓRAX PARA AVALIAÇÃO DE ESCORE DE CALCIO",
+  "nome": "TC - Tórax para avaliação de escore de cálcio",
   "modalidade": "TOMOGRAFIA",
   "origem": "tabela do convênio proasa",
   "ativo": true
@@ -2986,7 +2997,7 @@
  {
   "id": 374,
   "tuss": "41001486",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE MEMBRO INFERIOR",
+  "nome": "TC - Angio venosa de membro inferior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela do convênio proasa",
   "ativo": true
@@ -2994,7 +3005,7 @@
  {
   "id": 375,
   "tuss": "41001494",
-  "nome": "ANGIOTOMOGRAFIA ARTERIAL DE MEMBRO SUPERIOR",
+  "nome": "TC - Angio arterial de membro superior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela do convênio proasa",
   "ativo": true
@@ -3002,7 +3013,7 @@
  {
   "id": 376,
   "tuss": "41001508",
-  "nome": "ANGIOTOMOGRAFIA VENOSA DE MEMBRO SUPERIOR",
+  "nome": "TC - Angio venosa de membro superior",
   "modalidade": "ANGIOTOMOGRAFIA",
   "origem": "tabela do convênio proasa",
   "ativo": true

@@ -261,7 +261,7 @@
  {
   "id": 21,
   "slug": "azimutemed",
-  "nome": "AZIMUTEMED",
+  "nome": "Azimutemed",
   "cor": null,
   "responsavel": null,
   "ativo": true,
@@ -326,7 +326,7 @@
  {
   "id": 26,
   "slug": "instwaldemarrochacentromedico",
-  "nome": "INST. WALDEMAR ROCHA - CENTRO MÉDICO",
+  "nome": "Inst. Waldemar Rocha - Centro Médico",
   "cor": null,
   "responsavel": null,
   "ativo": true,
@@ -339,7 +339,7 @@
  {
   "id": 27,
   "slug": "saolucassaude",
-  "nome": "SÃO LUCAS SAÚDE",
+  "nome": "São Lucas Saúde",
   "cor": null,
   "responsavel": null,
   "ativo": true,

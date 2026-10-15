@@ -304,5 +304,14 @@
   "acao_sugerida": "Confirmar se atende Sistel.",
   "resolvido": false,
   "resposta": null
+ },
+ {
+  "id": 35,
+  "tipo": "CONFIRMAR",
+  "onde": "exames",
+  "problema": "TUSS a confirmar: 11 códigos da tabela Cassi não começam com 4 e podem ser AMB, não TUSS: 20202016, 30213010, 30602181, 30713137, 30911141, 30912270, 31101399, 31101402, 33010218, 33010226, 33010234.",
+  "acao_sugerida": "Izabel: dizer se cada código é TUSS ou AMB.",
+  "resolvido": false,
+  "resposta": null
  }
 ]
