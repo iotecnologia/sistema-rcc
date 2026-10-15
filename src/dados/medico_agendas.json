@@ -1,6 +1,6 @@
 [
  {
-  "medico_id": 16,
+  "medico_id": 17,
   "tipo": "recorrente",
   "dia_semana": "quarta",
   "data": null,
@@ -9,7 +9,7 @@
   "observacao": "Ela irá atender de quartas"
  },
  {
-  "medico_id": 16,
+  "medico_id": 17,
   "tipo": "eventual",
   "dia_semana": null,
   "data": "2026-10-10",

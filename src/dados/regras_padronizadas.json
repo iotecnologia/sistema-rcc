@@ -99,10 +99,10 @@
     "41101154"
    ],
    "exame_ids": [
-    274,
-    176,
-    177,
-    178
+    220,
+    125,
+    126,
+    127
    ]
   },
   {
@@ -121,8 +121,8 @@
     "41001141"
    ],
    "exame_ids": [
-    193,
-    160
+    141,
+    111
    ]
   },
   {
@@ -147,7 +147,7 @@
     "41001230"
    ],
    "exame_ids": [
-    274
+    220
    ]
   },
   {
@@ -158,7 +158,7 @@
     "41101138"
    ],
    "exame_ids": [
-    176
+    125
    ]
   },
   {
@@ -169,8 +169,8 @@
     "41001087"
    ],
    "exame_ids": [
-    427,
-    431
+    373,
+    377
    ]
   },
   {
@@ -181,7 +181,7 @@
     "41001478"
    ],
    "exame_ids": [
-    214
+    160
    ]
   },
   {
@@ -193,8 +193,8 @@
     "41001508"
    ],
    "exame_ids": [
-    429,
-    430
+    375,
+    376
    ]
   },
   {
@@ -205,7 +205,7 @@
     "41001176"
    ],
    "exame_ids": [
-    202
+    148
    ]
   },
   {
@@ -216,7 +216,7 @@
     "41001184"
    ],
    "exame_ids": [
-    203
+    149
    ]
   },
   {
@@ -227,7 +227,7 @@
     "41001168"
    ],
    "exame_ids": [
-    272
+    218
    ]
   },
   {
@@ -238,7 +238,7 @@
     "41001370"
    ],
    "exame_ids": [
-    204
+    150
    ]
   },
   {
@@ -249,7 +249,7 @@
     "41101324"
    ],
    "exame_ids": [
-    279
+    225
    ]
   },
   {
@@ -261,8 +261,8 @@
     "41101545"
    ],
    "exame_ids": [
-    223,
-    224
+    169,
+    170
    ]
   },
   {
@@ -280,7 +280,7 @@
     "41101553"
    ],
    "exame_ids": [
-    225
+    171
    ]
   },
   {
@@ -292,8 +292,8 @@
     "41101537"
    ],
    "exame_ids": [
-    165,
-    223
+    115,
+    169
    ]
   },
   {
@@ -304,7 +304,7 @@
     "41101235"
    ],
    "exame_ids": [
-    185
+    133
    ]
   },
   {
@@ -315,7 +315,7 @@
     "41101480"
    ],
    "exame_ids": [
-    196
+    143
    ]
   },
   {
@@ -333,7 +333,7 @@
     "41101170"
    ],
    "exame_ids": [
-    179
+    128
    ]
   },
   {
@@ -344,7 +344,7 @@
     "41101120"
    ],
    "exame_ids": [
-    175
+    124
    ]
   },
   {
@@ -355,7 +355,7 @@
     "41101332"
    ],
    "exame_ids": [
-    217
+    163
    ]
   },
   {
@@ -394,7 +394,7 @@
     "41101189"
    ],
    "exame_ids": [
-    180
+    129
    ]
   },
   {
@@ -419,7 +419,7 @@
     "41101359"
    ],
    "exame_ids": [
-    194
+    142
    ]
   },
   {
@@ -430,7 +430,7 @@
     "41101065"
    ],
    "exame_ids": [
-    169
+    118
    ]
   },
   {
@@ -442,8 +442,8 @@
     "41001281"
    ],
    "exame_ids": [
-    275,
-    276
+    221,
+    222
    ]
   },
   {
@@ -454,7 +454,7 @@
     "41001036"
    ],
    "exame_ids": [
-    151
+    102
    ]
   },
   {
@@ -465,7 +465,7 @@
     "41001044"
    ],
    "exame_ids": [
-    152
+    103
    ]
   },
   {
@@ -476,7 +476,7 @@
     "41001095"
    ],
    "exame_ids": [
-    155
+    106
    ]
   },
   {
@@ -551,8 +551,8 @@
     "40808033"
    ],
    "exame_ids": [
-    148,
-    147
+    99,
+    98
    ]
   },
   {
@@ -570,7 +570,7 @@
     "40808050"
    ],
    "exame_ids": [
-    89
+    66
    ]
   },
   {
@@ -581,7 +581,7 @@
     "40808190"
    ],
    "exame_ids": [
-    290
+    236
    ]
   },
   {
@@ -592,7 +592,7 @@
     "40809161"
    ],
    "exame_ids": [
-    303
+    249
    ]
   },
   {
@@ -603,7 +603,7 @@
     "40808262"
    ],
    "exame_ids": [
-    297
+    243
    ]
   },
   {
@@ -614,7 +614,7 @@
     "40809161"
    ],
    "exame_ids": [
-    303
+    249
    ]
   },
   {
@@ -632,7 +632,7 @@
     "40901114"
    ],
    "exame_ids": [
-    118
+    81
    ]
   },
   {
@@ -643,7 +643,7 @@
     "40901203"
    ],
    "exame_ids": [
-    125
+    87
    ]
   },
   {
@@ -654,7 +654,7 @@
     "40901769"
    ],
    "exame_ids": [
-    143
+    96
    ]
   },
   {
@@ -664,9 +664,7 @@
    "tuss": [
     "40901238"
    ],
-   "exame_ids": [
-    128
-   ]
+   "exame_ids": []
   },
   {
    "id": "DOPPLER_COLORIDO",
@@ -683,7 +681,7 @@
     "40901394"
    ],
    "exame_ids": [
-    99
+    72
    ]
   },
   {
@@ -701,7 +699,7 @@
     "40804127"
    ],
    "exame_ids": [
-    55
+    48
    ]
   },
   {
@@ -2672,6 +2670,27 @@
    "resposta": null
   },
   {
+   "id": "SEP-16",
+   "molde": "M07",
+   "molde_nome": "Tipo de pedido aceito",
+   "convenio": "seprev",
+   "alvo_original": "Pedido",
+   "alvos": [
+    "PEDIDO"
+   ],
+   "campos": {
+    "aceita": [
+     "copia_legivel"
+    ]
+   },
+   "situacao": "confirmada",
+   "texto_original": "Aceita cópia bem legível, mas sempre orientar o paciente a trazer o original.",
+   "fontes": [
+    "IZA-1510"
+   ],
+   "resposta": null
+  },
+  {
    "id": "AAF-01",
    "molde": "M14",
    "molde_nome": "Código para autorizar",
@@ -3322,17 +3341,18 @@
    "campos": {
     "codigos": [
      "33010380",
-     "40901114"
+     "33019274"
     ],
     "alternativos": true,
     "status": "ativo"
    },
    "situacao": "confirmada",
-   "texto_original": "33010380 ou 40901114 (alternativos).",
+   "texto_original": "33010380 ou 33019274 (alternativos).",
    "fontes": [
     "R94",
     "CD02",
-    "CD04"
+    "CD04",
+    "IZA-1510"
    ],
    "resposta": null
   },
@@ -3357,28 +3377,6 @@
    "texto_original": "33019983 ou 40901203 (alternativos).",
    "fontes": [
     "R95"
-   ],
-   "resposta": null
-  },
-  {
-   "id": "HAP-10",
-   "molde": "M14",
-   "molde_nome": "Código para autorizar",
-   "convenio": "hapvida",
-   "alvo_original": "Código 33019274",
-   "alvos": [
-    "CODIGOS"
-   ],
-   "campos": {
-    "codigos": [
-     "33019274"
-    ],
-    "status": "nao_habilitado"
-   },
-   "situacao": "confirmada",
-   "texto_original": "Não habilitado para a RCC.",
-   "fontes": [
-    "R96"
    ],
    "resposta": null
   },
@@ -3449,51 +3447,6 @@
    },
    "situacao": "confirmada",
    "texto_original": "Acrescenta 20% ao código do US.",
-   "fontes": [
-    "CD02"
-   ],
-   "resposta": null
-  },
-  {
-   "id": "HAP-14",
-   "molde": "M14",
-   "molde_nome": "Código para autorizar",
-   "convenio": "hapvida",
-   "alvo_original": "Cine-RM coração 36010081",
-   "alvos": [
-    "RM_CORACAO"
-   ],
-   "campos": {
-    "codigos": [
-     "36010081"
-    ],
-    "status": "suspenso"
-   },
-   "situacao": "confirmada",
-   "texto_original": "Suspenso.",
-   "fontes": [
-    "CD02"
-   ],
-   "resposta": null
-  },
-  {
-   "id": "HAP-15",
-   "molde": "M14",
-   "molde_nome": "Código para autorizar",
-   "convenio": "hapvida",
-   "alvo_original": "RM mama 41101480",
-   "alvos": [
-    "RM_MAMA"
-   ],
-   "campos": {
-    "codigos": [
-     "41101480"
-    ],
-    "status": "a_confirmar",
-    "observacao": "anotação \"não mais\""
-   },
-   "situacao": "a_confirmar",
-   "texto_original": "Anotação \"não mais\" — confirmar.",
    "fontes": [
     "CD02"
    ],

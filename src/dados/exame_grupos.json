@@ -1,86 +1,134 @@
 [
  {
+  "exame_id": 111,
+  "grupo_id": 3
+ },
+ {
+  "exame_id": 125,
+  "grupo_id": 1
+ },
+ {
+  "exame_id": 126,
+  "grupo_id": 1
+ },
+ {
+  "exame_id": 127,
+  "grupo_id": 1
+ },
+ {
+  "exame_id": 141,
+  "grupo_id": 3
+ },
+ {
+  "exame_id": 148,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 149,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 150,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 151,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 152,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 153,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 154,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 155,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 156,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 157,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 158,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 159,
+  "grupo_id": 2
+ },
+ {
   "exame_id": 160,
-  "grupo_id": 3
- },
- {
-  "exame_id": 176,
-  "grupo_id": 1
- },
- {
-  "exame_id": 177,
-  "grupo_id": 1
- },
- {
-  "exame_id": 178,
-  "grupo_id": 1
- },
- {
-  "exame_id": 193,
-  "grupo_id": 3
- },
- {
-  "exame_id": 202,
   "grupo_id": 2
  },
  {
-  "exame_id": 203,
+  "exame_id": 161,
   "grupo_id": 2
  },
  {
-  "exame_id": 204,
+  "exame_id": 162,
   "grupo_id": 2
  },
  {
-  "exame_id": 205,
+  "exame_id": 163,
   "grupo_id": 2
  },
  {
-  "exame_id": 206,
+  "exame_id": 164,
   "grupo_id": 2
  },
  {
-  "exame_id": 207,
+  "exame_id": 165,
   "grupo_id": 2
  },
  {
-  "exame_id": 208,
+  "exame_id": 166,
   "grupo_id": 2
  },
  {
-  "exame_id": 209,
+  "exame_id": 167,
   "grupo_id": 2
  },
  {
-  "exame_id": 210,
+  "exame_id": 168,
   "grupo_id": 2
  },
  {
-  "exame_id": 211,
+  "exame_id": 169,
   "grupo_id": 2
  },
  {
-  "exame_id": 212,
+  "exame_id": 170,
   "grupo_id": 2
  },
  {
-  "exame_id": 213,
+  "exame_id": 171,
   "grupo_id": 2
  },
  {
-  "exame_id": 214,
+  "exame_id": 172,
   "grupo_id": 2
  },
  {
-  "exame_id": 215,
+  "exame_id": 173,
   "grupo_id": 2
  },
  {
-  "exame_id": 216,
+  "exame_id": 174,
   "grupo_id": 2
  },
  {
-  "exame_id": 217,
+  "exame_id": 175,
   "grupo_id": 2
  },
  {
@@ -88,27 +136,11 @@
   "grupo_id": 2
  },
  {
-  "exame_id": 219,
-  "grupo_id": 2
+  "exame_id": 220,
+  "grupo_id": 1
  },
  {
   "exame_id": 220,
-  "grupo_id": 2
- },
- {
-  "exame_id": 221,
-  "grupo_id": 2
- },
- {
-  "exame_id": 222,
-  "grupo_id": 2
- },
- {
-  "exame_id": 223,
-  "grupo_id": 2
- },
- {
-  "exame_id": 224,
   "grupo_id": 2
  },
  {
@@ -116,59 +148,27 @@
   "grupo_id": 2
  },
  {
-  "exame_id": 226,
+  "exame_id": 372,
   "grupo_id": 2
  },
  {
-  "exame_id": 227,
-  "grupo_id": 2
- },
- {
-  "exame_id": 228,
-  "grupo_id": 2
- },
- {
-  "exame_id": 229,
-  "grupo_id": 2
- },
- {
-  "exame_id": 272,
-  "grupo_id": 2
- },
- {
-  "exame_id": 274,
+  "exame_id": 373,
   "grupo_id": 1
  },
  {
-  "exame_id": 274,
+  "exame_id": 374,
   "grupo_id": 2
  },
  {
-  "exame_id": 279,
+  "exame_id": 375,
   "grupo_id": 2
  },
  {
-  "exame_id": 426,
+  "exame_id": 376,
   "grupo_id": 2
  },
  {
-  "exame_id": 427,
-  "grupo_id": 1
- },
- {
-  "exame_id": 428,
-  "grupo_id": 2
- },
- {
-  "exame_id": 429,
-  "grupo_id": 2
- },
- {
-  "exame_id": 430,
-  "grupo_id": 2
- },
- {
-  "exame_id": 431,
+  "exame_id": 377,
   "grupo_id": 1
  }
 ]

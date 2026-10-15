@@ -37,6 +37,15 @@
  },
  {
   "id": 5,
+  "escopo": "equipamento",
+  "referencia": null,
+  "texto": "Exames de Ressonâncias que utilizam contraste dinâmico não podem ser realizados no mesmo dia. Exemplo :\nHipofise\nMamas\nAbdome",
+  "vigencia_inicio": null,
+  "vigencia_fim": null,
+  "fonte": "equipamentosNotes"
+ },
+ {
+  "id": 6,
   "escopo": "exame",
   "referencia": "RX panorâmico de membros superiores",
   "texto": "Perguntar o peso do paciente. O equipamento suporta até 100 kg.",

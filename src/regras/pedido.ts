@@ -42,7 +42,10 @@ export function regrasGerais(b: BaseDados, slug: string): RegrasGerais {
   } else checklist.push({ texto: `Conselhos aceitos: sem informação — confirmar com ${conv?.responsavel ?? 'o setor'}`, forte: false, situacao: 'sem_informacao' });
 
   if (cfg?.exige_original || cfg?.aceita_copia === false) checklist.push({ texto: 'Pedido ORIGINAL (não aceita cópia)' + (regras.some((r) => r.molde === 'M07' && (r.campos.aceita ?? []).includes('digitalizado')) ? ' ou digitalizado' : ''), forte: true, situacao: 'confirmada' });
-  else if (cfg?.aceita_copia) checklist.push({ texto: 'Aceita cópia legível do pedido', forte: false, situacao: sit('M07') });
+  else {
+    const copia = regras.find((r) => r.molde === 'M07' && (r.campos.aceita ?? []).includes('copia_legivel'));
+    if (cfg?.aceita_copia || copia) checklist.push({ texto: 'Aceita cópia legível do pedido' + (copia && /ORIGINAL/i.test(copia.texto_original) ? ', mas oriente o paciente a trazer o original' : ''), forte: false, situacao: copia?.situacao ?? sit('M07') });
+  }
   if (cfg?.exige_carimbo_assinatura) checklist.push({ texto: 'Pedido carimbado e assinado', forte: true, situacao: 'confirmada' });
   if (cfg?.exige_cid) checklist.push({ texto: 'CID ou indicação clínica em TODOS os exames', forte: true, situacao: 'confirmada' });
   if (cfg?.aceita_multipla_escolha === false) checklist.push({ texto: 'Não aceita pedido de múltipla escolha (X)', forte: true, situacao: 'confirmada' });

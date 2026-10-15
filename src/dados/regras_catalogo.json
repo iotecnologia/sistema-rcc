@@ -1030,6 +1030,18 @@
    "resposta": null
   },
   {
+   "id": "SEP-16",
+   "escopo": "seprev",
+   "tipo": "U",
+   "alvo": "Pedido",
+   "enunciado": "Aceita cópia bem legível, mas sempre orientar o paciente a trazer o original.",
+   "fontes": [
+    "IZA-1510"
+   ],
+   "situacao": "OK",
+   "resposta": null
+  },
+  {
    "id": "AAF-01",
    "escopo": "aafresp",
    "tipo": "A",
@@ -1396,11 +1408,12 @@
    "escopo": "hapvida",
    "tipo": "A",
    "alvo": "US mama",
-   "enunciado": "33010380 ou 40901114 (alternativos).",
+   "enunciado": "33010380 ou 33019274 (alternativos).",
    "fontes": [
     "R94",
     "CD02",
-    "CD04"
+    "CD04",
+    "IZA-1510"
    ],
    "situacao": "OK",
    "resposta": null
@@ -1413,18 +1426,6 @@
    "enunciado": "33019983 ou 40901203 (alternativos).",
    "fontes": [
     "R95"
-   ],
-   "situacao": "OK",
-   "resposta": null
-  },
-  {
-   "id": "HAP-10",
-   "escopo": "hapvida",
-   "tipo": "H",
-   "alvo": "Código 33019274",
-   "enunciado": "Não habilitado para a RCC.",
-   "fontes": [
-    "R96"
    ],
    "situacao": "OK",
    "resposta": null
@@ -1463,30 +1464,6 @@
     "CD02"
    ],
    "situacao": "OK",
-   "resposta": null
-  },
-  {
-   "id": "HAP-14",
-   "escopo": "hapvida",
-   "tipo": "H",
-   "alvo": "Cine-RM coração 36010081",
-   "enunciado": "Suspenso.",
-   "fontes": [
-    "CD02"
-   ],
-   "situacao": "OK",
-   "resposta": null
-  },
-  {
-   "id": "HAP-15",
-   "escopo": "hapvida",
-   "tipo": "H",
-   "alvo": "RM mama 41101480",
-   "enunciado": "Anotação \"não mais\" — confirmar.",
-   "fontes": [
-    "CD02"
-   ],
-   "situacao": "AMBIGUO",
    "resposta": null
   },
   {

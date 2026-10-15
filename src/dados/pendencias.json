@@ -57,10 +57,10 @@
   "id": 7,
   "tipo": "VINCULO",
   "onde": "convenio_codigos",
-  "problema": "105 códigos sem ligação 1 para 1 com o catálogo (SulAmérica: pacote por região; demais: 1 código cobre vários exames ou não tem equivalente).",
+  "problema": "179 códigos sem ligação 1 para 1 com o catálogo (SulAmérica: pacote por região; demais: 1 código cobre vários exames ou não tem equivalente).",
   "acao_sugerida": "Ligar cada pacote/AMB ao exame do catálogo (tela de cadastro).",
   "resolvido": false,
-  "resposta": "250 ligados por nome (revisados um a um) e por de-para manual em 14/10/2026."
+  "resposta": "222 ligados por nome (revisados um a um) e por de-para manual em 14/10/2026."
  },
  {
   "id": 8,
@@ -262,33 +262,15 @@
  },
  {
   "id": 30,
-  "tipo": "DADO",
-  "onde": "precos",
-  "problema": "Valor zerado: RM MEMBROS INFERIORES - PART.",
-  "acao_sugerida": "Informar o valor.",
-  "resolvido": true,
-  "resposta": "Excluídos da tabela pela equipe."
- },
- {
-  "id": 31,
-  "tipo": "DADO",
-  "onde": "precos",
-  "problema": "Valor zerado: RM MEMBROS SUPERIORES - PART.",
-  "acao_sugerida": "Informar o valor.",
-  "resolvido": true,
-  "resposta": "Excluídos da tabela pela equipe."
- },
- {
-  "id": 32,
   "tipo": "VINCULO",
   "onde": "precos",
-  "problema": "252 de 318 preços sem ligação com o catálogo (nomes diferentes).",
+  "problema": "250 de 316 preços sem ligação com o catálogo (nomes diferentes).",
   "acao_sugerida": "Ligar cada preço ao exame do catálogo.",
   "resolvido": false,
   "resposta": null
  },
  {
-  "id": 33,
+  "id": 31,
   "tipo": "CONFIRMAR",
   "onde": "regras/mediservice",
   "problema": "A resposta trouxe \"mamografia só de 40 a 69 anos\" e \"eco aparelho urinário 40901769\" junto com a Mediservice. Valem só para a Mediservice? E a Mediservice autoriza US (o cadastro diz que só autoriza TC pelo Orizon)?",
@@ -297,7 +279,7 @@
   "resposta": null
  },
  {
-  "id": 34,
+  "id": 32,
   "tipo": "CONFIRMAR",
   "onde": "ramais/Clínica Voluta",
   "problema": "Grupo \"Clínica Voluta\" na tela de Ramais está vazio (não é unidade da RCC: removida da tabela de unidades).",
@@ -306,7 +288,7 @@
   "resposta": null
  },
  {
-  "id": 35,
+  "id": 33,
   "tipo": "CONFIRMAR",
   "onde": "unidades/Norte Sul",
   "problema": "Horário veio \"segunda a sexta 7h às 19h — demais horários\" (texto cortado). A RCC atende todo dia e domingo só RM (D11).",
@@ -315,7 +297,7 @@
   "resposta": null
  },
  {
-  "id": 36,
+  "id": 34,
   "tipo": "CONFLITO",
   "onde": "planos/bradesco",
   "problema": "\"REDE SISTEL\" está na lista das redes atendidas, mas \"SISTEL\" está em \"não atende\". São planos diferentes?",
