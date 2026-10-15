@@ -4,7 +4,6 @@ import { useState, type ReactNode } from 'react';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
-import { Kpi } from './Comuns';
 import { Icone } from './Icone';
 import { useBase } from './Dados';
 import { calcularJanela } from '../regras/janela';
@@ -54,8 +53,6 @@ function Lista({ itens, marcador = 'ponto', vazio }: { itens: ReactNode[]; marca
 export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: string | null }) {
   const b = useBase();
   const j = r.janela;
-  const cor = r.situacao === 'nao_pode' ? '#dc2626' : r.situacao === 'atencao' ? '#d97706' : '#16a34a';
-  const sit = r.situacao === 'nao_pode' ? 'Não agendar' : r.situacao === 'atencao' ? 'Atenção' : 'Pode agendar';
   const resp = r.convenio.tem_regras ? (r.geral.responsavel ?? 'setor de autorização') : 'o próprio convênio';
   const prazoDe = (e: ResultadoExame) => {
     const so = calcularJanela(b, r.convenio.slug, [{ exame: e.autorizacao.exame, quantidade: e.quantidade }], dataPedido ?? null, j.hoje);
@@ -63,15 +60,6 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
   };
   return (
     <>
-      <div className="kpis">
-        <Kpi cor={cor} rot="Situação" txt val={<span style={{ color: cor }}>{sit}</span>} det={r.motivos[0] ?? 'Tudo dentro das regras do convênio.'} />
-        <Kpi cor="#3b82f6" rot="Agendar a partir de" txt val={j.agendarAPartirDe ? `${nomeDia(j.agendarAPartirDe)} ${br(j.agendarAPartirDe).slice(0, 5)}` : '—'} det={j.motivoAPartir} />
-        <Kpi cor="#a855f7" rot="Agendar até" txt
-          val={j.pedidoValeAte ? `${nomeDia(j.pedidoValeAte)} ${br(j.pedidoValeAte).slice(0, 5)}` : r.geral.pedidoSemPrazo ? 'sem prazo' : '—'}
-          det={j.pedidoValeAte ? (j.pedidoVencido ? 'PEDIDO VENCIDO' : `pedido vale ${r.geral.validadePedidoDias} dias corridos`)
-            : r.geral.validadePedidoDias ? `pedido vale ${r.geral.validadePedidoDias} dias · informe a data do pedido` : `pedido sem data: confirme com ${resp}`} />
-        <Kpi cor="#64748b" rot="Onde autorizar" txt val={<span style={{ fontSize: 17 }}>{r.geral.portal ? r.geral.portal.rotulo : resp}</span>} det={`${r.convenio.nome}${r.geral.portal ? ' · ' + resp : ''}`} />
-      </div>
       <div className="passos-resultado">
         <Passo n={1} titulo="Posso agendar?">
           {r.situacao === 'pode_agendar' && !r.motivos.length ? <p className="ok-frase">Sim. Tudo dentro das regras do convênio.</p>
@@ -97,7 +85,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             );
           })}
         </Passo>
-        <Passo n={4} titulo="Quando e onde marcar?">
+        <Passo n={4} titulo="Quando e onde marcar?" sub={j.pedidoValeAte ? `${j.pedidoVencido ? 'Pedido venceu em' : 'Agendar até'} ${nomeDia(j.pedidoValeAte)} ${br(j.pedidoValeAte).slice(0, 5)}` : undefined}>
           {r.exames.map((e) => {
             const p = prazoDe(e);
             const internos = e.agenda.avisos.filter((x) => x.molde !== 'M26');
