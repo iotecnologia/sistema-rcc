@@ -1,10 +1,9 @@
 // Resultado da consulta (igual ao protótipo aprovado): situação e datas no topo; à esquerda como autorizar e quando/onde;
 // à direita o que o pedido precisa ter e o que falar ao paciente. Sem código de regra, sem "fonte", sem etiqueta técnica.
-import { useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
-import { Icone } from './Icone';
 import { useBase } from './Dados';
 import { calcularJanela } from '../regras/janela';
 
@@ -37,37 +36,52 @@ function Passo({ n, titulo, sub, extra, children }: { n: number; titulo: string;
   );
 }
 
-/** Lista curta: mostra 3 linhas e o resto em "ver mais" (o passo 5 mostra tudo aberto). */
-function Lista({ itens, marcador = 'ponto', vazio, limite = 3 }: { itens: ReactNode[]; marcador?: 'ponto' | 'check'; vazio?: string; limite?: number }) {
-  const [tudo, setTudo] = useState(false);
-  if (!itens.length) return vazio ? <p className="mut" style={{ margin: 0 }}>{vazio}</p> : null;
-  const mostra = tudo ? itens : itens.slice(0, limite);
-  return (
-    <>
-      <ul className={'passo-lista ' + marcador}>{mostra.map((x, k) => <li key={k}>{x}</li>)}</ul>
-      {itens.length > limite && <button type="button" className="ver-mais" onClick={() => setTudo(!tudo)}>{tudo ? 'ver menos' : `ver mais (${itens.length - limite})`}</button>}
-    </>
-  );
-}
 
 const dia = (d: string) => `${nomeDia(d)} ${br(d).slice(0, 5)}`;
 
 /** Passo 1: uma mensagem de orientação (mesmo estilo do convênio de pedido autorizado), sem "pode / não pode":
  *  mostra as regras e pede para o atendente conferir os passos. */
+/** Uma informação por linha: rótulo à esquerda, valor à direita (todos os passos). */
+const Linha = ({ rot, children, aviso }: { rot: string; children: ReactNode; aviso?: boolean }) =>
+  <div className={'p1-linha' + (aviso ? ' aviso' : '')}><span className="p1-rot">{rot}</span><span>{children}</span></div>;
+/** Nome do exame como subtítulo dentro do passo (quando há mais de um exame ou para separar). */
+const SubExame = ({ nome, qtd }: { nome: string; qtd?: number }) => <div className="p1-sub">{nome}{qtd && qtd > 1 ? <span className="mut"> · {qtd}x</span> : null}</div>;
+
+/** Rótulo curto para cada item do "o pedido precisa ter". */
+function rotuloPedido(t: string): [string, string] {
+  const m = t.match(/^([^:]{3,40}):\s*(.*)$/);
+  if (m) return [m[1], m[2]];
+  if (/m[áa]ximo .* dias|sem prazo|validade/i.test(t)) return ['Validade', t.replace(/^Pedido (com )?/i, '')];
+  if (/ORIGINAL|c[óo]pia/i.test(t)) return ['Original ou cópia', t.replace(/^Pedido /, '')];
+  if (/carimb/i.test(t)) return ['Carimbo', t.replace(/^Pedido /, '')];
+  if (/CID/.test(t)) return ['CID', t];
+  if (/m[úu]ltipla escolha/i.test(t)) return ['Múltipla escolha', t];
+  if (/CRM de S/i.test(t)) return ['CRM', t];
+  if (/SP\/SADT/i.test(t)) return ['Guia', t];
+  return ['Conferir', t];
+}
+
 function Mensagem1({ r, resp }: { r: Resultado; resp: string }) {
   const j = r.janela;
-  if (!r.convenio.tem_regras) return <>{r.motivos.map((m) => <p key={m} className="resposta-1-det">{m}</p>)}</>;
-  const avisos = r.motivos;
+  const avisoDoConvenio = `${r.convenio.nome}:`;
+  const avisos = r.motivos.filter((m) => !m.startsWith(avisoDoConvenio));
+  if (!r.convenio.tem_regras) return (
+    <>
+      <div className="p1-cab">{r.convenio.nome} — o pedido já vem autorizado pelo próprio convênio. Antes de agendar, confira na guia:</div>
+      <Linha rot="Nome do paciente">igual ao documento</Linha>
+      <Linha rot="Exame">o mesmo que vai ser marcado</Linha>
+      <Linha rot="Validade da senha">marcar dentro da data escrita na guia</Linha>
+      {avisos.map((m) => <Linha key={m} rot="Atenção" aviso>{m}</Linha>)}
+    </>
+  );
   return (
     <>
-      <p className="resposta-1-det">
-        <b>{r.convenio.nome}:</b> antes de agendar, confira o <b>pedido médico</b> (passo 2), peça a <b>autorização</b> {r.geral.responsavel ? <>com <b>{r.geral.responsavel}</b></> : <>com {resp}</>} (passo 3)
-        {' '}e marque {j.agendarAPartirDe ? <>a partir de <b>{dia(j.agendarAPartirDe)}</b></> : <><b>só depois que o convênio autorizar</b></>}
-        {j.pedidoValeAte && !j.pedidoVencido && <> até <b>{dia(j.pedidoValeAte)}</b></>} (passo 4).
-        {!j.pedidoValeAte && r.geral.validadePedidoDias ? <> O pedido vale <b>{r.geral.validadePedidoDias} dias</b> a partir da data do pedido.</> : null}
-        {r.geral.pedidoSemPrazo && <> O pedido não tem prazo de validade.</>}
-      </p>
-      {avisos.map((m) => <p key={m} className="resposta-1-det aviso">Atenção: {m}</p>)}
+      <div className="p1-cab">{r.convenio.nome} — antes de agendar:</div>
+      <Linha rot="Pedido médico">confira no passo 2</Linha>
+      <Linha rot="Autorização">pedir com {r.geral.responsavel ?? resp} (passo 3)</Linha>
+      <Linha rot="Marcar a partir de">{j.agendarAPartirDe ? <>{dia(j.agendarAPartirDe)} (passo 4)</> : <>só depois que o convênio autorizar (passo 4)</>}</Linha>
+      {j.pedidoValeAte && !j.pedidoVencido && <Linha rot="Marcar até">{dia(j.pedidoValeAte)}</Linha>}
+      {avisos.map((m) => <Linha key={m} rot="Atenção" aviso>{m}</Linha>)}
     </>
   );
 }
@@ -87,21 +101,23 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
           <Mensagem1 r={r} resp={resp} />
         </Passo>
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
-          <Lista marcador="check" itens={[
-            ...r.combinacao.map((x) => <span key={x.id}><b>{x.texto}</b></span>),
-            ...r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <span key={x.id}><b>{e.autorizacao.exame.nome}:</b> {x.texto}</span>)),
-            ...r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => <span key={c.texto}>{c.texto}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</span>),
-          ]} vazio="Nada especial para conferir." />
+          {r.combinacao.map((x) => <Linha key={x.id} rot="Atenção" aviso>{x.texto}</Linha>)}
+          {r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <Linha key={x.id} rot="Escrito no pedido">{r.exames.length > 1 ? `${e.autorizacao.exame.nome}: ` : ''}{x.texto}</Linha>))}
+          {r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => { const [rot, txt] = rotuloPedido(c.texto); return (
+            <Linha key={c.texto} rot={rot}>{txt}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</Linha>); })}
+          {!r.combinacao.length && !r.geral.checklist.some((c) => c.situacao === 'confirmada') && <p className="mut" style={{ margin: 0 }}>Nada especial para conferir.</p>}
         </Passo>
-        <Passo n={3} titulo="Como peço a autorização?" sub={`${resp}${r.geral.portal ? ' · ' : ''}`} extra={r.geral.portal && <a href={r.geral.portal.url} target="_blank" rel="noopener noreferrer">{r.geral.portal.rotulo}</a>}>
+        <Passo n={3} titulo="Como peço a autorização?">
+          <Linha rot="Com quem">{resp}</Linha>
+          {r.geral.portal && <Linha rot="Onde"><a href={r.geral.portal.url} target="_blank" rel="noopener noreferrer">{r.geral.portal.rotulo}</a></Linha>}
           {r.exames.map((e) => {
             const a = e.autorizacao;
             const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...a.regras.filter((x) => x.molde !== 'M18').map((x) => x.texto)];
             return (
-              <div key={a.exame.id} className="passo-exame">
-                <div className="passo-exame-cab"><b>{a.exame.nome}</b>{e.quantidade > 1 && <span className="mut"> · {e.quantidade}x</span>}
-                  {a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código cadastrado</span>}</div>
-                {obs.length > 0 && <Lista itens={obs.map((o) => <span key={o}>{o}</span>)} />}
+              <div key={a.exame.id}>
+                <SubExame nome={a.exame.nome} qtd={e.quantidade} />
+                <Linha rot="Código">{a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código cadastrado</span>}</Linha>
+                {obs.map((o) => <Linha key={o} rot="Observação">{o}</Linha>)}
               </div>
             );
           })}
@@ -111,11 +127,11 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             const p = prazoDe(e);
             const internos = e.agenda.avisos.filter((x) => x.molde !== 'M26');
             return (
-              <div key={e.autorizacao.exame.id} className="passo-exame">
-                <div className="passo-exame-cab"><b>{e.autorizacao.exame.nome}</b>
-                  <span>a partir de <b>{p.aPartirDe ? `${nomeDia(p.aPartirDe)} ${br(p.aPartirDe).slice(0, 5)}` : '—'}</b> <span className="mut">({p.motivo})</span></span></div>
-                <div className="passo-linha"><Icone n="maquina" />{ondeTexto(e)}</div>
-                {internos.length > 0 && <Lista itens={internos.map((x) => <span key={x.id}>{x.texto}</span>)} />}
+              <div key={e.autorizacao.exame.id}>
+                <SubExame nome={e.autorizacao.exame.nome} />
+                <Linha rot="Marcar a partir de">{p.aPartirDe ? `${nomeDia(p.aPartirDe)} ${br(p.aPartirDe).slice(0, 5)}` : '—'} <span className="mut">· {p.motivo}</span></Linha>
+                <Linha rot="Onde">{ondeTexto(e)}</Linha>
+                {internos.map((x) => <Linha key={x.id} rot="Aviso">{x.texto}</Linha>)}
               </div>
             );
           })}
@@ -125,13 +141,12 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             const prep = e.agenda.avisos.filter((x) => x.molde === 'M26');
             const nada = !e.agenda.preparos.length && !prep.length && !e.agenda.avisosPaciente.length;
             return (
-              <div key={e.autorizacao.exame.id} className="passo-exame">
-                <div className="passo-exame-cab"><b>{e.autorizacao.exame.nome}</b></div>
-                {nada ? <p className="mut" style={{ margin: 0 }}>Sem preparo.</p> : <Lista itens={[
-                  ...e.agenda.preparos.map((pp) => <div key={pp.id}><b>{pp.titulo.replace(/^Preparo\s*[—-]\s*/i, 'Preparo: ')}</b><div className="preparo-txt">{pp.texto}</div></div>),
-                  ...prep.map((x) => <span key={x.id}>{x.texto}</span>),
-                  ...e.agenda.avisosPaciente.map((a) => <span key={a.id}><b>Pergunte:</b> {a.texto}</span>),
-                ]} limite={99} />}
+              <div key={e.autorizacao.exame.id}>
+                <SubExame nome={e.autorizacao.exame.nome} />
+                {nada && <Linha rot="Preparo">sem preparo</Linha>}
+                {e.agenda.preparos.map((pp) => <Linha key={pp.id} rot="Preparo"><span className="preparo-txt">{pp.texto}</span></Linha>)}
+                {prep.map((x) => <Linha key={x.id} rot="Avisar">{x.texto}</Linha>)}
+                {e.agenda.avisosPaciente.map((a) => <Linha key={a.id} rot="Pergunte">{a.texto}</Linha>)}
               </div>
             );
           })}
