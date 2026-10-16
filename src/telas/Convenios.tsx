@@ -83,7 +83,9 @@ export function Convenios() {
         <div className="conv-detalhe">
           <div className="conv-cab bloco"><LogoConvenio c={sel} tam={56} /><div><b>{sel.nome}</b><span className="mut">Autorização: {sel.responsavel ?? '—'} · agendar com {agendarCom(sel)}</span></div>
             <button type="button" className="btn-grande pri" onClick={() => nav(`/consultar?convenio=${sel.slug}`)}><Icone n="busca" />Consultar exames deste convênio</button></div>
+          {/* duas colunas que crescem sozinhas: sem buraco entre os quadros */}
           <div className="grade2">
+            <div className="coluna">
             <Bloco titulo="Prazos">
               <table className="tab"><tbody>
                 {prazos(sel).filter((p) => p.tipo === 'agendamento').map((p, k) => <tr key={k}><td>{p.grupo ? (NOME_GRUPO[p.grupo] ?? p.grupo) + (p.qtd_minima ? ` (${p.qtd_minima} ou mais)` : '') : 'Demais exames'}</td><td style={{ textAlign: 'right' }}><b>{p.dias ? `${p.dias} dias ${p.contagem === 'uteis' ? 'úteis' : 'corridos'}` : '—'}</b></td></tr>)}
@@ -91,6 +93,11 @@ export function Convenios() {
                 <tr><td>Autorização vale</td><td style={{ textAlign: 'right' }}><b>{g.validadeAutorizacaoDias ? `${g.validadeAutorizacaoDias} dias corridos` : '—'}</b></td></tr>
               </tbody></table>
             </Bloco>
+            {naoCobre.length > 0 && <Bloco titulo={`Exames que ${sel.nome} NÃO cobre`} extra={<span className="mut" style={{ fontSize: 13 }}>ofereça particular</span>}>
+              <ul className="lista-simples nao">{naoCobre.map((x) => <li key={x}>{x}</li>)}</ul></Bloco>}
+            {consultarAntes.length > 0 && <Bloco titulo="Antes de agendar, confira">
+              <ul className="lista-simples">{consultarAntes.map((x) => <li key={x.exame + x.acao}><b>{x.exame}</b>: {x.acao}</li>)}</ul></Bloco>}
+            </div>
             <Bloco titulo="O pedido médico precisa ter">
               <ul className="checks">{pedido.map((x) => {
                 // médico solicitante: "Aceita" e "Não aceita" cada um na sua linha
@@ -106,12 +113,6 @@ export function Convenios() {
                 {g.guiaPdf && <a className="btn2" href={'./' + g.guiaPdf} target="_blank" rel="noopener noreferrer"><Icone n="arquivo" />Guia SP/SADT</a>}</div>}
             </Bloco>
           </div>
-          {(naoCobre.length > 0 || consultarAntes.length > 0) && <div className="grade2">
-            {naoCobre.length > 0 && <Bloco titulo={`Exames que ${sel.nome} NÃO cobre`} extra={<span className="mut" style={{ fontSize: 13 }}>ofereça particular</span>}>
-              <ul className="lista-simples nao">{naoCobre.map((x) => <li key={x}>{x}</li>)}</ul></Bloco>}
-            {consultarAntes.length > 0 && <Bloco titulo="Antes de agendar, confira">
-              <ul className="lista-simples">{consultarAntes.map((x) => <li key={x.exame + x.acao}><b>{x.exame}</b>: {x.acao}</li>)}</ul></Bloco>}
-          </div>}
         </div>
       )}
     </>
