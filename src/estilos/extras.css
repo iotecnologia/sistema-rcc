@@ -278,3 +278,13 @@ details > summary { cursor: pointer; font-weight: 600; }
 .grupo-conv h3 { margin: 0 0 10px; font-size: 15px; }
 .grupo-conv h3 .mut { font-weight: 400; font-size: 13px; }
 .coluna { display: grid; gap: 14px; align-content: start; min-width: 0; }
+
+/* Médico solicitante: um conselho por linha */
+.conselhos { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; }
+.conselhos li { display: grid; grid-template-columns: 20px 74px 1fr; align-items: start; gap: 6px; font-size: 14px; }
+.conselhos .ic { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; margin-top: 1px; }
+.conselhos .ic svg { width: 12px; height: 12px; stroke-width: 3; }
+.conselhos .sim .ic { background: #16a34a; }
+.conselhos .nao .ic { background: #dc2626; }
+.conselhos .cond .ic { background: #d97706; }
+.conselhos .nao span:last-child { color: var(--texto-suave); }
