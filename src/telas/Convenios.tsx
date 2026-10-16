@@ -59,14 +59,22 @@ export function Convenios() {
 
       {!sel && <>
         <div className="busca-conv"><Icone n="busca" /><input type="search" autoFocus value={filtro} onChange={(e) => setFiltro(e.target.value)} placeholder="Nome do convênio…" /></div>
-        <div className="logos-conv">
-          {todos.map((c) => (
-            <button type="button" key={c.slug} className="logo-conv" onClick={() => setParams({ c: c.slug })} title={c.nome} aria-label={c.nome}>
-              <LogoConvenio c={c} tam={46} comNome />
-            </button>
-          ))}
-          {!todos.length && <Vazio>Nenhum convênio com “{filtro}”.</Vazio>}
-        </div>
+        {[
+          { tit: 'Com regras', sub: 'a RCC confere o pedido e pede a autorização', lista: todos.filter((c) => temInfo(b, c)) },
+          { tit: 'Sem regras', sub: 'o pedido já vem autorizado pelo convênio', lista: todos.filter((c) => !temInfo(b, c)) },
+        ].filter((gr) => gr.lista.length).map((gr) => (
+          <section key={gr.tit} className="grupo-conv">
+            <h3>{gr.tit} <span className="mut">· {gr.sub}</span></h3>
+            <div className="logos-conv">
+              {gr.lista.map((c) => (
+                <button type="button" key={c.slug} className="logo-conv" onClick={() => setParams({ c: c.slug })} title={c.nome} aria-label={c.nome}>
+                  <LogoConvenio c={c} tam={46} comNome />
+                </button>
+              ))}
+            </div>
+          </section>
+        ))}
+        {!todos.length && <Vazio>Nenhum convênio com “{filtro}”.</Vazio>}
       </>}
 
       {sel && !temInfo(b, sel) && <div className="bloco"><Vazio>A RCC atende {sel.nome}. O pedido precisa vir JÁ AUTORIZADO pelo próprio convênio.</Vazio></div>}
