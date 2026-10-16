@@ -92,7 +92,15 @@ export function Convenios() {
               </tbody></table>
             </Bloco>
             <Bloco titulo="O pedido médico precisa ter">
-              <ul className="checks">{pedido.map((x) => <li key={x}><span className="bx" /><span>{x}</span></li>)}</ul>
+              <ul className="checks">{pedido.map((x) => {
+                // médico solicitante: "Aceita" e "Não aceita" cada um na sua linha
+                const m = x.match(/^Médico solicitante:\s*(.*)$/);
+                if (!m) return <li key={x}><span className="bx" /><span>{x}</span></li>;
+                const partes = m[1].split(' · ');
+                const sim = partes.find((p) => /^aceita/i.test(p))?.replace(/^aceita\s*/i, '');
+                const nao = partes.find((p) => /^n[ãa]o aceita/i.test(p))?.replace(/^n[ãa]o aceita\s*/i, '');
+                return <li key={x}><span className="bx" /><span>Médico solicitante{sim && <><br />Aceita: {sim}</>}{nao && <><br />Não aceita: {nao}</>}</span></li>;
+              })}</ul>
               {(g.portal || g.guiaPdf) && <div className="pad" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {g.portal && <a className="btn2" href={g.portal.url} target="_blank" rel="noopener noreferrer"><Icone n="link" />{g.portal.rotulo}</a>}
                 {g.guiaPdf && <a className="btn2" href={'./' + g.guiaPdf} target="_blank" rel="noopener noreferrer"><Icone n="arquivo" />Guia SP/SADT</a>}</div>}
