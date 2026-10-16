@@ -1,5 +1,4 @@
 // Peças dos avisos da equipe: quadro da Visão geral e janela de aviso urgente (aparece ao entrar).
-import { useState } from 'react';
 import { useAvisos, ROTULO_TIPO, type Aviso } from '../acesso/Avisos';
 import { Icone } from './Icone';
 
@@ -37,11 +36,10 @@ export function QuadroAvisos({ mostrarLidos = false }: { mostrarLidos?: boolean 
   );
 }
 
-/** Avisos já lidos, resumidos (título + data). Clicar abre o texto. Fica na coluna da direita da Visão geral. */
+/** Avisos já lidos, compactos e sempre abertos: o mais novo em cima; mostra os 5 mais recentes (o mais antigo vai saindo). */
 export function AvisosLidosResumo() {
   const v = useAvisos();
-  const [aberto, setAberto] = useState<string | null>(null);
-  const lidos = v.visiveis.filter((a) => v.leu(a.id));
+  const lidos = v.visiveis.filter((a) => v.leu(a.id)).sort((x, y) => y.criadoEm.localeCompare(x.criadoEm)).slice(0, 5);
   if (!lidos.length) return null;
   return (
     <section className="bloco">
@@ -49,10 +47,8 @@ export function AvisosLidosResumo() {
       <ul className="lidos-resumo">
         {lidos.map((a) => (
           <li key={a.id} className={a.tipo}>
-            <button type="button" onClick={() => setAberto(aberto === a.id ? null : a.id)} aria-expanded={aberto === a.id}>
-              <b>{a.titulo}</b><small>{quando(a.criadoEm).slice(0, 5)}</small>
-            </button>
-            {aberto === a.id && <div className="lidos-texto">{a.texto}<div className="mut">{a.autor} · vale até {ate(a.validoAte)}</div></div>}
+            <div className="lidos-cab"><b>{a.titulo}</b><small>{quando(a.criadoEm).slice(0, 5)}</small></div>
+            <div className="lidos-texto">{a.texto}</div>
           </li>
         ))}
       </ul>
