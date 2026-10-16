@@ -252,3 +252,7 @@ details > summary { cursor: pointer; font-weight: 600; }
 .lidos-cab b { font-weight: 600; flex: 1; min-width: 0; }
 .lidos-cab small { color: var(--texto-suave); font-size: 12px; }
 .lidos-texto { font-size: 13px; color: var(--texto-suave); white-space: pre-line; line-height: 1.4; margin-top: 1px; }
+.resposta-1 { font-size: 18px; }
+.resposta-1-det { margin: 0 0 4px; font-size: 14.5px; line-height: 1.5; }
+.resposta-1-det.aviso { color: var(--st-at-t); font-weight: 600; }
+.passo-corpo .pergunta { padding: 6px 0 10px; border-top: 0; }
