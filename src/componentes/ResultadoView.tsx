@@ -45,7 +45,10 @@ const dia = (d: string) => `${nomeDia(d)} ${br(d).slice(0, 5)}`;
 const Linha = ({ rot, children, aviso }: { rot: string; children: ReactNode; aviso?: boolean }) =>
   <div className={'p1-linha' + (aviso ? ' aviso' : '')}><span className="p1-rot">{rot}</span><span>{children}</span></div>;
 /** Nome do exame como subtítulo dentro do passo (quando há mais de um exame ou para separar). */
-const SubExame = ({ nome, qtd }: { nome: string; qtd?: number }) => <div className="p1-sub">{nome}{qtd && qtd > 1 ? <span className="mut"> · {qtd}x</span> : null}</div>;
+/** O nome completo já aparece em cima (exame escolhido). Aqui só aparece quando há mais de um exame, e curto (sem os parênteses). */
+const nomeCurto = (n: string) => n.replace(/\s*\([^)]*\)/g, '').replace(/\s+-\s*$/, '').trim();
+const SubExame = ({ nome, qtd, varios }: { nome: string; qtd?: number; varios: boolean }) =>
+  varios ? <div className="p1-sub">{nomeCurto(nome)}{qtd && qtd > 1 ? <span className="mut"> · {qtd}x</span> : null}</div> : null;
 
 /** Rótulo curto para cada item do "o pedido precisa ter". */
 function rotuloPedido(t: string): [string, string] {
@@ -61,7 +64,7 @@ function rotuloPedido(t: string): [string, string] {
   return ['Conferir', t];
 }
 
-function Mensagem1({ r, resp }: { r: Resultado; resp: string }) {
+function Mensagem1({ r }: { r: Resultado }) {
   const j = r.janela;
   const avisoDoConvenio = `${r.convenio.nome}:`;
   const avisos = r.motivos.filter((m) => !m.startsWith(avisoDoConvenio));
@@ -77,9 +80,9 @@ function Mensagem1({ r, resp }: { r: Resultado; resp: string }) {
   return (
     <>
       <div className="p1-cab">{r.convenio.nome} — antes de agendar:</div>
-      <Linha rot="Pedido médico">confira no passo 2</Linha>
-      <Linha rot="Autorização">pedir com {r.geral.responsavel ?? resp} (passo 3)</Linha>
-      <Linha rot="Marcar a partir de">{j.agendarAPartirDe ? <>{dia(j.agendarAPartirDe)} (passo 4)</> : <>só depois que o convênio autorizar (passo 4)</>}</Linha>
+      <Linha rot="Pedido médico">Antes de agendar, sempre conferir se o pedido atende os critérios do convênio.</Linha>
+      <Linha rot="Autorização">Sempre pedir a autorização antes de marcar o exame.</Linha>
+      <Linha rot="Marcar a partir de">{j.agendarAPartirDe ? dia(j.agendarAPartirDe) : 'só depois que o convênio autorizar'}</Linha>
       {j.pedidoValeAte && !j.pedidoVencido && <Linha rot="Marcar até">{dia(j.pedidoValeAte)}</Linha>}
       {avisos.map((m) => <Linha key={m} rot="Atenção" aviso>{m}</Linha>)}
     </>
@@ -98,11 +101,11 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
     <>
       <div className="passos-resultado">
         <Passo n={1} titulo="Posso agendar?">
-          <Mensagem1 r={r} resp={resp} />
+          <Mensagem1 r={r} />
         </Passo>
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
           {r.combinacao.map((x) => <Linha key={x.id} rot="Atenção" aviso>{x.texto}</Linha>)}
-          {r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <Linha key={x.id} rot="Escrito no pedido">{r.exames.length > 1 ? `${e.autorizacao.exame.nome}: ` : ''}{x.texto}</Linha>))}
+          {r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <Linha key={x.id} rot="Escrito no pedido">{r.exames.length > 1 ? `${nomeCurto(e.autorizacao.exame.nome)}: ` : ''}{x.texto}</Linha>))}
           {r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => { const [rot, txt] = rotuloPedido(c.texto); return (
             <Linha key={c.texto} rot={rot}>{txt}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</Linha>); })}
           {!r.combinacao.length && !r.geral.checklist.some((c) => c.situacao === 'confirmada') && <p className="mut" style={{ margin: 0 }}>Nada especial para conferir.</p>}
@@ -115,7 +118,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...a.regras.filter((x) => x.molde !== 'M18').map((x) => x.texto)];
             return (
               <div key={a.exame.id}>
-                <SubExame nome={a.exame.nome} qtd={e.quantidade} />
+                <SubExame nome={a.exame.nome} qtd={e.quantidade} varios={r.exames.length > 1} />
                 <Linha rot="Código">{a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código cadastrado</span>}</Linha>
                 {obs.map((o) => <Linha key={o} rot="Observação">{o}</Linha>)}
               </div>
@@ -128,7 +131,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             const internos = e.agenda.avisos.filter((x) => x.molde !== 'M26');
             return (
               <div key={e.autorizacao.exame.id}>
-                <SubExame nome={e.autorizacao.exame.nome} />
+                <SubExame nome={e.autorizacao.exame.nome} varios={r.exames.length > 1} />
                 <Linha rot="Marcar a partir de">{p.aPartirDe ? `${nomeDia(p.aPartirDe)} ${br(p.aPartirDe).slice(0, 5)}` : '—'} <span className="mut">· {p.motivo}</span></Linha>
                 <Linha rot="Onde">{ondeTexto(e)}</Linha>
                 {internos.map((x) => <Linha key={x.id} rot="Aviso">{x.texto}</Linha>)}
@@ -142,7 +145,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             const nada = !e.agenda.preparos.length && !prep.length && !e.agenda.avisosPaciente.length;
             return (
               <div key={e.autorizacao.exame.id}>
-                <SubExame nome={e.autorizacao.exame.nome} />
+                <SubExame nome={e.autorizacao.exame.nome} varios={r.exames.length > 1} />
                 {nada && <Linha rot="Preparo">sem preparo</Linha>}
                 {e.agenda.preparos.map((pp) => <Linha key={pp.id} rot="Preparo"><span className="preparo-txt">{pp.texto}</span></Linha>)}
                 {prep.map((x) => <Linha key={x.id} rot="Avisar">{x.texto}</Linha>)}
