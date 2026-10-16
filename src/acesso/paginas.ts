@@ -13,6 +13,7 @@ export const PAGINAS: Pagina[] = [
   { id: 'avisos', rota: '/avisos', nome: 'Avisos', grupo: 'Administração', icone: 'sino' },
   { id: 'cadastros', rota: '/cadastros', nome: 'Cadastros', grupo: 'Administração', icone: 'lista' },
   { id: 'usuarios', rota: '/usuarios', nome: 'Usuários', grupo: 'Administração', icone: 'usuarios' },
+  { id: 'ajuda', rota: '/ajuda', nome: 'Como usar', grupo: 'Ajuda', icone: 'info' },
 ];
 
 // Fora do menu por enquanto (16/10, Oliver): 'agendar' (Agendar passo a passo → vai virar 'Como usar') e 'janela' (Janela de agendamento).
