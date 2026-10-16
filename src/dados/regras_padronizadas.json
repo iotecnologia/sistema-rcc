@@ -6663,10 +6663,10 @@
    ],
    "campos": {
     "canal": "texto",
-    "observacao": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida."
+    "observacao": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Amafresp, Cesp, Hapvida."
    },
    "situacao": "confirmada",
-   "texto_original": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida.",
+   "texto_original": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Amafresp, Cesp, Hapvida.",
    "fontes": [
     "JS02"
    ],
@@ -6683,10 +6683,10 @@
    ],
    "campos": {
     "canal": "portal",
-    "observacao": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida)."
+    "observacao": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Amafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida)."
    },
    "situacao": "confirmada",
-   "texto_original": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
+   "texto_original": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Amafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
    "fontes": [
     "JS20"
    ],
