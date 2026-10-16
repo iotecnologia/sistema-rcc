@@ -21,7 +21,8 @@
         "medicos",
         "unidades",
         "ramais"
-      ]
+      ],
+      "descontoMax": 5
     }
   ],
   "usuarios": [
