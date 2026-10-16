@@ -50,44 +50,24 @@ function Lista({ itens, marcador = 'ponto', vazio, limite = 3 }: { itens: ReactN
   );
 }
 
-type SN = 'sim' | 'nao' | null;
 const dia = (d: string) => `${nomeDia(d)} ${br(d).slice(0, 5)}`;
 
-/** Passo 1: resposta SIM ou NÃO. O que o sistema não sabe (o papel do paciente) vira UMA pergunta de sim/não; a pessoa não decide nada sozinha. */
-function Resposta1({ r, dataPedido, resp }: { r: Resultado; dataPedido: string | null; resp: string }) {
+/** Passo 1: uma mensagem de orientação (mesmo estilo do convênio de pedido autorizado), sem "pode / não pode":
+ *  mostra as regras e pede para o atendente conferir os passos. */
+function Mensagem1({ r, resp }: { r: Resultado; resp: string }) {
   const j = r.janela;
-  const [ok, setOk] = useState<SN>(null);
-  const Pergunta = ({ txt }: { txt: ReactNode }) => (
-    <div className="pergunta"><span className="txt">{txt}</span>
-      <div className="sn"><button type="button" className={ok === 'sim' ? 'marcado-sim' : ''} onClick={() => setOk('sim')}>Sim</button>
-        <button type="button" className={ok === 'nao' ? 'marcado-nao' : ''} onClick={() => setOk('nao')}>Não</button></div></div>
-  );
-  // 1) o sistema já sabe que não pode
-  if (r.situacao === 'nao_pode') return <><p className="resposta-1 nao_pode">NÃO. Não agende.</p><p className="resposta-1-det">{r.motivos.join(' · ')}</p></>;
-  // 2) convênio de pedido já autorizado: a única pergunta é a guia
-  if (!r.convenio.tem_regras) return (
-    <>
-      <Pergunta txt={<>O paciente trouxe a <b>guia já autorizada</b> pela {r.convenio.nome}, com o nome dele e este exame?</>} />
-      {ok === 'sim' && <><p className="resposta-1 pode_agendar">SIM. Pode agendar.</p><p className="resposta-1-det">Marque dentro da validade da senha que está na guia.</p></>}
-      {ok === 'nao' && <><p className="resposta-1 nao_pode">NÃO. Não agende.</p><p className="resposta-1-det">O paciente precisa pedir a autorização na {r.convenio.nome} e voltar com a guia.</p></>}
-    </>
-  );
-  // 3) sem a data do pedido não dá para responder (validade)
-  if (!dataPedido && r.geral.validadePedidoDias) return <><p className="resposta-1 atencao">Coloque a data do pedido lá em cima (campo 3) para eu responder.</p></>;
-  // 4) a única coisa que falta é olhar o papel
+  if (!r.convenio.tem_regras) return <>{r.motivos.map((m) => <p key={m} className="resposta-1-det">{m}</p>)}</>;
+  const avisos = r.motivos;
   return (
     <>
-      <Pergunta txt={<>O pedido médico tem <b>tudo o que está no passo 2</b>?</>} />
-      {ok === 'nao' && <><p className="resposta-1 nao_pode">NÃO. Não agende.</p><p className="resposta-1-det">Peça ao paciente um pedido médico corrigido.</p></>}
-      {ok === 'sim' && <>
-        <p className="resposta-1 pode_agendar">SIM. Pode agendar.</p>
-        <p className="resposta-1-det">
-          {j.agendarAPartirDe ? <>Marque a partir de <b>{dia(j.agendarAPartirDe)}</b></> : <>Marque <b>só depois que o convênio autorizar</b></>}
-          {j.pedidoValeAte && <> até <b>{dia(j.pedidoValeAte)}</b></>}.
-          {' '}Antes, peça a autorização {r.geral.responsavel ? <>com <b>{r.geral.responsavel}</b></> : <>com {resp}</>} (passo 3).
-        </p>
-        {r.motivos.length > 0 && <p className="resposta-1-det aviso">Atenção: {r.motivos.join(' · ')}</p>}
-      </>}
+      <p className="resposta-1-det">
+        <b>{r.convenio.nome}:</b> antes de agendar, confira o <b>pedido médico</b> (passo 2), peça a <b>autorização</b> {r.geral.responsavel ? <>com <b>{r.geral.responsavel}</b></> : <>com {resp}</>} (passo 3)
+        {' '}e marque {j.agendarAPartirDe ? <>a partir de <b>{dia(j.agendarAPartirDe)}</b></> : <><b>só depois que o convênio autorizar</b></>}
+        {j.pedidoValeAte && !j.pedidoVencido && <> até <b>{dia(j.pedidoValeAte)}</b></>} (passo 4).
+        {!j.pedidoValeAte && r.geral.validadePedidoDias ? <> O pedido vale <b>{r.geral.validadePedidoDias} dias</b> a partir da data do pedido.</> : null}
+        {r.geral.pedidoSemPrazo && <> O pedido não tem prazo de validade.</>}
+      </p>
+      {avisos.map((m) => <p key={m} className="resposta-1-det aviso">Atenção: {m}</p>)}
     </>
   );
 }
@@ -104,7 +84,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
     <>
       <div className="passos-resultado">
         <Passo n={1} titulo="Posso agendar?">
-          <Resposta1 key={r.convenio.slug + r.exames.map((e) => e.autorizacao.exame.id).join(',')} r={r} dataPedido={dataPedido ?? null} resp={resp} />
+          <Mensagem1 r={r} resp={resp} />
         </Passo>
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
           <Lista marcador="check" itens={[
