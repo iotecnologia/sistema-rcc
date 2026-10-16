@@ -23,6 +23,7 @@ export const local = {
   },
 };
 
-/** Como mostrar o código do exame: "TUSS 41101316", ou "Código 33010218 (TUSS a confirmar)" quando veio da tabela Cassi e pode ser AMB. */
+/** Como mostrar o código do exame na tela: sempre "Código 41101316" (sem rotular TUSS);
+ *  "Código 33010218 (a confirmar)" quando veio da tabela Cassi e pode ser AMB. */
 export const tussTexto = (e: { tuss: string | null; tuss_a_confirmar?: boolean }) =>
-  !e.tuss ? 'sem código' : e.tuss_a_confirmar ? `Código ${e.tuss} (TUSS a confirmar)` : `TUSS ${e.tuss}`;
+  !e.tuss ? 'sem código' : e.tuss_a_confirmar ? `Código ${e.tuss} (a confirmar)` : `Código ${e.tuss}`;
