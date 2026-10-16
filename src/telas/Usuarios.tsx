@@ -50,7 +50,7 @@ export function Usuarios() {
         <Bloco titulo="Cargos e páginas" extra={<button type="button" className="btn2 ic" disabled={!ed} onClick={novoCargo} title="Novo cargo" aria-label="Novo cargo"><Icone n="mais" /></button>}>
           <div style={{ overflowX: 'auto' }}>
             <table className="tab matriz"><thead>
-              <tr><th rowSpan={2}>Cargo</th>{GRUPOS.map((g) => <th key={g || 'geral'} colSpan={PAGINAS.filter((p) => p.grupo === g).length}>{g || 'Geral'}</th>)}<th rowSpan={2} /></tr>
+              <tr><th rowSpan={2}>Cargo</th><th rowSpan={2} title="Desconto extra máximo no Orçamento">Desconto máx.</th>{GRUPOS.map((g) => <th key={g || 'geral'} colSpan={PAGINAS.filter((p) => p.grupo === g).length}>{g || 'Geral'}</th>)}<th rowSpan={2} /></tr>
               <tr>{PAGINAS.map((p) => <th key={p.id} className="rot-pag">{p.nome}</th>)}</tr>
             </thead>
               <tbody>{cargos.map((c) => {
@@ -58,13 +58,14 @@ export function Usuarios() {
                 return (
                   <tr key={c.id}>
                     <td><input disabled={!ed || fixo} value={c.nome} onChange={(e) => setCargos(cargos.map((x) => (x.id === c.id ? { ...x, nome: e.target.value } : x)))} /></td>
+                    <td className="centro" style={{ width: 96 }}>{fixo ? <span className="mut">sem limite</span> : <span className="pct-cel"><input type="number" min={0} max={100} step={0.5} disabled={!ed} value={c.descontoMax ?? 0} onChange={(e) => setCargos(cargos.map((x) => (x.id === c.id ? { ...x, descontoMax: Math.max(0, Math.min(100, Number(e.target.value) || 0)) } : x)))} aria-label={`${c.nome}: desconto máximo`} />%</span>}</td>
                     {PAGINAS.map((p) => <td key={p.id} className="centro"><input type="checkbox" disabled={!ed || fixo} checked={fixo || c.paginas.includes(p.id)} onChange={() => marcar(c.id, p.id)} aria-label={`${c.nome}: ${p.nome}`} /></td>)}
                     <td style={{ width: 44 }}><button type="button" className="btn2 ic" disabled={!ed || fixo || emUso(c.id)} onClick={() => setCargos(cargos.filter((x) => x.id !== c.id))} title={emUso(c.id) ? 'Cargo em uso: troque os usuários antes' : 'Remover cargo'} aria-label="Remover cargo"><Icone n="menos" /></button></td>
                   </tr>
                 );
               })}</tbody></table>
           </div>
-          <p className="pad mini">Administrador tem acesso a tudo e não pode ser alterado. No mock, as mudanças ficam salvas neste navegador; com o servidor (Fase 3) passam a valer para todos.</p>
+          <p className="pad mini">Administrador tem acesso a tudo e não pode ser alterado. Desconto máx. = quanto de desconto extra o cargo pode dar no Orçamento. No mock, as mudanças ficam salvas neste navegador; com o servidor (Fase 3) passam a valer para todos.</p>
         </Bloco>
       </div>
     </>
