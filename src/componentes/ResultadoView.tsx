@@ -1,6 +1,7 @@
 // Resultado da consulta (igual ao protótipo aprovado): situação e datas no topo; à esquerda como autorizar e quando/onde;
 // à direita o que o pedido precisa ter e o que falar ao paciente. Sem código de regra, sem "fonte", sem etiqueta técnica.
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { Icone } from './Icone';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
@@ -49,6 +50,18 @@ const Linha = ({ rot, children, aviso }: { rot: string; children: ReactNode; avi
 const nomeCurto = (n: string) => n.replace(/\s*\([^)]*\)/g, '').replace(/\s+-\s*$/, '').trim();
 const SubExame = ({ nome, qtd, varios }: { nome: string; qtd?: number; varios: boolean }) =>
   varios ? <div className="p1-sub">{nomeCurto(nome)}{qtd && qtd > 1 ? <span className="mut"> · {qtd}x</span> : null}</div> : null;
+
+/** Código com botão de copiar ao lado (mostra "copiado" por 1,5 s). */
+function Copiar({ codigo }: { codigo: string }) {
+  const [ok, setOk] = useState(false);
+  const copiar = () => { navigator.clipboard?.writeText(codigo).then(() => { setOk(true); setTimeout(() => setOk(false), 1500); }).catch(() => undefined); };
+  return (
+    <span className="cod-copiar">
+      <span className="cod">{codigo}</span>
+      <button type="button" onClick={copiar} title="Copiar código" aria-label={'Copiar código ' + codigo}>{ok ? 'copiado' : <Icone n="copiar" />}</button>
+    </span>
+  );
+}
 
 /** Rótulo curto para cada item do "o pedido precisa ter". */
 function rotuloPedido(t: string): [string, string] {
@@ -106,8 +119,20 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
           {r.combinacao.map((x) => <Linha key={x.id} rot="Atenção" aviso>{x.texto}</Linha>)}
           {r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <Linha key={x.id} rot="Escrito no pedido">{r.exames.length > 1 ? `${nomeCurto(e.autorizacao.exame.nome)}: ` : ''}{x.texto}</Linha>))}
-          {r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => { const [rot, txt] = rotuloPedido(c.texto); return (
-            <Linha key={c.texto} rot={rot}>{txt}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</Linha>); })}
+          {r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => {
+            const [rot, txt] = rotuloPedido(c.texto);
+            // médico solicitante: "Aceita" numa linha, "Não aceita" na outra
+            if (rot === 'Médico solicitante') {
+              const partes = txt.split(' · ');
+              const sim = partes.find((x) => /^aceita/i.test(x))?.replace(/^aceita\s*/i, '');
+              const nao = partes.find((x) => /^n[ãa]o aceita/i.test(x))?.replace(/^n[ãa]o aceita\s*/i, '');
+              return <div key={c.texto}>
+                {sim && <Linha rot="Médico solicitante">Aceita: {sim}</Linha>}
+                {nao && <Linha rot={sim ? '' : 'Médico solicitante'}>Não aceita: {nao}</Linha>}
+              </div>;
+            }
+            return <Linha key={c.texto} rot={rot}>{txt}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</Linha>;
+          })}
           {!r.combinacao.length && !r.geral.checklist.some((c) => c.situacao === 'confirmada') && <p className="mut" style={{ margin: 0 }}>Nada especial para conferir.</p>}
         </Passo>
         <Passo n={3} titulo="Como peço a autorização?">
@@ -119,7 +144,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
             return (
               <div key={a.exame.id}>
                 <SubExame nome={a.exame.nome} qtd={e.quantidade} varios={r.exames.length > 1} />
-                <Linha rot="Código">{a.codigos.length ? <span className="cod">{unicos(a.codigos.map((c) => c.codigo)).join(' + ')}</span> : <span className="mut">sem código cadastrado</span>}</Linha>
+                <Linha rot="Código">{a.codigos.length ? <span className="codigos">{unicos(a.codigos.map((c) => c.codigo)).map((c) => <Copiar key={c} codigo={c} />)}</span> : <span className="mut">sem código cadastrado</span>}</Linha>
                 {obs.map((o) => <Linha key={o} rot="Observação">{o}</Linha>)}
               </div>
             );
