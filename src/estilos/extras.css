@@ -333,3 +333,16 @@ details > summary { cursor: pointer; font-weight: 600; }
 .ajuda-lista button { display: grid; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; color: var(--texto); }
 .ajuda-lista button:hover { background: var(--hover); }
 .ajuda-lista small { color: var(--texto-suave); font-size: 12px; }
+
+/* Exames: código em cada convênio */
+.outros-exames { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 13px; }
+.pilula { border: 1px solid var(--borda); background: var(--painel); border-radius: 999px; padding: 5px 12px; cursor: pointer; font: inherit; font-size: 13px; color: var(--texto); }
+.pilula.on { background: var(--destaque, #167c84); border-color: var(--destaque, #167c84); color: #fff; }
+.exame-cab b { font-size: 18px; }
+.pad-l { padding: 4px 16px 10px; }
+.cod-conv { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--linha); flex-wrap: wrap; }
+.cod-conv:first-child { border-top: 0; }
+.cod-conv-nome { display: flex; align-items: center; gap: 10px; color: var(--texto); text-decoration: none; font-size: 14px; min-width: 0; }
+.cod-conv-nome:hover span { text-decoration: underline; }
+.cod-conv .cod { font-size: 16px; }
+.cod-item { display: inline-flex; align-items: center; gap: 6px; }
