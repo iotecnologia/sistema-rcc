@@ -288,3 +288,7 @@ details > summary { cursor: pointer; font-weight: 600; }
 .conselhos .nao .ic { background: #dc2626; }
 .conselhos .cond .ic { background: #d97706; }
 .conselhos .nao span:last-child { color: var(--texto-suave); }
+
+/* Menu: item futuro, apagado e sem clique */
+.lat-item.em-breve { opacity: .45; cursor: default; }
+.lat-item.em-breve:hover { background: transparent; color: var(--lateral-texto); }
