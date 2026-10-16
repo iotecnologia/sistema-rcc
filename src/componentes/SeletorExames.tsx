@@ -3,12 +3,8 @@ import { useMemo, useState } from 'react';
 import { useBase } from './Dados';
 import { Icone } from './Icone';
 import { buscarExames } from '../regras/busca';
-import { tussTexto } from '../util/formato';
 
 export interface Escolhido { exameId: number; quantidade: number; rotulo?: string }
-
-const ROTULO: Record<string, string> = { RESSONANCIA: 'RM', ANGIORRESSONANCIA: 'Angio-RM', TOMOGRAFIA: 'TC', ANGIOTOMOGRAFIA: 'Angio-TC',
-  ULTRASSOM: 'US', DOPPLER: 'Doppler', RX: 'RX', MAMOGRAFIA: 'Mamo', DENSITOMETRIA: 'Densito', OUTROS: 'Outros', PROCEDIMENTO: 'Proced.' };
 
 export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
   convenio: string; escolhidos: Escolhido[]; mudar: (e: Escolhido[]) => void; desativado?: boolean;
@@ -16,7 +12,13 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
   const b = useBase();
   const [q, setQ] = useState('');
   const conv = b.convenios.find((c) => c.slug === convenio);
-  const comCodigo = useMemo(() => new Set(conv ? b.codigos.filter((c) => c.convenio_id === conv.id && c.exame_id).map((c) => c.exame_id) : []), [b, conv]);
+  // código para autorizar NESTE convênio (o que a pessoa vai usar), não o TUSS do catálogo
+  const codigosConv = useMemo(() => {
+    const m = new Map<number, string[]>();
+    if (conv) for (const c of b.codigos) if (c.convenio_id === conv.id && c.exame_id && c.status === 'ativo') m.set(c.exame_id, [...(m.get(c.exame_id) ?? []), c.codigo]);
+    return m;
+  }, [b, conv]);
+  const comCodigo = useMemo(() => new Set(codigosConv.keys()), [codigosConv]);
   const sugestoes = useMemo(() => buscarExames(b, q, 30)
     .filter((x) => !escolhidos.some((y) => y.exameId === x.exame.id))
     .sort((a, c) => Number(comCodigo.has(c.exame.id)) - Number(comCodigo.has(a.exame.id)))
@@ -39,7 +41,7 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
           {sugestoes.map(({ exame: e, rotulo }) => (
             <button type="button" key={e.id} onClick={() => add(e.id, rotulo)}>
               <Icone n="mais" />{rotulo}
-              <small>{rotulo !== e.nome ? e.nome + ' · ' : ''}{ROTULO[e.modalidade] ?? e.modalidade}{e.tuss ? ` · ${tussTexto(e)}` : ''}</small>
+              <small>{[rotulo !== e.nome ? e.nome : '', codigosConv.has(e.id) ? `Código ${[...new Set(codigosConv.get(e.id))].join(' ou ')}` : ''].filter(Boolean).join(' · ')}</small>
             </button>
           ))}
         </div>
