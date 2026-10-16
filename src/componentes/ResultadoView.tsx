@@ -1,8 +1,8 @@
 // Resultado da consulta (igual ao protótipo aprovado): situação e datas no topo; à esquerda como autorizar e quando/onde;
 // à direita o que o pedido precisa ter e o que falar ao paciente. Sem código de regra, sem "fonte", sem etiqueta técnica.
-import { useState, type ReactNode } from 'react';
-import { Icone } from './Icone';
+import type { ReactNode } from 'react';
 import { ConselhosLinhas } from './Conselhos';
+import { Copiar } from './Copiar';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
@@ -52,17 +52,6 @@ const nomeCurto = (n: string) => n.replace(/\s*\([^)]*\)/g, '').replace(/\s+-\s*
 const SubExame = ({ nome, qtd, varios }: { nome: string; qtd?: number; varios: boolean }) =>
   varios ? <div className="p1-sub">{nomeCurto(nome)}{qtd && qtd > 1 ? <span className="mut"> · {qtd}x</span> : null}</div> : null;
 
-/** Código com botão de copiar ao lado (mostra "copiado" por 1,5 s). */
-function Copiar({ codigo }: { codigo: string }) {
-  const [ok, setOk] = useState(false);
-  const copiar = () => { navigator.clipboard?.writeText(codigo).then(() => { setOk(true); setTimeout(() => setOk(false), 1500); }).catch(() => undefined); };
-  return (
-    <span className="cod-copiar">
-      <span className="cod">{codigo}</span>
-      <button type="button" onClick={copiar} title="Copiar código" aria-label={'Copiar código ' + codigo}>{ok ? 'copiado' : <Icone n="copiar" />}</button>
-    </span>
-  );
-}
 
 /** Rótulo curto para cada item do "o pedido precisa ter". */
 function rotuloPedido(t: string): [string, string] {
