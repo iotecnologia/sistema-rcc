@@ -277,3 +277,4 @@ details > summary { cursor: pointer; font-weight: 600; }
 .grupo-conv { margin-bottom: 22px; }
 .grupo-conv h3 { margin: 0 0 10px; font-size: 15px; }
 .grupo-conv h3 .mut { font-weight: 400; font-size: 13px; }
+.coluna { display: grid; gap: 14px; align-content: start; min-width: 0; }
