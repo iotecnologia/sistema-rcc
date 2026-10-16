@@ -3,7 +3,9 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import base from '../dados/acesso.json';
 
-export interface Cargo { id: string; nome: string; paginas: string[] }
+export interface Cargo { id: string; nome: string; paginas: string[]; descontoMax?: number }
+/** Desconto extra máximo (%) que o cargo pode dar no orçamento. Administrador: sem limite (100). */
+export const descontoMaximo = (c: Cargo | null) => (!c ? 0 : c.paginas.includes('*') ? 100 : c.descontoMax ?? 0);
 export interface Usuario { email: string; nome: string; cargo: string }
 interface Acesso { cargos: Cargo[]; usuarios: Usuario[] }
 
