@@ -267,3 +267,8 @@ details > summary { cursor: pointer; font-weight: 600; }
 .p1-sub { font-weight: 700; font-size: 14.5px; margin: 16px 0 4px; }
 .passo-corpo h3 + div > .p1-sub { margin-top: 2px; }
 .p1-linha .preparo-txt { white-space: pre-line; font-size: inherit; margin: 0; }
+.codigos { display: inline-flex; flex-wrap: wrap; gap: 10px; }
+.cod-copiar { display: inline-flex; align-items: center; gap: 6px; }
+.cod-copiar button { display: inline-grid; place-items: center; min-width: 28px; height: 26px; padding: 0 6px; border: 1px solid var(--borda); border-radius: 6px; background: var(--painel); color: var(--texto-suave); cursor: pointer; font: inherit; font-size: 11px; }
+.cod-copiar button:hover { background: var(--hover); color: var(--texto); }
+.cod-copiar button svg { width: 14px; height: 14px; }
