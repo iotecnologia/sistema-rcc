@@ -9,7 +9,7 @@ export function Cadastros() {
   const b = useBase();
   const s = useSessao();
   const linhas: [string, number | string][] = [
-    ['Exames (catálogo TUSS)', b.exames.length], ['Convênios e regras', `${b.convenios.filter((c) => temInfo(b, c)).length} · ${b.regras.regras.length} regras`],
+    ['Exames (catálogo)', b.exames.length], ['Convênios e regras', `${b.convenios.filter((c) => temInfo(b, c)).length} · ${b.regras.regras.length} regras`],
     ['Códigos por convênio', b.codigos.length], ['Planos e redes', b.planos.length], ['Médicos', b.medicos.length],
     ['Unidades e máquinas', `${b.unidades.length} · ${b.equipamentos.length}`], ['Preparos', b.preparos.length], ['Feriados', b.feriados.length],
     ['Valores (tabelas de preço)', `${b.precos.length} · ${b.tabelasPreco.length} tabelas`], ['Ramais', b.ramais.length],
