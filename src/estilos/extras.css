@@ -254,5 +254,16 @@ details > summary { cursor: pointer; font-weight: 600; }
 .lidos-texto { font-size: 13px; color: var(--texto-suave); white-space: pre-line; line-height: 1.4; margin-top: 1px; }
 .resposta-1 { font-size: 18px; }
 .resposta-1-det { margin: 0 0 4px; font-size: 14.5px; line-height: 1.5; }
-.resposta-1-det.aviso { color: var(--st-at-t); font-weight: 600; }
+.resposta-1-det.aviso { color: var(--st-at-t); }
 .passo-corpo .pergunta { padding: 6px 0 10px; border-top: 0; }
+
+/* Passo 1: uma informação por linha */
+.p1-cab { font-size: 15px; margin: 0 0 6px; }
+.p1-linha { display: grid; grid-template-columns: 190px 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linha); font-size: 15px; }
+.p1-rot { color: var(--texto-suave); }
+.p1-linha.aviso { background: var(--st-at-bg); color: var(--st-at-t); border: 0; border-radius: 8px; padding: 8px 12px; margin: 6px -12px 0; }
+.p1-linha.aviso .p1-rot { color: var(--st-at-t); }
+@media (max-width: 700px) { .p1-linha { grid-template-columns: 1fr; gap: 2px; } }
+.p1-sub { font-weight: 700; font-size: 14.5px; margin: 16px 0 4px; }
+.passo-corpo h3 + div > .p1-sub { margin-top: 2px; }
+.p1-linha .preparo-txt { white-space: pre-line; font-size: inherit; margin: 0; }
