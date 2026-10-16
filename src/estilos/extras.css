@@ -350,3 +350,25 @@ details > summary { cursor: pointer; font-weight: 600; }
 .exame-cab > div { max-width: 760px; }
 .cod-tipo { font-size: 11px; color: var(--texto-suave); margin-right: 2px; }
 .pad-l .p1-linha:first-child { border-top: 0; }
+
+/* Orçamento */
+.orc-topo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
+.orc-topo .busca-conv { margin-bottom: 0; flex: 0 1 360px; }
+.seg { display: inline-flex; border: 1px solid var(--borda); border-radius: 10px; overflow: hidden; background: var(--painel); }
+.seg button { border: 0; background: transparent; padding: 9px 16px; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--texto); }
+.seg button.on { background: var(--destaque, #167c84); color: #fff; font-weight: 600; }
+.grade2.orc { grid-template-columns: 1fr 380px; }
+.orc-pac { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; padding: 12px 16px 14px; }
+.orc-pac .cp { display: grid; gap: 4px; }
+.orc-pac input.erro { border-color: #dc2626 !important; }
+.erro-txt { color: #dc2626; font-size: 11.5px; }
+.orc-desc { display: flex; align-items: center; gap: 10px; padding: 8px 16px 10px; font-size: 14px; color: var(--texto-suave); border-top: 1px solid var(--linha); }
+.orc-desc .pct { display: inline-flex; align-items: center; gap: 4px; color: var(--texto); }
+.orc-desc .pct input { width: 64px; text-align: right; padding: 5px 8px !important; }
+.tag-lim { margin-left: auto; font-size: 11px; background: var(--st-at-bg); color: var(--st-at-t); border-radius: 6px; padding: 2px 7px; }
+.tot.verde { color: #16a34a; }
+.orc-regra { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
+.orc-regra b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
+.pct-cel { display: inline-flex; align-items: center; gap: 3px; }
+.pct-cel input { width: 56px; text-align: right; }
+@media (max-width: 1100px) { .grade2.orc { grid-template-columns: 1fr; } }
