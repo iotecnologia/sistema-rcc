@@ -62,19 +62,24 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
     <>
       <div className="passos-resultado">
         <Passo n={1} titulo="Posso agendar?">
-          <p className={'resposta-1 ' + r.situacao}>{r.situacao === 'pode_agendar' ? 'Sim, pode agendar.' : r.situacao === 'atencao' ? 'Pode agendar, mas veja antes:' : 'Não agende.'}</p>
+          {/* orientação, não confirmação: o sistema não vê o papel do paciente, então diz em que condições pode agendar */}
+          <p className={'resposta-1 ' + r.situacao}>{r.situacao === 'nao_pode' ? 'Não agende:' : r.situacao === 'atencao' ? 'Antes de agendar, atenção:' : 'Pode agendar se:'}</p>
           <ul className="passo-lista ponto">
             {r.motivos.map((m) => <li key={m}>{m}</li>)}
+            {r.situacao === 'atencao' && r.convenio.tem_regras && <li className="mut" style={{ listStyle: 'none', marginLeft: -16 }}>E também se:</li>}
             {r.situacao !== 'nao_pode' && !r.convenio.tem_regras && <li>Pode marcar assim que o paciente trouxer a guia autorizada, <b>dentro da validade da senha</b> escrita nela.</li>}
-            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>Primeiro dia para marcar: {j.agendarAPartirDe
-              ? <><b>{nomeDia(j.agendarAPartirDe)} {br(j.agendarAPartirDe).slice(0, 5)}</b> <span className="mut">· {j.motivoAPartir}</span></>
-              : <b>só depois que o convênio autorizar</b>}</li>}
-            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>{j.pedidoValeAte
-              ? <>Último dia para marcar: <b>{nomeDia(j.pedidoValeAte)} {br(j.pedidoValeAte).slice(0, 5)}</b> <span className="mut">· pedido vale {r.geral.validadePedidoDias} dias</span></>
-              : r.geral.pedidoSemPrazo ? <>Último dia: o pedido não tem prazo de validade.</>
-                : r.geral.validadePedidoDias ? <>Último dia: informe a <b>data do pedido</b> lá em cima (o pedido vale {r.geral.validadePedidoDias} dias).</>
-                  : <>Último dia: validade do pedido sem informação, confirme com {resp}.</>}</li>}
-            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <li>Depois: confira o pedido (passo 2) e peça a autorização (passo 3).</li>}
+            {r.situacao !== 'nao_pode' && r.convenio.tem_regras && <>
+              <li>o pedido estiver {j.pedidoValeAte
+                ? <>dentro da validade: marcar até <b>{nomeDia(j.pedidoValeAte)} {br(j.pedidoValeAte).slice(0, 5)}</b> <span className="mut">· vale {r.geral.validadePedidoDias} dias</span></>
+                : r.geral.pedidoSemPrazo ? <>com os dados certos (este convênio não dá prazo de validade)</>
+                  : r.geral.validadePedidoDias ? <>com até <b>{r.geral.validadePedidoDias} dias</b> da data do pedido <span className="mut">· informe a data lá em cima para ver o último dia</span></>
+                    : <>dentro da validade <span className="mut">· sem informação, confirme com {resp}</span></>};</li>
+              <li>o pedido tiver tudo o que está no <b>passo 2</b>;</li>
+              <li>a autorização for pedida {r.geral.responsavel ? <>com <b>{r.geral.responsavel}</b></> : 'ao convênio'} <span className="mut">· passo 3</span>;</li>
+              <li>a data marcada for {j.agendarAPartirDe
+                ? <>a partir de <b>{nomeDia(j.agendarAPartirDe)} {br(j.agendarAPartirDe).slice(0, 5)}</b> <span className="mut">· {j.motivoAPartir}</span></>
+                : <><b>depois que o convênio autorizar</b></>}.</li>
+            </>}
           </ul>
         </Passo>
         <Passo n={2} titulo="O pedido está certo?" sub="Confira no papel do paciente">
