@@ -2,6 +2,7 @@
 // à direita o que o pedido precisa ter e o que falar ao paciente. Sem código de regra, sem "fonte", sem etiqueta técnica.
 import { useState, type ReactNode } from 'react';
 import { Icone } from './Icone';
+import { ConselhosLinhas } from './Conselhos';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
@@ -121,16 +122,8 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
           {r.exames.flatMap((e) => e.autorizacao.regras.filter((x) => x.molde === 'M18').map((x) => <Linha key={x.id} rot="Escrito no pedido">{r.exames.length > 1 ? `${nomeCurto(e.autorizacao.exame.nome)}: ` : ''}{x.texto}</Linha>))}
           {r.geral.checklist.filter((c) => c.situacao === 'confirmada').map((c) => {
             const [rot, txt] = rotuloPedido(c.texto);
-            // médico solicitante: "Aceita" numa linha, "Não aceita" na outra
-            if (rot === 'Médico solicitante') {
-              const partes = txt.split(' · ');
-              const sim = partes.find((x) => /^aceita/i.test(x))?.replace(/^aceita\s*/i, '');
-              const nao = partes.find((x) => /^n[ãa]o aceita/i.test(x))?.replace(/^n[ãa]o aceita\s*/i, '');
-              return <div key={c.texto}>
-                {sim && <Linha rot="Médico solicitante">Aceita: {sim}</Linha>}
-                {nao && <Linha rot={sim ? '' : 'Médico solicitante'}>Não aceita: {nao}</Linha>}
-              </div>;
-            }
+            // médico solicitante: um conselho por linha (aceita / não aceita / com condição)
+            if (rot === 'Médico solicitante') return <Linha key={c.texto} rot="Médico solicitante"><ConselhosLinhas convenioId={r.convenio.id} /></Linha>;
             return <Linha key={c.texto} rot={rot}>{txt}{c.link && <> · <a href={'./' + c.link} target="_blank" rel="noopener noreferrer">abrir guia</a></>}</Linha>;
           })}
           {!r.combinacao.length && !r.geral.checklist.some((c) => c.situacao === 'confirmada') && <p className="mut" style={{ margin: 0 }}>Nada especial para conferir.</p>}
