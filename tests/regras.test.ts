@@ -128,7 +128,7 @@ describe('Outros convênios', () => {
   });
   it('convênio sem regras: pedido vem autorizado pelo convênio [RCC-01]', () => {
     const r = consultar(b, { convenio: 'unimed', exames: [{ exameId: RM_CRANIO }], dataPedido: HOJE, hoje: HOJE });
-    expect(r.motivos.join(' ')).toContain('AUTORIZADO pelo próprio convênio');
+    expect(r.motivos.join(' ')).toContain('já vem AUTORIZADO pelo próprio');
   });
 });
 

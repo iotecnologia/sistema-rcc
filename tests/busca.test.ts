@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { baseJson as b } from '../src/repositorio/repo-json';
 import { buscarExames, buscarPrecos, precoDoExame } from '../src/regras/busca';
+import { norm } from '../src/regras/contexto';
 
 describe('busca pelo nome falado', () => {
   test('"resso joelho" acha a RM articular com rótulo amigável', () => {
@@ -9,10 +10,10 @@ describe('busca pelo nome falado', () => {
     expect(r[0].rotulo).toBe('Ressonância de joelho');
   });
   test('"tomo de torax" acha TC - TORAX', () => {
-    expect(buscarExames(b, 'tomo de torax').map((x) => x.exame.nome)).toContain('TC - TORAX');
+    expect(buscarExames(b, 'tomo de torax').map((x) => norm(x.exame.nome))).toContain('TC - TORAX');
   });
   test('"ultrassom barriga" acha US de abdome', () => {
-    expect(buscarExames(b, 'ultrassom barriga').some((x) => /US - ABDOME TOTAL/.test(x.exame.nome))).toBe(true);
+    expect(buscarExames(b, 'ultrassom barriga').some((x) => /US - ABDOME TOTAL/.test(norm(x.exame.nome)))).toBe(true);
   });
   test('preço: busca "ultrassom abdome total" acha ECO ABDOME TOTAL', () => {
     expect(buscarPrecos(b.precos.filter((p) => p.tabela_id === 1), 'ultrassom abdome total').map((p) => p.procedimento)).toContain('ECO ABDOME TOTAL');
@@ -22,7 +23,7 @@ describe('busca pelo nome falado', () => {
     expect(precoDoExame(b, e, 1, 'Ressonância de joelho')?.valor).toBe(700);
   });
   test('preço vinculado pela base (TC tórax)', () => {
-    const e = b.exames.find((x) => x.nome === 'TC - TORAX')!;
+    const e = b.exames.find((x) => norm(x.nome) === 'TC - TORAX')!;
     expect(precoDoExame(b, e, 1)?.procedimento).toBe('TC TORAX');
   });
 });
