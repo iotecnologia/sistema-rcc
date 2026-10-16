@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Icone } from './Icone';
 import { local, iniciais } from '../util/formato';
 import { useSessao } from '../acesso/Sessao';
-import { GRUPOS, PAGINAS } from '../acesso/paginas';
+import { EM_BREVE, GRUPOS, PAGINAS } from '../acesso/paginas';
 import { useAvisos } from '../acesso/Avisos';
 import { JanelaUrgente } from './AvisosEquipe';
 import { BuscaGeral } from './BuscaGeral';
@@ -30,6 +30,7 @@ export function Shell() {
               <div key={g || 'topo'}>
                 {g && <div className="lat-sec">{g}</div>}
                 {itens.map((p) => <NavLink key={p.id} to={p.rota} className={({ isActive }) => 'lat-item' + (isActive ? ' ativo' : '')}><Icone n={p.icone} /><span className="nm">{p.nome}</span></NavLink>)}
+                {EM_BREVE.filter((x) => x.grupo === g).map((x) => <span key={x.nome} className="lat-item em-breve" title={x.dica} aria-disabled="true"><Icone n={x.icone} /><span className="nm">{x.nome}</span></span>)}
               </div>
             );
           })}
