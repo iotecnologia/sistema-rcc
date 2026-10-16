@@ -32,7 +32,7 @@ export function SessaoProvider({ children }: { children: ReactNode }) {
       setEmail(u.email); gravar(sessionStorage, CHAVE_SES, u.email); return true;
     },
     sair() { setEmail(null); gravar(sessionStorage, CHAVE_SES, null); },
-    pode: (p) => !!cargo && (cargo.paginas.includes('*') || cargo.paginas.includes(p)),
+    pode: (p) => !!cargo && (p === 'ajuda' || cargo.paginas.includes('*') || cargo.paginas.includes(p)),   // 'Como usar' é liberado para todos
     salvar(a) { setCad(a); gravar(localStorage, CHAVE_CAD, a); },
   };
   return <Ctx.Provider value={valor}>{children}</Ctx.Provider>;
