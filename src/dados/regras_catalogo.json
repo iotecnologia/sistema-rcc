@@ -3253,7 +3253,7 @@
    "escopo": "RCC",
    "tipo": "J",
    "alvo": "Responsável",
-   "enunciado": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Aafresp, Cesp, Hapvida.",
+   "enunciado": "Izabel: Bradesco, Amil, Cassi, Saúde Caixa, Economus, Care Plus, Mediservice, Protocolo TAV. Sandra: Petrobras, SulAmérica, Proasa, Cabesp, Assefaz, Unafisco, Seprev, Porto, Amafresp, Cesp, Hapvida.",
    "fontes": [
     "JS02"
    ],
@@ -3265,7 +3265,7 @@
    "escopo": "RCC",
    "tipo": "J",
    "alvo": "Portais",
-   "enunciado": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Aafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
+   "enunciado": "Link do portal de autorização por convênio (Orizon/Polimed: Bradesco, Amafresp, Cassi, Mediservice; Fácil: Seprev, Assefaz, Cesp; SAW: Proasa, Cabesp; próprios: Amil, Care Plus, Saúde Caixa, Petrobras, Porto, SulAmérica; Savi: Hapvida).",
    "fontes": [
     "JS20"
    ],
@@ -4320,15 +4320,15 @@
   },
   {
    "id": "X-03",
-   "texto": "Angio-TC coronárias — 5 jeitos: (1) só pacote 41001230: Amil, Cassi, Economus, Saúde Caixa*; (2) pacote próprio sem tórax: Aafresp 89022845, SulAmérica, Seprev; (3) coronária + TC tórax: Assefaz, Unafisco, Petrobras, Cesp, Porto, Proasa(só coronárias?); (4) como AORTA TORÁCICA 41001176 + tórax 41001079: Bradesco, Cabesp; (5) não autoriza: Hapvida. Sem regra: Care Plus, Mediservice."
+   "texto": "Angio-TC coronárias — 5 jeitos: (1) só pacote 41001230: Amil, Cassi, Economus, Saúde Caixa*; (2) pacote próprio sem tórax: Amafresp 89022845, SulAmérica, Seprev; (3) coronária + TC tórax: Assefaz, Unafisco, Petrobras, Cesp, Porto, Proasa(só coronárias?); (4) como AORTA TORÁCICA 41001176 + tórax 41001079: Bradesco, Cabesp; (5) não autoriza: Hapvida. Sem regra: Care Plus, Mediservice."
   },
   {
    "id": "X-04",
-   "texto": "Angio-TC MMII — sem cobertura: Amil, Economus, Unafisco, Cesp, Porto, SulAmérica, Bradesco(ilíacas/femoral); tem: Cabesp, Aafresp(arterial), Assefaz, Petrobras, Saúde Caixa, Cassi(só arterial); sem info: Proasa, Seprev, Care Plus, Mediservice, Hapvida(não autoriza angio)."
+   "texto": "Angio-TC MMII — sem cobertura: Amil, Economus, Unafisco, Cesp, Porto, SulAmérica, Bradesco(ilíacas/femoral); tem: Cabesp, Amafresp(arterial), Assefaz, Petrobras, Saúde Caixa, Cassi(só arterial); sem info: Proasa, Seprev, Care Plus, Mediservice, Hapvida(não autoriza angio)."
   },
   {
    "id": "X-05",
-   "texto": "Primovist — sem: Amil, Seprev, Assefaz, Porto, Bradesco; com: Cassi (cobra à parte), Petrobras, Cesp, Saúde Caixa (sem autorizar), SulAmérica (cobra junto); sem info: Cabesp, Proasa, Aafresp, Unafisco, Economus, Care Plus, Mediservice, Hapvida."
+   "texto": "Primovist — sem: Amil, Seprev, Assefaz, Porto, Bradesco; com: Cassi (cobra à parte), Petrobras, Cesp, Saúde Caixa (sem autorizar), SulAmérica (cobra junto); sem info: Cabesp, Proasa, Amafresp, Unafisco, Economus, Care Plus, Mediservice, Hapvida."
   },
   {
    "id": "X-06",
@@ -4336,7 +4336,7 @@
   },
   {
    "id": "X-07",
-   "texto": "TC maxila/mandíbula — vira TC face: Amil, Bradesco; sem cobertura: Aafresp; aceita: Cassi, Petrobras (CRO); SulAmérica CRO aceito p/ maxilar."
+   "texto": "TC maxila/mandíbula — vira TC face: Amil, Bradesco; sem cobertura: Amafresp; aceita: Cassi, Petrobras (CRO); SulAmérica CRO aceito p/ maxilar."
   },
   {
    "id": "X-08",
@@ -4344,7 +4344,7 @@
   },
   {
    "id": "X-09",
-   "texto": "Múltipla escolha — não aceita: Seprev, Aafresp, Assefaz; sem info: resto."
+   "texto": "Múltipla escolha — não aceita: Seprev, Amafresp, Assefaz; sem info: resto."
   },
   {
    "id": "X-10",
@@ -4360,11 +4360,11 @@
   },
   {
    "id": "X-13",
-   "texto": "Grupo cardíaco com prazo maior — Amil 4, Cassi 4, Cabesp 5, Bradesco 4, Economus 10, Saúde Caixa 10, Cesp 5 (+angio), Mediservice 5, Assefaz 7, Petrobras 5 (análise). Prazo único: Proasa 5, Seprev 5, Hapvida 5, Unafisco 5, Care Plus 10, Aafresp 2, Porto 2."
+   "texto": "Grupo cardíaco com prazo maior — Amil 4, Cassi 4, Cabesp 5, Bradesco 4, Economus 10, Saúde Caixa 10, Cesp 5 (+angio), Mediservice 5, Assefaz 7, Petrobras 5 (análise). Prazo único: Proasa 5, Seprev 5, Hapvida 5, Unafisco 5, Care Plus 10, Amafresp 2, Porto 2."
   },
   {
    "id": "X-14",
-   "texto": "Unidade do prazo não escrita (\"2 dias\", \"7 dias\", \"5 dias\", \"até 5 dias\") em Aafresp, Porto, Assefaz, Cesp, Petrobras."
+   "texto": "Unidade do prazo não escrita (\"2 dias\", \"7 dias\", \"5 dias\", \"até 5 dias\") em Amafresp, Porto, Assefaz, Cesp, Petrobras."
   }
  ]
 }
