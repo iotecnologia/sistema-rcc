@@ -1,11 +1,9 @@
 // Visão geral (informativa): saudação, avisos da equipe, últimas consultas e agenda dos próximos dias. A busca fica no cabeçalho.
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
-import { QuadroAvisos } from '../componentes/AvisosEquipe';
-import { useAvisos } from '../acesso/Avisos';
+import { AvisosLidosResumo, QuadroAvisos } from '../componentes/AvisosEquipe';
 import { useSessao } from '../acesso/Sessao';
 import { br, hojeIso, nomeDia, somarDias } from '../regras/calendario';
 import { local, saudacao } from '../util/formato';
@@ -18,9 +16,6 @@ export function VisaoGeral() {
   const s = useSessao();
   const nav = useNavigate();
   const hoje = hojeIso();
-  const [verLidos, setVerLidos] = useState(false);
-  const av = useAvisos();
-  const temLidos = av.visiveis.some((a) => av.leu(a.id));
   const hist = local.ler<Hist[]>('historico', []);
   const limite = somarDias(hoje, 30);
   const nomeMed = (id: number) => b.medicos.find((m) => m.id === id)?.nome ?? '';
@@ -34,10 +29,9 @@ export function VisaoGeral() {
   return (
     <>
       <TituloPagina titulo={`${saudacao()}, ${s.usuario?.nome.split(' ')[0]}`} sub={dataLonga.charAt(0).toUpperCase() + dataLonga.slice(1)}>
-        {temLidos && <button type="button" className={'btn2' + (verLidos ? ' ativo' : '')} aria-pressed={verLidos} onClick={() => setVerLidos(!verLidos)}>Avisos lidos</button>}
         <Link className="btn2 pri" to="/consultar">Nova consulta</Link>
       </TituloPagina>
-      <QuadroAvisos mostrarLidos={verLidos && temLidos} />
+      <QuadroAvisos />
 
       <div className="grade2">
         <Bloco titulo="Suas últimas consultas">
@@ -50,6 +44,7 @@ export function VisaoGeral() {
               ))}</tbody></table>
           ) : <Vazio>As consultas que você fizer aparecem aqui (só convênio e exames, nunca dado de paciente).</Vazio>}
         </Bloco>
+        <div style={{ display: 'grid', gap: 14 }}>
         <Bloco titulo="Agenda dos próximos dias">
           {agenda.length || recorrentes.length ? (
             <ul className="feed">
@@ -58,8 +53,9 @@ export function VisaoGeral() {
             </ul>
           ) : <Vazio>Nada de diferente nos próximos 30 dias.</Vazio>}
         </Bloco>
+        <AvisosLidosResumo />
+        </div>
       </div>
     </>
   );
 }
-
