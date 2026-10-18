@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
-import { Copiar } from '../componentes/Copiar';
+import { abrirWhatsApp } from '../util/formato';
 import { norm } from '../regras/contexto';
 import { palavras } from '../regras/busca';
 import { br, hojeIso } from '../regras/calendario';
@@ -136,27 +136,63 @@ const contatos = (texto: string | null | undefined) => (texto ?? '').split(' · 
   return { num: m?.[0] ?? '', rot: x.replace(m?.[0] ?? '', '').trim() };
 }).filter((c) => c.num);
 
-/** Unidades: um quadro por unidade (endereço, telefones com copiar, horário e as máquinas dela). */
+/** Unidades: as 3 lado a lado; endereço, contatos, horário e máquinas. Tudo que o atendente passa ao paciente sai em 1 clique (copiar / mapa / WhatsApp). */
+const TIPO_UN: Record<number, string> = { 1: 'Sede' };
+function BotaoCopiar({ txt, rot }: { txt: string; rot: string }) {
+  const [ok, setOk] = useState(false);
+  return <button type="button" className="un-ic" title={'Copiar ' + rot} aria-label={'Copiar ' + rot}
+    onClick={() => navigator.clipboard?.writeText(txt).then(() => { setOk(true); setTimeout(() => setOk(false), 1500); }).catch(() => undefined)}>{ok ? <Icone n="ok" /> : <Icone n="copiar" />}</button>;
+}
 export function Unidades() {
   const b = useBase();
   return (
     <>
-      <TituloPagina titulo="Unidades" sub="Endereço, telefones e horário de cada unidade da RCC." />
-      <div className="unidade-grid">
+      <TituloPagina titulo="Unidades" sub="Endereço, telefones, horário e máquinas de cada unidade da RCC." />
+      <div className="un-grid">
         {b.unidades.map((u) => {
           const fones = contatos(u.telefones), zaps = contatos(u.whatsapp);
           const maqs = b.equipamentos.filter((e) => e.unidade_id === u.id);
+          const endereco = `${u.endereco} · ${u.cidade} · CEP ${u.cep}`;
+          const mapa = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(`${u.endereco}, ${u.cidade}, ${u.cep}`);
+          const msg = [`*RCC Diagnósticos por Imagem — ${u.nome}*`, endereco, u.horario_atendimento && `Horário: ${u.horario_atendimento}`, ...fones.map((c) => `Telefone: ${c.num}`), ...zaps.map((c) => `WhatsApp${c.rot ? ' ' + c.rot.toLowerCase() : ''}: ${c.num}`), `Mapa: ${mapa}`].filter(Boolean).join('\n');
+          const tipos = [...new Set(maqs.map((m) => m.tipo))];
           return (
-            <Bloco key={u.id} titulo={u.nome}>
-              <div className="pad-l">
-                <Linha rot="Endereço">{u.endereco}{u.cidade ? ` · ${u.cidade}` : ''}</Linha>
-                <Linha rot="CEP">{u.cep}</Linha>
-                {fones.map((c) => <Linha key={c.num} rot={c.rot ? `Telefone (${c.rot})` : 'Telefone'}><Copiar codigo={c.num} rotulo="telefone" /></Linha>)}
-                {zaps.map((c) => <Linha key={c.num} rot={c.rot ? `WhatsApp (${c.rot})` : 'WhatsApp'}><Copiar codigo={c.num} rotulo="telefone" /></Linha>)}
-                {u.horario_atendimento && <Linha rot="Horário">{u.horario_atendimento}</Linha>}
-                {maqs.length > 0 && <Linha rot="Máquinas">{maqs.map((e, k) => <span key={e.id}>{k > 0 && ' · '}<Link className="link-suave" to={`/maquinas?eq=${e.id}`}>{e.nome}</Link></span>)}</Linha>}
+            <section key={u.id} className="bloco un-card">
+              <div className="un-cab">
+                <span className="un-pino"><Icone n="predio" /></span>
+                <div><h3>{u.nome}</h3>{TIPO_UN[u.id] && <span className="un-tag">{TIPO_UN[u.id]}</span>}</div>
+                <button type="button" className="btn2 ic zap" title="Enviar dados da unidade por WhatsApp" aria-label="Enviar por WhatsApp" onClick={() => abrirWhatsApp(msg)}><Icone n="zap" /></button>
               </div>
-            </Bloco>
+
+              <div className="un-secao">
+                <div className="un-rot">Endereço</div>
+                <div className="un-end"><b>{u.endereco}</b><span>{u.cidade} · CEP {u.cep}</span></div>
+                <div className="un-acoes">
+                  <a className="un-ic" href={mapa} target="_blank" rel="noopener noreferrer" title="Abrir no mapa" aria-label="Abrir no mapa"><Icone n="link" /></a>
+                  <BotaoCopiar txt={endereco} rot="endereço" />
+                </div>
+              </div>
+
+              <div className="un-secao col">
+                <div className="un-rot">Contatos</div>
+                {fones.map((c) => <div key={c.num} className="un-fone"><span className="un-fic"><Icone n="ramal" /></span><span className="un-num"><b>{c.num}</b><small>{c.rot ? `Telefone · ${c.rot}` : 'Telefone'}</small></span><BotaoCopiar txt={c.num} rot="telefone" /></div>)}
+                {zaps.map((c) => <div key={c.num} className="un-fone"><span className="un-fic zap"><Icone n="zap" /></span><span className="un-num"><b>{c.num}</b><small>{c.rot ? `WhatsApp · ${c.rot}` : 'WhatsApp'}</small></span><BotaoCopiar txt={c.num} rot="WhatsApp" /></div>)}
+              </div>
+
+              {u.horario_atendimento && <div className="un-secao col">
+                <div className="un-rot">Horário</div>
+                <div className="un-hora"><Icone n="calendario" /><span>{u.horario_atendimento}</span></div>
+              </div>}
+
+              <div className="un-secao col">
+                <div className="un-rot">Máquinas</div>
+                {maqs.length ? tipos.map((t) => (
+                  <div key={t} className="un-maqs"><span className="un-tipo">{t === 'RM' ? 'Ressonância' : t === 'TC' ? 'Tomografia' : t}</span>
+                    {maqs.filter((m) => m.tipo === t).map((m) => <Link key={m.id} to={`/maquinas?eq=${m.id}`} className="un-maq" title={`Peso máximo ${m.peso_max_kg} kg`}>{m.nome}</Link>)}
+                    <small className="mut">até {Math.min(...maqs.filter((m) => m.tipo === t).map((m) => m.peso_max_kg))} kg</small></div>
+                )) : <span className="mut" style={{ fontSize: 13 }}>Sem RM/TC nesta unidade</span>}
+              </div>
+            </section>
           );
         })}
       </div>
