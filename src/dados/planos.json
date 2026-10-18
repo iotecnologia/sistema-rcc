@@ -1,12 +1,6 @@
 [
  {
   "convenio_id": 1,
-  "nome": "SISTEL",
-  "atende": false,
-  "origem": "Verificação de plano"
- },
- {
-  "convenio_id": 1,
   "nome": "PRATA",
   "atende": false,
   "origem": "Verificação de plano"
@@ -38,6 +32,12 @@
  {
   "convenio_id": 1,
   "nome": "EFETIVO II",
+  "atende": false,
+  "origem": "Verificação de plano"
+ },
+ {
+  "convenio_id": 1,
+  "nome": "PERSONAL 25",
   "atende": false,
   "origem": "Verificação de plano"
  },

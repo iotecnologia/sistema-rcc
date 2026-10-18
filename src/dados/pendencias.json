@@ -302,8 +302,8 @@
   "onde": "planos/bradesco",
   "problema": "\"REDE SISTEL\" está na lista das redes atendidas, mas \"SISTEL\" está em \"não atende\". São planos diferentes?",
   "acao_sugerida": "Confirmar se atende Sistel.",
-  "resolvido": false,
-  "resposta": null
+  "resolvido": true,
+  "resposta": "Só existe REDE SISTEL (atende). SISTEL sozinho não existe."
  },
  {
   "id": 35,

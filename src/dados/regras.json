@@ -1082,7 +1082,7 @@
   "convenio_id": 1,
   "tipo": "validade",
   "titulo": "Verificação de plano",
-  "texto": "Verificar o plano — não atende : Sistel, Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha e Efetivo II. A Rede Pleno atende normalmente.",
+  "texto": "Verificar o plano — não atende : Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha, Efetivo II e Personal 25. A Rede Pleno atende normalmente.",
   "ja_estruturado": true,
   "data_informacao": null,
   "secao_original": "Validade do pedido",

@@ -1591,7 +1591,7 @@
    "escopo": "bradesco",
    "tipo": "R",
    "alvo": "Plano",
-   "enunciado": "Não atende: Sistel, Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha, Efetivo II.",
+   "enunciado": "Não atende: Prata, Rede Nacional Flex, Perfil CPS, Perfil São Paulo, Livre Escolha, Efetivo II, Personal 25.",
    "fontes": [
     "R103"
    ],
@@ -1615,12 +1615,12 @@
    "escopo": "bradesco",
    "tipo": "R",
    "alvo": "Redes",
-   "enunciado": "Lista de 92 redes — \"REDE SISTEL\" aparece na lista e Sistel também está em \"não atende\". (Resposta: as 92 redes são atendidas — continua a dúvida da Sistel.)",
+   "enunciado": "Lista de 92 redes: todas são atendidas (inclui REDE SISTEL).",
    "fontes": [
     "R118",
     "R103"
    ],
-   "situacao": "CONFLITO",
+   "situacao": "OK",
    "resposta": null
   },
   {
