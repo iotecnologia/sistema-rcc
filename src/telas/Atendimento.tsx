@@ -19,9 +19,6 @@ function useQ(): [string, (v: string) => void] {
 
 const casa = (texto: string, q: string) => { const h = norm(texto); return palavras(q).every((f) => f.some((x) => h.includes(x))); };
 
-function Busca({ rot, q, setQ, ph }: { rot: string; q: string; setQ: (v: string) => void; ph: string }) {
-  return <div className="barra"><label className="cp f" style={{ flex: '1 1 360px' }}><span>{rot}</span><Icone n="busca" /><input type="search" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={ph} /></label></div>;
-}
 
 /** Nome do exame do médico no padrão "SIGLA - Nome" (só na tela; os dados e as regras de agenda continuam como estão). */
 const NOME_EXAME: Record<string, string> = {
@@ -249,23 +246,41 @@ export function Maquinas() {
   );
 }
 
+/** Ramais: lista telefônica da sede, por andar. Tudo à vista (são poucos); a busca filtra na hora. Clicar no número copia. */
+const ORDEM_SETOR = ['Térreo', '1° andar', '2° andar', '3° andar', 'Call center', 'FATURAMENTO', 'Outros'];
+const nomeSetor = (s: string) => (s === 'FATURAMENTO' ? 'Faturamento' : s);
+/** "RENATA UNIMED" → "Renata Unimed"; siglas curtas (TC, RM, II) ficam como estão. */
+const nomeLocal = (l: string) => l.split(' ').map((w) => (w.length > 3 && w === w.toUpperCase() ? w.charAt(0) + w.slice(1).toLowerCase() : w)).join(' ');
+function NumRamal({ n }: { n: string }) {
+  const [ok, setOk] = useState(false);
+  return <button type="button" className={'rm-num' + (ok ? ' ok' : '')} title="Copiar ramal" aria-label={'Copiar ramal ' + n}
+    onClick={() => navigator.clipboard?.writeText(n).then(() => { setOk(true); setTimeout(() => setOk(false), 1200); }).catch(() => undefined)}>{ok ? 'copiado' : n}</button>;
+}
 export function Ramais() {
   const b = useBase();
   const [q, setQ] = useQ();
-  const lista = q.trim().length < 2 ? [] : b.ramais.filter((r) => casa(`${r.setor ?? ''} ${r.local} ${(r.numeros ?? []).join(' ')}`, q));
-  const grupo = (r: (typeof lista)[number]) => `${r.setor ?? 'Geral'}`;
-  const grupos = [...new Set(lista.map(grupo))];
+  const lista = b.ramais.filter((r) => !q.trim() || casa(`${r.setor ?? ''} ${r.local} ${(r.numeros ?? []).join(' ')}`, q));
+  // linhas com o mesmo nome no mesmo setor (ex.: 8x "CALL CENTER") viram uma linha só com todos os números
+  const setores = [...new Set(lista.map((r) => r.setor ?? 'Outros'))].sort((x, y) => (ORDEM_SETOR.indexOf(x) + 99) % 99 - (ORDEM_SETOR.indexOf(y) + 99) % 99);
+  const linhasDe = (s: string) => {
+    const m = new Map<string, string[]>();
+    for (const r of lista.filter((x) => (x.setor ?? 'Outros') === s)) { const k = nomeLocal(r.local); m.set(k, [...(m.get(k) ?? []), ...(r.numeros ?? [])]); }
+    return [...m.entries()];
+  };
   return (
     <>
-      <TituloPagina titulo="Ramais" sub="Digite o setor ou o número." />
-      <Busca rot="Buscar ramal" q={q} setQ={setQ} ph="ex.: recepção, doppler, autorização, 5767" />
-      {!q.trim() ? <div className="bloco"><Vazio>Digite o setor ou o número. {b.ramais.length} ramais cadastrados.</Vazio></div> : !lista.length ? <div className="bloco"><Vazio>Nenhum ramal para “{q}”.</Vazio></div> : (
-        <div className="grade-cards">{grupos.map((g) => (
-          <Bloco key={g} titulo={g}>
-            <table className="tab"><tbody>{lista.filter((r) => grupo(r) === g).map((r) => (
-              <tr key={r.id}><td>{r.local}</td><td className="cod" style={{ textAlign: 'right' }}>{r.numeros?.join(' / ') ?? <span className="mut">sem número</span>}</td></tr>
-            ))}</tbody></table>
-          </Bloco>
+      <TituloPagina titulo="Ramais" sub="Ramais da sede (Norte Sul), por andar. Clique no número para copiar." />
+      <div className="rm-busca"><Icone n="busca" /><input type="search" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filtrar: recepção, doppler, faturamento, 5767…" />
+        <span className="mut">{lista.length} de {b.ramais.length}</span></div>
+      {!lista.length ? <div className="bloco"><Vazio>Nenhum ramal para “{q}”.</Vazio></div> : (
+        <div className="rm-grade">{setores.map((s) => (
+          <section key={s} className="bloco rm-setor">
+            <h3>{nomeSetor(s)}</h3>
+            <ul>{linhasDe(s).map(([local, nums]) => (
+              <li key={local}><span className="rm-local">{local}</span>
+                <span className="rm-nums">{nums.length ? nums.map((n) => <NumRamal key={n} n={n} />) : <span className="mut">sem número</span>}</span></li>
+            ))}</ul>
+          </section>
         ))}</div>
       )}
     </>
