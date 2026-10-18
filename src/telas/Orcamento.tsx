@@ -3,7 +3,7 @@
 // Dados do paciente (nome, sobrenome, CPF, RG) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from '../componentes/Dados';
-import { Bloco, BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
+import { BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
 import { buscarPrecos } from '../regras/busca';
 import { brl } from '../util/formato';
@@ -53,6 +53,10 @@ export function Orcamento() {
   const desconto = subtotal * pctTotal / 100;
   const total = subtotal - desconto;
   const nx = parcelas(total);
+  // os dois valores aparecem ao mesmo tempo; a forma escolhida define o Total
+  const totalCartao = subtotal * (1 - Math.min(100, extra) / 100);
+  const totalPix = subtotal * (1 - Math.min(100, DESCONTO_PIX + extra) / 100);
+  const nxCartao = parcelas(totalCartao);
   const add = (id: number) => { setLinhas(linhas.some((l) => l.precoId === id) ? linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + 1 } : l)) : [...linhas, { precoId: id, qtd: 1 }]); setQ(''); setAberto(false); };
   const mudarQtd = (id: number, dq: number) => setLinhas(linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + dq } : l)).filter((l) => l.qtd > 0));
   const tecla = (ev: KeyboardEvent) => {
@@ -83,36 +87,55 @@ export function Orcamento() {
 
   return (
     <>
-      <TituloPagina titulo="Orçamento" sub="Particular ou Sócio Remido. Desconto e parcelas saem sozinhos pela forma de pagamento.">
+      <TituloPagina titulo="Orçamento" sub="Escolha a tabela e os exames. O sistema calcula Cartão e PIX ao mesmo tempo.">
         <button type="button" className="btn2 ic" onClick={() => { setLinhas([]); setForma('cartao'); setPac({ nome: '', sobrenome: '', cpf: '', rg: '' }); setExtra(0); }} title="Limpar orçamento" aria-label="Limpar orçamento"><Icone n="limpar" /></button>
         <BotoesSaida desativado={!itens.length || cpfRuim} texto={texto} relatorio={relatorio} />
       </TituloPagina>
 
-      <div className="orc-topo">
-        <div className="busca-conv">
-          <Icone n="busca" />
-          <input ref={ref} type="search" value={q} autoComplete="off" placeholder="Nome do exame… (ex.: raio x tórax)"
-            onChange={(e) => { setQ(e.target.value); setFoco(0); setAberto(true); }} onFocus={() => setAberto(true)}
-            onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
-          {aberto && q.trim().length >= 2 && (
-            <div className="combo-lista" role="listbox">
-              {busca.length ? busca.map((p, k) => (
-                <button type="button" key={p.id} role="option" aria-selected={k === foco} className={k === foco ? 'foco' : ''}
-                  onMouseDown={(ev) => { ev.preventDefault(); add(p.id); }} onMouseEnter={() => setFoco(k)}>
-                  <span>{p.procedimento}</span><small>{brl(p.valor)}</small>
-                </button>
-              )) : <div className="combo-vazio">Nenhum exame com “{q}” na tabela {nomeTabela}.</div>}
-            </div>
-          )}
-        </div>
-        <div className="seg" role="group" aria-label="Tabela de preço">
-          {b.tabelasPreco.map((t) => <button type="button" key={t.id} className={tabela === t.id ? 'on' : ''} onClick={() => { setTabela(t.id); setLinhas([]); }}>{t.nome}</button>)}
-        </div>
-      </div>
-
       <div className="grade2 orc">
         <div className="coluna">
-          <Bloco titulo="Paciente">
+          <section className="bloco orc-card">
+            <div className="orc-cab"><span className="orc-num">1</span><h3>Exames</h3></div>
+            <div className="orc-topo">
+              <div className="busca-conv">
+                <Icone n="busca" />
+                <input ref={ref} type="search" value={q} autoComplete="off" placeholder="Digite o exame… ex.: raio x tórax"
+                  onChange={(e) => { setQ(e.target.value); setFoco(0); setAberto(true); }} onFocus={() => setAberto(true)}
+                  onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
+                {aberto && q.trim().length >= 2 && (
+                  <div className="combo-lista" role="listbox">
+                    {busca.length ? busca.map((p, k) => (
+                      <button type="button" key={p.id} role="option" aria-selected={k === foco} className={k === foco ? 'foco' : ''}
+                        onMouseDown={(ev) => { ev.preventDefault(); add(p.id); }} onMouseEnter={() => setFoco(k)}>
+                        <span>{p.procedimento}</span><small>{brl(p.valor)}</small>
+                      </button>
+                    )) : <div className="combo-vazio">Nenhum exame com “{q}” na tabela {nomeTabela}.</div>}
+                  </div>
+                )}
+              </div>
+              <div className="seg" role="group" aria-label="Tabela de preço">
+                {b.tabelasPreco.map((t) => <button type="button" key={t.id} className={tabela === t.id ? 'on' : ''} onClick={() => { setTabela(t.id); setLinhas([]); }}>{t.nome}</button>)}
+              </div>
+            </div>
+            {itens.length ? (
+              <>
+                <div className="orc-itens">
+                  {itens.map((x) => (
+                    <div className="orc-item" key={x.precoId}>
+                      <div className="orc-item-nome"><b>{x.p.procedimento}</b><small>{x.p.subgrupo ? `${x.p.subgrupo} · ` : ''}{brl(x.p.valor)} cada</small></div>
+                      <span className="qtd"><button type="button" onClick={() => mudarQtd(x.precoId, -1)} aria-label="Diminuir"><Icone n="menos" /></button><span>{x.qtd}</span><button type="button" onClick={() => mudarQtd(x.precoId, 1)} aria-label="Aumentar"><Icone n="mais" /></button></span>
+                      <b className="orc-item-total">{brl(x.p.valor * x.qtd)}</b>
+                      <button type="button" className="orc-x" onClick={() => mudarQtd(x.precoId, -x.qtd)} aria-label={`Tirar ${x.p.procedimento}`}><Icone n="x" /></button>
+                    </div>
+                  ))}
+                </div>
+                <div className="orc-rodape"><span>{itens.length} exame{itens.length > 1 ? 's' : ''}</span><span>Subtotal <b>{brl(subtotal)}</b></span></div>
+              </>
+            ) : <Vazio>Busque o exame acima e escolha na lista.</Vazio>}
+          </section>
+
+          <section className="bloco orc-card">
+            <div className="orc-cab"><span className="orc-num">2</span><h3>Dados do paciente</h3></div>
             <div className="orc-pac">
               <label className="cp"><span>Nome</span><input value={pac.nome} onChange={(e) => setPac({ ...pac, nome: e.target.value })} /></label>
               <label className="cp"><span>Sobrenome</span><input value={pac.sobrenome} onChange={(e) => setPac({ ...pac, sobrenome: e.target.value })} /></label>
@@ -120,35 +143,40 @@ export function Orcamento() {
                 {cpfRuim && <small className="erro-txt">CPF inválido: confira os números</small>}</label>
               <label className="cp"><span>RG</span><input value={pac.rg} maxLength={14} onChange={(e) => setPac({ ...pac, rg: e.target.value.toUpperCase().replace(/[^0-9X.\-]/g, '') })} /></label>
             </div>
-          </Bloco>
-          <Bloco titulo="Exames" extra={<span className="mut" style={{ fontSize: 12 }}>Tabela: {nomeTabela}{itens.length ? ` · ${itens.length} exame${itens.length > 1 ? 's' : ''}` : ''}</span>}>
-            {itens.length ? <table className="tab"><tbody>{itens.map((x) => <tr key={x.precoId}><td>{x.p.procedimento}</td>
-              <td style={{ width: 110 }}><span className="qtd"><button type="button" onClick={() => mudarQtd(x.precoId, -1)} aria-label="Diminuir"><Icone n="menos" /></button><span>{x.qtd}</span><button type="button" onClick={() => mudarQtd(x.precoId, 1)} aria-label="Aumentar"><Icone n="mais" /></button></span></td>
-              <td style={{ textAlign: 'right', width: 120 }}>{brl(x.p.valor * x.qtd)}</td></tr>)}</tbody></table> : <Vazio>Busque o exame lá em cima e escolha na lista.</Vazio>}
-          </Bloco>
+          </section>
         </div>
 
         <div className="coluna">
-          <Bloco titulo="Pagamento">
-            <div className="formas">
-              <button type="button" className={forma === 'cartao' ? 'on' : ''} onClick={() => setForma('cartao')}><b>Cartão</b><small>até {nx}x de {brl((total || 0) / nx)}</small></button>
-              <button type="button" className={forma === 'pix' ? 'on' : ''} onClick={() => setForma('pix')}><b>PIX ou dinheiro</b><small>{DESCONTO_PIX}% de desconto</small></button>
+          <section className="bloco orc-card">
+            <div className="orc-cab"><span className="orc-num">3</span><h3>Forma de pagamento</h3></div>
+            <div className="formas-col">
+              <button type="button" className={forma === 'cartao' ? 'on' : ''} onClick={() => setForma('cartao')}>
+                <span className="fc-txt"><b>Cartão</b><small>até {nxCartao}x de {brl(totalCartao / nxCartao)}</small></span>
+                <span className="fc-val">{brl(totalCartao)}</span>
+                <span className="fc-ok">{forma === 'cartao' && <Icone n="ok" />}</span>
+              </button>
+              <button type="button" className={forma === 'pix' ? 'on' : ''} onClick={() => setForma('pix')}>
+                <span className="fc-txt"><b>PIX ou dinheiro</b><small className="verde">{subtotal > 0 ? `economiza ${brl(totalCartao - totalPix)} (${DESCONTO_PIX}%)` : `${DESCONTO_PIX}% de desconto`}</small></span>
+                <span className="fc-val">{brl(totalPix)}</span>
+                <span className="fc-ok">{forma === 'pix' && <Icone n="ok" />}</span>
+              </button>
             </div>
             <div className="orc-desc">
               <span>Desconto extra</span>
               <span className="pct"><input type="number" min={0} max={limite} step={0.5} value={extra || ''} placeholder="0" disabled={limite <= 0} onChange={(e) => mudarExtra(e.target.value)} aria-label="Desconto extra em porcentagem" />%</span>
               <span className="tag-lim">{limite >= 100 ? 'sem limite' : limite > 0 ? `seu limite: ${limite}%` : 'seu cargo não dá desconto extra'}</span>
             </div>
-            <div className="tot"><span>Subtotal</span><span>{brl(subtotal)}</span></div>
-            {desconto > 0 && <div className="tot verde"><span>Desconto ({rotDesconto})</span><span>− {brl(desconto)}</span></div>}
-            <div className="tot grande"><span>Total</span><span>{brl(total)}</span></div>
-            <div className="pad mut" style={{ fontSize: 12 }}>Válido por 30 dias · até {br(validade)}</div>
+            <div className="orc-total">
+              <div className="orc-total-lin"><span>Total</span><b>{brl(total)}</b></div>
+              <small>{pagamento}</small>
+            </div>
+            <div className="orc-valido"><Icone n="calendario" /><span>Válido por 30 dias · até {br(validade)}</span></div>
             <div className="orc-regra">
               <b>Regra de pagamento da RCC</b>
               <span>Até R$ 300: até 2x</span><span>R$ 300 a 500: até 3x</span>
               <span>Acima de R$ 500: até 6x</span><span>PIX/dinheiro: {DESCONTO_PIX}% off</span>
             </div>
-          </Bloco>
+          </section>
         </div>
       </div>
     </>
