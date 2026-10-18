@@ -380,8 +380,6 @@ details > summary { cursor: pointer; font-weight: 600; }
 .orc-desc .pct input { width: 64px; text-align: right; padding: 5px 8px !important; }
 .tag-lim { margin-left: auto; font-size: 11px; background: var(--st-at-bg); color: var(--st-at-t); border-radius: 6px; padding: 2px 7px; }
 .tot.verde { color: #16a34a; }
-.orc-regra { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
-.orc-regra b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
 .pct-cel { display: inline-flex; align-items: center; gap: 3px; }
 .pct-cel input { width: 56px; text-align: right; }
 @media (max-width: 1100px) { .grade2.orc { grid-template-columns: 1fr; } }
@@ -456,6 +454,10 @@ details > summary { cursor: pointer; font-weight: 600; }
 .orc-card { overflow: visible; }
 .orc-cab { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--linha); }
 .orc-cab h3 { margin: 0; font-size: 15px; }
+.orc-cab > small { font-size: 12px; }
+.orc-info { margin-left: auto; display: grid; color: var(--texto-suave); cursor: help; }
+.orc-info svg { width: 18px; height: 18px; }
+.orc-card .orc-topo .seg { margin-left: auto; }
 .orc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto, #fff); display: grid; place-items: center; font-weight: 800; font-size: 13px; flex: none; }
 .orc-card .orc-topo { padding: 14px 16px; margin: 0; }
 .orc-card .orc-topo .busca-conv { flex: 1 1 240px; }
