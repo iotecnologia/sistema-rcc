@@ -160,9 +160,13 @@ describe('Rede do paciente (só Bradesco)', () => {
   });
   it('rede da lista atende', () => { expect(q('ABB NACIONAL').rede).toEqual({ nome: 'ABB NACIONAL', situacao: 'atende' }); });
   it('rede que a RCC não atende → não pode agendar', () => {
-    const r = q('Sistel');
+    const r = q('Personal 25');
     expect(r.rede?.situacao).toBe('nao_atende');
     expect(r.situacao).toBe('nao_pode');
+  });
+  it('Sistel sozinho não existe; só REDE SISTEL (atende)', () => {
+    expect(q('Sistel').rede?.situacao).toBe('escolher');
+    expect(q('REDE SISTEL').rede?.situacao).toBe('atende');
   });
   it('outros convênios não pedem rede', () => { expect(q('ABB NACIONAL', 'amil').rede).toBeNull(); });
 });
