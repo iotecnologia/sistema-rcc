@@ -2,7 +2,7 @@
 // esquerda = trabalho (tabela → exames → paciente); direita = resumo fixo (Cartão e PIX lado a lado, total, imprimir/enviar).
 // A forma de pagamento aplica a regra da RCC; o desconto extra respeita o limite do cargo de quem está usando.
 // Dados do paciente (nome, sobrenome, CPF, RG) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
-import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from '../componentes/Dados';
 import { BotoesSaida, TituloPagina } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
@@ -18,6 +18,9 @@ type Forma = 'cartao' | 'pix';
 export const parcelas = (total: number) => (total <= 300 ? 2 : total <= 500 ? 3 : 6);
 /** PIX ou dinheiro: 5% de desconto. */
 export const DESCONTO_PIX = 5;
+
+/** A partir do 4º exame a lista rola: ela mostra 3 exames e o resto fica no scroll (assim o bloco 2 não desce). */
+const EXAMES_VISIVEIS = 3;
 
 /** CPF: 000.000.000-00 enquanto digita. */
 const mascaraCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
@@ -43,6 +46,8 @@ export function Orcamento() {
   const [forma, setForma] = useState<Forma>('cartao');
   const [pac, setPac] = useState({ nome: '', sobrenome: '', cpf: '', rg: '' });
   const [extra, setExtra] = useState(0);
+  const listaRef = useRef<HTMLUListElement>(null);
+  const [alturaLista, setAlturaLista] = useState<number | undefined>(undefined);
 
   const precos = b.precos.filter((p) => p.tabela_id === tabela);
   const busca = useMemo(() => (q.trim().length < 2 ? [] : buscarPrecos(precos, q)), [precos, q]);
@@ -57,6 +62,15 @@ export function Orcamento() {
   const total = forma === 'pix' ? totPix : totCartao;
   const pctPix = forma === 'pix' ? DESCONTO_PIX : 0;
   const desconto = subtotal - total;
+
+  // mede a altura dos 3 primeiros exames (os nomes podem ter 1 ou 2 linhas) e trava a lista nessa altura
+  useLayoutEffect(() => {
+    const el = listaRef.current;
+    if (!el || el.children.length <= EXAMES_VISIVEIS) { setAlturaLista(undefined); return; }
+    const filhos = [...el.children].slice(0, EXAMES_VISIVEIS) as HTMLElement[];
+    const pad = parseFloat(getComputedStyle(el).paddingTop) || 0;
+    setAlturaLista(filhos.reduce((t, x) => t + x.offsetHeight, 0) + pad);
+  }, [linhas]);
 
   const add = (id: number) => { setLinhas(linhas.some((l) => l.precoId === id) ? linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + 1 } : l)) : [...linhas, { precoId: id, qtd: 1 }]); setQ(''); setAberto(false); ref.current?.focus(); };
   const mudarQtd = (id: number, dq: number) => setLinhas(linhas.map((l) => (l.precoId === id ? { ...l, qtd: Math.max(1, l.qtd + dq) } : l)));
@@ -111,7 +125,7 @@ export function Orcamento() {
             <div className="orc2-linha-busca">
             <div className="orc2-busca">
               <Icone n="busca" />
-              <input ref={ref} type="search" value={q} autoComplete="off" placeholder="Digite o exame… ex.: raio x tórax"
+              <input ref={ref} type="text" value={q} autoComplete="off" placeholder="Digite o exame… ex.: raio x tórax"
                 onChange={(e) => { setQ(e.target.value); setFoco(0); setAberto(true); }} onFocus={() => setAberto(true)}
                 onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
               {aberto && q.trim().length >= 2 && (
@@ -131,7 +145,7 @@ export function Orcamento() {
             </div>
 
             {itens.length ? (
-              <ul className="orc2-lista">
+              <ul className="orc2-lista" ref={listaRef} style={alturaLista ? { maxHeight: alturaLista, overflowY: 'auto' } : undefined}>
                 {itens.map((x) => (
                   <li key={x.precoId}>
                     <div className="orc2-nome"><b>{x.p.procedimento}</b><small>{x.p.subgrupo} · {brl(x.p.valor)} cada</small></div>
