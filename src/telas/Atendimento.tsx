@@ -270,8 +270,7 @@ export function Ramais() {
   return (
     <>
       <TituloPagina titulo="Ramais" sub="Ramais da sede (Norte Sul), por andar. Clique no número para copiar." />
-      <div className="rm-busca"><Icone n="busca" /><input type="search" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Filtrar: recepção, doppler, faturamento, 5767…" />
-        <span className="mut">{lista.length} de {b.ramais.length}</span></div>
+      <div className="busca-conv"><Icone n="busca" /><input type="text" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="Setor ou número do ramal…" /></div>
       {!lista.length ? <div className="bloco"><Vazio>Nenhum ramal para “{q}”.</Vazio></div> : (
         <div className="rm-grade">{setores.map((s) => (
           <section key={s} className="bloco rm-setor">
