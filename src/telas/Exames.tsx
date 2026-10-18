@@ -28,7 +28,7 @@ function OndeTempo({ ag }: { ag: AgendaExame }) {
       <Linha rot="Tempo">{min ? `${min} min` : <span className="mut">não cadastrado</span>}</Linha>
     </>;
   }
-  if (ag.medicos.length) return <Linha rot={ag.medicos.length > 1 ? 'Médicos' : 'Médico'}>{ag.medicos.map((x) => x.medico).join(', ')}</Linha>;
+  if (ag.medicos.length) return <ul style={{ margin: 0, paddingLeft: 18, display: 'grid', gap: 6, fontSize: 14 }}>{[...new Set(ag.medicos.map((x) => x.medico))].map((n) => <li key={n}>{n}</li>)}</ul>;
   return <Linha rot="Onde">sem máquina ou médico cadastrado</Linha>;
 }
 
@@ -131,7 +131,7 @@ export function Exames() {
               </Bloco>
             </div>
             <div className="coluna">
-              <Bloco titulo="Onde e quanto tempo"><div className="pad-l"><OndeTempo ag={ag} /></div></Bloco>
+              <Bloco titulo={ag.maquinas.length ? 'Onde e quanto tempo' : ag.medicos.length ? 'Quem faz' : 'Onde e quanto tempo'}><div className="pad-l"><OndeTempo ag={ag} /></div></Bloco>
               <Bloco titulo="Preparo">{ag.preparos.length ? <div className="pad">{ag.preparos.map((p) => <div key={p.id} style={{ marginBottom: 8 }}><b>{p.titulo.replace(/^Preparo\s*[—-]\s*/i, '')}</b><div className="preparo-txt">{p.texto}</div></div>)}</div> : <Vazio>Sem preparo.</Vazio>}</Bloco>
             </div>
           </div>
