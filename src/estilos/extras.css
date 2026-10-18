@@ -395,3 +395,7 @@ details > summary { cursor: pointer; font-weight: 600; }
 .redes-lista { max-height: 420px; overflow: auto; padding: 4px 16px 10px; }
 .rede-linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border-top: 1px solid var(--linha); font-size: 14px; }
 .rede-linha:first-child { border-top: 0; }
+
+/* Médicos */
+.med-av { width: 56px; height: 56px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 20px; flex: none; }
+.p1-linha.um { grid-template-columns: 1fr; }
