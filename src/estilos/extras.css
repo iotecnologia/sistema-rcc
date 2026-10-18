@@ -255,6 +255,9 @@ details > summary { cursor: pointer; font-weight: 600; }
 .resposta-1.atencao { color: var(--st-at-t); }
 .resposta-1.nao_pode { color: var(--st-no-t); }
 
+/* Avisos: botão "2 de 2" da coluna Leram numa linha só */
+.btn2.leram { white-space: nowrap; height: 30px; padding: 0 10px; font-size: 13px; }
+
 /* Visão geral: avisos lidos resumidos (coluna da direita) */
 .lidos-resumo { list-style: none; margin: 0; padding: 6px 0; }
 .lidos-resumo li { border-left: 3px solid #3b82f6; margin: 4px 12px; }
