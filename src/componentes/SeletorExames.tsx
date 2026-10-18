@@ -68,11 +68,10 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado, passo =
   );
 }
 
-/** Exames da consulta como subtítulo dos passos: nome, quantidade (muda prazos e regras) e tirar. */
+/** Exames da consulta como subtítulo dos passos: nome e botão para tirar. */
 export function ExamesEscolhidos({ escolhidos, mudar }: { escolhidos: Escolhido[]; mudar: (e: Escolhido[]) => void }) {
   const b = useBase();
   if (!escolhidos.length) return null;
-  const qtd = (id: number, d: number) => mudar(escolhidos.map((x) => (x.exameId === id ? { ...x, quantidade: Math.max(1, x.quantidade + d) } : x)));
   return (
     <div className="exames-sel">
       {escolhidos.map((x) => {
@@ -80,12 +79,6 @@ export function ExamesEscolhidos({ escolhidos, mudar }: { escolhidos: Escolhido[
         return (
           <div className="exame-linha" key={x.exameId}>
             <h2>{x.rotulo ?? e.nome}</h2>
-            <span className="qtd" title="Quantidade (ex.: lados, articulações, segmentos)">
-              <small className="mut">Quantidade</small>
-              <button type="button" onClick={() => qtd(x.exameId, -1)} aria-label="Diminuir quantidade"><Icone n="menos" /></button>
-              <span>{x.quantidade}</span>
-              <button type="button" onClick={() => qtd(x.exameId, 1)} aria-label="Aumentar quantidade"><Icone n="mais" /></button>
-            </span>
             <button type="button" className="exame-tirar" onClick={() => mudar(escolhidos.filter((y) => y.exameId !== x.exameId))} title="Tirar exame" aria-label={'Tirar ' + e.nome}><Icone n="x" /></button>
           </div>
         );
