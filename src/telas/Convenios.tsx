@@ -8,6 +8,7 @@ import { Icone } from '../componentes/Icone';
 import { regrasDoConvenio, norm } from '../regras/contexto';
 import { regrasGerais } from '../regras/pedido';
 import { ConselhosLinhas } from '../componentes/Conselhos';
+import { redesDoConvenio } from '../regras/rede';
 import type { Convenio } from '../tipos/modelos';
 
 const NOME_GRUPO: Record<string, string> = { cardiaco: 'Exames cardíacos', articulacao: 'Articulações' };
@@ -96,6 +97,7 @@ export function Convenios() {
             </Bloco>
             {naoCobre.length > 0 && <Bloco titulo={`Exames que ${sel.nome} NÃO cobre`} extra={<span className="mut" style={{ fontSize: 13 }}>ofereça particular</span>}>
               <ul className="lista-simples nao">{naoCobre.map((x) => <li key={x}>{x}</li>)}</ul></Bloco>}
+            <RedesDoConvenio slug={sel.slug} />
             {consultarAntes.length > 0 && <Bloco titulo="Antes de agendar, confira">
               <ul className="lista-simples">{consultarAntes.map((x) => <li key={x.exame + x.acao}><b>{x.exame}</b>: {x.acao}</li>)}</ul></Bloco>}
             </div>
@@ -114,5 +116,27 @@ export function Convenios() {
         </div>
       )}
     </>
+  );
+}
+
+/** Rede (só Bradesco): caixa fechada; ao abrir mostra todas as redes e se a RCC atende ou não. */
+function RedesDoConvenio({ slug }: { slug: string }) {
+  const b = useBase();
+  const redes = redesDoConvenio(b, slug);
+  if (!redes.length) return null;
+  const lista = [...redes].sort((x, y) => Number(x.atende !== false) - Number(y.atende !== false) || x.nome.localeCompare(y.nome));
+  const nao = redes.filter((r) => r.atende === false).length;
+  return (
+    <details className="bloco redes-caixa">
+      <summary className="bloco-cab"><h3>Rede</h3><span className="mut" style={{ fontSize: 13 }}>{redes.length} redes · {nao} não {nao === 1 ? 'atendida' : 'atendidas'}</span></summary>
+      <div className="redes-lista">
+        {lista.map((r) => (
+          <div className="rede-linha" key={r.nome}>
+            <span>{r.nome}</span>
+            <span className={'sinal ' + (r.atende === false ? 'nao' : 'sim')}><span className="ic"><Icone n={r.atende === false ? 'x' : 'ok'} /></span>{r.atende === false ? 'não atende' : 'atende'}</span>
+          </div>
+        ))}
+      </div>
+    </details>
   );
 }
