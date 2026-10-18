@@ -47,7 +47,7 @@ const PASSOS: Passo[] = [
     pronto: () => !!q('.barra-fixa .sugestoes button'),
     auto: () => digitar('.barra-fixa input[type=search]', 'resso joelho') },
   { alvo: '.barra-fixa .sugestoes button', titulo: 'Escolha o exame certo', texto: 'Clique no exame que o paciente vai fazer. Se forem vários, repita.',
-    pronto: () => !!q('.barra-fixa .chips .chip'),
+    pronto: () => !!q('.exames-sel .exame-linha'),
     auto: () => clicar('.barra-fixa .sugestoes button') },
   { alvo: '.barra-fixa .cp.data input', titulo: 'Data do pedido', texto: 'Coloque a data que o médico escreveu no pedido. Com ela o sistema mostra até quando dá para marcar.',
     opcional: true, pronto: () => !!(q('.barra-fixa .cp.data input') as HTMLInputElement | null)?.value,
