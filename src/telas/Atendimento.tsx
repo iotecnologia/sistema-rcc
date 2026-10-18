@@ -1,9 +1,10 @@
 // Atendimento: Médicos, Unidades e máquinas, Ramais. Nada de lista despejada: médicos e ramais só aparecem depois da busca.
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
+import { Copiar } from '../componentes/Copiar';
 import { norm } from '../regras/contexto';
 import { palavras } from '../regras/busca';
 import { br, hojeIso } from '../regras/calendario';
@@ -129,32 +130,84 @@ export function Medicos() {
   );
 }
 
+/** "(19) 3736-3481 Radiologia · (19) 3739-3333 RM e TC" → um telefone por linha, com o número separado do nome. */
+const contatos = (texto: string | null | undefined) => (texto ?? '').split(' · ').map((x) => x.trim()).filter(Boolean).map((x) => {
+  const m = x.match(/\(\d{2}\)\s*\d{4,5}-\d{4}/);
+  return { num: m?.[0] ?? '', rot: x.replace(m?.[0] ?? '', '').trim() };
+}).filter((c) => c.num);
+
+/** Unidades: um quadro por unidade (endereço, telefones com copiar, horário e as máquinas dela). */
 export function Unidades() {
   const b = useBase();
-  const [params] = useSearchParams();
-  const [eq, setEq] = useState(Number(params.get('eq')) || (b.equipamentos[0]?.id ?? 0));
-  useEffect(() => { const v = Number(params.get('eq')); if (v) setEq(v); }, [params]);
-  const itens = b.equipamentoExames.filter((x) => x.equipamento_id === eq);
-  const q = b.equipamentos.find((x) => x.id === eq);
   return (
     <>
-      <TituloPagina titulo="Unidades e máquinas" sub="Endereço, telefone e horário de cada unidade. Escolha a máquina para ver quanto tempo cada exame ocupa." />
-      <div className="grade-cards" style={{ marginBottom: 14 }}>
-        {b.unidades.map((u) => (
-          <Bloco key={u.id} titulo={u.nome}>
-            <div className="pad" style={{ display: 'grid', gap: 4, fontSize: 13.5 }}>
-              <span>{u.endereco} · CEP {u.cep}</span><span>{u.telefones}</span>{u.whatsapp && <span>WhatsApp: {u.whatsapp}</span>}<span className="mut">{u.horario_atendimento}</span>
-            </div>
-          </Bloco>
-        ))}
+      <TituloPagina titulo="Unidades" sub="Endereço, telefones e horário de cada unidade da RCC." />
+      <div className="unidade-grid">
+        {b.unidades.map((u) => {
+          const fones = contatos(u.telefones), zaps = contatos(u.whatsapp);
+          const maqs = b.equipamentos.filter((e) => e.unidade_id === u.id);
+          return (
+            <Bloco key={u.id} titulo={u.nome}>
+              <div className="pad-l">
+                <Linha rot="Endereço">{u.endereco}{u.cidade ? ` · ${u.cidade}` : ''}</Linha>
+                <Linha rot="CEP">{u.cep}</Linha>
+                {fones.map((c) => <Linha key={c.num} rot={c.rot ? `Telefone (${c.rot})` : 'Telefone'}><Copiar codigo={c.num} rotulo="telefone" /></Linha>)}
+                {zaps.map((c) => <Linha key={c.num} rot={c.rot ? `WhatsApp (${c.rot})` : 'WhatsApp'}><Copiar codigo={c.num} rotulo="telefone" /></Linha>)}
+                {u.horario_atendimento && <Linha rot="Horário">{u.horario_atendimento}</Linha>}
+                {maqs.length > 0 && <Linha rot="Máquinas">{maqs.map((e, k) => <span key={e.id}>{k > 0 && ' · '}<Link className="link-suave" to={`/maquinas?eq=${e.id}`}>{e.nome}</Link></span>)}</Linha>}
+              </div>
+            </Bloco>
+          );
+        })}
       </div>
-      <div className="abas">{b.equipamentos.map((x) => <button type="button" key={x.id} className={eq === x.id ? 'on' : ''} onClick={() => setEq(x.id)}>{x.nome}</button>)}</div>
-      <Bloco titulo={`${q?.nome} · peso máximo ${q?.peso_max_kg} kg`} extra={<span className="mut" style={{ fontSize: 12 }}>{b.unidades.find((u) => u.id === q?.unidade_id)?.nome}</span>}>
-        <table className="tab"><thead><tr><th>Exame</th><th>Horários</th><th>Tempo</th><th>Observação</th></tr></thead>
-          <tbody>{itens.map((x, i) => <tr key={i}><td>{x.exame_nome}</td><td>{x.horarios ?? '—'}</td><td>{x.minutos ? `${x.minutos} min` : '—'}</td>
-            <td className="mut">{[x.contraste && 'contraste: ' + x.contraste, x.condicao_paciente, x.periodo && 'só ' + x.periodo].filter(Boolean).join(' · ') || '—'}</td></tr>)}</tbody></table>
-      </Bloco>
-      {b.avisos.length > 0 && <div style={{ marginTop: 14 }}><Bloco titulo="Avisos das máquinas"><ul className="feed">{b.avisos.map((a) => <li key={a.id}><span className="dot"><Icone n="info" /></span><div className="preparo-txt">{a.texto}</div></li>)}</ul></Bloco></div>}
+    </>
+  );
+}
+
+/** Máquinas em catálogo (por unidade); o card abre os exames da máquina com o tempo de cada um. */
+export function Maquinas() {
+  const b = useBase();
+  const [params, setParams] = useSearchParams();
+  const q = b.equipamentos.find((x) => String(x.id) === params.get('eq'));
+  const unidade = (id: number) => b.unidades.find((u) => u.id === id)?.nome ?? '';
+  const grupos = b.unidades.map((u) => ({ u, lista: b.equipamentos.filter((e) => e.unidade_id === u.id) })).filter((g) => g.lista.length);
+  const itens = q ? b.equipamentoExames.filter((x) => x.equipamento_id === q.id) : [];
+  const avisos = q ? b.avisos.filter((a) => a.escopo === 'equipamento' && (!a.referencia || norm(a.referencia) === norm(q.nome)))
+    .sort((x, y) => Number(!!y.referencia) - Number(!!x.referencia)) : [];
+  return (
+    <>
+      <TituloPagina titulo={q ? q.nome : 'Máquinas'} sub={q ? `${unidade(q.unidade_id)} · peso máximo ${q.peso_max_kg} kg` : 'Toque na máquina para ver os exames, o tempo de cada um e o peso máximo.'}>
+        {q && <button type="button" className="btn2 ic" onClick={() => setParams({})} title="Voltar às máquinas" aria-label="Voltar às máquinas"><Icone n="volta" /></button>}
+      </TituloPagina>
+
+      {!q && grupos.map((g) => (
+        <section key={g.u.id} className="grupo-conv">
+          <h3>{g.u.nome} <span className="mut">· {g.lista.length} máquina{g.lista.length === 1 ? '' : 's'}</span></h3>
+          <div className="cards-med">
+            {g.lista.map((e) => (
+              <button type="button" key={e.id} className="med-card" onClick={() => setParams({ eq: String(e.id) })}>
+                <span className="med-av"><Icone n="maquina" /></span>
+                <span className="med-inf"><b>{e.nome}</b><span className="mut">Peso máximo {e.peso_max_kg} kg</span></span>
+                <span className="med-tag neutro">{e.tipo}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      {q && (
+        <div className="conv-detalhe">
+          <Bloco titulo="Exames desta máquina" extra={<span className="mut" style={{ fontSize: 13 }}>{itens.length} exame{itens.length === 1 ? '' : 's'}</span>}>
+            <table className="tab"><thead><tr><th>Exame</th><th>Tempo</th><th>Observação</th></tr></thead>
+              <tbody>{itens.map((x, i) => {
+                const min = x.minutos ?? (x.horarios ? x.horarios * 10 : null);
+                return <tr key={i}><td>{x.exame_nome}</td><td>{min ? `${min} min` : <span className="mut">não cadastrado</span>}</td>
+                  <td className="mut">{[x.contraste && 'contraste: ' + x.contraste, x.condicao_paciente, x.periodo && 'só ' + x.periodo].filter(Boolean).join(' · ') || '—'}</td></tr>;
+              })}</tbody></table>
+          </Bloco>
+          {avisos.length > 0 && <Bloco titulo="Avisos da máquina"><ul className="feed">{avisos.map((a) => <li key={a.id}><span className="dot"><Icone n="info" /></span><div className="preparo-txt">{a.texto}</div></li>)}</ul></Bloco>}
+        </div>
+      )}
     </>
   );
 }
