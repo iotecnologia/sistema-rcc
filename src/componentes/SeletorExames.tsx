@@ -6,8 +6,8 @@ import { buscarExames } from '../regras/busca';
 
 export interface Escolhido { exameId: number; quantidade: number; rotulo?: string }
 
-export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
-  convenio: string; escolhidos: Escolhido[]; mudar: (e: Escolhido[]) => void; desativado?: boolean;
+export function SeletorExames({ convenio, escolhidos, mudar, desativado, passo = 2, semChips }: {
+  convenio: string; escolhidos: Escolhido[]; mudar: (e: Escolhido[]) => void; desativado?: boolean; passo?: number; semChips?: boolean;
 }) {
   const b = useBase();
   const [q, setQ] = useState('');
@@ -31,7 +31,7 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
   return (
     <>
       <label className="cp f" style={{ flex: '2 1 320px' }}>
-        <span><span className="passo">2</span>Exame</span>
+        <span><span className="passo">{passo}</span>Exame</span>
         <Icone n="busca" />
         <input type="search" value={q} onChange={(e) => setQ(e.target.value)} disabled={desativado} autoComplete="off"
           placeholder={desativado ? 'Escolha o convênio primeiro' : 'Digite como o paciente falou (ex.: resso joelho, tomo de tórax)'} />
@@ -46,7 +46,7 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
           ))}
         </div>
       )}
-      {escolhidos.length > 0 && (
+      {!semChips && escolhidos.length > 0 && (
         <div className="chips" style={{ flexBasis: '100%', margin: 0 }}>
           {escolhidos.map((x) => {
             const e = b.exames.find((y) => y.id === x.exameId)!;
@@ -65,5 +65,31 @@ export function SeletorExames({ convenio, escolhidos, mudar, desativado }: {
         </div>
       )}
     </>
+  );
+}
+
+/** Exames da consulta como subtítulo dos passos: nome, quantidade (muda prazos e regras) e tirar. */
+export function ExamesEscolhidos({ escolhidos, mudar }: { escolhidos: Escolhido[]; mudar: (e: Escolhido[]) => void }) {
+  const b = useBase();
+  if (!escolhidos.length) return null;
+  const qtd = (id: number, d: number) => mudar(escolhidos.map((x) => (x.exameId === id ? { ...x, quantidade: Math.max(1, x.quantidade + d) } : x)));
+  return (
+    <div className="exames-sel">
+      {escolhidos.map((x) => {
+        const e = b.exames.find((y) => y.id === x.exameId)!;
+        return (
+          <div className="exame-linha" key={x.exameId}>
+            <h2>{x.rotulo ?? e.nome}</h2>
+            <span className="qtd" title="Quantidade (ex.: lados, articulações, segmentos)">
+              <small className="mut">Quantidade</small>
+              <button type="button" onClick={() => qtd(x.exameId, -1)} aria-label="Diminuir quantidade"><Icone n="menos" /></button>
+              <span>{x.quantidade}</span>
+              <button type="button" onClick={() => qtd(x.exameId, 1)} aria-label="Aumentar quantidade"><Icone n="mais" /></button>
+            </span>
+            <button type="button" className="exame-tirar" onClick={() => mudar(escolhidos.filter((y) => y.exameId !== x.exameId))} title="Tirar exame" aria-label={'Tirar ' + e.nome}><Icone n="x" /></button>
+          </div>
+        );
+      })}
+    </div>
   );
 }
