@@ -470,7 +470,8 @@ details > summary { cursor: pointer; font-weight: 600; }
 .orc2-num { width: 26px; height: 26px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 13px; flex: none; }
 
 /* busca dentro do bloco de exames */
-.orc2-busca { position: relative; display: flex; align-items: center; gap: 8px; margin: 14px 16px 6px; padding: 0 12px; height: 46px; border: 2px solid var(--destaque); border-radius: var(--raio-sm); background: var(--painel); color: var(--texto-suave); }
+.orc2-busca { position: relative; display: flex; align-items: center; gap: 8px; margin: 14px 16px 6px; padding: 0 12px; height: 46px; border: 1px solid var(--borda); border-radius: var(--raio-sm); background: var(--painel-2); color: var(--texto-suave); }
+.orc2-busca:focus-within { outline: 2px solid var(--destaque); outline-offset: -1px; } /* contorno só enquanto digita; clicou fora, some */
 .orc2-busca svg { width: 18px; height: 18px; flex: none; }
 .app .orc2-busca input { border: 0; background: transparent; padding: 0; height: 100%; font-size: 15px; outline: none; }
 
