@@ -8,6 +8,7 @@ import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
 import { useBase } from './Dados';
 import { calcularJanela } from '../regras/janela';
+import { Icone } from './Icone';
 
 const COBERTURA_OK = new Set(['coberto', 'sem_informacao']);
 const unicos = (l: string[]) => [...new Set(l)];
@@ -67,10 +68,21 @@ function rotuloPedido(t: string): [string, string] {
   return ['Conferir', t];
 }
 
+const Sinal = ({ tipo, txt }: { tipo: 'sim' | 'nao'; txt: string }) =>
+  <span className={'sinal ' + tipo}><span className="ic"><Icone n={tipo === 'nao' ? 'x' : 'ok'} /></span>{txt}</span>;
+
+/** Linha da rede (só Bradesco): atende, não atende ou alerta para conferir. */
+function LinhaRede({ r }: { r: Resultado }) {
+  if (!r.rede) return null;
+  if (r.rede.situacao === 'escolher') return <Linha rot="Atenção" aviso>Confira a rede do paciente (está na carteirinha) antes de agendar. Escolha a Rede no campo 2.</Linha>;
+  if (r.rede.situacao === 'atende') return <Linha rot="Rede"><Sinal tipo="sim" txt={`${r.rede.nome}: atendemos`} /></Linha>;
+  return <Linha rot="Rede" aviso><Sinal tipo="nao" txt={`${r.rede.nome}: não atendemos`} /></Linha>;
+}
+
 function Mensagem1({ r }: { r: Resultado }) {
   const j = r.janela;
   const avisoDoConvenio = `${r.convenio.nome}:`;
-  const avisos = r.motivos.filter((m) => !m.startsWith(avisoDoConvenio));
+  const avisos = r.motivos.filter((m) => !m.startsWith(avisoDoConvenio) && !m.startsWith('Rede '));
   if (!r.convenio.tem_regras) return (
     <>
       <div className="p1-cab">{r.convenio.nome} — o pedido já vem autorizado pelo próprio convênio. Antes de agendar, confira na guia:</div>
@@ -83,6 +95,7 @@ function Mensagem1({ r }: { r: Resultado }) {
   return (
     <>
       <div className="p1-cab">{r.convenio.nome} — antes de agendar:</div>
+      <LinhaRede r={r} />
       <Linha rot="Pedido médico">Antes de agendar, sempre conferir se o pedido atende os critérios do convênio.</Linha>
       <Linha rot="Autorização">Sempre pedir a autorização antes de marcar o exame.</Linha>
       <Linha rot="Marcar a partir de">{j.agendarAPartirDe ? dia(j.agendarAPartirDe) : 'só depois que o convênio autorizar'}</Linha>
