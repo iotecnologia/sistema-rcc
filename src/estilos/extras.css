@@ -187,6 +187,19 @@ details > summary { cursor: pointer; font-weight: 600; }
 .barra-fixa .barra > .cp.f { grid-row: 1; grid-column: 2; }
 .barra-fixa .barra > .cp.data { grid-row: 1; grid-column: 3; }
 .barra-fixa .barra > .sugestoes, .barra-fixa .barra > .chips { grid-column: 1 / -1; margin: 0 !important; }
+/* Bradesco: um campo a mais (Rede) entre convênio e exame */
+.barra-fixa .barra.com-rede { grid-template-columns: minmax(170px, 1fr) minmax(170px, 1fr) minmax(200px, 2fr) minmax(140px, 170px); }
+.barra-fixa .barra.com-rede > .combo.rede { grid-row: 1; grid-column: 2; }
+.barra-fixa .barra.com-rede > .cp.f { grid-column: 3; }
+.barra-fixa .barra.com-rede > .cp.data { grid-column: 4; }
+/* Exames da consulta: subtítulo dos passos */
+.exames-sel { display: grid; gap: 4px; margin: 0 0 10px; }
+.exame-linha { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.exame-linha h2 { margin: 0; font-size: 18px; }
+.exame-linha .qtd { margin-left: 0; gap: 6px; }
+.exame-linha .qtd small { font-size: 12px; }
+.exame-tirar { width: 24px; height: 24px; border-radius: 50%; border: 0; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.exame-tirar svg { width: 12px; height: 12px; }
 /* ---------- Resultado em 5 passos (linha de raciocínio da ligação) */
 .passos-resultado { display: grid; gap: 12px; }
 .passo-bloco { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 14px 18px; }
