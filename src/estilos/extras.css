@@ -409,3 +409,9 @@ details > summary { cursor: pointer; font-weight: 600; }
 .med-faz { font-size: 12.5px; font-weight: 600; color: var(--destaque); }
 .med-tag { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 3px 9px; white-space: nowrap; background: var(--st-ok-bg); color: var(--st-ok-t); }
 .med-tag.esp { background: var(--st-at-bg); color: var(--st-at-t); }
+.med-tag.neutro { background: var(--painel-2); color: var(--texto-suave); }
+/* Unidades */
+.unidade-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); gap: 12px; align-items: start; }
+.unidade-grid .p1-linha { grid-template-columns: 175px 1fr; }
+.link-suave { color: var(--destaque); font-weight: 600; text-decoration: none; }
+.link-suave:hover { text-decoration: underline; }

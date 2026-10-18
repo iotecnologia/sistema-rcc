@@ -33,10 +33,8 @@ export function BuscaGeral() {
     if (s.pode('medicos')) b.medicos.filter((m) => casa(m.nome, t)).slice(0, 4).forEach((m) => r.push({ grupo: 'Médicos', titulo: m.nome, ir: `/medicos?q=${encodeURIComponent(m.nome)}` }));
     if (s.pode('ramais')) b.ramais.filter((x) => casa(`${x.setor ?? ''} ${x.local} ${(x.numeros ?? []).join(' ')}`, t)).slice(0, 4)
       .forEach((x) => r.push({ grupo: 'Ramais', titulo: `${x.local}${x.numeros?.length ? ' · ' + x.numeros.join(' / ') : ''}`, sub: x.setor ?? undefined, ir: `/ramais?q=${encodeURIComponent(t)}` }));
-    if (s.pode('unidades')) {
-      b.unidades.filter((u) => casa(u.nome, t)).slice(0, 3).forEach((u) => r.push({ grupo: 'Unidades e máquinas', titulo: u.nome, sub: u.endereco, ir: '/unidades' }));
-      b.equipamentos.filter((e) => casa(e.nome, t)).slice(0, 3).forEach((e) => r.push({ grupo: 'Unidades e máquinas', titulo: e.nome, sub: b.unidades.find((u) => u.id === e.unidade_id)?.nome, ir: `/unidades?eq=${e.id}` }));
-    }
+    if (s.pode('unidades')) b.unidades.filter((u) => casa(u.nome, t)).slice(0, 3).forEach((u) => r.push({ grupo: 'Unidades', titulo: u.nome, sub: u.endereco, ir: '/unidades' }));
+    if (s.pode('maquinas')) b.equipamentos.filter((e) => casa(e.nome, t)).slice(0, 4).forEach((e) => r.push({ grupo: 'Máquinas', titulo: e.nome, sub: b.unidades.find((u) => u.id === e.unidade_id)?.nome, ir: `/maquinas?eq=${e.id}` }));
     PAGINAS.filter((p) => s.pode(p.id) && casa(p.nome, t)).forEach((p) => r.push({ grupo: 'Páginas', titulo: p.nome, ir: p.rota }));
     return r;
   }, [b, s, q]);

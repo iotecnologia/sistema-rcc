@@ -18,14 +18,14 @@ import { PassoAPasso } from './telas/PassoAPasso';
 import { Exames } from './telas/Exames';
 import { Janela } from './telas/Janela';
 import { Orcamento } from './telas/Orcamento';
-import { Medicos, Ramais, Unidades } from './telas/Atendimento';
+import { Maquinas, Medicos, Ramais, Unidades } from './telas/Atendimento';
 import { Cadastros } from './telas/Cadastros';
 import { Usuarios } from './telas/Usuarios';
 import { ComoUsar } from './telas/ComoUsar';
 
 const TELAS: Record<string, ReactNode> = {
   inicio: <VisaoGeral />, consultar: <Consultar />, convenios: <Convenios />, agendar: <PassoAPasso />, exames: <Exames />, janela: <Janela />,
-  orcamento: <Orcamento />, medicos: <Medicos />, unidades: <Unidades />, ramais: <Ramais />, avisos: <Avisos />, cadastros: <Cadastros />, usuarios: <Usuarios />, ajuda: <ComoUsar />,
+  orcamento: <Orcamento />, medicos: <Medicos />, maquinas: <Maquinas />, unidades: <Unidades />, ramais: <Ramais />, avisos: <Avisos />, cadastros: <Cadastros />, usuarios: <Usuarios />, ajuda: <ComoUsar />,
 };
 
 function Rotas() {
