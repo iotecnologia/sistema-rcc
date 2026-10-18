@@ -187,10 +187,11 @@ export function Unidades() {
               <div className="un-secao col">
                 <div className="un-rot">Máquinas</div>
                 {maqs.length ? tipos.map((t) => (
-                  <div key={t} className="un-maqs"><span className="un-tipo">{t === 'RM' ? 'Ressonância' : t === 'TC' ? 'Tomografia' : t}</span>
-                    {maqs.filter((m) => m.tipo === t).map((m) => <Link key={m.id} to={`/maquinas?eq=${m.id}`} className="un-maq" title={`Peso máximo ${m.peso_max_kg} kg`}>{m.nome}</Link>)}
-                    <small className="mut">até {Math.min(...maqs.filter((m) => m.tipo === t).map((m) => m.peso_max_kg))} kg</small></div>
-                )) : <span className="mut" style={{ fontSize: 13 }}>Sem RM/TC nesta unidade</span>}
+                  <div key={t} className="un-maqs">
+                    <span className="un-tipo"><b>{t === 'RM' ? 'Ressonância' : t === 'TC' ? 'Tomografia' : t}</b><small>até {Math.min(...maqs.filter((m) => m.tipo === t).map((m) => m.peso_max_kg))} kg</small></span>
+                    <span className="un-maq-lista">{maqs.filter((m) => m.tipo === t).map((m) => <Link key={m.id} to={`/maquinas?eq=${m.id}`} className="un-maq" title={`Peso máximo ${m.peso_max_kg} kg`}>{m.nome}</Link>)}</span>
+                  </div>
+                )) : <span className="un-sem">Sem ressonância ou tomografia nesta unidade</span>}
               </div>
             </section>
           );
