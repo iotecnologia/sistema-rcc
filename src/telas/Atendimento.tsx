@@ -1,5 +1,5 @@
 // Atendimento: Médicos, Unidades e máquinas, Ramais. Nada de lista despejada: médicos e ramais só aparecem depois da busca.
-import { useEffect, useMemo, useState, type KeyboardEvent, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
@@ -42,88 +42,73 @@ const iniciais = (nome: string) => { const p = nome.replace(/^Dra?\.\s*/, '').sp
 const Linha = ({ rot, children, aviso, um }: { rot?: string; children: ReactNode; aviso?: boolean; um?: boolean }) =>
   <div className={'p1-linha' + (aviso ? ' aviso' : '') + (um ? ' um' : '')}>{rot !== undefined && <span className="p1-rot">{rot}</span>}<span>{children}</span></div>;
 
-type Sel = { t: 'medico'; id: number } | { t: 'exame'; nome: string } | null;
-type Item = { t: 'exame'; nome: string; rot: string; hint?: string } | { t: 'medico'; id: number; rot: string; hint?: string };
+const dias = (m: { agenda_todos_os_dias: boolean }) => (m.agenda_todos_os_dias ? 'Todos os dias' : 'Dias específicos');
 
+/** Médicos em catálogo (mesmo estilo dos Convênios): toda a equipe à vista, a busca filtra por nome ou exame; o card abre o médico. */
 export function Medicos() {
   const b = useBase();
-  const [params] = useSearchParams();
-  const [q, setQ] = useState('');
-  const [sel, setSel] = useState<Sel>(null);
-  const [aberto, setAberto] = useState(false);
-  const [i, setI] = useState(0);
+  const [params, setParams] = useSearchParams();
+  const [filtro, setFiltro] = useState('');
   const hoje = hojeIso();
   const examesDe = useMemo(() => {
     const m = new Map<number, string[]>();
     for (const x of b.medicoExames) m.set(x.medico_id, [...new Set([...(m.get(x.medico_id) ?? []), nomeExame(x.exame_nome)])]);
     return m;
   }, [b]);
-  const todosExames = useMemo(() => [...new Set(b.medicoExames.map((x) => nomeExame(x.exame_nome)))].sort((x, y) => x.localeCompare(y)), [b]);
+  const med = b.medicos.find((x) => String(x.id) === params.get('m'));
 
-  // veio da busca do cabeçalho (?q=): se for um médico ou um exame exato, já abre
+  // veio da busca do cabeçalho (?q=): médico exato abre direto; senão entra como filtro
   useEffect(() => {
     const v = params.get('q'); if (v === null) return;
-    const n = norm(v); setQ(v);
-    const m = b.medicos.find((x) => norm(x.nome) === n);
-    const e = todosExames.find((x) => norm(x) === n);
-    if (m) setSel({ t: 'medico', id: m.id }); else if (e) setSel({ t: 'exame', nome: e }); else { setSel(null); setAberto(true); }
-  }, [params, b, todosExames]);
+    const m = b.medicos.find((x) => norm(x.nome) === norm(v));
+    if (m) setParams({ m: String(m.id) }, { replace: true }); else setFiltro(v);
+  }, [params, b, setParams]);
 
-  const itens: Item[] = useMemo(() => {
-    if (q.trim().length < 2) return [];
-    const ex: Item[] = todosExames.filter((n) => casa(n, q)).slice(0, 8).map((n) => ({ t: 'exame', nome: n, rot: n }));
-    const md: Item[] = b.medicos.filter((m) => casa(m.nome, q) || (examesDe.get(m.id) ?? []).some((n) => casa(n, q))).slice(0, 6)
-      .map((m) => ({ t: 'medico', id: m.id, rot: m.nome, hint: casa(m.nome, q) ? undefined : `faz ${((examesDe.get(m.id) ?? []).find((n) => casa(n, q)) ?? '').replace(/^\w+ - /, '')}` }));
-    return [...ex, ...md];
-  }, [b, q, todosExames, examesDe]);
-
-  const escolher = (it: Item) => { setSel(it.t === 'medico' ? { t: 'medico', id: it.id } : { t: 'exame', nome: it.nome }); setQ(it.rot); setAberto(false); };
-  const tecla = (ev: KeyboardEvent) => {
-    if (ev.key === 'ArrowDown') { ev.preventDefault(); setAberto(true); setI(Math.min(i + 1, itens.length - 1)); }
-    else if (ev.key === 'ArrowUp') { ev.preventDefault(); setI(Math.max(i - 1, 0)); }
-    else if (ev.key === 'Enter' && itens[i]) { ev.preventDefault(); escolher(itens[i]); }
-    else if (ev.key === 'Escape') setAberto(false);
-  };
-  const abrirMedico = (id: number, nome: string) => { setSel({ t: 'medico', id }); setQ(nome); };
+  const lista = useMemo(() => b.medicos.filter((m) => !filtro.trim() || casa(m.nome, filtro) || (examesDe.get(m.id) ?? []).some((n) => casa(n, filtro))), [b, filtro, examesDe]);
+  const ehUS = (id: number) => (examesDe.get(id) ?? []).some((n) => n.startsWith('US'));
+  const grupos = [
+    { tit: 'Ultrassom', lista: lista.filter((m) => ehUS(m.id)) },
+    { tit: 'Tomografia e ressonância', lista: lista.filter((m) => !ehUS(m.id)) },
+  ].filter((g) => g.lista.length);
 
   const agendaDe = (id: number) => b.medicoAgendas.filter((a) => a.medico_id === id && (a.tipo === 'recorrente' || (a.data ?? '') >= hoje));
   const restricoesDe = (id: number) => b.medicoRestricoes.filter((r) => r.medico_id === id);
-  const med = sel?.t === 'medico' ? b.medicos.find((x) => x.id === sel.id) : undefined;
-  const quemFaz = sel?.t === 'exame' ? b.medicos.filter((m) => (examesDe.get(m.id) ?? []).includes(sel.nome)) : [];
+  const exs = med ? examesDe.get(med.id) ?? [] : [];
+  const mods = [...new Set(exs.map((n) => MODALIDADE[n.split(' - ')[0]]).filter(Boolean))];
 
   return (
     <>
-      <TituloPagina titulo="Médicos" sub="Digite o exame ou o nome do médico e escolha na lista." />
-      <div className="busca-conv">
-        <Icone n="busca" />
-        <input type="search" autoFocus value={q} autoComplete="off" placeholder="Exame ou médico… (ex.: doppler, Dra. Sofia)"
-          onChange={(x) => { setQ(x.target.value); setSel(null); setI(0); setAberto(true); }} onFocus={() => q.trim() && setAberto(true)}
-          onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
-        {aberto && q.trim().length > 0 && (
-          <div className="combo-lista" role="listbox">
-            {itens.length ? itens.map((it, k) => (
-              <div key={it.t + (it.t === 'medico' ? it.id : it.nome)}>
-                {(k === 0 || itens[k - 1].t !== it.t) && <div className="combo-grupo">{it.t === 'exame' ? 'Exames' : 'Médicos'}</div>}
-                <button type="button" role="option" aria-selected={k === i} className={k === i ? 'foco' : ''}
-                  onMouseDown={(ev) => { ev.preventDefault(); escolher(it); }} onMouseEnter={() => setI(k)}>
-                  <span>{it.rot}</span>{it.hint && <small>{it.hint}</small>}
-                </button>
-              </div>
-            )) : <div className="combo-vazio">{q.trim().length < 2 ? 'Digite pelo menos 2 letras.' : <>Nada encontrado para “{q}”.</>}</div>}
-          </div>
-        )}
-      </div>
+      <TituloPagina titulo={med ? med.nome : 'Médicos'} sub={med ? [mods.join(' · '), med.crm ? `CRM ${med.crm}` : ''].filter(Boolean).join(' · ') : 'Digite ou toque no médico. Também dá para buscar pelo exame.'}>
+        {med && <button type="button" className="btn2 ic" onClick={() => setParams({})} title="Voltar aos médicos" aria-label="Voltar aos médicos"><Icone n="volta" /></button>}
+      </TituloPagina>
 
-      {!med && sel?.t !== 'exame' ? <div className="bloco"><Vazio>{q.trim() ? 'Escolha na lista.' : 'Digite o exame ou o nome do médico.'}</Vazio></div> : null}
+      {!med && <>
+        <div className="busca-conv"><Icone n="busca" /><input type="search" autoFocus value={filtro} onChange={(e) => setFiltro(e.target.value)} placeholder="Nome do médico ou do exame…" /></div>
+        {grupos.map((g) => (
+          <section key={g.tit} className="grupo-conv">
+            <h3>{g.tit} <span className="mut">· {g.lista.length} médico{g.lista.length === 1 ? '' : 's'}</span></h3>
+            <div className="cards-med">
+              {g.lista.map((m) => {
+                const feitos = examesDe.get(m.id) ?? [];
+                const faz = filtro.trim() && !casa(m.nome, filtro) ? feitos.find((n) => casa(n, filtro)) : undefined;
+                return (
+                  <button type="button" key={m.id} className="med-card" onClick={() => setParams({ m: String(m.id) })}>
+                    <span className="med-av">{iniciais(m.nome)}</span>
+                    <span className="med-inf"><b>{m.nome}</b><span className="mut">{feitos.length} exame{feitos.length === 1 ? '' : 's'}</span>{faz && <span className="med-faz">faz {faz.replace(/^\w+ - /, '')}</span>}</span>
+                    <span className={'med-tag' + (m.agenda_todos_os_dias ? '' : ' esp')}>{dias(m)}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+        {!lista.length && <Vazio>Nenhum médico ou exame com “{filtro}”.</Vazio>}
+      </>}
 
       {med && (() => {
-        const exs = examesDe.get(med.id) ?? [];
-        const mods = [...new Set(exs.map((n) => MODALIDADE[n.split(' - ')[0]]).filter(Boolean))];
         const ag = agendaDe(med.id), rs = restricoesDe(med.id);
         return (
           <div className="conv-detalhe">
-            <div className="conv-cab bloco"><div className="med-av">{iniciais(med.nome)}</div>
-              <div><b>{med.nome}</b><span className="mut">{[mods.join(' · '), med.crm ? `CRM ${med.crm}` : ''].filter(Boolean).join(' · ')}</span></div></div>
             <div className="grade2">
               <div className="coluna">
                 <Bloco titulo="Faz" extra={<span className="mut" style={{ fontSize: 13 }}>{exs.length} exame{exs.length === 1 ? '' : 's'}</span>}>
@@ -132,7 +117,7 @@ export function Medicos() {
               </div>
               <div className="coluna">
                 <Bloco titulo="Agenda"><div className="pad-l">
-                  <Linha rot="Atende">{med.agenda_todos_os_dias ? 'Todos os dias' : 'Não atende todos os dias'}</Linha>
+                  <Linha rot="Atende">{dias(med)}</Linha>
                   {ag.map((a, k) => <Linha key={k} rot={a.tipo === 'recorrente' ? `Toda ${a.dia_semana}` : br(a.data!)}>{a.inicio}–{a.fim}</Linha>)}
                 </div></Bloco>
                 {rs.length > 0 && <Bloco titulo="Atenção"><div className="pad-l">{rs.map((r, k) => <Linha key={k} aviso um>{r.texto}</Linha>)}</div></Bloco>}
@@ -141,24 +126,6 @@ export function Medicos() {
           </div>
         );
       })()}
-
-      {sel?.t === 'exame' && (
-        <div className="conv-detalhe">
-          <div className="conv-cab bloco"><div><b>Quem faz: {sel.nome}</b></div></div>
-          <Bloco titulo="Médicos" extra={<span className="mut" style={{ fontSize: 13 }}>{quemFaz.length} médico{quemFaz.length === 1 ? '' : 's'}</span>}>
-            <div className="pad-l">{quemFaz.map((m) => {
-              const ag = agendaDe(m.id);
-              return (
-                <div key={m.id}>
-                  <Linha rot={m.nome}>{m.agenda_todos_os_dias ? 'Todos os dias' : 'Não atende todos os dias'}{ag.length > 0 && <span className="mut"> · {ag.map((a) => `${a.tipo === 'recorrente' ? a.dia_semana : br(a.data!)} ${a.inicio}–${a.fim}`).join(' · ')}</span>}
-                    {' '}<button type="button" className="tour-link" onClick={() => abrirMedico(m.id, m.nome)}>ver médico</button></Linha>
-                  {restricoesDe(m.id).map((r, k) => <Linha key={k} rot="Atenção" aviso>{r.texto}</Linha>)}
-                </div>
-              );
-            })}</div>
-          </Bloco>
-        </div>
-      )}
     </>
   );
 }
