@@ -8,8 +8,8 @@ import { useSessao } from '../acesso/Sessao';
 import { br, hojeIso, nomeDia, somarDias } from '../regras/calendario';
 import { local, saudacao } from '../util/formato';
 
-const TAG: Record<string, [string, string]> = { pode_agendar: ['t-ok', 'Pode agendar'], atencao: ['t-at', 'Atenção'], nao_pode: ['t-no', 'Não agendar'] };
-interface Hist { conv: string; ex: string; quando: string; sit?: string; slug?: string; ids?: string }
+// Sem coluna "Resultado": o sistema é consulta/catálogo e não confere o pedido nem a autorização, então não afirma "pode / não pode".
+interface Hist { conv: string; ex: string; quando: string; dia?: string; slug?: string; ids?: string }
 
 export function VisaoGeral() {
   const b = useBase();
@@ -36,10 +36,9 @@ export function VisaoGeral() {
       <div className="grade2">
         <Bloco titulo="Suas últimas consultas">
           {hist.length ? (
-            <table className="tab"><thead><tr><th>Hora</th><th>Convênio</th><th>Exames</th><th>Resultado</th><th /></tr></thead>
+            <table className="tab"><thead><tr><th>Data</th><th>Hora</th><th>Convênio</th><th>Exames</th><th>Abrir</th></tr></thead>
               <tbody>{hist.map((h, i) => (
-                <tr key={i}><td className="mut">{h.quando}</td><td><b>{h.conv}</b></td><td>{h.ex}</td>
-                  <td>{h.sit && TAG[h.sit] ? <span className={'tag ' + TAG[h.sit][0]}>{TAG[h.sit][1]}</span> : ''}</td>
+                <tr key={i}><td className="mut">{h.dia ? br(h.dia).slice(0, 5) : '—'}</td><td className="mut">{h.quando}</td><td><b>{h.conv}</b></td><td>{h.ex}</td>
                   <td style={{ width: 44 }}>{h.slug && h.ids && <button type="button" className="btn2 ic" onClick={() => nav(`/consultar?convenio=${h.slug}&exames=${h.ids}`)} title="Abrir de novo" aria-label="Abrir de novo"><Icone n="seta" /></button>}</td></tr>
               ))}</tbody></table>
           ) : <Vazio>As consultas que você fizer aparecem aqui (só convênio e exames, nunca dado de paciente).</Vazio>}
