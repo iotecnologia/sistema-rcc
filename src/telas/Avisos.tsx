@@ -49,7 +49,7 @@ export function Avisos() {
                   <tr>
                     <td><span className={'tag-aviso ' + a.tipo}>{ROTULO_TIPO[a.tipo]}</span> <b>{a.titulo}</b><div className="mut" style={{ fontSize: 12 }}>{a.autor} · até {br(a.validoAte)}</div></td>
                     <td>{nomeCargo(a.para)}</td>
-                    <td><button type="button" className="btn2" onClick={() => setAberto(aberto === a.id ? null : a.id)} title="Ver quem leu">{leram.length} de {alvo.length}</button></td>
+                    <td><button type="button" className="btn2 leram" onClick={() => setAberto(aberto === a.id ? null : a.id)} title="Ver quem leu">{leram.length} de {alvo.length}</button></td>
                     <td>{situacao(a.ativo, a.validoAte)}</td>
                     <td style={{ width: 44 }}><button type="button" className="btn2 ic" disabled={!a.ativo} onClick={() => v.encerrar(a.id)} title="Encerrar aviso (sai da tela de todos)" aria-label="Encerrar aviso"><Icone n="x" /></button></td>
                   </tr>
