@@ -1,5 +1,5 @@
 // Atendimento: Médicos, Unidades e máquinas, Ramais. Nada de lista despejada: médicos e ramais só aparecem depois da busca.
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useBase } from '../componentes/Dados';
 import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
@@ -22,28 +22,142 @@ function Busca({ rot, q, setQ, ph }: { rot: string; q: string; setQ: (v: string)
   return <div className="barra"><label className="cp f" style={{ flex: '1 1 360px' }}><span>{rot}</span><Icone n="busca" /><input type="search" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={ph} /></label></div>;
 }
 
+/** Nome do exame do médico no padrão "SIGLA - Nome" (só na tela; os dados e as regras de agenda continuam como estão). */
+const NOME_EXAME: Record<string, string> = {
+  'ABDOME TOTAL': 'US - Abdome total', 'ABDOME TOTAL+ SUPERIOR+ INFERIOR': 'US - Abdome total, superior e inferior', 'ABDOMEM TOTAL E INFERIOR': 'US - Abdome total e inferior',
+  'APARELHO URINARIO': 'US - Aparelho urinário', 'BOLSA ESCROTAL / SEM E COM DOPPLER': 'US - Bolsa escrotal, sem e com doppler',
+  'DOPPLER DE MEMBROS INFERIORES (NAO AVALIA VARIZES)': 'US - Doppler de membros inferiores (não avalia varizes)',
+  'ECO MAMARIA COM DOPPLER': 'US - Mamas com doppler', 'MAMA': 'US - Mamas', 'TIREOIDE': 'US - Tireoide', 'PARATIREOIDE': 'US - Paratireoide',
+  'TIREOIDE/ TIREOIDE COM DOPPLER': 'US - Tireoide, com ou sem doppler', 'ANGIO TOMO DE CORONARIAS': 'TC - Angiotomografia coronariana', 'RM CORACAO': 'RM - Coração',
+};
+function nomeExame(n: string): string {
+  const k = norm(n);
+  if (NOME_EXAME[k]) return NOME_EXAME[k];
+  const t = n.replace(/\s*\/\s*/g, ' / ').replace(/\s+/g, ' ').trim();
+  return 'US - ' + t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+}
+const MODALIDADE: Record<string, string> = { US: 'Ultrassom', TC: 'Tomografia', RM: 'Ressonância' };
+const iniciais = (nome: string) => { const p = nome.replace(/^Dra?\.\s*/, '').split(' ').filter(Boolean); return (p[0][0] + (p.length > 1 ? p[p.length - 1][0] : '')).toUpperCase(); };
+
+const Linha = ({ rot, children, aviso, um }: { rot?: string; children: ReactNode; aviso?: boolean; um?: boolean }) =>
+  <div className={'p1-linha' + (aviso ? ' aviso' : '') + (um ? ' um' : '')}>{rot !== undefined && <span className="p1-rot">{rot}</span>}<span>{children}</span></div>;
+
+type Sel = { t: 'medico'; id: number } | { t: 'exame'; nome: string } | null;
+type Item = { t: 'exame'; nome: string; rot: string; hint?: string } | { t: 'medico'; id: number; rot: string; hint?: string };
+
 export function Medicos() {
   const b = useBase();
-  const [q, setQ] = useQ();
+  const [params] = useSearchParams();
+  const [q, setQ] = useState('');
+  const [sel, setSel] = useState<Sel>(null);
+  const [aberto, setAberto] = useState(false);
+  const [i, setI] = useState(0);
   const hoje = hojeIso();
-  const lista = q.trim().length < 2 ? [] : b.medicos.filter((m) => casa(m.nome + ' ' + b.medicoExames.filter((x) => x.medico_id === m.id).map((x) => x.exame_nome).join(' '), q));
+  const examesDe = useMemo(() => {
+    const m = new Map<number, string[]>();
+    for (const x of b.medicoExames) m.set(x.medico_id, [...new Set([...(m.get(x.medico_id) ?? []), nomeExame(x.exame_nome)])]);
+    return m;
+  }, [b]);
+  const todosExames = useMemo(() => [...new Set(b.medicoExames.map((x) => nomeExame(x.exame_nome)))].sort((x, y) => x.localeCompare(y)), [b]);
+
+  // veio da busca do cabeçalho (?q=): se for um médico ou um exame exato, já abre
+  useEffect(() => {
+    const v = params.get('q'); if (v === null) return;
+    const n = norm(v); setQ(v);
+    const m = b.medicos.find((x) => norm(x.nome) === n);
+    const e = todosExames.find((x) => norm(x) === n);
+    if (m) setSel({ t: 'medico', id: m.id }); else if (e) setSel({ t: 'exame', nome: e }); else { setSel(null); setAberto(true); }
+  }, [params, b, todosExames]);
+
+  const itens: Item[] = useMemo(() => {
+    if (q.trim().length < 2) return [];
+    const ex: Item[] = todosExames.filter((n) => casa(n, q)).slice(0, 8).map((n) => ({ t: 'exame', nome: n, rot: n }));
+    const md: Item[] = b.medicos.filter((m) => casa(m.nome, q) || (examesDe.get(m.id) ?? []).some((n) => casa(n, q))).slice(0, 6)
+      .map((m) => ({ t: 'medico', id: m.id, rot: m.nome, hint: casa(m.nome, q) ? undefined : `faz ${((examesDe.get(m.id) ?? []).find((n) => casa(n, q)) ?? '').replace(/^\w+ - /, '')}` }));
+    return [...ex, ...md];
+  }, [b, q, todosExames, examesDe]);
+
+  const escolher = (it: Item) => { setSel(it.t === 'medico' ? { t: 'medico', id: it.id } : { t: 'exame', nome: it.nome }); setQ(it.rot); setAberto(false); };
+  const tecla = (ev: KeyboardEvent) => {
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); setAberto(true); setI(Math.min(i + 1, itens.length - 1)); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); setI(Math.max(i - 1, 0)); }
+    else if (ev.key === 'Enter' && itens[i]) { ev.preventDefault(); escolher(itens[i]); }
+    else if (ev.key === 'Escape') setAberto(false);
+  };
+  const abrirMedico = (id: number, nome: string) => { setSel({ t: 'medico', id }); setQ(nome); };
+
+  const agendaDe = (id: number) => b.medicoAgendas.filter((a) => a.medico_id === id && (a.tipo === 'recorrente' || (a.data ?? '') >= hoje));
+  const restricoesDe = (id: number) => b.medicoRestricoes.filter((r) => r.medico_id === id);
+  const med = sel?.t === 'medico' ? b.medicos.find((x) => x.id === sel.id) : undefined;
+  const quemFaz = sel?.t === 'exame' ? b.medicos.filter((m) => (examesDe.get(m.id) ?? []).includes(sel.nome)) : [];
+
   return (
     <>
-      <TituloPagina titulo="Médicos" sub="Quem faz cada exame de ultrassom e doppler. Busque pelo exame ou pelo nome." />
-      <Busca rot="Buscar" q={q} setQ={setQ} ph="ex.: doppler, transvaginal, Dra. Sofia" />
-      {!q.trim() ? <div className="bloco"><Vazio>Digite o exame ou o nome do médico.</Vazio></div> : !lista.length ? <div className="bloco"><Vazio>Nenhum médico encontrado para “{q}”.</Vazio></div> : (
-        <Bloco titulo={`${lista.length} médico${lista.length > 1 ? 's' : ''}`}>
-          <table className="tab"><thead><tr><th>Médico</th><th>Faz</th><th>Agenda</th><th>Atenção</th></tr></thead>
-            <tbody>{lista.map((m) => (
-              <tr key={m.id}>
-                <td><b>{m.nome}</b>{m.crm && <div className="mut" style={{ fontSize: 12 }}>CRM {m.crm}</div>}</td>
-                <td>{b.medicoExames.filter((x) => x.medico_id === m.id).map((x) => x.exame_nome).join(' · ')}</td>
-                <td>{m.agenda_todos_os_dias ? 'Todos os dias' : 'Não atende todos os dias'}
-                  {b.medicoAgendas.filter((a) => a.medico_id === m.id && (a.tipo === 'recorrente' || (a.data ?? '') >= hoje)).map((a, i) => <div key={i} className="mut" style={{ fontSize: 12 }}>{a.tipo === 'recorrente' ? `${a.dia_semana} ${a.inicio}–${a.fim}` : `${br(a.data)} ${a.inicio}–${a.fim}`}</div>)}</td>
-                <td>{b.medicoRestricoes.filter((r) => r.medico_id === m.id).map((r, i) => <div key={i}>{r.texto}</div>)}</td>
-              </tr>
-            ))}</tbody></table>
-        </Bloco>
+      <TituloPagina titulo="Médicos" sub="Digite o exame ou o nome do médico e escolha na lista." />
+      <div className="busca-conv">
+        <Icone n="busca" />
+        <input type="search" autoFocus value={q} autoComplete="off" placeholder="Exame ou médico… (ex.: doppler, Dra. Sofia)"
+          onChange={(x) => { setQ(x.target.value); setSel(null); setI(0); setAberto(true); }} onFocus={() => q.trim() && setAberto(true)}
+          onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
+        {aberto && q.trim().length > 0 && (
+          <div className="combo-lista" role="listbox">
+            {itens.length ? itens.map((it, k) => (
+              <div key={it.t + (it.t === 'medico' ? it.id : it.nome)}>
+                {(k === 0 || itens[k - 1].t !== it.t) && <div className="combo-grupo">{it.t === 'exame' ? 'Exames' : 'Médicos'}</div>}
+                <button type="button" role="option" aria-selected={k === i} className={k === i ? 'foco' : ''}
+                  onMouseDown={(ev) => { ev.preventDefault(); escolher(it); }} onMouseEnter={() => setI(k)}>
+                  <span>{it.rot}</span>{it.hint && <small>{it.hint}</small>}
+                </button>
+              </div>
+            )) : <div className="combo-vazio">{q.trim().length < 2 ? 'Digite pelo menos 2 letras.' : <>Nada encontrado para “{q}”.</>}</div>}
+          </div>
+        )}
+      </div>
+
+      {!med && sel?.t !== 'exame' ? <div className="bloco"><Vazio>{q.trim() ? 'Escolha na lista.' : 'Digite o exame ou o nome do médico.'}</Vazio></div> : null}
+
+      {med && (() => {
+        const exs = examesDe.get(med.id) ?? [];
+        const mods = [...new Set(exs.map((n) => MODALIDADE[n.split(' - ')[0]]).filter(Boolean))];
+        const ag = agendaDe(med.id), rs = restricoesDe(med.id);
+        return (
+          <div className="conv-detalhe">
+            <div className="conv-cab bloco"><div className="med-av">{iniciais(med.nome)}</div>
+              <div><b>{med.nome}</b><span className="mut">{[mods.join(' · '), med.crm ? `CRM ${med.crm}` : ''].filter(Boolean).join(' · ')}</span></div></div>
+            <div className="grade2">
+              <div className="coluna">
+                <Bloco titulo="Faz" extra={<span className="mut" style={{ fontSize: 13 }}>{exs.length} exame{exs.length === 1 ? '' : 's'}</span>}>
+                  <div className="pad-l">{exs.map((n) => <Linha key={n} um>{n}</Linha>)}</div>
+                </Bloco>
+              </div>
+              <div className="coluna">
+                <Bloco titulo="Agenda"><div className="pad-l">
+                  <Linha rot="Atende">{med.agenda_todos_os_dias ? 'Todos os dias' : 'Não atende todos os dias'}</Linha>
+                  {ag.map((a, k) => <Linha key={k} rot={a.tipo === 'recorrente' ? `Toda ${a.dia_semana}` : br(a.data!)}>{a.inicio}–{a.fim}</Linha>)}
+                </div></Bloco>
+                {rs.length > 0 && <Bloco titulo="Atenção"><div className="pad-l">{rs.map((r, k) => <Linha key={k} aviso um>{r.texto}</Linha>)}</div></Bloco>}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {sel?.t === 'exame' && (
+        <div className="conv-detalhe">
+          <div className="conv-cab bloco"><div><b>Quem faz: {sel.nome}</b></div></div>
+          <Bloco titulo="Médicos" extra={<span className="mut" style={{ fontSize: 13 }}>{quemFaz.length} médico{quemFaz.length === 1 ? '' : 's'}</span>}>
+            <div className="pad-l">{quemFaz.map((m) => {
+              const ag = agendaDe(m.id);
+              return (
+                <div key={m.id}>
+                  <Linha rot={m.nome}>{m.agenda_todos_os_dias ? 'Todos os dias' : 'Não atende todos os dias'}{ag.length > 0 && <span className="mut"> · {ag.map((a) => `${a.tipo === 'recorrente' ? a.dia_semana : br(a.data!)} ${a.inicio}–${a.fim}`).join(' · ')}</span>}
+                    {' '}<button type="button" className="tour-link" onClick={() => abrirMedico(m.id, m.nome)}>ver médico</button></Linha>
+                  {restricoesDe(m.id).map((r, k) => <Linha key={k} rot="Atenção" aviso>{r.texto}</Linha>)}
+                </div>
+              );
+            })}</div>
+          </Bloco>
+        </div>
       )}
     </>
   );
