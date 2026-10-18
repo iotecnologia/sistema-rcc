@@ -1,411 +1,183 @@
-/* Complementos do mock funcional (o resto vem de rcc.css, igual ao protótipo v3) */
-html, body, #root { margin: 0; height: 100%; }
-a { color: var(--link); }
-.faixa.ok { background: var(--st-ok-bg); color: var(--st-ok-t); }
-.faixa.at { background: var(--st-at-bg); color: var(--st-at-t); }
-.faixa.no { background: var(--st-no-bg); color: var(--st-no-t); }
-.faixa ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; font-weight: 600; }
-.faixa .txt { display: grid; }
-.lista-regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.lista-regras li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.45; }
-.lista-regras li .tag { flex: none; margin-top: 1px; }
-.orig { font-size: 11.5px; color: var(--texto-suave); margin-top: 2px; }
-.qtd { display: inline-flex; align-items: center; gap: 4px; margin-left: 4px; }
-.qtd button { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--borda); background: var(--painel-2); cursor: pointer; padding: 0; }
-.qtd span { min-width: 16px; text-align: center; font-weight: 700; }
-.blocos { display: grid; gap: 14px; }
-.pad { padding: 14px 16px; }
-.grade-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.mini { font-size: 12px; color: var(--texto-suave); }
-.preparo-txt { white-space: pre-line; font-size: 13px; line-height: 1.5; }
-details > summary { cursor: pointer; font-weight: 600; }
-.abas { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-.abas button { height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel); color: var(--texto); font-weight: 600; cursor: pointer; }
-.abas button.on { background: var(--destaque); border-color: var(--destaque); color: var(--destaque-texto); }
-.aviso-mock { font-size: 12px; color: var(--texto-suave); border: 1px dashed var(--borda); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; }
-.tot { display: flex; justify-content: space-between; padding: 10px 16px; border-top: 1px solid var(--linha); font-size: 14px; }
-.tot.grande { font-size: 18px; font-weight: 800; }
-.so-impressao { display: none; }
+// Atendimento: Médicos, Unidades e máquinas, Ramais. Nada de lista despejada: médicos e ramais só aparecem depois da busca.
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useBase } from '../componentes/Dados';
+import { Bloco, TituloPagina, Vazio } from '../componentes/Comuns';
+import { Icone } from '../componentes/Icone';
+import { norm } from '../regras/contexto';
+import { palavras } from '../regras/busca';
+import { br, hojeIso } from '../regras/calendario';
 
-/* Impressão / PDF: papel branco, texto preto, negrito só em título e cabeçalho de coluna */
-@media print {
-  .lateral, .topo, .status, .acoes-pagina, .barra, .chips, .sugestoes, .passos, .rodape-etapa, .nao-imprimir { display: none !important; }
-  .app { display: block !important; background: #fff !important; color: #000 !important; }
-  .conteudo { padding: 0 !important; overflow: visible !important; }
-  .bloco, .kpi, .etapa, .faixa { border: 1px solid #999 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; break-inside: avoid; }
-  .kpi::before { display: none; }
-  .tag { background: #fff !important; color: #000 !important; border: 1px solid #999; font-weight: 400; }
-  .grade2 { grid-template-columns: 1fr !important; }
-  table.tab th { background: #fff !important; color: #000 !important; }
-  table.tab td b, .lista-regras b, .checks li.forte { font-weight: 400 !important; }
-  .so-impressao { display: block; margin-bottom: 12px; }
-  a { color: #000 !important; text-decoration: none; }
+/** Busca que veio do cabeçalho (?q=) já entra preenchida. */
+function useQ(): [string, (v: string) => void] {
+  const [params] = useSearchParams();
+  const [q, setQ] = useState(params.get('q') ?? '');
+  useEffect(() => { const v = params.get('q'); if (v !== null) setQ(v); }, [params]);
+  return [q, setQ];
 }
 
-/* ---------- Login */
-.login-tela { display: grid; place-items: center; grid-template-columns: 1fr; grid-template-rows: 1fr; }
-.login-caixa { width: min(380px, calc(100vw - 32px)); background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 28px; display: grid; gap: 14px; box-shadow: var(--sombra); }
-.login-caixa img { height: 64px; justify-self: center; border-radius: 10px; }
-.login-caixa h1 { margin: 0; text-align: center; font-size: 22px; }
-/* ---------- Menu com cadeado */
-.lat-item.bloqueado { opacity: .45; cursor: not-allowed; }
-.lat-item.bloqueado:hover { background: transparent; color: var(--lateral-texto); }
-.lat-item .cadeado { margin-left: auto; width: 14px; height: 14px; }
-/* ---------- Resultado simples (3 blocos) */
-.res-simples { display: grid; gap: 14px; }
-.res-grande { font-size: 22px; }
-.res-bloco { background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 16px 18px; }
-.res-bloco h3 { margin: 0 0 10px; font-size: 16px; }
-.res-bloco ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; line-height: 1.45; }
-.res-bloco details { margin-top: 10px; }
-.res-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-/* ---------- Usuários e cargos */
-.matriz th, .matriz td { white-space: nowrap; }
-.matriz .rot-pag { font-size: 11px; font-weight: 600; }
-.matriz .centro { text-align: center; }
-.matriz input[type=checkbox] { width: 18px; height: 18px; }
-/* ---------- Relatório (cartão do Analiza antigo): preto no branco, negrito só no título e cabeçalhos */
-.rel-fundo { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: grid; place-items: start center; overflow: auto; padding: 24px 16px; z-index: 50; }
-.rel-caixa { width: min(760px, 100%); display: grid; gap: 10px; }
-.rel-acoes { display: flex; gap: 8px; justify-content: flex-end; }
-.rel-acoes .btn2:not(.zap) { background: #fff; }
-.rel-cartao { background: #fff; color: #000; padding: 32px 36px; border-radius: 8px; font-family: "Segoe UI", Arial, sans-serif; font-size: 13.5px; }
-.rel-cab { display: flex; align-items: center; gap: 18px; border-bottom: 2px solid #000; padding-bottom: 16px; margin-bottom: 18px; }
-.rel-cab img { height: 60px; }
-.rel-clinica { font-size: 17px; font-weight: 700; }
-.rel-info { font-size: 12px; margin-top: 4px; line-height: 1.5; }
-.rel-titulo { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
-.rel-meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; border-bottom: 1px solid #999; padding-bottom: 12px; margin-bottom: 14px; }
-.rel-secao { margin-bottom: 14px; break-inside: avoid; }
-.rel-secao h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
-.rel-secao table { width: 100%; border-collapse: collapse; }
-.rel-secao td { padding: 6px 4px; border-bottom: 1px solid #ddd; font-weight: 400; vertical-align: top; }
-.rel-secao td.v { text-align: right; white-space: nowrap; }
-.rel-texto { white-space: pre-line; margin: 0; line-height: 1.5; }
-.rel-totais div { display: flex; justify-content: space-between; padding: 4px; }
-.rel-totais div.fim { border-top: 2px solid #000; padding-top: 10px; margin-top: 4px; font-size: 16px; }
-.rel-rodape { margin-top: 16px; font-size: 11.5px; text-align: center; }
-@media print {
-  body.rel-aberto #root { display: none !important; }
-  body.rel-aberto .rel-fundo { position: static; background: none; padding: 0; display: block; overflow: visible; }
-  body.rel-aberto .rel-acoes { display: none; }
-  body.rel-aberto .rel-caixa { width: 100%; }
-  body.rel-aberto .rel-cartao { padding: 0; border-radius: 0; }
+const casa = (texto: string, q: string) => { const h = norm(texto); return palavras(q).every((f) => f.some((x) => h.includes(x))); };
+
+function Busca({ rot, q, setQ, ph }: { rot: string; q: string; setQ: (v: string) => void; ph: string }) {
+  return <div className="barra"><label className="cp f" style={{ flex: '1 1 360px' }}><span>{rot}</span><Icone n="busca" /><input type="search" autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder={ph} /></label></div>;
 }
-@media (max-width: 640px) { .rel-cartao { padding: 20px 16px; } .rel-cab { flex-direction: column; align-items: flex-start; } }
-/* ---------- Janela de agendamento (calendário) */
-.cal { display: flex; gap: 40px; flex-wrap: wrap; padding: 16px 18px; }
-.cal-mes { flex: 1 1 300px; }
-.cal-tit { font-weight: 800; margin-bottom: 8px; text-transform: capitalize; }
-.cal-grade { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 13px; }
-.cal-sem { font-size: 11px; font-weight: 700; color: var(--texto-suave); }
-.cal-dia { height: 36px; display: grid; place-items: center; border-radius: 8px; }
-.cal-dia.ok { background: var(--st-ok-bg); color: var(--st-ok-t); font-weight: 700; }
-.cal-dia.ok-aberto { background: var(--st-ok-bg); color: var(--st-ok-t); opacity: .6; }
-.cal-dia.ini { background: #16a34a; color: #fff; font-weight: 800; opacity: 1; }
-.cal-dia.fim { background: #7c3aed; color: #fff; font-weight: 800; }
-.cal-dia.feriado { background: var(--st-at-bg); color: var(--st-at-t); font-weight: 700; }
-.cal-dia.fechado { color: var(--texto-suave); opacity: .45; }
-.cal-dia.pedido { background: var(--painel-2); font-weight: 700; }
-.cal-dia.hoje { outline: 2px solid var(--texto); font-weight: 800; }
-.cal-leg { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; padding: 0 18px 16px; }
-.cal-leg i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: middle; margin-right: 4px; }
-.cal-leg i.pedido { background: var(--painel-2); } .cal-leg i.hoje { outline: 2px solid var(--texto); } .cal-leg i.ok { background: var(--st-ok-bg); }
-.cal-leg i.fim { background: #7c3aed; } .cal-leg i.feriado { background: var(--st-at-bg); } .cal-leg i.fechado { background: var(--linha); }
-/* ---------- Orçamento: forma de pagamento */
-.formas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 16px; }
-.formas button { text-align: left; border: 2px solid var(--linha); background: var(--painel); color: var(--texto); border-radius: 12px; padding: 12px 14px; cursor: pointer; font: inherit; display: grid; gap: 2px; }
-.formas button small { color: var(--texto-suave); font-size: 12px; }
-.formas button.on { border-color: var(--destaque); box-shadow: inset 0 0 0 1px var(--destaque); }
-/* ---------- Login: mostrar senha e esqueci minha senha */
-.campo .inp.com-olho input { padding-right: 44px; }
-.campo .inp .olho { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--texto-suave); border-radius: 8px; }
-.campo .inp .olho:hover { background: var(--hover); color: var(--texto); }
-.campo .inp .olho svg { position: static; transform: none; }
-.form-caixa .link-esqueci, .link-esqueci { background: none; border: 0; padding: 0; margin: -6px 0 14px; color: var(--link) !important; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; }
-.link-esqueci:hover { text-decoration: underline; }
-/* ---------- Abertura depois do login (logo animado + mensagens) */
-.abertura { position: fixed; inset: 0; background: radial-gradient(circle at 50% 40%, #0b2f52 0%, #05203B 60%, #031629 100%); color: #dbe4ee; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; z-index: 100; animation: ab-entra .35s ease-out; }
-.abertura-logo { position: relative; width: 150px; height: 150px; display: grid; place-items: center; }
-.abertura-logo img { width: 130px; height: auto; border-radius: 14px; position: relative; z-index: 1; animation: ab-pulsa 1.6s ease-in-out infinite; }
-.abertura-logo .onda { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(47,184,198,.55); animation: ab-onda 1.8s ease-out infinite; }
-.abertura-logo .onda.o2 { animation-delay: .9s; }
-.abertura-nome { font-size: 22px; font-weight: 800; letter-spacing: 6px; color: #fff; margin-top: 6px; }
-.abertura-ola { font-size: 16px; color: #2FB8C6; font-weight: 600; }
-.abertura-barra { width: min(320px, 80vw); height: 6px; border-radius: 6px; background: rgba(255,255,255,.12); overflow: hidden; margin-top: 10px; }
-.abertura-barra span { display: block; height: 100%; background: #2FB8C6; border-radius: 6px; transition: width .6s ease; }
-.abertura-msg { font-size: 14px; color: #9eb0c1; min-height: 20px; }
-@keyframes ab-entra { from { opacity: 0; } to { opacity: 1; } }
-@keyframes ab-pulsa { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-@keyframes ab-onda { from { transform: scale(.75); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .abertura-logo img, .abertura-logo .onda { animation: none; } }
-/* ---------- Avisos da equipe */
-.icone-btn.sino { position: relative; }
-.icone-btn .bolinha { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; border-radius: 9px; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; padding: 0 4px; }
-.quadro-avisos { margin-bottom: 14px; }
-.lista-avisos { list-style: none; margin: 0; padding: 10px 14px 14px; display: grid; gap: 10px; }
-.aviso-eq { border: 1px solid var(--linha); border-left: 5px solid #3b82f6; border-radius: 10px; padding: 10px 14px; background: var(--painel); }
-.aviso-eq.urgente { border-left-color: #dc2626; background: var(--st-no-bg); }
-.aviso-eq.importante { border-left-color: #d97706; }
-.aviso-eq.lido { opacity: .7; }
-.aviso-eq-cab { display: flex; gap: 8px; align-items: center; font-size: 15px; }
-.aviso-eq-txt { margin: 6px 0; font-size: 14px; white-space: pre-line; line-height: 1.45; }
-.aviso-eq-rod { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 12px; color: var(--texto-suave); flex-wrap: wrap; }
-.ok-lido { display: inline-flex; gap: 4px; align-items: center; color: var(--st-ok-t); font-weight: 700; }
-.tag-aviso { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; padding: 3px 8px; border-radius: 6px; border: 2px solid transparent; cursor: default; }
-.tag-aviso.urgente { background: #dc2626; color: #fff; } .tag-aviso.importante { background: #f59e0b; color: #fff; } .tag-aviso.informativo { background: #3b82f6; color: #fff; }
-.tipos-aviso { display: flex; gap: 8px; }
-.tipos-aviso .tag-aviso { cursor: pointer; opacity: .45; font-size: 12px; padding: 8px 12px; }
-.tipos-aviso .tag-aviso.on { opacity: 1; border-color: var(--texto); }
-.form-aviso { display: grid; gap: 12px; }
-.form-aviso textarea { width: 100%; border: 1px solid var(--borda); border-radius: var(--raio-sm); padding: 10px 12px; font: inherit; background: var(--painel-2); color: var(--texto); resize: vertical; }
-.urgente-fundo { position: fixed; inset: 0; background: rgba(5,32,59,.75); display: grid; place-items: center; z-index: 80; padding: 16px; }
-.urgente-caixa { background: var(--painel); color: var(--texto); width: min(520px, 100%); border-radius: 16px; padding: 22px 24px; box-shadow: 0 20px 50px rgba(0,0,0,.35); border-top: 6px solid #dc2626; display: grid; gap: 10px; }
-.urgente-topo { display: flex; gap: 8px; align-items: center; color: #dc2626; font-weight: 800; letter-spacing: 1px; font-size: 13px; }
-.urgente-caixa h2 { margin: 0; font-size: 22px; }
-.urgente-caixa p { margin: 0; font-size: 16px; line-height: 1.5; white-space: pre-line; }
-.consulta-rapida { margin-bottom: 14px; }
-/* ---------- Combo de convênio (lista + busca) */
-.combo { position: relative; }
-.combo-campo { position: relative; }
-.combo-campo input { width: 100%; padding-right: 34px !important; }
-.combo-campo input.com-logo { padding-left: 64px !important; font-weight: 600 !important; }
-.combo-logo { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); display: flex; pointer-events: none; }
-.combo-seta { position: absolute; right: 4px; top: 50%; transform: translateY(-50%) rotate(90deg); width: 30px; height: 30px; border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; display: grid; place-items: center; }
-.combo-lista { position: absolute; z-index: 30; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); max-height: 340px; overflow: auto; text-transform: none; letter-spacing: 0; }
-.combo-lista button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 12px; border: 0; background: transparent; cursor: pointer; text-align: left; font-size: 14px; font-weight: 500; color: var(--texto); }
-.combo-lista button.foco { background: var(--hover); }
-.combo-lista button.sel { font-weight: 800; }
-.combo-lista small { margin-left: auto; font-size: 11px; color: var(--texto-suave); font-weight: 400; }
-.combo-vazio { padding: 12px; font-size: 13px; color: var(--texto-suave); font-weight: 400; }
-/* ---------- Linha de busca sempre visível no topo */
-.barra-fixa { position: sticky; top: -20px; z-index: 20; margin: 0 -22px 14px; padding: 8px 22px; background: var(--bg); }
-.barra-fixa .barra { margin-bottom: 0; box-shadow: var(--sombra); }
-/* Linha de busca: convênio, exame e data SEMPRE na mesma linha; exames escolhidos e sugestões embaixo */
-.barra-fixa .barra { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr) minmax(150px, 190px); align-items: end; }
-.barra-fixa .barra > .combo { grid-row: 1; grid-column: 1; }
-.barra-fixa .barra > .cp.f { grid-row: 1; grid-column: 2; }
-.barra-fixa .barra > .cp.data { grid-row: 1; grid-column: 3; }
-.barra-fixa .barra > .sugestoes, .barra-fixa .barra > .chips { grid-column: 1 / -1; margin: 0 !important; }
-/* Bradesco: um campo a mais (Rede) entre convênio e exame */
-.barra-fixa .barra.com-rede { grid-template-columns: minmax(170px, 1fr) minmax(170px, 1fr) minmax(200px, 2fr) minmax(140px, 170px); }
-.barra-fixa .barra.com-rede > .combo.rede { grid-row: 1; grid-column: 2; }
-.barra-fixa .barra.com-rede > .cp.f { grid-column: 3; }
-.barra-fixa .barra.com-rede > .cp.data { grid-column: 4; }
-/* Exames da consulta: subtítulo dos passos */
-.exames-sel { display: grid; gap: 4px; margin: 0 0 10px; }
-.exame-linha { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.exame-linha h2 { margin: 0; font-size: 18px; }
-.exame-linha .qtd { margin-left: 0; gap: 6px; }
-.exame-linha .qtd small { font-size: 12px; }
-.exame-tirar { width: 24px; height: 24px; border-radius: 50%; border: 0; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.exame-tirar svg { width: 12px; height: 12px; }
-/* ---------- Resultado em 5 passos (linha de raciocínio da ligação) */
-.passos-resultado { display: grid; gap: 12px; }
-.passo-bloco { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 14px 18px; }
-.passo-num { width: 36px; height: 36px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 17px; }
-.passo-corpo h3 { margin: 6px 0 8px; font-size: 16px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.passo-corpo h3 small { font-size: 13px; font-weight: 500; color: var(--texto-suave); }
-.passo-lista { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; line-height: 1.45; }
-.passo-lista.check { list-style: none; padding-left: 0; }
-.passo-lista.check li::before { content: '☐ '; color: var(--texto-suave); }
-.ver-mais { background: none; border: 0; padding: 4px 0 0; color: var(--link); font-size: 12.5px; font-weight: 700; cursor: pointer; }
-.passo-exame + .passo-exame { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--linha); }
-.passo-exame-cab { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px; margin-bottom: 4px; }
-.passo-linha { display: flex; gap: 8px; align-items: center; font-size: 14px; margin-bottom: 4px; }
-.ok-frase { margin: 0; font-size: 15px; font-weight: 700; color: var(--st-ok-t); }
-/* ---------- Convênios: busca pequena + só logos; ao escolher, só o convênio */
-.busca-conv { position: relative; max-width: 360px; margin-bottom: 16px; }
-.busca-conv svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--texto-suave); }
-.busca-conv input { padding-left: 38px !important; height: 40px; }
-.logos-conv { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
-.logo-conv { height: 92px; background: #fff; border: 1px solid var(--linha); border-radius: 12px; display: grid; place-items: center; padding: 10px; cursor: pointer; transition: transform .12s, box-shadow .12s, border-color .12s; }
-.logo-conv:hover { border-color: var(--destaque); box-shadow: var(--sombra); transform: translateY(-2px); }
-.logo-sigla-nome { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: #16202B; text-align: left; }
-.conv-detalhe { display: grid; gap: 14px; }
-.conv-cab { display: flex; align-items: center; gap: 16px; padding: 14px 18px; }
-.conv-cab > div { display: grid; gap: 2px; }
-.conv-cab b { font-size: 18px; }
-.conv-cab .btn-grande { margin-left: auto; }
-.lista-simples { margin: 0; padding: 12px 16px 14px 34px; display: grid; gap: 6px; font-size: 14.5px; }
-.lista-simples.nao li::marker { color: #dc2626; }
 
-/* Lista de convênios em dois grupos */
-.combo-grupo { padding: 8px 12px 4px; font-size: 11px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .04em; border-top: 1px solid var(--linha); }
-.combo-grupo:first-child { border-top: 0; }
+/** Nome do exame do médico no padrão "SIGLA - Nome" (só na tela; os dados e as regras de agenda continuam como estão). */
+const NOME_EXAME: Record<string, string> = {
+  'ABDOME TOTAL': 'US - Abdome total', 'ABDOME TOTAL+ SUPERIOR+ INFERIOR': 'US - Abdome total, superior e inferior', 'ABDOMEM TOTAL E INFERIOR': 'US - Abdome total e inferior',
+  'APARELHO URINARIO': 'US - Aparelho urinário', 'BOLSA ESCROTAL / SEM E COM DOPPLER': 'US - Bolsa escrotal, sem e com doppler',
+  'DOPPLER DE MEMBROS INFERIORES (NAO AVALIA VARIZES)': 'US - Doppler de membros inferiores (não avalia varizes)',
+  'ECO MAMARIA COM DOPPLER': 'US - Mamas com doppler', 'MAMA': 'US - Mamas', 'TIREOIDE': 'US - Tireoide', 'PARATIREOIDE': 'US - Paratireoide',
+  'TIREOIDE/ TIREOIDE COM DOPPLER': 'US - Tireoide, com ou sem doppler', 'ANGIO TOMO DE CORONARIAS': 'TC - Angiotomografia coronariana', 'RM CORACAO': 'RM - Coração',
+};
+function nomeExame(n: string): string {
+  const k = norm(n);
+  if (NOME_EXAME[k]) return NOME_EXAME[k];
+  const t = n.replace(/\s*\/\s*/g, ' / ').replace(/\s+/g, ' ').trim();
+  return 'US - ' + t.charAt(0).toUpperCase() + t.slice(1).toLowerCase();
+}
+const MODALIDADE: Record<string, string> = { US: 'Ultrassom', TC: 'Tomografia', RM: 'Ressonância' };
 
-.btn2.ativo { background: var(--hover); border-color: var(--texto-suave); }
+const Linha = ({ rot, children, aviso, um }: { rot?: string; children: ReactNode; aviso?: boolean; um?: boolean }) =>
+  <div className={'p1-linha' + (aviso ? ' aviso' : '') + (um ? ' um' : '')}>{rot !== undefined && <span className="p1-rot">{rot}</span>}<span>{children}</span></div>;
 
-/* Busca geral no cabeçalho: discreta, na cor do topo, no centro */
-.topo { position: relative; }
-.busca-geral { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, 38%); display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 10px; border: 1px solid var(--linha); border-radius: 9px; background: var(--painel); color: var(--texto-suave); }
-.busca-geral:focus-within { border-color: var(--borda); }
-.busca-geral input:focus, .busca-geral input:focus-visible { outline: none !important; border: 0 !important; box-shadow: none !important; }
-.busca-geral > svg { width: 15px; height: 15px; flex: none; }
-.busca-geral input { flex: 1; min-width: 0; border: 0 !important; outline: 0; background: transparent !important; color: var(--texto); font: inherit; font-size: 13.5px; padding: 0 !important; box-shadow: none !important; }
-.busca-geral-lista { position: absolute; z-index: 60; top: calc(100% + 6px); left: 0; right: 0; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); max-height: 420px; overflow: auto; padding-bottom: 4px; }
-.busca-geral-lista button { display: flex; align-items: baseline; gap: 10px; width: 100%; padding: 8px 12px; border: 0; background: transparent; cursor: pointer; text-align: left; font: inherit; font-size: 14px; color: var(--texto); }
-.busca-geral-lista button.foco { background: var(--hover); }
-.busca-geral-lista button small { margin-left: auto; font-size: 12px; color: var(--texto-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
-.busca-geral-lista > div:first-child .combo-grupo { border-top: 0; }
+const dias = (m: { agenda_todos_os_dias: boolean }) => (m.agenda_todos_os_dias ? 'Todos os dias' : 'Dias específicos');
 
-/* Passo 1: resposta direta, com cor da situação */
-.resposta-1 { margin: 0 0 6px; font-size: 16px; font-weight: 800; }
-.resposta-1.pode_agendar { color: var(--st-ok-t); }
-.resposta-1.atencao { color: var(--st-at-t); }
-.resposta-1.nao_pode { color: var(--st-no-t); }
+/** Médicos em catálogo (mesmo estilo dos Convênios): toda a equipe à vista, a busca filtra por nome ou exame; o card abre o médico. */
+export function Medicos() {
+  const b = useBase();
+  const [params, setParams] = useSearchParams();
+  const [filtro, setFiltro] = useState('');
+  const hoje = hojeIso();
+  const examesDe = useMemo(() => {
+    const m = new Map<number, string[]>();
+    for (const x of b.medicoExames) m.set(x.medico_id, [...new Set([...(m.get(x.medico_id) ?? []), nomeExame(x.exame_nome)])]);
+    return m;
+  }, [b]);
+  const med = b.medicos.find((x) => String(x.id) === params.get('m'));
 
-/* Visão geral: avisos lidos resumidos (coluna da direita) */
-.lidos-resumo { list-style: none; margin: 0; padding: 6px 0; }
-.lidos-resumo li { border-left: 3px solid #3b82f6; margin: 4px 12px; }
-.lidos-resumo li.urgente { border-left-color: #dc2626; }
-.lidos-resumo li.importante { border-left-color: #d97706; }
-.lidos-resumo li { padding: 5px 10px; }
-.lidos-cab { display: flex; align-items: baseline; gap: 8px; font-size: 13.5px; }
-.lidos-cab b { font-weight: 600; flex: 1; min-width: 0; }
-.lidos-cab small { color: var(--texto-suave); font-size: 12px; }
-.lidos-texto { font-size: 13px; color: var(--texto-suave); white-space: pre-line; line-height: 1.4; margin-top: 1px; }
-.resposta-1 { font-size: 18px; }
-.resposta-1-det { margin: 0 0 4px; font-size: 14.5px; line-height: 1.5; }
-.resposta-1-det.aviso { color: var(--st-at-t); }
-.passo-corpo .pergunta { padding: 6px 0 10px; border-top: 0; }
+  // veio da busca do cabeçalho (?q=): médico exato abre direto; senão entra como filtro
+  useEffect(() => {
+    const v = params.get('q'); if (v === null) return;
+    const m = b.medicos.find((x) => norm(x.nome) === norm(v));
+    if (m) setParams({ m: String(m.id) }, { replace: true }); else setFiltro(v);
+  }, [params, b, setParams]);
 
-/* Passo 1: uma informação por linha */
-.p1-cab { font-size: 15px; margin: 0 0 6px; }
-.p1-linha { display: grid; grid-template-columns: 190px 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linha); font-size: 15px; }
-.p1-rot { color: var(--texto-suave); }
-.p1-linha.aviso { background: var(--st-at-bg); color: var(--st-at-t); border: 0; border-radius: 8px; padding: 8px 12px; margin: 6px -12px 0; }
-.p1-linha.aviso .p1-rot { color: var(--st-at-t); }
-@media (max-width: 700px) { .p1-linha { grid-template-columns: 1fr; gap: 2px; } }
-.p1-sub { font-weight: 700; font-size: 14.5px; margin: 16px 0 4px; }
-.passo-corpo h3 + div > .p1-sub { margin-top: 2px; }
-.p1-linha .preparo-txt { white-space: pre-line; font-size: inherit; margin: 0; }
-.codigos { display: inline-flex; flex-wrap: wrap; gap: 10px; }
-.cod-copiar { display: inline-flex; align-items: center; gap: 6px; }
-.cod-copiar button { display: inline-grid; place-items: center; min-width: 28px; height: 26px; padding: 0 6px; border: 1px solid var(--borda); border-radius: 6px; background: var(--painel); color: var(--texto-suave); cursor: pointer; font: inherit; font-size: 11px; }
-.cod-copiar button:hover { background: var(--hover); color: var(--texto); }
-.cod-copiar button svg { width: 14px; height: 14px; }
+  const lista = useMemo(() => b.medicos.filter((m) => !filtro.trim() || casa(m.nome, filtro) || (examesDe.get(m.id) ?? []).some((n) => casa(n, filtro))), [b, filtro, examesDe]);
+  const ehUS = (id: number) => (examesDe.get(id) ?? []).some((n) => n.startsWith('US'));
+  const grupos = [
+    { tit: 'Ultrassom', lista: lista.filter((m) => ehUS(m.id)) },
+    { tit: 'Tomografia e ressonância', lista: lista.filter((m) => !ehUS(m.id)) },
+  ].filter((g) => g.lista.length);
 
-/* Convênios: dois grupos */
-.grupo-conv { margin-bottom: 22px; }
-.grupo-conv h3 { margin: 0 0 10px; font-size: 15px; }
-.grupo-conv h3 .mut { font-weight: 400; font-size: 13px; }
-.coluna { display: grid; gap: 14px; align-content: start; min-width: 0; }
+  const agendaDe = (id: number) => b.medicoAgendas.filter((a) => a.medico_id === id && (a.tipo === 'recorrente' || (a.data ?? '') >= hoje));
+  const restricoesDe = (id: number) => b.medicoRestricoes.filter((r) => r.medico_id === id);
+  const exs = med ? examesDe.get(med.id) ?? [] : [];
+  const mods = [...new Set(exs.map((n) => MODALIDADE[n.split(' - ')[0]]).filter(Boolean))];
 
-/* Médico solicitante: um conselho por linha */
-.conselhos { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; }
-.conselhos li { display: grid; grid-template-columns: 20px 74px 1fr; align-items: start; gap: 6px; font-size: 14px; }
-.conselhos .ic { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; margin-top: 1px; }
-.conselhos .ic svg { width: 12px; height: 12px; stroke-width: 3; }
-.conselhos .sim .ic { background: #16a34a; }
-.conselhos .nao .ic { background: #dc2626; }
-.conselhos .cond .ic { background: #d97706; }
-.conselhos .nao span:last-child { color: var(--texto-suave); }
+  return (
+    <>
+      <TituloPagina titulo={med ? med.nome : 'Médicos'} sub={med ? [mods.join(' · '), med.crm ? `CRM ${med.crm}` : ''].filter(Boolean).join(' · ') : 'Digite ou toque no médico. Também dá para buscar pelo exame.'}>
+        {med && <button type="button" className="btn2 ic" onClick={() => setParams({})} title="Voltar aos médicos" aria-label="Voltar aos médicos"><Icone n="volta" /></button>}
+      </TituloPagina>
 
-/* Menu: item futuro, apagado e sem clique */
-.lat-item.em-breve { opacity: .45; cursor: default; }
-.lat-item.em-breve:hover { background: transparent; color: var(--lateral-texto); }
+      {!med && <>
+        <div className="busca-conv"><Icone n="busca" /><input type="search" autoFocus value={filtro} onChange={(e) => setFiltro(e.target.value)} placeholder="Nome do médico ou do exame…" /></div>
+        {grupos.map((g) => (
+          <section key={g.tit} className="grupo-conv">
+            <h3>{g.tit} <span className="mut">· {g.lista.length} médico{g.lista.length === 1 ? '' : 's'}</span></h3>
+            <div className="cards-med">
+              {g.lista.map((m) => {
+                const feitos = examesDe.get(m.id) ?? [];
+                const faz = filtro.trim() && !casa(m.nome, filtro) ? feitos.find((n) => casa(n, filtro)) : undefined;
+                return (
+                  <button type="button" key={m.id} className="med-card" onClick={() => setParams({ m: String(m.id) })}>
+                    <span className="med-av"><Icone n="estetoscopio" /></span>
+                    <span className="med-inf"><b>{m.nome}</b><span className="mut">{feitos.length} exame{feitos.length === 1 ? '' : 's'}</span>{faz && <span className="med-faz">faz {faz.replace(/^\w+ - /, '')}</span>}</span>
+                    <span className={'med-tag' + (m.agenda_todos_os_dias ? '' : ' esp')}>{dias(m)}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+        ))}
+        {!lista.length && <Vazio>Nenhum médico ou exame com “{filtro}”.</Vazio>}
+      </>}
 
-/* Como usar */
-.licao-rod { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--linha); font-size: 13px; }
-.sinal { display: inline-flex; align-items: center; gap: 8px; }
-.sinal .ic { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
-.sinal .ic svg { width: 12px; height: 12px; stroke-width: 3; }
-.sinal.sim .ic { background: #16a34a; } .sinal.nao .ic { background: #dc2626; } .sinal.cond .ic { background: #d97706; }
-.ajuda-q { width: 20px; height: 20px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; font-weight: 800; font-size: 12px; line-height: 1; }
+      {med && (() => {
+        const ag = agendaDe(med.id), rs = restricoesDe(med.id);
+        return (
+          <div className="conv-detalhe">
+            <div className="grade2">
+              <div className="coluna">
+                <Bloco titulo="Faz" extra={<span className="mut" style={{ fontSize: 13 }}>{exs.length} exame{exs.length === 1 ? '' : 's'}</span>}>
+                  <div className="pad-l">{exs.map((n) => <Linha key={n} um>{n}</Linha>)}</div>
+                </Bloco>
+              </div>
+              <div className="coluna">
+                <Bloco titulo="Agenda"><div className="pad-l">
+                  <Linha rot="Atende">{dias(med)}</Linha>
+                  {ag.map((a, k) => <Linha key={k} rot={a.tipo === 'recorrente' ? `Toda ${a.dia_semana}` : br(a.data!)}>{a.inicio}–{a.fim}</Linha>)}
+                </div></Bloco>
+                {rs.length > 0 && <Bloco titulo="Atenção"><div className="pad-l">{rs.map((r, k) => <Linha key={k} aviso um>{r.texto}</Linha>)}</div></Bloco>}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+    </>
+  );
+}
 
-/* Tour guiado */
-.tour { position: fixed; inset: 0; z-index: 900; pointer-events: none; }
-.tour-escuro { position: fixed; inset: 0; background: rgba(8, 20, 35, .55); }
-.tour-luz { position: fixed; border-radius: 12px; box-shadow: 0 0 0 9999px rgba(8, 20, 35, .55), 0 0 0 3px #2FB8C6; transition: all .35s ease; animation: tour-pulso 1.6s ease-in-out infinite; }
-@keyframes tour-pulso { 0%, 100% { box-shadow: 0 0 0 9999px rgba(8,20,35,.55), 0 0 0 3px #2FB8C6; } 50% { box-shadow: 0 0 0 9999px rgba(8,20,35,.55), 0 0 0 8px rgba(47,184,198,.45); } }
-.tour-mao { position: fixed; font-size: 30px; transform: translateX(-50%); animation: tour-mao 1s ease-in-out infinite; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
-@keyframes tour-mao { 0%, 100% { margin-top: 10px; } 50% { margin-top: 0; } }
-.tour-balao { position: fixed; pointer-events: auto; background: var(--painel); color: var(--texto); border-radius: 14px; padding: 14px 16px 12px; box-shadow: 0 18px 40px rgba(0,0,0,.35); animation: tour-entra .3s ease; }
-@keyframes tour-entra { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
-.tour-balao.seta-cima::before, .tour-balao.seta-baixo::after { content: ""; position: absolute; left: 50%; width: 14px; height: 14px; background: var(--painel); transform: translateX(-50%) rotate(45deg); }
-.tour-balao.seta-cima::before { top: -7px; }
-.tour-balao.seta-baixo::after { bottom: -7px; }
-.tour-topo { display: flex; justify-content: space-between; align-items: center; }
-.tour-prog { font-size: 11px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .05em; }
-.tour-x { border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; width: 26px; height: 26px; display: grid; place-items: center; }
-.tour-x svg { width: 16px; height: 16px; }
-.tour-balao h4 { margin: 6px 0 4px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
-.tour-balao p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.5; }
-.tour-ok { width: 22px; height: 22px; border-radius: 50%; background: #16a34a; color: #fff; display: grid; place-items: center; animation: tour-entra .3s ease; }
-.tour-ok svg { width: 14px; height: 14px; stroke-width: 3; }
-.tour-barra { height: 4px; background: var(--linha); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
-.tour-barra span { display: block; height: 100%; background: #2FB8C6; transition: width .4s ease; }
-.tour-botoes { display: flex; align-items: center; gap: 8px; }
-.tour-link { border: 0; background: none; color: var(--link, #0f766e); cursor: pointer; text-decoration: underline; font: inherit; font-size: 12px; padding: 0; }
-.convite { text-align: center; }
-.convite-ic { font-size: 40px; }
-.convite-bts { display: flex; gap: 10px; justify-content: center; margin: 14px 0 10px; flex-wrap: wrap; }
-.ajuda-menu { position: relative; }
-.ajuda-lista { position: absolute; right: 0; top: calc(100% + 6px); z-index: 70; width: 260px; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); padding: 4px; }
-.ajuda-lista button { display: grid; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; color: var(--texto); }
-.ajuda-lista button:hover { background: var(--hover); }
-.ajuda-lista small { color: var(--texto-suave); font-size: 12px; }
+export function Unidades() {
+  const b = useBase();
+  const [params] = useSearchParams();
+  const [eq, setEq] = useState(Number(params.get('eq')) || (b.equipamentos[0]?.id ?? 0));
+  useEffect(() => { const v = Number(params.get('eq')); if (v) setEq(v); }, [params]);
+  const itens = b.equipamentoExames.filter((x) => x.equipamento_id === eq);
+  const q = b.equipamentos.find((x) => x.id === eq);
+  return (
+    <>
+      <TituloPagina titulo="Unidades e máquinas" sub="Endereço, telefone e horário de cada unidade. Escolha a máquina para ver quanto tempo cada exame ocupa." />
+      <div className="grade-cards" style={{ marginBottom: 14 }}>
+        {b.unidades.map((u) => (
+          <Bloco key={u.id} titulo={u.nome}>
+            <div className="pad" style={{ display: 'grid', gap: 4, fontSize: 13.5 }}>
+              <span>{u.endereco} · CEP {u.cep}</span><span>{u.telefones}</span>{u.whatsapp && <span>WhatsApp: {u.whatsapp}</span>}<span className="mut">{u.horario_atendimento}</span>
+            </div>
+          </Bloco>
+        ))}
+      </div>
+      <div className="abas">{b.equipamentos.map((x) => <button type="button" key={x.id} className={eq === x.id ? 'on' : ''} onClick={() => setEq(x.id)}>{x.nome}</button>)}</div>
+      <Bloco titulo={`${q?.nome} · peso máximo ${q?.peso_max_kg} kg`} extra={<span className="mut" style={{ fontSize: 12 }}>{b.unidades.find((u) => u.id === q?.unidade_id)?.nome}</span>}>
+        <table className="tab"><thead><tr><th>Exame</th><th>Horários</th><th>Tempo</th><th>Observação</th></tr></thead>
+          <tbody>{itens.map((x, i) => <tr key={i}><td>{x.exame_nome}</td><td>{x.horarios ?? '—'}</td><td>{x.minutos ? `${x.minutos} min` : '—'}</td>
+            <td className="mut">{[x.contraste && 'contraste: ' + x.contraste, x.condicao_paciente, x.periodo && 'só ' + x.periodo].filter(Boolean).join(' · ') || '—'}</td></tr>)}</tbody></table>
+      </Bloco>
+      {b.avisos.length > 0 && <div style={{ marginTop: 14 }}><Bloco titulo="Avisos das máquinas"><ul className="feed">{b.avisos.map((a) => <li key={a.id}><span className="dot"><Icone n="info" /></span><div className="preparo-txt">{a.texto}</div></li>)}</ul></Bloco></div>}
+    </>
+  );
+}
 
-/* Exames: código em cada convênio */
-.outros-exames { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 13px; }
-.pilula { border: 1px solid var(--borda); background: var(--painel); border-radius: 999px; padding: 5px 12px; cursor: pointer; font: inherit; font-size: 13px; color: var(--texto); }
-.pilula.on { background: var(--destaque, #167c84); border-color: var(--destaque, #167c84); color: #fff; }
-.exame-cab b { font-size: 18px; }
-.pad-l { padding: 4px 16px 10px; }
-.cod-conv { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--linha); flex-wrap: wrap; }
-.cod-conv:first-child { border-top: 0; }
-.cod-conv-nome { display: flex; align-items: center; gap: 10px; color: var(--texto); text-decoration: none; font-size: 14px; min-width: 0; }
-.cod-conv-nome:hover span { text-decoration: underline; }
-.cod-conv .cod { font-size: 16px; }
-.cod-item { display: inline-flex; align-items: center; gap: 6px; }
-.busca-conv .combo-lista { top: calc(100% + 4px); }
-.exame-cab > div { max-width: 760px; }
-.cod-tipo { font-size: 11px; color: var(--texto-suave); margin-right: 2px; }
-.pad-l .p1-linha:first-child { border-top: 0; }
-
-/* Orçamento */
-.orc-topo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-.orc-topo .busca-conv { margin-bottom: 0; flex: 0 1 360px; }
-.seg { display: inline-flex; border: 1px solid var(--borda); border-radius: 10px; overflow: hidden; background: var(--painel); }
-.seg button { border: 0; background: transparent; padding: 9px 16px; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--texto); }
-.seg button.on { background: var(--destaque, #167c84); color: #fff; font-weight: 600; }
-.grade2.orc { grid-template-columns: 1fr 380px; }
-.orc-pac { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; padding: 12px 16px 14px; }
-.orc-pac .cp { display: grid; gap: 4px; }
-.orc-pac input.erro { border-color: #dc2626 !important; }
-.erro-txt { color: #dc2626; font-size: 11.5px; }
-.orc-desc { display: flex; align-items: center; gap: 10px; padding: 8px 16px 10px; font-size: 14px; color: var(--texto-suave); border-top: 1px solid var(--linha); }
-.orc-desc .pct { display: inline-flex; align-items: center; gap: 4px; color: var(--texto); }
-.orc-desc .pct input { width: 64px; text-align: right; padding: 5px 8px !important; }
-.tag-lim { margin-left: auto; font-size: 11px; background: var(--st-at-bg); color: var(--st-at-t); border-radius: 6px; padding: 2px 7px; }
-.tot.verde { color: #16a34a; }
-.orc-regra { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
-.orc-regra b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
-.pct-cel { display: inline-flex; align-items: center; gap: 3px; }
-.pct-cel input { width: 56px; text-align: right; }
-@media (max-width: 1100px) { .grade2.orc { grid-template-columns: 1fr; } }
-
-/* Rede do Bradesco: caixa fechada com a lista de redes */
-.redes-caixa > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.redes-caixa > summary::-webkit-details-marker { display: none; }
-.redes-caixa > summary::after { content: '▸'; color: var(--texto-suave); margin-left: 8px; }
-.redes-caixa[open] > summary::after { content: '▾'; }
-.redes-caixa > summary > h3 { margin-right: auto; }
-.redes-lista { max-height: 420px; overflow: auto; padding: 4px 16px 10px; }
-.rede-linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border-top: 1px solid var(--linha); font-size: 14px; }
-.rede-linha:first-child { border-top: 0; }
-
-/* Médicos */
-.med-av { width: 40px; height: 40px; border-radius: 50%; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; flex: none; }
-.med-av svg { width: 22px; height: 22px; }
-.p1-linha.um { grid-template-columns: 1fr; }
-.cards-med { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-.med-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--painel); border: 1px solid var(--linha); border-radius: 12px; cursor: pointer; text-align: left; color: var(--texto); font: inherit; transition: transform .12s, box-shadow .12s, border-color .12s; }
-.med-card:hover { border-color: var(--destaque); box-shadow: var(--sombra); transform: translateY(-2px); }
-.med-inf { display: grid; gap: 2px; flex: 1; min-width: 0; }
-.med-inf b { font-size: 15px; }
-.med-inf .mut { font-size: 13px; }
-.med-faz { font-size: 12.5px; font-weight: 600; color: var(--destaque); }
-.med-tag { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 3px 9px; white-space: nowrap; background: var(--st-ok-bg); color: var(--st-ok-t); }
-.med-tag.esp { background: var(--st-at-bg); color: var(--st-at-t); }
+export function Ramais() {
+  const b = useBase();
+  const [q, setQ] = useQ();
+  const lista = q.trim().length < 2 ? [] : b.ramais.filter((r) => casa(`${r.setor ?? ''} ${r.local} ${(r.numeros ?? []).join(' ')}`, q));
+  const grupo = (r: (typeof lista)[number]) => `${r.setor ?? 'Geral'}`;
+  const grupos = [...new Set(lista.map(grupo))];
+  return (
+    <>
+      <TituloPagina titulo="Ramais" sub="Digite o setor ou o número." />
+      <Busca rot="Buscar ramal" q={q} setQ={setQ} ph="ex.: recepção, doppler, autorização, 5767" />
+      {!q.trim() ? <div className="bloco"><Vazio>Digite o setor ou o número. {b.ramais.length} ramais cadastrados.</Vazio></div> : !lista.length ? <div className="bloco"><Vazio>Nenhum ramal para “{q}”.</Vazio></div> : (
+        <div className="grade-cards">{grupos.map((g) => (
+          <Bloco key={g} titulo={g}>
+            <table className="tab"><tbody>{lista.filter((r) => grupo(r) === g).map((r) => (
+              <tr key={r.id}><td>{r.local}</td><td className="cod" style={{ textAlign: 'right' }}>{r.numeros?.join(' / ') ?? <span className="mut">sem número</span>}</td></tr>
+            ))}</tbody></table>
+          </Bloco>
+        ))}</div>
+      )}
+    </>
+  );
+}
