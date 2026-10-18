@@ -150,3 +150,19 @@ describe('Agenda (máquina, preparo)', () => {
     expect(r.exames[0].agenda.avisos.map((a) => a.id)).toContain('RCC-09');
   });
 });
+
+describe('Rede do paciente (só Bradesco)', () => {
+  const q = (rede?: string, convenio = 'bradesco') => consultar(b, { convenio, exames: [{ exameId: CORONARIA }], dataPedido: HOJE, hoje: HOJE, rede });
+  it('sem rede escolhida: só alerta, não trava', () => {
+    const r = q();
+    expect(r.rede?.situacao).toBe('escolher');
+    expect(r.situacao).not.toBe('nao_pode');
+  });
+  it('rede da lista atende', () => { expect(q('ABB NACIONAL').rede).toEqual({ nome: 'ABB NACIONAL', situacao: 'atende' }); });
+  it('rede que a RCC não atende → não pode agendar', () => {
+    const r = q('Sistel');
+    expect(r.rede?.situacao).toBe('nao_atende');
+    expect(r.situacao).toBe('nao_pode');
+  });
+  it('outros convênios não pedem rede', () => { expect(q('ABB NACIONAL', 'amil').rede).toBeNull(); });
+});
