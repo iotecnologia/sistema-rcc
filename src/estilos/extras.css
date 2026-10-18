@@ -365,24 +365,16 @@ details > summary { cursor: pointer; font-weight: 600; }
 .pad-l .p1-linha:first-child { border-top: 0; }
 
 /* Orçamento */
-.orc-topo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-.orc-topo .busca-conv { margin-bottom: 0; flex: 0 1 360px; }
 .seg { display: inline-flex; border: 1px solid var(--borda); border-radius: 10px; overflow: hidden; background: var(--painel); }
 .seg button { border: 0; background: transparent; padding: 9px 16px; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--texto); }
 .seg button.on { background: var(--destaque, #167c84); color: #fff; font-weight: 600; }
-.grade2.orc { grid-template-columns: 1fr 380px; }
 .orc-pac { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; padding: 12px 16px 14px; }
 .orc-pac .cp { display: grid; gap: 4px; }
 .orc-pac input.erro { border-color: #dc2626 !important; }
 .erro-txt { color: #dc2626; font-size: 11.5px; }
-.orc-desc { display: flex; align-items: center; gap: 10px; padding: 8px 16px 10px; font-size: 14px; color: var(--texto-suave); border-top: 1px solid var(--linha); }
-.orc-desc .pct { display: inline-flex; align-items: center; gap: 4px; color: var(--texto); }
-.orc-desc .pct input { width: 64px; text-align: right; padding: 5px 8px !important; }
-.tag-lim { margin-left: auto; font-size: 11px; background: var(--st-at-bg); color: var(--st-at-t); border-radius: 6px; padding: 2px 7px; }
 .tot.verde { color: #16a34a; }
 .pct-cel { display: inline-flex; align-items: center; gap: 3px; }
 .pct-cel input { width: 56px; text-align: right; }
-@media (max-width: 1100px) { .grade2.orc { grid-template-columns: 1fr; } }
 
 /* Rede do Bradesco: caixa fechada com a lista de redes */
 .redes-caixa > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
@@ -451,41 +443,6 @@ details > summary { cursor: pointer; font-weight: 600; }
 .link-suave:hover { text-decoration: underline; }
 
 /* Orçamento: cartões numerados */
-.orc-card { overflow: visible; }
-.orc-cab { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--linha); }
-.orc-cab h3 { margin: 0; font-size: 15px; }
-.orc-cab > small { font-size: 12px; }
-.orc-info { margin-left: auto; display: grid; color: var(--texto-suave); cursor: help; }
-.orc-info svg { width: 18px; height: 18px; }
-.orc-card .orc-topo .seg { margin-left: auto; }
-.orc-num { width: 24px; height: 24px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto, #fff); display: grid; place-items: center; font-weight: 800; font-size: 13px; flex: none; }
-.orc-card .orc-topo { padding: 14px 16px; margin: 0; }
-.orc-card .orc-topo .busca-conv { flex: 1 1 240px; }
-.orc-itens { border-top: 1px solid var(--linha); }
-.orc-item { display: grid; grid-template-columns: 1fr auto 96px 28px; gap: 12px; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--linha); }
-.orc-item-nome { display: grid; gap: 2px; min-width: 0; font-size: 14px; }
-.orc-item-nome small { color: var(--texto-suave); font-size: 12px; }
-.orc-item-total { text-align: right; font-size: 14px; }
-.orc-x { border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; padding: 4px; border-radius: 6px; display: grid; place-items: center; }
-.orc-x:hover { color: #dc2626; background: var(--painel-2); }
-.orc-x svg { width: 16px; height: 16px; }
-.orc-rodape { display: flex; justify-content: space-between; padding: 12px 16px; font-size: 14px; color: var(--texto-suave); }
-.orc-rodape b { color: var(--texto); }
-.formas-col { display: grid; gap: 10px; padding: 14px 16px; }
-.formas-col button { display: grid; grid-template-columns: 1fr auto 22px; gap: 10px; align-items: center; text-align: left; border: 2px solid var(--linha); background: var(--painel); color: var(--texto); border-radius: 12px; padding: 12px 14px; cursor: pointer; font: inherit; }
-.formas-col button.on { border-color: var(--destaque); box-shadow: inset 0 0 0 1px var(--destaque); }
-.fc-txt { display: grid; gap: 2px; }
-.fc-txt small { color: var(--texto-suave); font-size: 12px; }
-.fc-txt small.verde { color: #16a34a; font-weight: 600; }
-.fc-val { font-weight: 800; font-size: 16px; }
-.fc-ok { color: var(--destaque); display: grid; place-items: center; }
-.fc-ok svg { width: 18px; height: 18px; }
-.orc-total { padding: 14px 16px 10px; border-top: 1px solid var(--linha); display: grid; gap: 2px; }
-.orc-total-lin { display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; font-weight: 700; }
-.orc-total-lin b { font-size: 28px; font-weight: 800; }
-.orc-total small { color: var(--texto-suave); font-size: 13px; }
-.orc-valido { display: flex; align-items: center; gap: 8px; padding: 4px 16px 14px; font-size: 13px; color: var(--texto-suave); }
-.orc-valido svg { width: 16px; height: 16px; }
 
 /* Ramais — lista telefônica por andar */
 .rm-grade { columns: 3 300px; column-gap: 14px; }
@@ -498,3 +455,77 @@ details > summary { cursor: pointer; font-weight: 600; }
 .rm-num { min-width: 52px; padding: 3px 8px; border: 1px solid var(--borda); border-radius: 7px; background: var(--painel-2); color: var(--texto); font: inherit; font-weight: 700; font-size: 13.5px; font-variant-numeric: tabular-nums; cursor: pointer; }
 .rm-num:hover { border-color: var(--destaque); color: var(--destaque); }
 .rm-num.ok { background: var(--st-ok-bg); color: var(--st-ok-t); border-color: transparent; font-size: 12px; }
+
+/* Orçamento — 2 colunas: trabalho (esquerda) + resumo fixo (direita). Classes orc2-* */
+.orc2 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+.orc2-trab { display: grid; gap: 16px; min-width: 0; }
+.orc2-bloco { padding-bottom: 4px; }
+
+/* cabeçalho de cada bloco: número do passo + título + extra à direita */
+.orc2-cab { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--linha); flex-wrap: wrap; }
+.orc2-cab h3 { margin: 0; font-size: 15px; }
+.orc2-cab > small { font-size: 12px; }
+.orc2-cab .seg { margin-left: auto; }
+.orc2-num { width: 26px; height: 26px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 13px; flex: none; }
+
+/* busca dentro do bloco de exames */
+.orc2-busca { position: relative; display: flex; align-items: center; gap: 8px; margin: 14px 16px 6px; padding: 0 12px; height: 46px; border: 2px solid var(--destaque); border-radius: var(--raio-sm); background: var(--painel); color: var(--texto-suave); }
+.orc2-busca svg { width: 18px; height: 18px; flex: none; }
+.app .orc2-busca input { border: 0; background: transparent; padding: 0; height: 100%; font-size: 15px; outline: none; }
+
+/* lista de exames */
+.orc2-lista { list-style: none; margin: 0; padding: 4px 16px; }
+.orc2-lista li { display: grid; grid-template-columns: minmax(0, 1fr) auto 110px 30px; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--linha); }
+.orc2-lista li:last-child { border-bottom: 0; }
+.orc2-nome { display: grid; gap: 2px; min-width: 0; }
+.orc2-nome b { font-weight: 600; font-size: 14px; }
+.orc2-nome small { color: var(--texto-suave); font-size: 12.5px; }
+.orc2-qtd { display: inline-flex; align-items: center; gap: 6px; }
+.orc2-qtd button { width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel-2); color: var(--texto); display: grid; place-items: center; cursor: pointer; padding: 0; }
+.orc2-qtd button:disabled { opacity: .4; cursor: default; }
+.orc2-qtd button svg { width: 14px; height: 14px; }
+.orc2-qtd > span { min-width: 22px; text-align: center; font-weight: 700; font-size: 15px; }
+.orc2-val { text-align: right; font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.orc2-tirar { width: 30px; height: 30px; border-radius: 50%; border: 0; background: transparent; color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; }
+.orc2-tirar:hover { background: var(--st-no-bg); color: var(--st-no-t); }
+.orc2-tirar svg { width: 15px; height: 15px; }
+.orc2-vazio { margin: 6px 16px 14px; padding: 22px; border: 2px dashed var(--linha); border-radius: var(--raio-sm); text-align: center; color: var(--texto-suave); font-size: 14px; }
+.orc2-subtotal { display: flex; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--linha); color: var(--texto-suave); font-size: 14px; }
+.orc2-subtotal b { color: var(--texto); font-size: 15px; margin-left: 6px; }
+
+/* resumo (direita), fixo enquanto rola */
+.orc2-resumo { position: sticky; top: 12px; }
+.orc2-formas { display: grid; gap: 10px; padding: 14px 16px; }
+.orc2-formas button { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: center; text-align: left; padding: 14px; border: 2px solid var(--linha); border-radius: 12px; background: var(--painel); color: var(--texto); cursor: pointer; font: inherit; }
+.orc2-formas button:disabled { cursor: default; opacity: .6; }
+.orc2-formas button.on { border-color: var(--destaque); background: color-mix(in srgb, var(--destaque) 7%, var(--painel)); }
+.orc2-marca { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--borda); display: grid; place-items: center; }
+.orc2-formas button.on .orc2-marca { border-color: var(--destaque); background: var(--destaque); color: var(--destaque-texto); }
+.orc2-marca svg { width: 13px; height: 13px; }
+.orc2-forma-txt { display: grid; gap: 1px; }
+.orc2-forma-txt > span { font-size: 13px; color: var(--texto-suave); font-weight: 600; }
+.orc2-forma-txt b { font-size: 21px; font-variant-numeric: tabular-nums; }
+.orc2-forma-txt small { font-size: 12.5px; color: var(--texto-suave); }
+.orc2-forma-txt small.verde, .orc2-linha.verde { color: var(--st-ok-t); }
+
+.orc2-extra { display: flex; align-items: center; gap: 10px; padding: 0 16px 12px; font-size: 13.5px; }
+.orc2-extra .pct { display: inline-flex; align-items: center; gap: 4px; }
+.app .orc2-extra input { width: 64px; padding: 6px 8px; text-align: right; }
+
+.orc2-total { border-top: 1px solid var(--linha); padding: 12px 16px 14px; display: grid; gap: 6px; }
+.orc2-linha { display: flex; justify-content: space-between; font-size: 14px; }
+.orc2-grande { display: flex; justify-content: space-between; align-items: baseline; font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.orc2-como { font-size: 13.5px; color: var(--texto-suave); text-align: right; }
+.orc2-valido { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--texto-suave); margin-top: 4px; }
+.orc2-valido svg { width: 14px; height: 14px; }
+.orc2-saida { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--linha); }
+
+@media (max-width: 1100px) { .orc2 { grid-template-columns: 1fr; } .orc2-resumo { position: static; } }
+@media (max-width: 640px) { .orc2-lista li { grid-template-columns: 1fr auto 30px; } .orc2-val { grid-column: 2; } }
+
+.orc2-linha-busca { display: flex; align-items: center; gap: 12px; margin: 14px 16px 6px; }
+.orc2-linha-busca .orc2-busca { margin: 0; flex: 1 1 auto; max-width: 62%; }
+.orc2-linha-busca .seg { flex: none; margin-left: auto; }
+.orc2-linha-busca .seg button { padding: 12px 18px; }
+.orc2-regras { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
+.orc2-regras b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
