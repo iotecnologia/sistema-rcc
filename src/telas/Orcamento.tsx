@@ -1,6 +1,6 @@
 // Orçamento particular / Sócio Remido (mesmo padrão de Convênios e Exames).
 // A forma de pagamento aplica a regra da RCC; o desconto extra respeita o limite do cargo de quem está usando.
-// Dados do paciente (nome, sobrenome, CPF, RG) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
+// Dados do paciente (nome completo e CPF) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from '../componentes/Dados';
 import { BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
@@ -17,6 +17,8 @@ type Forma = 'cartao' | 'pix';
 export const parcelas = (total: number) => (total <= 300 ? 2 : total <= 500 ? 3 : 6);
 /** PIX ou dinheiro: 5% de desconto. */
 export const DESCONTO_PIX = 5;
+/** Regra de parcelas da RCC: aparece no ⓘ do bloco "Forma de pagamento" (passar o mouse). */
+const REGRA = `Regra de pagamento da RCC\n• Até R$ 300: até 2x\n• R$ 300 a R$ 500: até 3x\n• Acima de R$ 500: até 6x\n• PIX ou dinheiro: ${DESCONTO_PIX}% de desconto`;
 
 /** CPF: 000.000.000-00 enquanto digita. */
 const mascaraCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
@@ -40,7 +42,7 @@ export function Orcamento() {
   const ref = useRef<HTMLInputElement>(null);
   const [linhas, setLinhas] = useState<Linha[]>([]);
   const [forma, setForma] = useState<Forma>('cartao');
-  const [pac, setPac] = useState({ nome: '', sobrenome: '', cpf: '', rg: '' });
+  const [pac, setPac] = useState({ nome: '', cpf: '' });
   const [extra, setExtra] = useState(0);
 
   const precos = b.precos.filter((p) => p.tabela_id === tabela);
@@ -57,7 +59,13 @@ export function Orcamento() {
   const totalCartao = subtotal * (1 - Math.min(100, extra) / 100);
   const totalPix = subtotal * (1 - Math.min(100, DESCONTO_PIX + extra) / 100);
   const nxCartao = parcelas(totalCartao);
-  const add = (id: number) => { setLinhas(linhas.some((l) => l.precoId === id) ? linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + 1 } : l)) : [...linhas, { precoId: id, qtd: 1 }]); setQ(''); setAberto(false); };
+  const add = (id: number) => { setLinhas(linhas.some((l) => l.precoId === id) ? linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + 1 } : l)) : [...linhas, { precoId: id, qtd: 1 }]); setQ(''); setAberto(false); ref.current?.focus(); };
+  // trocar de tabela apaga os exames: pergunta antes, para não perder o orçamento sem querer
+  const trocarTabela = (id: number) => {
+    if (id === tabela) return;
+    if (linhas.length && !window.confirm('Trocar a tabela apaga os exames já escolhidos. Continuar?')) return;
+    setTabela(id); setLinhas([]);
+  };
   const mudarQtd = (id: number, dq: number) => setLinhas(linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + dq } : l)).filter((l) => l.qtd > 0));
   const tecla = (ev: KeyboardEvent) => {
     if (ev.key === 'ArrowDown') { ev.preventDefault(); setAberto(true); setFoco(Math.min(foco + 1, busca.length - 1)); }
@@ -70,8 +78,8 @@ export function Orcamento() {
   const validade = somarDias(hojeIso(), 30);
   const nomeTabela = b.tabelasPreco.find((t) => t.id === tabela)?.nome ?? '';
   const cpfRuim = pac.cpf.replace(/\D/g, '').length === 11 && !cpfValido(pac.cpf);
-  const nomeCompleto = `${pac.nome} ${pac.sobrenome}`.trim();
-  const docs = [pac.cpf && `CPF ${pac.cpf}`, pac.rg && `RG ${pac.rg}`].filter(Boolean).join(' · ');
+  const nomeCompleto = pac.nome.trim();
+  const docs = pac.cpf ? `CPF ${pac.cpf}` : '';
   const pagamento = forma === 'pix' ? 'PIX ou dinheiro' : `Cartão em até ${nx}x de ${brl(total / nx)}`;
   const rotDesconto = [pctPix && `PIX ${pctPix}%`, extra && `extra ${extra}%`].filter(Boolean).join(' + ');
   const texto = () => [`*Orçamento RCC — ${nomeTabela}*`, nomeCompleto && `Paciente: ${nomeCompleto}`, docs, ...itens.map((x) => `- ${x.qtd > 1 ? x.qtd + 'x ' : ''}${x.p.procedimento}: ${brl(x.p.valor * x.qtd)}`),
@@ -88,7 +96,7 @@ export function Orcamento() {
   return (
     <>
       <TituloPagina titulo="Orçamento" sub="Escolha a tabela e os exames. O sistema calcula Cartão e PIX ao mesmo tempo.">
-        <button type="button" className="btn2 ic" onClick={() => { setLinhas([]); setForma('cartao'); setPac({ nome: '', sobrenome: '', cpf: '', rg: '' }); setExtra(0); }} title="Limpar orçamento" aria-label="Limpar orçamento"><Icone n="limpar" /></button>
+        <button type="button" className="btn2 ic" onClick={() => { setLinhas([]); setForma('cartao'); setPac({ nome: '', cpf: '' }); setExtra(0); }} title="Limpar orçamento" aria-label="Limpar orçamento"><Icone n="limpar" /></button>
         <BotoesSaida desativado={!itens.length || cpfRuim} texto={texto} relatorio={relatorio} />
       </TituloPagina>
 
@@ -114,7 +122,7 @@ export function Orcamento() {
                 )}
               </div>
               <div className="seg" role="group" aria-label="Tabela de preço">
-                {b.tabelasPreco.map((t) => <button type="button" key={t.id} className={tabela === t.id ? 'on' : ''} onClick={() => { setTabela(t.id); setLinhas([]); }}>{t.nome}</button>)}
+                {b.tabelasPreco.map((t) => <button type="button" key={t.id} className={tabela === t.id ? 'on' : ''} onClick={() => trocarTabela(t.id)}>{t.nome}</button>)}
               </div>
             </div>
             {itens.length ? (
@@ -135,20 +143,18 @@ export function Orcamento() {
           </section>
 
           <section className="bloco orc-card">
-            <div className="orc-cab"><span className="orc-num">2</span><h3>Dados do paciente</h3></div>
+            <div className="orc-cab"><span className="orc-num">2</span><h3>Dados do paciente</h3><small className="mut">opcional · só aparece no orçamento impresso / WhatsApp</small></div>
             <div className="orc-pac">
-              <label className="cp"><span>Nome</span><input value={pac.nome} onChange={(e) => setPac({ ...pac, nome: e.target.value })} /></label>
-              <label className="cp"><span>Sobrenome</span><input value={pac.sobrenome} onChange={(e) => setPac({ ...pac, sobrenome: e.target.value })} /></label>
+              <label className="cp"><span>Nome completo</span><input value={pac.nome} onChange={(e) => setPac({ ...pac, nome: e.target.value })} /></label>
               <label className="cp"><span>CPF</span><input inputMode="numeric" placeholder="000.000.000-00" value={pac.cpf} onChange={(e) => setPac({ ...pac, cpf: mascaraCpf(e.target.value) })} className={cpfRuim ? 'erro' : ''} />
                 {cpfRuim && <small className="erro-txt">CPF inválido: confira os números</small>}</label>
-              <label className="cp"><span>RG</span><input value={pac.rg} maxLength={14} onChange={(e) => setPac({ ...pac, rg: e.target.value.toUpperCase().replace(/[^0-9X.\-]/g, '') })} /></label>
             </div>
           </section>
         </div>
 
         <div className="coluna">
           <section className="bloco orc-card">
-            <div className="orc-cab"><span className="orc-num">3</span><h3>Forma de pagamento</h3></div>
+            <div className="orc-cab"><span className="orc-num">3</span><h3>Forma de pagamento</h3><span className="orc-info" title={REGRA} aria-label={REGRA}><Icone n="info" /></span></div>
             <div className="formas-col">
               <button type="button" className={forma === 'cartao' ? 'on' : ''} onClick={() => setForma('cartao')}>
                 <span className="fc-txt"><b>Cartão</b><small>até {nxCartao}x de {brl(totalCartao / nxCartao)}</small></span>
@@ -171,11 +177,6 @@ export function Orcamento() {
               <small>{pagamento}</small>
             </div>
             <div className="orc-valido"><Icone n="calendario" /><span>Válido por 30 dias · até {br(validade)}</span></div>
-            <div className="orc-regra">
-              <b>Regra de pagamento da RCC</b>
-              <span>Até R$ 300: até 2x</span><span>R$ 300 a 500: até 3x</span>
-              <span>Acima de R$ 500: até 6x</span><span>PIX/dinheiro: {DESCONTO_PIX}% off</span>
-            </div>
           </section>
         </div>
       </div>
