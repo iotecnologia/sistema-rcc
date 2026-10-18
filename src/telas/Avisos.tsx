@@ -42,16 +42,18 @@ export function Avisos() {
         </Bloco>
         <Bloco titulo={`Avisos publicados (${v.avisos.length})`}>
           {!v.avisos.length ? <Vazio>Nenhum aviso publicado ainda.</Vazio> : (
-            <table className="tab"><thead><tr><th>Aviso</th><th>Para</th><th>Leram</th><th>Situação</th><th /></tr></thead>
+            <table className="tab tab-avisos"><thead><tr><th>Aviso</th><th>Para</th><th>Leram</th><th>Situação</th><th /></tr></thead>
               <tbody>{v.avisos.map((a) => {
                 const alvo = publico(a.para); const leram = alvo.filter((u) => v.leu(a.id, u.email));
                 return (<Fragment key={a.id}>
                   <tr>
                     <td><span className={'tag-aviso ' + a.tipo}>{ROTULO_TIPO[a.tipo]}</span> <b>{a.titulo}</b><div className="mut" style={{ fontSize: 12 }}>{a.autor} · até {br(a.validoAte)}</div></td>
                     <td>{nomeCargo(a.para)}</td>
-                    <td><button type="button" className="btn2 leram" onClick={() => setAberto(aberto === a.id ? null : a.id)} title="Ver quem leu">{leram.length} de {alvo.length}</button></td>
+                    <td>{leram.length} de {alvo.length}</td>
                     <td>{situacao(a.ativo, a.validoAte)}</td>
-                    <td style={{ width: 44 }}><button type="button" className="btn2 ic" disabled={!a.ativo} onClick={() => v.encerrar(a.id)} title="Encerrar aviso (sai da tela de todos)" aria-label="Encerrar aviso"><Icone n="x" /></button></td>
+                    <td className="cel-acoes"><button type="button" className="btn2 ic" disabled={!a.ativo} onClick={() => v.encerrar(a.id)} title="Encerrar aviso (sai da tela de todos)" aria-label="Encerrar aviso"><Icone n="x" /></button>
+                      <button type="button" className={'ver-leram' + (aberto === a.id ? ' aberta' : '')} onClick={() => setAberto(aberto === a.id ? null : a.id)} title="Ver quem leu" aria-label="Ver quem leu" aria-expanded={aberto === a.id}>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button></td>
                   </tr>
                   {aberto === a.id && <tr><td colSpan={5} style={{ background: 'var(--hover)' }}>
                     {alvo.map((u) => <div key={u.email} style={{ fontSize: 13 }}>{v.leu(a.id, u.email) ? '✔' : '—'} {u.nome} <span className="mut">({u.email})</span></div>)}
