@@ -457,9 +457,10 @@ details > summary { cursor: pointer; font-weight: 600; }
 .rm-num.ok { background: var(--st-ok-bg); color: var(--st-ok-t); border-color: transparent; font-size: 12px; }
 
 /* Orçamento — 2 colunas: trabalho (esquerda) + resumo fixo (direita). Classes orc2-* */
-.orc2 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
-.orc2-trab { display: grid; gap: 16px; min-width: 0; }
-.orc2-bloco { padding-bottom: 4px; }
+.orc2 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: stretch; } /* as duas colunas começam e terminam juntas */
+.orc2-trab { display: grid; grid-template-rows: auto 1fr; gap: 16px; min-width: 0; }
+.orc2-bloco { padding-bottom: 4px; overflow: visible; }
+.orc2-trab > .orc2-bloco:first-child { position: relative; z-index: 5; } /* a lista de sugestões da busca fica por cima do bloco 2 */
 
 /* cabeçalho de cada bloco: número do passo + título + extra à direita */
 .orc2-cab { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--linha); flex-wrap: wrap; }
@@ -494,7 +495,6 @@ details > summary { cursor: pointer; font-weight: 600; }
 .orc2-subtotal b { color: var(--texto); font-size: 15px; margin-left: 6px; }
 
 /* resumo (direita), fixo enquanto rola */
-.orc2-resumo { position: sticky; top: 12px; }
 .orc2-formas { display: grid; gap: 10px; padding: 14px 16px; }
 .orc2-formas button { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: center; text-align: left; padding: 14px; border: 2px solid var(--linha); border-radius: 12px; background: var(--painel); color: var(--texto); cursor: pointer; font: inherit; }
 .orc2-formas button:disabled { cursor: default; opacity: .6; }
@@ -520,12 +520,13 @@ details > summary { cursor: pointer; font-weight: 600; }
 .orc2-valido svg { width: 14px; height: 14px; }
 .orc2-saida { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--linha); }
 
-@media (max-width: 1100px) { .orc2 { grid-template-columns: 1fr; } .orc2-resumo { position: static; } }
+@media (max-width: 1100px) { .orc2 { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .orc2-lista li { grid-template-columns: 1fr auto 30px; } .orc2-val { grid-column: 2; } }
 
 .orc2-linha-busca { display: flex; align-items: center; gap: 12px; margin: 14px 16px 6px; }
 .orc2-linha-busca .orc2-busca { margin: 0; flex: 1 1 auto; max-width: 62%; }
 .orc2-linha-busca .seg { flex: none; margin-left: auto; }
 .orc2-linha-busca .seg button { padding: 12px 18px; }
-.orc2-regras { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
+.orc2-resumo { display: flex; flex-direction: column; }
+.orc2-regras { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
 .orc2-regras b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
