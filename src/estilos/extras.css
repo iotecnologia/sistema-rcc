@@ -255,8 +255,17 @@ details > summary { cursor: pointer; font-weight: 600; }
 .resposta-1.atencao { color: var(--st-at-t); }
 .resposta-1.nao_pode { color: var(--st-no-t); }
 
-/* Avisos: botão "2 de 2" da coluna Leram numa linha só */
-.btn2.leram { white-space: nowrap; height: 30px; padding: 0 10px; font-size: 13px; }
+/* Avisos publicados: colunas justas (Situação não corta); setinha discreta no canto de baixo da linha abre quem leu */
+table.tab-avisos th, table.tab-avisos td { padding-left: 8px; padding-right: 8px; }
+table.tab-avisos tr > :first-child { padding-left: 14px; }
+table.tab-avisos td[colspan] { padding: 8px 14px; }
+table.tab-avisos th:not(:first-child), table.tab-avisos td:not(:first-child) { white-space: nowrap; }
+table.tab-avisos .cel-acoes { position: relative; }
+table.tab-avisos .btn2.ic { width: 30px; height: 30px; }
+.ver-leram { position: absolute; right: 12px; bottom: 6px; width: 22px; height: 22px; padding: 0; border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; display: grid; place-items: center; border-radius: 4px; opacity: .7; }
+.ver-leram:hover { opacity: 1; color: var(--texto); }
+.ver-leram svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .15s; }
+.ver-leram.aberta svg { transform: rotate(180deg); }
 
 /* Visão geral: avisos lidos resumidos (coluna da direita) */
 .lidos-resumo { list-style: none; margin: 0; padding: 6px 0; }
