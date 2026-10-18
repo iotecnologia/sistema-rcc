@@ -37,8 +37,8 @@ export function Consultar() {
   // guarda só o resumo da consulta (convênio + exames) para a Visão geral — nunca dado de paciente
   useEffect(() => {
     if (!resultado) return;
-    const hist = local.ler<{ conv: string; ex: string; quando: string; sit?: string; slug?: string; ids?: string }[]>('historico', []);
-    const item = { conv: resultado.convenio.nome, ex: resultado.exames.map((e) => e.autorizacao.exame.nome).join(' · '), quando: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }), sit: resultado.situacao, slug: resultado.convenio.slug, ids: exames.map((x) => `${x.exameId}x${x.quantidade}`).join(',') };
+    const hist = local.ler<{ conv: string; ex: string; quando: string; dia?: string; slug?: string; ids?: string }[]>('historico', []);
+    const item = { conv: resultado.convenio.nome, ex: resultado.exames.map((e) => e.autorizacao.exame.nome).join(' · '), quando: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }), dia: hojeIso(), slug: resultado.convenio.slug, ids: exames.map((x) => `${x.exameId}x${x.quantidade}`).join(',') };
     if (!hist.length || hist[0].conv !== item.conv || hist[0].ex !== item.ex) local.gravar('historico', [item, ...hist].slice(0, 8));
   }, [resultado]);
 
