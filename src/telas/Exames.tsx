@@ -32,12 +32,18 @@ function OndeTempo({ ag }: { ag: AgendaExame }) {
   return <Linha rot="Onde">sem máquina ou médico cadastrado</Linha>;
 }
 
+/** Tipos de exame (modalidade) mostrados no catálogo. Só nome de tela: os dados continuam como estão. */
+const TIPOS: Record<string, string> = { RX: 'Raio-X', RESSONANCIA: 'Ressonância', ULTRASSOM: 'Ultrassom', DOPPLER: 'Doppler', TOMOGRAFIA: 'Tomografia',
+  ANGIOTOMOGRAFIA: 'Angiotomografia', MAMOGRAFIA: 'Mamografia', ANGIORRESSONANCIA: 'Angiorressonância', DENSITOMETRIA: 'Densitometria óssea', PROCEDIMENTO: 'Procedimentos', OUTROS: 'Outros' };
+const ORDEM_TIPOS = Object.keys(TIPOS);
+
 export function Exames() {
   const b = useBase();
   const [q, setQ] = useState('');
   const [sel, setSel] = useState<Achado | null>(null);
   const [aberto, setAberto] = useState(false);
   const [i, setI] = useState(0);
+  const [tipo, setTipo] = useState<string | null>(null);
   const ref = useRef<HTMLInputElement>(null);
   const [params] = useSearchParams();
   // veio da busca geral do cabeçalho: já abre o exame escolhido
@@ -56,6 +62,11 @@ export function Exames() {
     else if (ev.key === 'Escape') setAberto(false);
   };
 
+  const ativos = useMemo(() => b.exames.filter((x) => x.ativo), [b]);
+  const tipos = useMemo(() => ORDEM_TIPOS.map((t) => ({ t, n: ativos.filter((x) => x.modalidade === t).length })).filter((x) => x.n), [ativos]);
+  const doTipo = useMemo(() => (tipo ? ativos.filter((x) => x.modalidade === tipo).sort((x, y) => x.nome.localeCompare(y.nome)) : []), [ativos, tipo]);
+  const voltarLista = () => { setSel(null); setQ(''); };
+
   const e = sel?.exame;
   const ag = e ? agendaDoExame(b, e) : null;
   // códigos ativos agrupados por convênio (um convênio pode ter mais de um código)
@@ -64,7 +75,9 @@ export function Exames() {
 
   return (
     <>
-      <TituloPagina titulo="Exames" sub="Digite o exame do jeito que o paciente falou e escolha na lista." />
+      <TituloPagina titulo={tipo && !e ? TIPOS[tipo] : 'Exames'} sub={tipo && !e ? `${doTipo.length} exames. Toque no exame para ver o código de cada convênio.` : 'Digite o exame do jeito que o paciente falou ou toque no tipo de exame.'}>
+        {tipo && <button type="button" className="btn2 ic" onClick={() => (e ? voltarLista() : setTipo(null))} title={e ? `Voltar para ${TIPOS[tipo]}` : 'Voltar aos tipos de exame'} aria-label="Voltar"><Icone n="volta" /></button>}
+      </TituloPagina>
       <div className="busca-conv">
         <Icone n="busca" />
         <input ref={ref} type="search" autoFocus value={q} autoComplete="off" placeholder="Nome do exame… (ex.: resso joelho)"
@@ -82,7 +95,27 @@ export function Exames() {
         )}
       </div>
 
-      {!e || !ag ? <div className="bloco"><Vazio>{q.trim() ? 'Escolha o exame na lista.' : 'Digite o exame. Ex.: “resso joelho”.'}</Vazio></div> : (
+      {!e || !ag ? (q.trim() ? <div className="bloco"><Vazio>Escolha o exame na lista.</Vazio></div> : !tipo ? (
+        <section className="grupo-conv">
+          <h3>Tipo de exame <span className="mut">· {tipos.length} tipos · {ativos.length} exames</span></h3>
+          <div className="cards-med">
+            {tipos.map(({ t, n }) => (
+              <button type="button" key={t} className="med-card" onClick={() => setTipo(t)}>
+                <span className="med-av"><Icone n="exame" /></span>
+                <span className="med-inf"><b>{TIPOS[t]}</b><span className="mut">{n} exame{n === 1 ? '' : 's'}</span></span>
+              </button>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <div className="cards-med">
+          {doTipo.map((x) => (
+            <button type="button" key={x.id} className="med-card" onClick={() => escolher({ exame: x, rotulo: x.nome })}>
+              <span className="med-inf"><b>{x.nome}</b></span>
+            </button>
+          ))}
+        </div>
+      )) : (
         <div className="conv-detalhe">
           <div className="conv-cab bloco exame-cab"><div><b>{sel!.rotulo}</b>{sel!.rotulo !== e.nome && <span className="mut">{e.nome}</span>}</div></div>
           <div className="grade2">
