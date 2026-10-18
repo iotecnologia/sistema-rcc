@@ -1,532 +1,215 @@
-/* Complementos do mock funcional (o resto vem de rcc.css, igual ao protótipo v3) */
-html, body, #root { margin: 0; height: 100%; }
-a { color: var(--link); }
-.faixa.ok { background: var(--st-ok-bg); color: var(--st-ok-t); }
-.faixa.at { background: var(--st-at-bg); color: var(--st-at-t); }
-.faixa.no { background: var(--st-no-bg); color: var(--st-no-t); }
-.faixa ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; font-weight: 600; }
-.faixa .txt { display: grid; }
-.lista-regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.lista-regras li { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.45; }
-.lista-regras li .tag { flex: none; margin-top: 1px; }
-.orig { font-size: 11.5px; color: var(--texto-suave); margin-top: 2px; }
-.qtd { display: inline-flex; align-items: center; gap: 4px; margin-left: 4px; }
-.qtd button { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--borda); background: var(--painel-2); cursor: pointer; padding: 0; }
-.qtd span { min-width: 16px; text-align: center; font-weight: 700; }
-.blocos { display: grid; gap: 14px; }
-.pad { padding: 14px 16px; }
-.grade-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
-.mini { font-size: 12px; color: var(--texto-suave); }
-.preparo-txt { white-space: pre-line; font-size: 13px; line-height: 1.5; }
-details > summary { cursor: pointer; font-weight: 600; }
-.abas { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
-.abas button { height: 34px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel); color: var(--texto); font-weight: 600; cursor: pointer; }
-.abas button.on { background: var(--destaque); border-color: var(--destaque); color: var(--destaque-texto); }
-.aviso-mock { font-size: 12px; color: var(--texto-suave); border: 1px dashed var(--borda); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; }
-.tot { display: flex; justify-content: space-between; padding: 10px 16px; border-top: 1px solid var(--linha); font-size: 14px; }
-.tot.grande { font-size: 18px; font-weight: 800; }
-.so-impressao { display: none; }
+// Orçamento particular / Sócio Remido — organizado na ordem do atendimento:
+// esquerda = trabalho (tabela → exames → paciente); direita = resumo fixo (Cartão e PIX lado a lado, total, imprimir/enviar).
+// A forma de pagamento aplica a regra da RCC; o desconto extra respeita o limite do cargo de quem está usando.
+// Dados do paciente (nome, sobrenome, CPF, RG) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
+import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
+import { useBase } from '../componentes/Dados';
+import { BotoesSaida, TituloPagina } from '../componentes/Comuns';
+import { Icone } from '../componentes/Icone';
+import { buscarPrecos } from '../regras/busca';
+import { brl } from '../util/formato';
+import { br, hojeIso, somarDias } from '../regras/calendario';
+import { descontoMaximo, useSessao } from '../acesso/Sessao';
 
-/* Impressão / PDF: papel branco, texto preto, negrito só em título e cabeçalho de coluna */
-@media print {
-  .lateral, .topo, .status, .acoes-pagina, .barra, .chips, .sugestoes, .passos, .rodape-etapa, .nao-imprimir { display: none !important; }
-  .app { display: block !important; background: #fff !important; color: #000 !important; }
-  .conteudo { padding: 0 !important; overflow: visible !important; }
-  .bloco, .kpi, .etapa, .faixa { border: 1px solid #999 !important; background: #fff !important; color: #000 !important; box-shadow: none !important; break-inside: avoid; }
-  .kpi::before { display: none; }
-  .tag { background: #fff !important; color: #000 !important; border: 1px solid #999; font-weight: 400; }
-  .grade2 { grid-template-columns: 1fr !important; }
-  table.tab th { background: #fff !important; color: #000 !important; }
-  table.tab td b, .lista-regras b, .checks li.forte { font-weight: 400 !important; }
-  .so-impressao { display: block; margin-bottom: 12px; }
-  a { color: #000 !important; text-decoration: none; }
+interface Linha { precoId: number; qtd: number }
+type Forma = 'cartao' | 'pix';
+
+/** Parcelamento da RCC: até R$ 300 em 2x · de R$ 300 a R$ 500 em 3x · acima de R$ 500 em 6x. */
+export const parcelas = (total: number) => (total <= 300 ? 2 : total <= 500 ? 3 : 6);
+/** PIX ou dinheiro: 5% de desconto. */
+export const DESCONTO_PIX = 5;
+
+/** A partir do 4º exame a lista rola: ela mostra 3 exames e o resto fica no scroll (assim o bloco 2 não desce). */
+const EXAMES_VISIVEIS = 3;
+
+/** CPF: 000.000.000-00 enquanto digita. */
+const mascaraCpf = (v: string) => v.replace(/\D/g, '').slice(0, 11)
+  .replace(/^(\d{3})(\d)/, '$1.$2').replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3').replace(/\.(\d{3})(\d{1,2})$/, '.$1-$2');
+/** Confere os dois dígitos do CPF. */
+function cpfValido(v: string) {
+  const d = v.replace(/\D/g, '');
+  if (d.length !== 11 || /^(\d)\1+$/.test(d)) return false;
+  const dig = (n: number) => { let s = 0; for (let i = 0; i < n; i++) s += Number(d[i]) * (n + 1 - i); const r = (s * 10) % 11; return r === 10 ? 0 : r; };
+  return dig(9) === Number(d[9]) && dig(10) === Number(d[10]);
 }
 
-/* ---------- Login */
-.login-tela { display: grid; place-items: center; grid-template-columns: 1fr; grid-template-rows: 1fr; }
-.login-caixa { width: min(380px, calc(100vw - 32px)); background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 28px; display: grid; gap: 14px; box-shadow: var(--sombra); }
-.login-caixa img { height: 64px; justify-self: center; border-radius: 10px; }
-.login-caixa h1 { margin: 0; text-align: center; font-size: 22px; }
-/* ---------- Menu com cadeado */
-.lat-item.bloqueado { opacity: .45; cursor: not-allowed; }
-.lat-item.bloqueado:hover { background: transparent; color: var(--lateral-texto); }
-.lat-item .cadeado { margin-left: auto; width: 14px; height: 14px; }
-/* ---------- Resultado simples (3 blocos) */
-.res-simples { display: grid; gap: 14px; }
-.res-grande { font-size: 22px; }
-.res-bloco { background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 16px 18px; }
-.res-bloco h3 { margin: 0 0 10px; font-size: 16px; }
-.res-bloco ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; line-height: 1.45; }
-.res-bloco details { margin-top: 10px; }
-.res-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-/* ---------- Usuários e cargos */
-.matriz th, .matriz td { white-space: nowrap; }
-.matriz .rot-pag { font-size: 11px; font-weight: 600; }
-.matriz .centro { text-align: center; }
-.matriz input[type=checkbox] { width: 18px; height: 18px; }
-/* ---------- Relatório (cartão do Analiza antigo): preto no branco, negrito só no título e cabeçalhos */
-.rel-fundo { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: grid; place-items: start center; overflow: auto; padding: 24px 16px; z-index: 50; }
-.rel-caixa { width: min(760px, 100%); display: grid; gap: 10px; }
-.rel-acoes { display: flex; gap: 8px; justify-content: flex-end; }
-.rel-acoes .btn2:not(.zap) { background: #fff; }
-.rel-cartao { background: #fff; color: #000; padding: 32px 36px; border-radius: 8px; font-family: "Segoe UI", Arial, sans-serif; font-size: 13.5px; }
-.rel-cab { display: flex; align-items: center; gap: 18px; border-bottom: 2px solid #000; padding-bottom: 16px; margin-bottom: 18px; }
-.rel-cab img { height: 60px; }
-.rel-clinica { font-size: 17px; font-weight: 700; }
-.rel-info { font-size: 12px; margin-top: 4px; line-height: 1.5; }
-.rel-titulo { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
-.rel-meta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 12.5px; border-bottom: 1px solid #999; padding-bottom: 12px; margin-bottom: 14px; }
-.rel-secao { margin-bottom: 14px; break-inside: avoid; }
-.rel-secao h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
-.rel-secao table { width: 100%; border-collapse: collapse; }
-.rel-secao td { padding: 6px 4px; border-bottom: 1px solid #ddd; font-weight: 400; vertical-align: top; }
-.rel-secao td.v { text-align: right; white-space: nowrap; }
-.rel-texto { white-space: pre-line; margin: 0; line-height: 1.5; }
-.rel-totais div { display: flex; justify-content: space-between; padding: 4px; }
-.rel-totais div.fim { border-top: 2px solid #000; padding-top: 10px; margin-top: 4px; font-size: 16px; }
-.rel-rodape { margin-top: 16px; font-size: 11.5px; text-align: center; }
-@media print {
-  body.rel-aberto #root { display: none !important; }
-  body.rel-aberto .rel-fundo { position: static; background: none; padding: 0; display: block; overflow: visible; }
-  body.rel-aberto .rel-acoes { display: none; }
-  body.rel-aberto .rel-caixa { width: 100%; }
-  body.rel-aberto .rel-cartao { padding: 0; border-radius: 0; }
+export function Orcamento() {
+  const b = useBase();
+  const s = useSessao();
+  const limite = descontoMaximo(s.cargo);
+  const [tabela, setTabela] = useState(b.tabelasPreco[0]?.id ?? 1);
+  const [q, setQ] = useState('');
+  const [aberto, setAberto] = useState(false);
+  const [foco, setFoco] = useState(0);
+  const ref = useRef<HTMLInputElement>(null);
+  const [linhas, setLinhas] = useState<Linha[]>([]);
+  const [forma, setForma] = useState<Forma>('cartao');
+  const [pac, setPac] = useState({ nome: '', sobrenome: '', cpf: '', rg: '' });
+  const [extra, setExtra] = useState(0);
+  const listaRef = useRef<HTMLUListElement>(null);
+  const [alturaLista, setAlturaLista] = useState<number | undefined>(undefined);
+
+  const precos = b.precos.filter((p) => p.tabela_id === tabela);
+  const busca = useMemo(() => (q.trim().length < 2 ? [] : buscarPrecos(precos, q)), [precos, q]);
+  const itens = linhas.map((l) => ({ ...l, p: b.precos.find((x) => x.id === l.precoId)! }));
+  const subtotal = itens.reduce((t, x) => t + x.p.valor * x.qtd, 0);
+
+  // os dois valores calculados ao mesmo tempo: o atendente fala as duas opções sem trocar nada
+  const totalDe = (f: Forma) => subtotal - subtotal * Math.min(100, (f === 'pix' ? DESCONTO_PIX : 0) + extra) / 100;
+  const totCartao = totalDe('cartao');
+  const totPix = totalDe('pix');
+  const nx = parcelas(totCartao);
+  const total = forma === 'pix' ? totPix : totCartao;
+  const pctPix = forma === 'pix' ? DESCONTO_PIX : 0;
+  const desconto = subtotal - total;
+
+  // mede a altura dos 3 primeiros exames (os nomes podem ter 1 ou 2 linhas) e trava a lista nessa altura
+  useLayoutEffect(() => {
+    const el = listaRef.current;
+    if (!el || el.children.length <= EXAMES_VISIVEIS) { setAlturaLista(undefined); return; }
+    const filhos = [...el.children].slice(0, EXAMES_VISIVEIS) as HTMLElement[];
+    const pad = parseFloat(getComputedStyle(el).paddingTop) || 0;
+    setAlturaLista(filhos.reduce((t, x) => t + x.offsetHeight, 0) + pad);
+  }, [linhas]);
+
+  const add = (id: number) => { setLinhas(linhas.some((l) => l.precoId === id) ? linhas.map((l) => (l.precoId === id ? { ...l, qtd: l.qtd + 1 } : l)) : [...linhas, { precoId: id, qtd: 1 }]); setQ(''); setAberto(false); ref.current?.focus(); };
+  const mudarQtd = (id: number, dq: number) => setLinhas(linhas.map((l) => (l.precoId === id ? { ...l, qtd: Math.max(1, l.qtd + dq) } : l)));
+  const tirar = (id: number) => setLinhas(linhas.filter((l) => l.precoId !== id));
+  const trocarTabela = (id: number) => {
+    if (id === tabela) return;
+    if (linhas.length && !window.confirm('Trocar a tabela apaga os exames já escolhidos. Continuar?')) return;
+    setTabela(id); setLinhas([]);
+  };
+  const tecla = (ev: KeyboardEvent) => {
+    if (ev.key === 'ArrowDown') { ev.preventDefault(); setAberto(true); setFoco(Math.min(foco + 1, busca.length - 1)); }
+    else if (ev.key === 'ArrowUp') { ev.preventDefault(); setFoco(Math.max(foco - 1, 0)); }
+    else if (ev.key === 'Enter' && busca[foco]) { ev.preventDefault(); add(busca[foco].id); }
+    else if (ev.key === 'Escape') setAberto(false);
+  };
+  const mudarExtra = (v: string) => { const n = Math.max(0, Math.min(limite, Number(v.replace(',', '.')) || 0)); setExtra(Math.round(n * 10) / 10); };
+  const limpar = () => { setLinhas([]); setForma('cartao'); setPac({ nome: '', sobrenome: '', cpf: '', rg: '' }); setExtra(0); setQ(''); };
+
+  const validade = somarDias(hojeIso(), 30);
+  const nomeTabela = b.tabelasPreco.find((t) => t.id === tabela)?.nome ?? '';
+  const cpfRuim = pac.cpf.replace(/\D/g, '').length === 11 && !cpfValido(pac.cpf);
+  const nomeCompleto = `${pac.nome} ${pac.sobrenome}`.trim();
+  const docs = [pac.cpf && `CPF ${pac.cpf}`, pac.rg && `RG ${pac.rg}`].filter(Boolean).join(' · ');
+  const pagamento = forma === 'pix' ? 'PIX ou dinheiro' : `Cartão em até ${nx}x de ${brl(total / nx)}`;
+  const rotDesconto = [pctPix && `PIX ${pctPix}%`, extra && `extra ${extra}%`].filter(Boolean).join(' + ');
+  const qtdTotal = itens.reduce((t, x) => t + x.qtd, 0);
+  const texto = () => [`*Orçamento RCC — ${nomeTabela}*`, nomeCompleto && `Paciente: ${nomeCompleto}`, docs, ...itens.map((x) => `- ${x.qtd > 1 ? x.qtd + 'x ' : ''}${x.p.procedimento}: ${brl(x.p.valor * x.qtd)}`),
+    desconto ? `Desconto (${rotDesconto}): - ${brl(desconto)}` : '', `*Total: ${brl(total)}*`, `Pagamento: ${pagamento}`, `Válido até ${br(validade)} (30 dias)`].filter(Boolean).join('\n');
+  const relatorio = () => ({
+    titulo: /remido/i.test(nomeTabela) ? 'Orçamento de Exames — Sócio Remido Casa de Saúde' : 'Orçamento de Exames',
+    paciente: [nomeCompleto, docs].filter(Boolean).join(' · ') || undefined,
+    secoes: [{ linhas: itens.map((x) => [`${x.qtd > 1 ? x.qtd + 'x ' : ''}${x.p.procedimento}`, brl(x.p.valor * x.qtd)] as [string, string]) },
+      { titulo: 'Forma de pagamento', linhas: [[pagamento]] as [string][] }],
+    totais: [...(desconto ? [['Subtotal', brl(subtotal)], [`Desconto (${rotDesconto})`, '- ' + brl(desconto)]] as [string, string][] : []), ['Total', brl(total)] as [string, string]],
+    rodape: [`Orçamento válido até ${br(validade)} (30 dias).`],
+  });
+
+  return (
+    <>
+      <TituloPagina titulo="Orçamento" sub="Escolha a tabela e os exames. O sistema calcula Cartão e PIX ao mesmo tempo.">
+        <button type="button" className="btn2 ic" onClick={limpar} title="Novo orçamento" aria-label="Novo orçamento"><Icone n="limpar" /></button>
+        <BotoesSaida desativado={!itens.length || cpfRuim} texto={texto} relatorio={relatorio} />
+      </TituloPagina>
+
+      <div className="orc2">
+        {/* ESQUERDA: o trabalho, na ordem do atendimento */}
+        <div className="orc2-trab">
+          <section className="bloco orc2-bloco">
+            <div className="orc2-cab"><span className="orc2-num">1</span><h3>Exames</h3>
+            </div>
+
+            <div className="orc2-linha-busca">
+            <div className="orc2-busca">
+              <Icone n="busca" />
+              <input ref={ref} type="text" value={q} autoComplete="off" placeholder="Digite o exame… ex.: raio x tórax"
+                onChange={(e) => { setQ(e.target.value); setFoco(0); setAberto(true); }} onFocus={() => setAberto(true)}
+                onBlur={() => setTimeout(() => setAberto(false), 150)} onKeyDown={tecla} />
+              {aberto && q.trim().length >= 2 && (
+                <div className="combo-lista" role="listbox">
+                  {busca.length ? busca.map((p, k) => (
+                    <button type="button" key={p.id} role="option" aria-selected={k === foco} className={k === foco ? 'foco' : ''}
+                      onMouseDown={(ev) => { ev.preventDefault(); add(p.id); }} onMouseEnter={() => setFoco(k)}>
+                      <span>{p.procedimento}</span><small>{brl(p.valor)}</small>
+                    </button>
+                  )) : <div className="combo-vazio">Nenhum exame com “{q}” na tabela {nomeTabela}.</div>}
+                </div>
+              )}
+            </div>
+            <div className="seg" role="group" aria-label="Tabela de preço">
+              {b.tabelasPreco.map((t) => <button type="button" key={t.id} className={tabela === t.id ? 'on' : ''} onClick={() => trocarTabela(t.id)}>{t.nome}</button>)}
+            </div>
+            </div>
+
+            {itens.length ? (
+              <ul className="orc2-lista" ref={listaRef} style={alturaLista ? { maxHeight: alturaLista, overflowY: 'auto' } : undefined}>
+                {itens.map((x) => (
+                  <li key={x.precoId}>
+                    <div className="orc2-nome"><b>{x.p.procedimento}</b><small>{x.p.subgrupo} · {brl(x.p.valor)} cada</small></div>
+                    <span className="orc2-qtd">
+                      <button type="button" onClick={() => mudarQtd(x.precoId, -1)} disabled={x.qtd <= 1} aria-label="Diminuir"><Icone n="menos" /></button>
+                      <span>{x.qtd}</span>
+                      <button type="button" onClick={() => mudarQtd(x.precoId, 1)} aria-label="Aumentar"><Icone n="mais" /></button>
+                    </span>
+                    <span className="orc2-val">{brl(x.p.valor * x.qtd)}</span>
+                    <button type="button" className="orc2-tirar" onClick={() => tirar(x.precoId)} title="Tirar exame" aria-label={'Tirar ' + x.p.procedimento}><Icone n="x" /></button>
+                  </li>
+                ))}
+              </ul>
+            ) : <div className="orc2-vazio">Nenhum exame ainda. Digite o nome do exame na caixa acima.</div>}
+            {itens.length > 0 && <div className="orc2-subtotal"><span>{qtdTotal} exame{qtdTotal > 1 ? 's' : ''}</span><span>Subtotal <b>{brl(subtotal)}</b></span></div>}
+          </section>
+
+          <section className="bloco orc2-bloco">
+            <div className="orc2-cab"><span className="orc2-num">2</span><h3>Dados do paciente</h3><small className="mut">opcional · só aparece no orçamento impresso / WhatsApp</small></div>
+            <div className="orc-pac">
+              <label className="cp"><span>Nome completo</span><input value={pac.nome} onChange={(e) => setPac({ ...pac, nome: e.target.value })} /></label>
+              <label className="cp"><span>CPF</span><input inputMode="numeric" placeholder="000.000.000-00" value={pac.cpf} onChange={(e) => setPac({ ...pac, cpf: mascaraCpf(e.target.value) })} className={cpfRuim ? 'erro' : ''} />
+                {cpfRuim && <small className="erro-txt">CPF inválido: confira os números</small>}</label>
+            </div>
+          </section>
+        </div>
+
+        {/* DIREITA: resumo fixo — o que o atendente fala para o paciente */}
+        <aside className="bloco orc2-resumo">
+          <div className="orc2-cab"><span className="orc2-num">3</span><h3>Forma de pagamento</h3></div>
+
+          <div className="orc2-formas" role="radiogroup" aria-label="Forma de pagamento">
+            <button type="button" role="radio" aria-checked={forma === 'cartao'} className={forma === 'cartao' ? 'on' : ''} onClick={() => setForma('cartao')} disabled={!itens.length}>
+              <span className="orc2-marca">{forma === 'cartao' && <Icone n="ok" />}</span>
+              <span className="orc2-forma-txt"><span>Cartão</span><b>{brl(totCartao)}</b><small>{itens.length ? `até ${nx}x de ${brl(totCartao / nx)}` : 'parcelado'}</small></span>
+            </button>
+            <button type="button" role="radio" aria-checked={forma === 'pix'} className={forma === 'pix' ? 'on' : ''} onClick={() => setForma('pix')} disabled={!itens.length}>
+              <span className="orc2-marca">{forma === 'pix' && <Icone n="ok" />}</span>
+              <span className="orc2-forma-txt"><span>PIX ou dinheiro</span><b>{brl(totPix)}</b><small className="verde">{itens.length ? `economiza ${brl(totCartao - totPix)} (${DESCONTO_PIX}%)` : `${DESCONTO_PIX}% de desconto`}</small></span>
+            </button>
+          </div>
+
+          <div className="orc2-extra">
+            <span>Desconto extra</span>
+            <span className="pct"><input type="number" min={0} max={limite} step={0.5} value={extra || ''} placeholder="0" disabled={limite <= 0} onChange={(e) => mudarExtra(e.target.value)} aria-label="Desconto extra em porcentagem" />%</span>
+            <small className="mut">{limite >= 100 ? 'sem limite' : limite > 0 ? `seu limite: ${limite}%` : 'seu cargo não dá desconto extra'}</small>
+          </div>
+
+          <div className="orc2-total">
+            {desconto > 0 && <div className="orc2-linha"><span>Subtotal</span><span>{brl(subtotal)}</span></div>}
+            {desconto > 0 && <div className="orc2-linha verde"><span>Desconto ({rotDesconto})</span><span>− {brl(desconto)}</span></div>}
+            <div className="orc2-grande"><span>Total</span><span>{brl(total)}</span></div>
+            <div className="orc2-como">{itens.length ? pagamento : 'Adicione exames para calcular'}</div>
+            <div className="orc2-valido"><Icone n="calendario" />Válido por 30 dias · até {br(validade)}</div>
+          </div>
+
+          <div className="orc2-regras">
+            <b>Regra de pagamento da RCC</b>
+            <span>Até R$ 300: até 2x</span><span>R$ 300 a 500: até 3x</span>
+            <span>Acima de R$ 500: até 6x</span><span>PIX/dinheiro: {DESCONTO_PIX}% off</span>
+          </div>
+
+        </aside>
+      </div>
+    </>
+  );
 }
-@media (max-width: 640px) { .rel-cartao { padding: 20px 16px; } .rel-cab { flex-direction: column; align-items: flex-start; } }
-/* ---------- Janela de agendamento (calendário) */
-.cal { display: flex; gap: 40px; flex-wrap: wrap; padding: 16px 18px; }
-.cal-mes { flex: 1 1 300px; }
-.cal-tit { font-weight: 800; margin-bottom: 8px; text-transform: capitalize; }
-.cal-grade { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; font-size: 13px; }
-.cal-sem { font-size: 11px; font-weight: 700; color: var(--texto-suave); }
-.cal-dia { height: 36px; display: grid; place-items: center; border-radius: 8px; }
-.cal-dia.ok { background: var(--st-ok-bg); color: var(--st-ok-t); font-weight: 700; }
-.cal-dia.ok-aberto { background: var(--st-ok-bg); color: var(--st-ok-t); opacity: .6; }
-.cal-dia.ini { background: #16a34a; color: #fff; font-weight: 800; opacity: 1; }
-.cal-dia.fim { background: #7c3aed; color: #fff; font-weight: 800; }
-.cal-dia.feriado { background: var(--st-at-bg); color: var(--st-at-t); font-weight: 700; }
-.cal-dia.fechado { color: var(--texto-suave); opacity: .45; }
-.cal-dia.pedido { background: var(--painel-2); font-weight: 700; }
-.cal-dia.hoje { outline: 2px solid var(--texto); font-weight: 800; }
-.cal-leg { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; padding: 0 18px 16px; }
-.cal-leg i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; vertical-align: middle; margin-right: 4px; }
-.cal-leg i.pedido { background: var(--painel-2); } .cal-leg i.hoje { outline: 2px solid var(--texto); } .cal-leg i.ok { background: var(--st-ok-bg); }
-.cal-leg i.fim { background: #7c3aed; } .cal-leg i.feriado { background: var(--st-at-bg); } .cal-leg i.fechado { background: var(--linha); }
-/* ---------- Orçamento: forma de pagamento */
-.formas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 16px; }
-.formas button { text-align: left; border: 2px solid var(--linha); background: var(--painel); color: var(--texto); border-radius: 12px; padding: 12px 14px; cursor: pointer; font: inherit; display: grid; gap: 2px; }
-.formas button small { color: var(--texto-suave); font-size: 12px; }
-.formas button.on { border-color: var(--destaque); box-shadow: inset 0 0 0 1px var(--destaque); }
-/* ---------- Login: mostrar senha e esqueci minha senha */
-.campo .inp.com-olho input { padding-right: 44px; }
-.campo .inp .olho { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; border: 0; background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--texto-suave); border-radius: 8px; }
-.campo .inp .olho:hover { background: var(--hover); color: var(--texto); }
-.campo .inp .olho svg { position: static; transform: none; }
-.form-caixa .link-esqueci, .link-esqueci { background: none; border: 0; padding: 0; margin: -6px 0 14px; color: var(--link) !important; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; }
-.link-esqueci:hover { text-decoration: underline; }
-/* ---------- Abertura depois do login (logo animado + mensagens) */
-.abertura { position: fixed; inset: 0; background: radial-gradient(circle at 50% 40%, #0b2f52 0%, #05203B 60%, #031629 100%); color: #dbe4ee; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif; z-index: 100; animation: ab-entra .35s ease-out; }
-.abertura-logo { position: relative; width: 150px; height: 150px; display: grid; place-items: center; }
-.abertura-logo img { width: 130px; height: auto; border-radius: 14px; position: relative; z-index: 1; animation: ab-pulsa 1.6s ease-in-out infinite; }
-.abertura-logo .onda { position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(47,184,198,.55); animation: ab-onda 1.8s ease-out infinite; }
-.abertura-logo .onda.o2 { animation-delay: .9s; }
-.abertura-nome { font-size: 22px; font-weight: 800; letter-spacing: 6px; color: #fff; margin-top: 6px; }
-.abertura-ola { font-size: 16px; color: #2FB8C6; font-weight: 600; }
-.abertura-barra { width: min(320px, 80vw); height: 6px; border-radius: 6px; background: rgba(255,255,255,.12); overflow: hidden; margin-top: 10px; }
-.abertura-barra span { display: block; height: 100%; background: #2FB8C6; border-radius: 6px; transition: width .6s ease; }
-.abertura-msg { font-size: 14px; color: #9eb0c1; min-height: 20px; }
-@keyframes ab-entra { from { opacity: 0; } to { opacity: 1; } }
-@keyframes ab-pulsa { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-@keyframes ab-onda { from { transform: scale(.75); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .abertura-logo img, .abertura-logo .onda { animation: none; } }
-/* ---------- Avisos da equipe */
-.icone-btn.sino { position: relative; }
-.icone-btn .bolinha { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; border-radius: 9px; background: #dc2626; color: #fff; font-size: 11px; font-weight: 800; display: grid; place-items: center; padding: 0 4px; }
-.quadro-avisos { margin-bottom: 14px; }
-.lista-avisos { list-style: none; margin: 0; padding: 10px 14px 14px; display: grid; gap: 10px; }
-.aviso-eq { border: 1px solid var(--linha); border-left: 5px solid #3b82f6; border-radius: 10px; padding: 10px 14px; background: var(--painel); }
-.aviso-eq.urgente { border-left-color: #dc2626; background: var(--st-no-bg); }
-.aviso-eq.importante { border-left-color: #d97706; }
-.aviso-eq.lido { opacity: .7; }
-.aviso-eq-cab { display: flex; gap: 8px; align-items: center; font-size: 15px; }
-.aviso-eq-txt { margin: 6px 0; font-size: 14px; white-space: pre-line; line-height: 1.45; }
-.aviso-eq-rod { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 12px; color: var(--texto-suave); flex-wrap: wrap; }
-.ok-lido { display: inline-flex; gap: 4px; align-items: center; color: var(--st-ok-t); font-weight: 700; }
-.tag-aviso { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .4px; padding: 3px 8px; border-radius: 6px; border: 2px solid transparent; cursor: default; }
-.tag-aviso.urgente { background: #dc2626; color: #fff; } .tag-aviso.importante { background: #f59e0b; color: #fff; } .tag-aviso.informativo { background: #3b82f6; color: #fff; }
-.tipos-aviso { display: flex; gap: 8px; }
-.tipos-aviso .tag-aviso { cursor: pointer; opacity: .45; font-size: 12px; padding: 8px 12px; }
-.tipos-aviso .tag-aviso.on { opacity: 1; border-color: var(--texto); }
-.form-aviso { display: grid; gap: 12px; }
-.form-aviso textarea { width: 100%; border: 1px solid var(--borda); border-radius: var(--raio-sm); padding: 10px 12px; font: inherit; background: var(--painel-2); color: var(--texto); resize: vertical; }
-.urgente-fundo { position: fixed; inset: 0; background: rgba(5,32,59,.75); display: grid; place-items: center; z-index: 80; padding: 16px; }
-.urgente-caixa { background: var(--painel); color: var(--texto); width: min(520px, 100%); border-radius: 16px; padding: 22px 24px; box-shadow: 0 20px 50px rgba(0,0,0,.35); border-top: 6px solid #dc2626; display: grid; gap: 10px; }
-.urgente-topo { display: flex; gap: 8px; align-items: center; color: #dc2626; font-weight: 800; letter-spacing: 1px; font-size: 13px; }
-.urgente-caixa h2 { margin: 0; font-size: 22px; }
-.urgente-caixa p { margin: 0; font-size: 16px; line-height: 1.5; white-space: pre-line; }
-.consulta-rapida { margin-bottom: 14px; }
-/* ---------- Combo de convênio (lista + busca) */
-.combo { position: relative; }
-.combo-campo { position: relative; }
-.combo-campo input { width: 100%; padding-right: 34px !important; }
-.combo-campo input.com-logo { padding-left: 64px !important; font-weight: 600 !important; }
-.combo-logo { position: absolute; left: 6px; top: 50%; transform: translateY(-50%); display: flex; pointer-events: none; }
-.combo-seta { position: absolute; right: 4px; top: 50%; transform: translateY(-50%) rotate(90deg); width: 30px; height: 30px; border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; display: grid; place-items: center; }
-.combo-lista { position: absolute; z-index: 30; top: 100%; left: 0; right: 0; margin-top: 4px; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); max-height: 340px; overflow: auto; text-transform: none; letter-spacing: 0; }
-.combo-lista button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 8px 12px; border: 0; background: transparent; cursor: pointer; text-align: left; font-size: 14px; font-weight: 500; color: var(--texto); }
-.combo-lista button.foco { background: var(--hover); }
-.combo-lista button.sel { font-weight: 800; }
-.combo-lista small { margin-left: auto; font-size: 11px; color: var(--texto-suave); font-weight: 400; }
-.combo-vazio { padding: 12px; font-size: 13px; color: var(--texto-suave); font-weight: 400; }
-/* ---------- Linha de busca sempre visível no topo */
-.barra-fixa { position: sticky; top: -20px; z-index: 20; margin: 0 -22px 14px; padding: 8px 22px; background: var(--bg); }
-.barra-fixa .barra { margin-bottom: 0; box-shadow: var(--sombra); }
-/* Linha de busca: convênio, exame e data SEMPRE na mesma linha; exames escolhidos e sugestões embaixo */
-.barra-fixa .barra { display: grid; grid-template-columns: minmax(180px, 1fr) minmax(220px, 2fr) minmax(150px, 190px); align-items: end; }
-.barra-fixa .barra > .combo { grid-row: 1; grid-column: 1; }
-.barra-fixa .barra > .cp.f { grid-row: 1; grid-column: 2; }
-.barra-fixa .barra > .cp.data { grid-row: 1; grid-column: 3; }
-.barra-fixa .barra > .sugestoes, .barra-fixa .barra > .chips { grid-column: 1 / -1; margin: 0 !important; }
-/* Bradesco: um campo a mais (Rede) entre convênio e exame */
-.barra-fixa .barra.com-rede { grid-template-columns: minmax(170px, 1fr) minmax(170px, 1fr) minmax(200px, 2fr) minmax(140px, 170px); }
-.barra-fixa .barra.com-rede > .combo.rede { grid-row: 1; grid-column: 2; }
-.barra-fixa .barra.com-rede > .cp.f { grid-column: 3; }
-.barra-fixa .barra.com-rede > .cp.data { grid-column: 4; }
-/* Exames da consulta: subtítulo dos passos */
-.exames-sel { display: grid; gap: 4px; margin: 0 0 10px; }
-.exame-linha { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.exame-linha h2 { margin: 0; font-size: 18px; }
-.exame-linha .qtd { margin-left: 0; gap: 6px; }
-.exame-linha .qtd small { font-size: 12px; }
-.exame-tirar { width: 24px; height: 24px; border-radius: 50%; border: 0; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.exame-tirar svg { width: 12px; height: 12px; }
-/* ---------- Resultado em 5 passos (linha de raciocínio da ligação) */
-.passos-resultado { display: grid; gap: 12px; }
-.passo-bloco { display: grid; grid-template-columns: 44px 1fr; gap: 14px; background: var(--painel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 14px 18px; }
-.passo-num { width: 36px; height: 36px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 17px; }
-.passo-corpo h3 { margin: 6px 0 8px; font-size: 16px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.passo-corpo h3 small { font-size: 13px; font-weight: 500; color: var(--texto-suave); }
-.passo-lista { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 14px; line-height: 1.45; }
-.passo-lista.check { list-style: none; padding-left: 0; }
-.passo-lista.check li::before { content: '☐ '; color: var(--texto-suave); }
-.ver-mais { background: none; border: 0; padding: 4px 0 0; color: var(--link); font-size: 12.5px; font-weight: 700; cursor: pointer; }
-.passo-exame + .passo-exame { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--linha); }
-.passo-exame-cab { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 14px; margin-bottom: 4px; }
-.passo-linha { display: flex; gap: 8px; align-items: center; font-size: 14px; margin-bottom: 4px; }
-.ok-frase { margin: 0; font-size: 15px; font-weight: 700; color: var(--st-ok-t); }
-/* ---------- Convênios: busca pequena + só logos; ao escolher, só o convênio */
-.busca-conv { position: relative; max-width: 360px; margin-bottom: 16px; }
-.busca-conv svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--texto-suave); }
-.busca-conv input { padding-left: 38px !important; height: 40px; }
-.logos-conv { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
-.logo-conv { height: 92px; background: #fff; border: 1px solid var(--linha); border-radius: 12px; display: grid; place-items: center; padding: 10px; cursor: pointer; transition: transform .12s, box-shadow .12s, border-color .12s; }
-.logo-conv:hover { border-color: var(--destaque); box-shadow: var(--sombra); transform: translateY(-2px); }
-.logo-sigla-nome { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: #16202B; text-align: left; }
-.conv-detalhe { display: grid; gap: 14px; }
-.conv-cab { display: flex; align-items: center; gap: 16px; padding: 14px 18px; }
-.conv-cab > div { display: grid; gap: 2px; }
-.conv-cab b { font-size: 18px; }
-.conv-cab .btn-grande { margin-left: auto; }
-.lista-simples { margin: 0; padding: 12px 16px 14px 34px; display: grid; gap: 6px; font-size: 14.5px; }
-.lista-simples.nao li::marker { color: #dc2626; }
-
-/* Lista de convênios em dois grupos */
-.combo-grupo { padding: 8px 12px 4px; font-size: 11px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .04em; border-top: 1px solid var(--linha); }
-.combo-grupo:first-child { border-top: 0; }
-
-.btn2.ativo { background: var(--hover); border-color: var(--texto-suave); }
-
-/* Busca geral no cabeçalho: discreta, na cor do topo, no centro */
-.topo { position: relative; }
-.busca-geral { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, 38%); display: flex; align-items: center; gap: 8px; height: 34px; padding: 0 10px; border: 1px solid var(--linha); border-radius: 9px; background: var(--painel); color: var(--texto-suave); }
-.busca-geral:focus-within { border-color: var(--borda); }
-.busca-geral input:focus, .busca-geral input:focus-visible { outline: none !important; border: 0 !important; box-shadow: none !important; }
-.busca-geral > svg { width: 15px; height: 15px; flex: none; }
-.busca-geral input { flex: 1; min-width: 0; border: 0 !important; outline: 0; background: transparent !important; color: var(--texto); font: inherit; font-size: 13.5px; padding: 0 !important; box-shadow: none !important; }
-.busca-geral-lista { position: absolute; z-index: 60; top: calc(100% + 6px); left: 0; right: 0; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); max-height: 420px; overflow: auto; padding-bottom: 4px; }
-.busca-geral-lista button { display: flex; align-items: baseline; gap: 10px; width: 100%; padding: 8px 12px; border: 0; background: transparent; cursor: pointer; text-align: left; font: inherit; font-size: 14px; color: var(--texto); }
-.busca-geral-lista button.foco { background: var(--hover); }
-.busca-geral-lista button small { margin-left: auto; font-size: 12px; color: var(--texto-suave); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 55%; }
-.busca-geral-lista > div:first-child .combo-grupo { border-top: 0; }
-
-/* Passo 1: resposta direta, com cor da situação */
-.resposta-1 { margin: 0 0 6px; font-size: 16px; font-weight: 800; }
-.resposta-1.pode_agendar { color: var(--st-ok-t); }
-.resposta-1.atencao { color: var(--st-at-t); }
-.resposta-1.nao_pode { color: var(--st-no-t); }
-
-/* Visão geral: avisos lidos resumidos (coluna da direita) */
-.lidos-resumo { list-style: none; margin: 0; padding: 6px 0; }
-.lidos-resumo li { border-left: 3px solid #3b82f6; margin: 4px 12px; }
-.lidos-resumo li.urgente { border-left-color: #dc2626; }
-.lidos-resumo li.importante { border-left-color: #d97706; }
-.lidos-resumo li { padding: 5px 10px; }
-.lidos-cab { display: flex; align-items: baseline; gap: 8px; font-size: 13.5px; }
-.lidos-cab b { font-weight: 600; flex: 1; min-width: 0; }
-.lidos-cab small { color: var(--texto-suave); font-size: 12px; }
-.lidos-texto { font-size: 13px; color: var(--texto-suave); white-space: pre-line; line-height: 1.4; margin-top: 1px; }
-.resposta-1 { font-size: 18px; }
-.resposta-1-det { margin: 0 0 4px; font-size: 14.5px; line-height: 1.5; }
-.resposta-1-det.aviso { color: var(--st-at-t); }
-.passo-corpo .pergunta { padding: 6px 0 10px; border-top: 0; }
-
-/* Passo 1: uma informação por linha */
-.p1-cab { font-size: 15px; margin: 0 0 6px; }
-.p1-linha { display: grid; grid-template-columns: 190px 1fr; gap: 10px; padding: 7px 0; border-top: 1px solid var(--linha); font-size: 15px; }
-.p1-rot { color: var(--texto-suave); }
-.p1-linha.aviso { background: var(--st-at-bg); color: var(--st-at-t); border: 0; border-radius: 8px; padding: 8px 12px; margin: 6px -12px 0; }
-.p1-linha.aviso .p1-rot { color: var(--st-at-t); }
-@media (max-width: 700px) { .p1-linha { grid-template-columns: 1fr; gap: 2px; } }
-.p1-sub { font-weight: 700; font-size: 14.5px; margin: 16px 0 4px; }
-.passo-corpo h3 + div > .p1-sub { margin-top: 2px; }
-.p1-linha .preparo-txt { white-space: pre-line; font-size: inherit; margin: 0; }
-.codigos { display: inline-flex; flex-wrap: wrap; gap: 10px; }
-.cod-copiar { display: inline-flex; align-items: center; gap: 6px; }
-.cod-copiar button { display: inline-grid; place-items: center; min-width: 28px; height: 26px; padding: 0 6px; border: 1px solid var(--borda); border-radius: 6px; background: var(--painel); color: var(--texto-suave); cursor: pointer; font: inherit; font-size: 11px; }
-.cod-copiar button:hover { background: var(--hover); color: var(--texto); }
-.cod-copiar button svg { width: 14px; height: 14px; }
-
-/* Convênios: dois grupos */
-.grupo-conv { margin-bottom: 22px; }
-.grupo-conv h3 { margin: 0 0 10px; font-size: 15px; }
-.grupo-conv h3 .mut { font-weight: 400; font-size: 13px; }
-.coluna { display: grid; gap: 14px; align-content: start; min-width: 0; }
-
-/* Médico solicitante: um conselho por linha */
-.conselhos { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; }
-.conselhos li { display: grid; grid-template-columns: 20px 74px 1fr; align-items: start; gap: 6px; font-size: 14px; }
-.conselhos .ic { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; margin-top: 1px; }
-.conselhos .ic svg { width: 12px; height: 12px; stroke-width: 3; }
-.conselhos .sim .ic { background: #16a34a; }
-.conselhos .nao .ic { background: #dc2626; }
-.conselhos .cond .ic { background: #d97706; }
-.conselhos .nao span:last-child { color: var(--texto-suave); }
-
-/* Menu: item futuro, apagado e sem clique */
-.lat-item.em-breve { opacity: .45; cursor: default; }
-.lat-item.em-breve:hover { background: transparent; color: var(--lateral-texto); }
-
-/* Como usar */
-.licao-rod { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--linha); font-size: 13px; }
-.sinal { display: inline-flex; align-items: center; gap: 8px; }
-.sinal .ic { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
-.sinal .ic svg { width: 12px; height: 12px; stroke-width: 3; }
-.sinal.sim .ic { background: #16a34a; } .sinal.nao .ic { background: #dc2626; } .sinal.cond .ic { background: #d97706; }
-.ajuda-q { width: 20px; height: 20px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; font-weight: 800; font-size: 12px; line-height: 1; }
-
-/* Tour guiado */
-.tour { position: fixed; inset: 0; z-index: 900; pointer-events: none; }
-.tour-escuro { position: fixed; inset: 0; background: rgba(8, 20, 35, .55); }
-.tour-luz { position: fixed; border-radius: 12px; box-shadow: 0 0 0 9999px rgba(8, 20, 35, .55), 0 0 0 3px #2FB8C6; transition: all .35s ease; animation: tour-pulso 1.6s ease-in-out infinite; }
-@keyframes tour-pulso { 0%, 100% { box-shadow: 0 0 0 9999px rgba(8,20,35,.55), 0 0 0 3px #2FB8C6; } 50% { box-shadow: 0 0 0 9999px rgba(8,20,35,.55), 0 0 0 8px rgba(47,184,198,.45); } }
-.tour-mao { position: fixed; font-size: 30px; transform: translateX(-50%); animation: tour-mao 1s ease-in-out infinite; filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
-@keyframes tour-mao { 0%, 100% { margin-top: 10px; } 50% { margin-top: 0; } }
-.tour-balao { position: fixed; pointer-events: auto; background: var(--painel); color: var(--texto); border-radius: 14px; padding: 14px 16px 12px; box-shadow: 0 18px 40px rgba(0,0,0,.35); animation: tour-entra .3s ease; }
-@keyframes tour-entra { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
-.tour-balao.seta-cima::before, .tour-balao.seta-baixo::after { content: ""; position: absolute; left: 50%; width: 14px; height: 14px; background: var(--painel); transform: translateX(-50%) rotate(45deg); }
-.tour-balao.seta-cima::before { top: -7px; }
-.tour-balao.seta-baixo::after { bottom: -7px; }
-.tour-topo { display: flex; justify-content: space-between; align-items: center; }
-.tour-prog { font-size: 11px; font-weight: 700; color: var(--texto-suave); text-transform: uppercase; letter-spacing: .05em; }
-.tour-x { border: 0; background: transparent; color: var(--texto-suave); cursor: pointer; width: 26px; height: 26px; display: grid; place-items: center; }
-.tour-x svg { width: 16px; height: 16px; }
-.tour-balao h4 { margin: 6px 0 4px; font-size: 17px; display: flex; align-items: center; gap: 8px; }
-.tour-balao p { margin: 0 0 10px; font-size: 14.5px; line-height: 1.5; }
-.tour-ok { width: 22px; height: 22px; border-radius: 50%; background: #16a34a; color: #fff; display: grid; place-items: center; animation: tour-entra .3s ease; }
-.tour-ok svg { width: 14px; height: 14px; stroke-width: 3; }
-.tour-barra { height: 4px; background: var(--linha); border-radius: 4px; overflow: hidden; margin-bottom: 10px; }
-.tour-barra span { display: block; height: 100%; background: #2FB8C6; transition: width .4s ease; }
-.tour-botoes { display: flex; align-items: center; gap: 8px; }
-.tour-link { border: 0; background: none; color: var(--link, #0f766e); cursor: pointer; text-decoration: underline; font: inherit; font-size: 12px; padding: 0; }
-.convite { text-align: center; }
-.convite-ic { font-size: 40px; }
-.convite-bts { display: flex; gap: 10px; justify-content: center; margin: 14px 0 10px; flex-wrap: wrap; }
-.ajuda-menu { position: relative; }
-.ajuda-lista { position: absolute; right: 0; top: calc(100% + 6px); z-index: 70; width: 260px; background: var(--painel); border: 1px solid var(--borda); border-radius: 10px; box-shadow: var(--sombra); padding: 4px; }
-.ajuda-lista button { display: grid; width: 100%; text-align: left; padding: 9px 10px; border: 0; background: transparent; border-radius: 8px; cursor: pointer; font: inherit; color: var(--texto); }
-.ajuda-lista button:hover { background: var(--hover); }
-.ajuda-lista small { color: var(--texto-suave); font-size: 12px; }
-
-/* Exames: código em cada convênio */
-.outros-exames { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; font-size: 13px; }
-.pilula { border: 1px solid var(--borda); background: var(--painel); border-radius: 999px; padding: 5px 12px; cursor: pointer; font: inherit; font-size: 13px; color: var(--texto); }
-.pilula.on { background: var(--destaque, #167c84); border-color: var(--destaque, #167c84); color: #fff; }
-.exame-cab b { font-size: 18px; }
-.pad-l { padding: 4px 16px 10px; }
-.cod-conv { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--linha); flex-wrap: wrap; }
-.cod-conv:first-child { border-top: 0; }
-.cod-conv-nome { display: flex; align-items: center; gap: 10px; color: var(--texto); text-decoration: none; font-size: 14px; min-width: 0; }
-.cod-conv-nome:hover span { text-decoration: underline; }
-.cod-conv .cod { font-size: 16px; }
-.cod-item { display: inline-flex; align-items: center; gap: 6px; }
-.busca-conv .combo-lista { top: calc(100% + 4px); }
-.exame-cab > div { max-width: 760px; }
-.cod-tipo { font-size: 11px; color: var(--texto-suave); margin-right: 2px; }
-.pad-l .p1-linha:first-child { border-top: 0; }
-
-/* Orçamento */
-.seg { display: inline-flex; border: 1px solid var(--borda); border-radius: 10px; overflow: hidden; background: var(--painel); }
-.seg button { border: 0; background: transparent; padding: 9px 16px; cursor: pointer; font: inherit; font-size: 13.5px; color: var(--texto); }
-.seg button.on { background: var(--destaque, #167c84); color: #fff; font-weight: 600; }
-.orc-pac { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; padding: 12px 16px 14px; }
-.orc-pac .cp { display: grid; gap: 4px; }
-.orc-pac input.erro { border-color: #dc2626 !important; }
-.erro-txt { color: #dc2626; font-size: 11.5px; }
-.tot.verde { color: #16a34a; }
-.pct-cel { display: inline-flex; align-items: center; gap: 3px; }
-.pct-cel input { width: 56px; text-align: right; }
-
-/* Rede do Bradesco: caixa fechada com a lista de redes */
-.redes-caixa > summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.redes-caixa > summary::-webkit-details-marker { display: none; }
-.redes-caixa > summary::after { content: '▸'; color: var(--texto-suave); margin-left: 8px; }
-.redes-caixa[open] > summary::after { content: '▾'; }
-.redes-caixa > summary > h3 { margin-right: auto; }
-.redes-lista { max-height: 420px; overflow: auto; padding: 4px 16px 10px; }
-.rede-linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border-top: 1px solid var(--linha); font-size: 14px; }
-.rede-linha:first-child { border-top: 0; }
-
-/* Médicos */
-.med-av { width: 40px; height: 40px; border-radius: 50%; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; flex: none; }
-.med-av svg { width: 22px; height: 22px; }
-.p1-linha.um { grid-template-columns: 1fr; }
-.cards-med { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
-.med-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--painel); border: 1px solid var(--linha); border-radius: 12px; cursor: pointer; text-align: left; color: var(--texto); font: inherit; transition: transform .12s, box-shadow .12s, border-color .12s; }
-.med-card:hover { border-color: var(--destaque); box-shadow: var(--sombra); transform: translateY(-2px); }
-.med-inf { display: grid; gap: 2px; flex: 1; min-width: 0; }
-.med-inf b { font-size: 15px; }
-.med-inf .mut { font-size: 13px; }
-.med-faz { font-size: 12.5px; font-weight: 600; color: var(--destaque); }
-.med-tag { font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 3px 9px; white-space: nowrap; background: var(--st-ok-bg); color: var(--st-ok-t); }
-.med-tag.esp { background: var(--st-at-bg); color: var(--st-at-t); }
-.med-tag.neutro { background: var(--painel-2); color: var(--texto-suave); }
-/* Unidades — 3 cartões lado a lado (classes un-*) */
-.un-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
-.un-card { overflow: hidden; display: flex; flex-direction: column; }
-.un-card > .un-secao:last-child { flex: 1; }
-.un-cab { display: grid; grid-template-columns: 40px 1fr auto; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--linha); border-top: 4px solid var(--destaque); }
-.un-cab h3 { margin: 0; font-size: 15.5px; line-height: 1.25; }
-.un-pino { width: 40px; height: 40px; border-radius: 10px; background: color-mix(in srgb, var(--destaque) 12%, var(--painel)); color: var(--destaque); display: grid; place-items: center; }
-.un-pino svg { width: 20px; height: 20px; }
-.un-tag { display: inline-block; margin-top: 3px; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--destaque); }
-.un-secao { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; padding: 12px 16px; border-bottom: 1px solid var(--linha); }
-.un-secao:last-child { border-bottom: 0; }
-.un-secao.col { grid-template-columns: 1fr; align-content: start; }
-.un-rot { grid-column: 1 / -1; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-suave); }
-.un-end { display: grid; gap: 2px; font-size: 14px; }
-.un-end span { color: var(--texto-suave); font-size: 13px; }
-.un-acoes { display: flex; gap: 6px; align-self: center; }
-.un-ic { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel); color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.un-ic:hover { border-color: var(--destaque); color: var(--destaque); }
-.un-ic svg { width: 15px; height: 15px; }
-.un-fone { display: grid; grid-template-columns: 30px 1fr auto; gap: 10px; align-items: center; padding: 4px 0; }
-.un-fic { width: 30px; height: 30px; border-radius: 50%; background: var(--painel-2); color: var(--texto-suave); display: grid; place-items: center; }
-.un-fic.zap { background: #dcfce7; color: #15803d; }
-.un-fic svg { width: 15px; height: 15px; }
-.un-num { display: grid; }
-.un-num b { font-size: 15px; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
-.un-num small { font-size: 12px; color: var(--texto-suave); }
-.un-hora { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; line-height: 1.45; }
-.un-hora svg { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--texto-suave); }
-.un-maqs { display: grid; grid-template-columns: 88px 1fr; gap: 8px; align-items: center; padding: 8px 0; border-top: 1px dashed var(--linha); }
-.un-rot + .un-maqs { border-top: 0; padding-top: 2px; }
-.un-maq-lista { display: flex; flex-wrap: wrap; gap: 6px; }
-.un-tipo { display: grid; gap: 1px; }
-.un-tipo b { font-size: 13px; font-weight: 600; }
-.un-tipo small { font-size: 11.5px; color: var(--texto-suave); }
-.un-maq { padding: 4px 8px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel-2); color: var(--texto); font-size: 13px; font-weight: 600; text-decoration: none; }
-.un-maq:hover { border-color: var(--destaque); color: var(--destaque); }
-.un-sem { font-size: 13px; color: var(--texto-suave); }
-@media (max-width: 1200px) { .un-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 760px) { .un-grid { grid-template-columns: 1fr; } }
-.link-suave { color: var(--destaque); font-weight: 600; text-decoration: none; }
-.link-suave:hover { text-decoration: underline; }
-
-/* Orçamento: cartões numerados */
-
-/* Ramais — lista telefônica por andar */
-.rm-grade { columns: 3 300px; column-gap: 14px; }
-.rm-setor { break-inside: avoid; margin-bottom: 14px; display: inline-block; width: 100%; }
-.rm-setor h3 { margin: 0; padding: 11px 16px; font-size: 14px; border-bottom: 1px solid var(--linha); border-top: 4px solid var(--destaque); border-radius: var(--raio) var(--raio) 0 0; }
-.rm-setor ul { list-style: none; margin: 0; padding: 4px 16px 8px; }
-.rm-setor li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px dashed var(--linha); font-size: 14px; }
-.rm-setor li:first-child { border-top: 0; }
-.rm-nums { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
-.rm-num { min-width: 52px; padding: 3px 8px; border: 1px solid var(--borda); border-radius: 7px; background: var(--painel-2); color: var(--texto); font: inherit; font-weight: 700; font-size: 13.5px; font-variant-numeric: tabular-nums; cursor: pointer; }
-.rm-num:hover { border-color: var(--destaque); color: var(--destaque); }
-.rm-num.ok { background: var(--st-ok-bg); color: var(--st-ok-t); border-color: transparent; font-size: 12px; }
-
-/* Orçamento — 2 colunas: trabalho (esquerda) + resumo fixo (direita). Classes orc2-* */
-.orc2 { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: stretch; } /* as duas colunas começam e terminam juntas */
-.orc2-trab { display: grid; grid-template-rows: auto 1fr; gap: 16px; min-width: 0; }
-.orc2-bloco { padding-bottom: 4px; overflow: visible; }
-.orc2-trab > .orc2-bloco:first-child { position: relative; z-index: 5; } /* a lista de sugestões da busca fica por cima do bloco 2 */
-
-/* cabeçalho de cada bloco: número do passo + título + extra à direita */
-.orc2-cab { display: flex; align-items: center; gap: 10px; padding: 14px 16px; border-bottom: 1px solid var(--linha); flex-wrap: wrap; }
-.orc2-cab h3 { margin: 0; font-size: 15px; }
-.orc2-cab > small { font-size: 12px; }
-.orc2-cab .seg { margin-left: auto; }
-.orc2-num { width: 26px; height: 26px; border-radius: 50%; background: var(--destaque); color: var(--destaque-texto); display: grid; place-items: center; font-weight: 800; font-size: 13px; flex: none; }
-
-/* busca dentro do bloco de exames */
-.orc2-busca { position: relative; display: flex; align-items: center; gap: 8px; margin: 14px 16px 6px; padding: 0 12px; height: 46px; border: 2px solid var(--destaque); border-radius: var(--raio-sm); background: var(--painel); color: var(--texto-suave); }
-.orc2-busca svg { width: 18px; height: 18px; flex: none; }
-.app .orc2-busca input { border: 0; background: transparent; padding: 0; height: 100%; font-size: 15px; outline: none; }
-
-/* lista de exames */
-.orc2-lista { list-style: none; margin: 0; padding: 4px 16px; }
-.orc2-lista li { display: grid; grid-template-columns: minmax(0, 1fr) auto 110px 30px; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--linha); }
-.orc2-lista li:last-child { border-bottom: 0; }
-.orc2-nome { display: grid; gap: 2px; min-width: 0; }
-.orc2-nome b { font-weight: 600; font-size: 14px; }
-.orc2-nome small { color: var(--texto-suave); font-size: 12.5px; }
-.orc2-qtd { display: inline-flex; align-items: center; gap: 6px; }
-.orc2-qtd button { width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--borda); background: var(--painel-2); color: var(--texto); display: grid; place-items: center; cursor: pointer; padding: 0; }
-.orc2-qtd button:disabled { opacity: .4; cursor: default; }
-.orc2-qtd button svg { width: 14px; height: 14px; }
-.orc2-qtd > span { min-width: 22px; text-align: center; font-weight: 700; font-size: 15px; }
-.orc2-val { text-align: right; font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; }
-.orc2-tirar { width: 30px; height: 30px; border-radius: 50%; border: 0; background: transparent; color: var(--texto-suave); display: grid; place-items: center; cursor: pointer; }
-.orc2-tirar:hover { background: var(--st-no-bg); color: var(--st-no-t); }
-.orc2-tirar svg { width: 15px; height: 15px; }
-.orc2-vazio { margin: 6px 16px 14px; padding: 22px; border: 2px dashed var(--linha); border-radius: var(--raio-sm); text-align: center; color: var(--texto-suave); font-size: 14px; }
-.orc2-subtotal { display: flex; justify-content: space-between; padding: 12px 16px; border-top: 1px solid var(--linha); color: var(--texto-suave); font-size: 14px; }
-.orc2-subtotal b { color: var(--texto); font-size: 15px; margin-left: 6px; }
-
-/* resumo (direita), fixo enquanto rola */
-.orc2-formas { display: grid; gap: 10px; padding: 14px 16px; }
-.orc2-formas button { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: center; text-align: left; padding: 14px; border: 2px solid var(--linha); border-radius: 12px; background: var(--painel); color: var(--texto); cursor: pointer; font: inherit; }
-.orc2-formas button:disabled { cursor: default; opacity: .6; }
-.orc2-formas button.on { border-color: var(--destaque); background: color-mix(in srgb, var(--destaque) 7%, var(--painel)); }
-.orc2-marca { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--borda); display: grid; place-items: center; }
-.orc2-formas button.on .orc2-marca { border-color: var(--destaque); background: var(--destaque); color: var(--destaque-texto); }
-.orc2-marca svg { width: 13px; height: 13px; }
-.orc2-forma-txt { display: grid; gap: 1px; }
-.orc2-forma-txt > span { font-size: 13px; color: var(--texto-suave); font-weight: 600; }
-.orc2-forma-txt b { font-size: 21px; font-variant-numeric: tabular-nums; }
-.orc2-forma-txt small { font-size: 12.5px; color: var(--texto-suave); }
-.orc2-forma-txt small.verde, .orc2-linha.verde { color: var(--st-ok-t); }
-
-.orc2-extra { display: flex; align-items: center; gap: 10px; padding: 0 16px 12px; font-size: 13.5px; }
-.orc2-extra .pct { display: inline-flex; align-items: center; gap: 4px; }
-.app .orc2-extra input { width: 64px; padding: 6px 8px; text-align: right; }
-
-.orc2-total { border-top: 1px solid var(--linha); padding: 12px 16px 14px; display: grid; gap: 6px; }
-.orc2-linha { display: flex; justify-content: space-between; font-size: 14px; }
-.orc2-grande { display: flex; justify-content: space-between; align-items: baseline; font-size: 24px; font-weight: 800; font-variant-numeric: tabular-nums; }
-.orc2-como { font-size: 13.5px; color: var(--texto-suave); text-align: right; }
-.orc2-valido { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--texto-suave); margin-top: 4px; }
-.orc2-valido svg { width: 14px; height: 14px; }
-.orc2-saida { display: flex; justify-content: flex-end; gap: 8px; padding: 12px 16px; border-top: 1px solid var(--linha); }
-
-@media (max-width: 1100px) { .orc2 { grid-template-columns: 1fr; } }
-@media (max-width: 640px) { .orc2-lista li { grid-template-columns: 1fr auto 30px; } .orc2-val { grid-column: 2; } }
-
-.orc2-linha-busca { display: flex; align-items: center; gap: 12px; margin: 14px 16px 6px; }
-.orc2-linha-busca .orc2-busca { margin: 0; flex: 1 1 auto; max-width: 62%; }
-.orc2-linha-busca .seg { flex: none; margin-left: auto; }
-.orc2-linha-busca .seg button { padding: 12px 18px; }
-.orc2-resumo { display: flex; flex-direction: column; }
-.orc2-regras { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
-.orc2-regras b { grid-column: 1 / -1; color: var(--texto); font-size: 12px; margin-bottom: 2px; }
