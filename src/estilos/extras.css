@@ -524,8 +524,8 @@ details > summary { cursor: pointer; font-weight: 600; }
 @media (max-width: 640px) { .orc2-lista li { grid-template-columns: 1fr auto 30px; } .orc2-val { grid-column: 2; } }
 
 .orc2-linha-busca { display: flex; align-items: center; gap: 12px; margin: 14px 16px 6px; }
-.orc2-linha-busca .orc2-busca { margin: 0; flex: 1 1 auto; max-width: 62%; }
-.orc2-linha-busca .seg { flex: none; margin-left: auto; }
+.orc2-linha-busca .orc2-busca { margin: 0; flex: 1 1 auto; }
+.orc2-linha-busca .seg { flex: none; }
 .orc2-linha-busca .seg button { padding: 12px 18px; }
 .orc2-resumo { display: flex; flex-direction: column; }
 .orc2-regras { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2px 12px; padding: 10px 16px 12px; border-top: 1px solid var(--linha); font-size: 12px; color: var(--texto-suave); }
