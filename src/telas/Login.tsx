@@ -2,6 +2,7 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { useSessao } from '../acesso/Sessao';
 import { Icone } from '../componentes/Icone';
+import { acessoExpirado, conferirSenha, dataLimite } from '../acesso/acessoProvisorio';
 
 export function Login() {
   const s = useSessao();
@@ -12,10 +13,13 @@ export function Login() {
   const [esqueci, setEsqueci] = useState(false);
   const [enviado, setEnviado] = useState(false);
   const [preparando, setPreparando] = useState<string | null>(null);
-  const entrar = (e: FormEvent) => {
+  const expirado = acessoExpirado();
+  const entrar = async (e: FormEvent) => {
     e.preventDefault();
+    if (expirado) return;
     const u = s.usuarios.find((x) => x.email.toLowerCase() === email.trim().toLowerCase());
     if (!u) { setErro('E-mail não cadastrado. Fale com a administração.'); return; }
+    if (!(await conferirSenha(senha))) { setErro('Senha incorreta.'); return; }
     setPreparando(u.nome.split(' ')[0]);
   };
   const recuperar = (e: FormEvent) => { e.preventDefault(); setEnviado(true); };
@@ -48,9 +52,9 @@ export function Login() {
                 <button type="button" className="olho" onClick={() => setVerSenha(!verSenha)} title={verSenha ? 'Esconder senha' : 'Mostrar senha'} aria-label={verSenha ? 'Esconder senha' : 'Mostrar senha'}><Icone n={verSenha ? 'olhoFechado' : 'olho'} /></button>
               </span></label>
               <button type="button" className="link-esqueci" onClick={() => { setEsqueci(true); setErro(''); }}>Esqueci minha senha</button>
-              {erro && <div className="trava"><Icone n="x" /><span>{erro}</span></div>}
-              <button type="submit" className="btn-entrar" disabled={!email.trim()}>Entrar</button>
-              <p className="mut" style={{ fontSize: 12, marginTop: 14 }}>Mock: entre com admin@rcc.exemplo ou atendimento@rcc.exemplo (a senha não é conferida).</p>
+              {(erro || expirado) && <div className="trava"><Icone n="x" /><span>{expirado ? 'O período de teste terminou. Fale com a IO Tecnologia para renovar o acesso.' : erro}</span></div>}
+              <button type="submit" className="btn-entrar" disabled={!email.trim() || !senha || expirado}>Entrar</button>
+              <p className="mut" style={{ fontSize: 12, marginTop: 14 }}>Acesso de teste até {dataLimite()}. E-mails: admin@rcc.exemplo ou atendimento@rcc.exemplo.</p>
             </form>
           ) : (
             <form className="form-caixa" onSubmit={recuperar}>
