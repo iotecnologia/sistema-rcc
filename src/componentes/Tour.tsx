@@ -2,7 +2,7 @@
 //  - "Eu faço junto": a tela escurece, só o campo da vez fica aceso; o balão explica e ESPERA a pessoa fazer.
 //  - "Me mostra sozinho": o próprio sistema digita e clica, devagar, e a pessoa só assiste.
 // Abre pelo botão "?" do topo, pela página Como usar e no convite do primeiro acesso.
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
+import { isValidElement, useCallback, useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Icone } from './Icone';
 import { local } from '../util/formato';
@@ -30,6 +30,19 @@ async function clicar(sel: string, mouseDown = false) {
   const el = q(sel); if (!el) return;
   if (mouseDown) el.dispatchEvent(new MouseEvent('mousedown', { bubbles: true })); else el.click();
 }
+
+/** Texto puro de um balão (para medir quanto tempo a pessoa precisa para ler). */
+const textoPuro = (n: ReactNode): string => {
+  if (typeof n === 'string' || typeof n === 'number') return String(n);
+  if (Array.isArray(n)) return n.map(textoPuro).join('');
+  if (isValidElement<{ children?: ReactNode }>(n)) return textoPuro(n.props.children);
+  return '';
+};
+/** Tempo de leitura no modo "Me mostra sozinho": 0,5 s por palavra + 2,5 s, nunca menos de 6 s. */
+const tempoLeitura = (p: { titulo: string; texto: ReactNode }) => {
+  const palavras = `${p.titulo} ${textoPuro(p.texto)}`.split(/\s+/).filter(Boolean).length;
+  return Math.max(6000, palavras * 500 + 2500);
+};
 
 interface Passo {
   alvo?: string; titulo: string; texto: ReactNode;
@@ -104,9 +117,9 @@ export function Tour() {
     setFeito(false);
     if (modo === 'mostra') {
       (async () => {
-        await espera(1300);
-        if (p.auto) { await p.auto(); if (id !== rodando.current) return; setFeito(true); await espera(1100); }
-        else await espera(2600);
+        await espera(tempoLeitura(p));   // primeiro a pessoa lê a instrução
+        if (id !== rodando.current) return;
+        if (p.auto) { await p.auto(); if (id !== rodando.current) return; setFeito(true); await espera(2500); }   // depois vê o resultado
         if (id === rodando.current && !fim) proximo();
       })();
       return;
