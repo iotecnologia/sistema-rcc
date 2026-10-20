@@ -1,6 +1,7 @@
 // Orçamento particular / Sócio Remido — organizado na ordem do atendimento:
 // esquerda = trabalho (tabela → exames → paciente); direita = resumo fixo (Cartão e PIX lado a lado, total, imprimir/enviar).
-// A forma de pagamento aplica a regra da RCC; o desconto extra respeita o limite do cargo de quem está usando.
+// A forma de pagamento aplica a regra da RCC; o desconto digitado respeita o limite do cargo de quem está usando.
+// Regra do desconto (20/10, Oliver): o digitado SUBSTITUI o automático, nunca soma. Sem digitado: PIX 5%, cartão 0%.
 // Dados do paciente (nome, sobrenome, CPF, RG) só vão para o orçamento impresso / WhatsApp: não ficam gravados.
 import { useLayoutEffect, useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from '../componentes/Dados';
@@ -55,12 +56,14 @@ export function Orcamento() {
   const subtotal = itens.reduce((t, x) => t + x.p.valor * x.qtd, 0);
 
   // os dois valores calculados ao mesmo tempo: o atendente fala as duas opções sem trocar nada
-  const totalDe = (f: Forma) => subtotal - subtotal * Math.min(100, (f === 'pix' ? DESCONTO_PIX : 0) + extra) / 100;
+  /** % de desconto de cada forma: o digitado vale sozinho (no cartão e no PIX); sem digitado, só o automático do PIX. */
+  const pctDe = (f: Forma) => (extra > 0 ? extra : f === 'pix' ? DESCONTO_PIX : 0);
+  const totalDe = (f: Forma) => subtotal - subtotal * Math.min(100, pctDe(f)) / 100;
   const totCartao = totalDe('cartao');
   const totPix = totalDe('pix');
   const nx = parcelas(totCartao);
   const total = forma === 'pix' ? totPix : totCartao;
-  const pctPix = forma === 'pix' ? DESCONTO_PIX : 0;
+  const pctPix = forma === 'pix' && !extra ? DESCONTO_PIX : 0;
   const desconto = subtotal - total;
 
   // mede a altura dos 3 primeiros exames (os nomes podem ter 1 ou 2 linhas) e trava a lista nessa altura
@@ -95,7 +98,7 @@ export function Orcamento() {
   const nomeCompleto = `${pac.nome} ${pac.sobrenome}`.trim();
   const docs = [pac.cpf && `CPF ${pac.cpf}`, pac.rg && `RG ${pac.rg}`].filter(Boolean).join(' · ');
   const pagamento = forma === 'pix' ? 'PIX ou dinheiro' : `Cartão em até ${nx}x de ${brl(total / nx)}`;
-  const rotDesconto = [pctPix && `PIX ${pctPix}%`, extra && `extra ${extra}%`].filter(Boolean).join(' + ');
+  const rotDesconto = extra ? `${extra}%` : pctPix ? `PIX ${pctPix}%` : '';
   const qtdTotal = itens.reduce((t, x) => t + x.qtd, 0);
   const texto = () => [`*Orçamento RCC — ${nomeTabela}*`, nomeCompleto && `Paciente: ${nomeCompleto}`, docs, ...itens.map((x) => `- ${x.qtd > 1 ? x.qtd + 'x ' : ''}${x.p.procedimento}: ${brl(x.p.valor * x.qtd)}`),
     desconto ? `Desconto (${rotDesconto}): - ${brl(desconto)}` : '', `*Total: ${brl(total)}*`, `Pagamento: ${pagamento}`, `Válido até ${br(validade)} (30 dias)`].filter(Boolean).join('\n');
@@ -184,14 +187,14 @@ export function Orcamento() {
             </button>
             <button type="button" role="radio" aria-checked={forma === 'pix'} className={forma === 'pix' ? 'on' : ''} onClick={() => setForma('pix')} disabled={!itens.length}>
               <span className="orc2-marca">{forma === 'pix' && <Icone n="ok" />}</span>
-              <span className="orc2-forma-txt"><span>PIX ou dinheiro</span><b>{brl(totPix)}</b><small className="verde">{itens.length ? `economiza ${brl(totCartao - totPix)} (${DESCONTO_PIX}%)` : `${DESCONTO_PIX}% de desconto`}</small></span>
+              <span className="orc2-forma-txt"><span>PIX ou dinheiro</span><b>{brl(totPix)}</b><small className="verde">{extra ? `desconto de ${extra}%` : itens.length ? `economiza ${brl(totCartao - totPix)} (${DESCONTO_PIX}%)` : `${DESCONTO_PIX}% de desconto`}</small></span>
             </button>
           </div>
 
           <div className="orc2-extra">
-            <span>Desconto extra</span>
-            <span className="pct"><input type="number" min={0} max={limite} step={0.5} value={extra || ''} placeholder="0" disabled={limite <= 0} onChange={(e) => mudarExtra(e.target.value)} aria-label="Desconto extra em porcentagem" />%</span>
-            <small className="mut">{limite >= 100 ? 'sem limite' : limite > 0 ? `seu limite: ${limite}%` : 'seu cargo não dá desconto extra'}</small>
+            <span>Desconto</span>
+            <span className="pct"><input type="number" min={0} max={limite} step={0.5} value={extra || ''} placeholder="0" disabled={limite <= 0} onChange={(e) => mudarExtra(e.target.value)} aria-label="Desconto em porcentagem" />%</span>
+            <small className="mut">{limite >= 100 ? 'sem limite' : limite > 0 ? `seu limite: ${limite}%` : 'seu cargo não dá desconto'}</small>
           </div>
 
           <div className="orc2-total">
