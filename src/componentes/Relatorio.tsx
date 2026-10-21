@@ -57,16 +57,25 @@ async function baixarPdf(el: HTMLElement, d: RelatorioDados) {
 
 function Janela({ d, texto, fechar }: { d: RelatorioDados; texto: string; fechar: () => void }) {
   useEffect(() => { document.body.classList.add('rel-aberto'); return () => document.body.classList.remove('rel-aberto'); }, []);
+  const cartao = useRef<HTMLDivElement>(null);
+  const [baixando, setBaixando] = useState(false);
+  const baixar = () => {
+    const el = cartao.current?.querySelector('.rel-cartao') as HTMLElement | null;
+    if (!el || baixando) return;
+    setBaixando(true);
+    baixarPdf(el, d).finally(() => setBaixando(false));
+  };
   return createPortal(
     <div className="rel-fundo" onClick={fechar}>
       <div className="rel-caixa" onClick={(e) => e.stopPropagation()}>
         <div className="rel-acoes">
           <button type="button" className="btn2 ic" onClick={() => window.print()} title="Imprimir" aria-label="Imprimir"><Icone n="imprimir" /></button>
+          <button type="button" className="btn2 ic" onClick={baixar} disabled={baixando} title={baixando ? 'Gerando o PDF…' : 'Baixar PDF'} aria-label="Baixar PDF"><Icone n="pdf" /></button>
           <button type="button" className="btn2 ic zap" onClick={() => abrirWhatsApp(texto)} title="Enviar por WhatsApp" aria-label="WhatsApp"><Icone n="zap" /></button>
           <button type="button" className="btn2 ic" onClick={() => navigator.clipboard?.writeText(texto).catch(() => undefined)} title="Copiar texto" aria-label="Copiar"><Icone n="copiar" /></button>
           <button type="button" className="btn2 ic" onClick={fechar} title="Fechar" aria-label="Fechar"><Icone n="x" /></button>
         </div>
-        <Cartao d={d} />
+        <div ref={cartao}><Cartao d={d} /></div>
       </div>
     </div>, document.body);
 }
