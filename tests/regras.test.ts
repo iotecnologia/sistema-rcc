@@ -192,3 +192,29 @@ describe('Rede do paciente (só Bradesco)', () => {
   });
   it('outros convênios não pedem rede', () => { expect(q('ABB NACIONAL', 'amil').rede).toBeNull(); });
 });
+
+describe('Ajustes da RCC (21/10/2026)', () => {
+  const um = (conv: string, exameId: number) => consultar(b, { convenio: conv, exames: [{ exameId }], dataPedido: HOJE, hoje: HOJE }).exames[0];
+  const id = (nome: string) => b.exames.find((x) => x.nome === nome)!.id;
+  it('RM pelve (endometriose): mesmo código 41101189, preparo de endometriose, máquinas de pelve feminina', () => {
+    const e = um('bradesco', id('RM - Pelve (endometriose)'));
+    expect(e.autorizacao.codigos.map((c) => c.codigo)).toEqual(['41101189']);
+    expect(e.agenda.preparos.map((p) => p.titulo).join()).toMatch(/Endometriose/);
+    expect(e.agenda.maquinas.every((m) => /Pelve Fem/.test(m.exameNaMaquina))).toBe(true);
+  });
+  it('RM pelve (próstata): mesmo código 41101189, preparo e máquina de próstata', () => {
+    const e = um('bradesco', id('RM - Pelve (próstata)'));
+    expect(e.autorizacao.codigos.map((c) => c.codigo)).toEqual(['41101189']);
+    expect(e.agenda.preparos.map((p) => p.titulo).join()).toMatch(/Próstata/);
+    expect(e.agenda.maquinas.map((m) => m.exameNaMaquina)).toContain('Próstata');
+  });
+  it('Amil: angio-RM VENOSA de crânio usa o 41101545 (e a arterial o 41101537)', () => {
+    expect(textos(consultar(b, { convenio: 'amil', exames: [{ exameId: id('RM - Angio venosa de crânio') }], dataPedido: HOJE, hoje: HOJE }))).toContain('41101545');
+    expect(um('amil', id('RM - Angio venosa de crânio')).autorizacao.regras.map((r) => r.texto).join()).not.toContain('41101537');
+  });
+  it('Unidade 2: só angio-RM ARTERIAL de crânio', () => {
+    const maq = (nome: string) => um('amil', id(nome)).agenda.maquinas.map((m) => m.maquina);
+    expect(maq('RM - Angio arterial de crânio')).toContain('RM Unidade 2');
+    expect(maq('RM - Angio venosa de crânio')).not.toContain('RM Unidade 2');
+  });
+});

@@ -266,6 +266,28 @@
    ]
   },
   {
+   "id": "ANGIO_RM_CRANIO_ART",
+   "nome": "Angio-RM arterial de crânio",
+   "tipo": "exame",
+   "tuss": [
+    "41101537"
+   ],
+   "exame_ids": [
+    169
+   ]
+  },
+  {
+   "id": "ANGIO_RM_CRANIO_VEN",
+   "nome": "Angio-RM venosa de crânio",
+   "tipo": "exame",
+   "tuss": [
+    "41101545"
+   ],
+   "exame_ids": [
+    170
+   ]
+  },
+  {
    "id": "ANGIO_RM_MMSS",
    "nome": "Angio-RM de membro superior",
    "tipo": "exame",
@@ -394,7 +416,9 @@
     "41101189"
    ],
    "exame_ids": [
-    129
+    129,
+    378,
+    379
    ]
   },
   {
@@ -1379,19 +1403,40 @@
    "molde": "M14",
    "molde_nome": "Código para autorizar",
    "convenio": "amil",
-   "alvo_original": "Angio-RM crânio arterial/venosa",
+   "alvo_original": "Angio-RM crânio arterial",
    "alvos": [
-    "ANGIO_RM_CRANIO"
+    "ANGIO_RM_CRANIO_ART"
    ],
    "campos": {
     "codigos": [
      "41101537"
     ],
-    "status": "ativo",
-    "duvida": "venosa é 41101545 na tabela da própria Amil"
+    "status": "ativo"
    },
-   "situacao": "conflito",
-   "texto_original": "Código 41101537 (que é ARTERIAL; venosa é 41101545).",
+   "situacao": "confirmada",
+   "texto_original": "Código 41101537 (angio-RM ARTERIAL de crânio). A venosa usa o 41101545 (AMI-24V).",
+   "fontes": [
+    "R17"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AMI-24V",
+   "molde": "M14",
+   "molde_nome": "Código para autorizar",
+   "convenio": "amil",
+   "alvo_original": "Angio-RM crânio venosa",
+   "alvos": [
+    "ANGIO_RM_CRANIO_VEN"
+   ],
+   "campos": {
+    "codigos": [
+     "41101545"
+    ],
+    "status": "ativo"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Código 41101545 (angio-RM VENOSA de crânio), da tabela da própria Amil. Incluído pela RCC em 21/10/2026.",
    "fontes": [
     "R17"
    ],

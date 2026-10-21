@@ -1032,6 +1032,22 @@
   "ativo": true
  },
  {
+  "id": 378,
+  "tuss": "41101189",
+  "nome": "RM - Pelve (endometriose)",
+  "modalidade": "RESSONANCIA",
+  "origem": "RCC (21/10/2026): mesmo código da RM pelve, preparo e máquina próprios",
+  "ativo": true
+ },
+ {
+  "id": 379,
+  "tuss": "41101189",
+  "nome": "RM - Pelve (próstata)",
+  "modalidade": "RESSONANCIA",
+  "origem": "RCC (21/10/2026): mesmo código da RM pelve, preparo e máquina próprios",
+  "ativo": true
+ },
+ {
   "id": 130,
   "tuss": "41101200",
   "nome": "RM - Pênis",

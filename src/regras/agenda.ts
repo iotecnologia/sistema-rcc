@@ -35,6 +35,7 @@ const ANATOMIA: [RegExp, RegExp][] = [
   [/ABDOME SUPERIOR/, /ABDOME SUPERIOR/],
   [/ABDOME TOTAL/, /ABDOME TOTAL/],
   [/HIDRO|COLANGIO/, /COLANGIO/],
+  [/ENDOMETRIOSE/, /PELVE FEM/],          // RM pelve (endometriose): máquinas de pelve feminina
   [/PROSTATA/, /PROSTATA/],
   [/PELVE/, /PELVE/],
   [/BOLSA ESCROTAL/, /ESCROTAL/],
@@ -70,7 +71,10 @@ function maquinasDoExame(b: BaseDados, e: Exame): OpcaoMaquina[] {
   if (angio && /CORONARIA/.test(n)) casa = (m) => /CORONARIA/.test(m);
   else if (angio) {
     const reg = REGIAO_ANGIO.find(([c]) => c.test(n));
-    casa = (m) => /\bANGIO/.test(m) && (mod === 'TC' ? true : reg ? reg[1].test(m) : true);
+    // arterial x venosa: a máquina que só faz arterial (ou só venosa) não aparece para o outro tipo
+    const art = /ARTERIAL/.test(n), ven = /VENOSA/.test(n);
+    const tipoOk = (m: string) => !(art && !ven && /VENOSA/.test(m)) && !(ven && !art && /ARTERIAL|ART\./.test(m));
+    casa = (m) => /\bANGIO/.test(m) && (mod === 'TC' ? true : reg ? reg[1].test(m) : true) && tipoOk(m);
   } else {
     const par = ANATOMIA.find(([c]) => c.test(n));
     if (!par) return [];

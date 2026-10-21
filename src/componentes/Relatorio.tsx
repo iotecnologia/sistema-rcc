@@ -1,6 +1,6 @@
 // Relatório no modelo do Analiza antigo (cartão do orçamento): cabeçalho RCC, título, paciente/data/atendente, conteúdo, total.
-// Imprime SÓ o cartão (não a tela). Saídas: imprimir, PDF, WhatsApp, copiar.
-import { useEffect, useState } from 'react';
+// Imprime SÓ o cartão (não a tela). Saídas: imprimir, PDF (baixa o arquivo direto para Downloads), WhatsApp, copiar.
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Icone } from './Icone';
 import { useSessao } from '../acesso/Sessao';
@@ -41,19 +41,39 @@ function Cartao({ d }: { d: RelatorioDados }) {
   );
 }
 
+/** Nome do arquivo: "Orcamento-de-Exames_OLIVER-AUGUSTO_21-10-2026.pdf" (sem acento e sem espaço). */
+const nomeArquivo = (d: RelatorioDados) => {
+  const limpo = (t: string) => t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const paciente = d.paciente ? '_' + limpo(d.paciente.split(' · ')[0]) : '';
+  return `${limpo(d.titulo)}${paciente}_${new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')}.pdf`;
+};
+
 function Janela({ d, texto, fechar }: { d: RelatorioDados; texto: string; fechar: () => void }) {
   useEffect(() => { document.body.classList.add('rel-aberto'); return () => document.body.classList.remove('rel-aberto'); }, []);
+  const cartao = useRef<HTMLDivElement>(null);
+  const [baixando, setBaixando] = useState(false);
+  // gera o PDF do cartão e baixa direto (sem a janela de impressão); a biblioteca só carrega quando alguém clica
+  const baixarPdf = async () => {
+    const el = cartao.current?.querySelector('.rel-cartao') as HTMLElement | null;
+    if (!el || baixando) return;
+    setBaixando(true);
+    try {
+      const html2pdf = (await import('html2pdf.js')).default;
+      await html2pdf().set({ margin: 10, filename: nomeArquivo(d), image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, backgroundColor: '#ffffff' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } }).from(el).save();
+    } finally { setBaixando(false); }
+  };
   return createPortal(
     <div className="rel-fundo" onClick={fechar}>
       <div className="rel-caixa" onClick={(e) => e.stopPropagation()}>
         <div className="rel-acoes">
           <button type="button" className="btn2 ic" onClick={() => window.print()} title="Imprimir" aria-label="Imprimir"><Icone n="imprimir" /></button>
-          <button type="button" className="btn2 ic" onClick={() => window.print()} title="PDF (na impressão, escolha “Salvar como PDF”)" aria-label="Salvar PDF"><Icone n="pdf" /></button>
+          <button type="button" className="btn2 ic" onClick={baixarPdf} disabled={baixando} title={baixando ? 'Gerando o PDF…' : 'Baixar PDF'} aria-label="Baixar PDF"><Icone n="pdf" /></button>
           <button type="button" className="btn2 ic zap" onClick={() => abrirWhatsApp(texto)} title="Enviar por WhatsApp" aria-label="WhatsApp"><Icone n="zap" /></button>
           <button type="button" className="btn2 ic" onClick={() => navigator.clipboard?.writeText(texto).catch(() => undefined)} title="Copiar texto" aria-label="Copiar"><Icone n="copiar" /></button>
           <button type="button" className="btn2 ic" onClick={fechar} title="Fechar" aria-label="Fechar"><Icone n="x" /></button>
         </div>
-        <Cartao d={d} />
+        <div ref={cartao}><Cartao d={d} /></div>
       </div>
     </div>, document.body);
 }
