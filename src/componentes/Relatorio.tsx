@@ -48,32 +48,25 @@ const nomeArquivo = (d: RelatorioDados) => {
   return `${limpo(d.titulo)}${paciente}_${new Date().toLocaleDateString('pt-BR').replace(/\//g, '-')}.pdf`;
 };
 
+/** Gera o PDF do cartão e baixa direto (sem a janela de impressão); a biblioteca só carrega quando alguém clica. */
+async function baixarPdf(el: HTMLElement, d: RelatorioDados) {
+  const html2pdf = (await import('html2pdf.js')).default;
+  await html2pdf().set({ margin: 10, filename: nomeArquivo(d), image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: { scale: 2, backgroundColor: '#ffffff' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } }).from(el).save();
+}
+
 function Janela({ d, texto, fechar }: { d: RelatorioDados; texto: string; fechar: () => void }) {
   useEffect(() => { document.body.classList.add('rel-aberto'); return () => document.body.classList.remove('rel-aberto'); }, []);
-  const cartao = useRef<HTMLDivElement>(null);
-  const [baixando, setBaixando] = useState(false);
-  // gera o PDF do cartão e baixa direto (sem a janela de impressão); a biblioteca só carrega quando alguém clica
-  const baixarPdf = async () => {
-    const el = cartao.current?.querySelector('.rel-cartao') as HTMLElement | null;
-    if (!el || baixando) return;
-    setBaixando(true);
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      await html2pdf().set({ margin: 10, filename: nomeArquivo(d), image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, backgroundColor: '#ffffff' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' } }).from(el).save();
-    } finally { setBaixando(false); }
-  };
   return createPortal(
     <div className="rel-fundo" onClick={fechar}>
       <div className="rel-caixa" onClick={(e) => e.stopPropagation()}>
         <div className="rel-acoes">
           <button type="button" className="btn2 ic" onClick={() => window.print()} title="Imprimir" aria-label="Imprimir"><Icone n="imprimir" /></button>
-          <button type="button" className="btn2 ic" onClick={baixarPdf} disabled={baixando} title={baixando ? 'Gerando o PDF…' : 'Baixar PDF'} aria-label="Baixar PDF"><Icone n="pdf" /></button>
           <button type="button" className="btn2 ic zap" onClick={() => abrirWhatsApp(texto)} title="Enviar por WhatsApp" aria-label="WhatsApp"><Icone n="zap" /></button>
           <button type="button" className="btn2 ic" onClick={() => navigator.clipboard?.writeText(texto).catch(() => undefined)} title="Copiar texto" aria-label="Copiar"><Icone n="copiar" /></button>
           <button type="button" className="btn2 ic" onClick={fechar} title="Fechar" aria-label="Fechar"><Icone n="x" /></button>
         </div>
-        <div ref={cartao}><Cartao d={d} /></div>
+        <Cartao d={d} />
       </div>
     </div>, document.body);
 }
@@ -81,12 +74,22 @@ function Janela({ d, texto, fechar }: { d: RelatorioDados; texto: string; fechar
 /** Botões de saída da página: abrem o relatório (imprimir/PDF) ou mandam o texto (WhatsApp/copiar). */
 export function BotoesSaida({ desativado, texto, relatorio }: { desativado?: boolean; texto: () => string; relatorio?: () => RelatorioDados }) {
   const [aberto, setAberto] = useState(false);
+  const [pdf, setPdf] = useState<RelatorioDados | null>(null);   // cartão montado fora da tela só para gerar o PDF
+  const oculto = useRef<HTMLDivElement>(null);
+  const dados = () => (relatorio ? relatorio() : relatorioDeTexto(texto()));
+  useEffect(() => {
+    const el = oculto.current?.querySelector('.rel-cartao') as HTMLElement | null;
+    if (!pdf || !el) return;
+    baixarPdf(el, pdf).finally(() => setPdf(null));
+  }, [pdf]);
   return (
     <>
-      <button type="button" className="btn2 ic imp" disabled={desativado} onClick={() => setAberto(true)} title="Imprimir / PDF" aria-label="Imprimir ou PDF"><Icone n="imprimir" /></button>
+      <button type="button" className="btn2 ic imp" disabled={desativado} onClick={() => setAberto(true)} title="Imprimir" aria-label="Imprimir"><Icone n="imprimir" /></button>
+      <button type="button" className="btn2 ic" disabled={desativado || !!pdf} onClick={() => setPdf(dados())} title={pdf ? 'Gerando o PDF…' : 'Baixar PDF'} aria-label="Baixar PDF"><Icone n="pdf" /></button>
       <button type="button" className="btn2 ic zap" disabled={desativado} onClick={() => abrirWhatsApp(texto())} title="Enviar por WhatsApp" aria-label="Enviar por WhatsApp"><Icone n="zap" /></button>
       <button type="button" className="btn2 ic" disabled={desativado} onClick={() => navigator.clipboard?.writeText(texto()).catch(() => undefined)} title="Copiar texto" aria-label="Copiar texto"><Icone n="copiar" /></button>
-      {aberto && <Janela d={relatorio ? relatorio() : relatorioDeTexto(texto())} texto={texto()} fechar={() => setAberto(false)} />}
+      {aberto && <Janela d={dados()} texto={texto()} fechar={() => setAberto(false)} />}
+      {pdf && createPortal(<div ref={oculto} aria-hidden="true" style={{ position: 'fixed', left: -10000, top: 0, width: 760 }}><Cartao d={pdf} /></div>, document.body)}
     </>
   );
 }
