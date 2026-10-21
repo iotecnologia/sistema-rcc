@@ -7,6 +7,7 @@ import { Bloco, BotoesSaida, TituloPagina, Vazio } from '../componentes/Comuns';
 import { Icone } from '../componentes/Icone';
 import { regrasDoConvenio, norm } from '../regras/contexto';
 import { regrasGerais } from '../regras/pedido';
+import { pedidoEmLinhas } from '../regras/conselhos';
 import { ConselhosLinhas } from '../componentes/Conselhos';
 import { redesDoConvenio } from '../regras/rede';
 import type { Convenio } from '../tipos/modelos';
@@ -50,7 +51,7 @@ export function Convenios() {
   const consultarAntes = cob.filter((r) => ACAO[String(r.campos.cobertura)]).map((r) => ({ exame: nomeAlvo(r.alvo_original), acao: ACAO[String(r.campos.cobertura)] }));
   const texto2 = () => [...(naoCobre.length ? [`NÃO cobre (oferecer particular): ${naoCobre.join(', ')}`] : []), ...consultarAntes.map((x) => `${x.exame}: ${x.acao}`)];
   const pedido = g ? g.checklist.filter((x) => x.situacao === 'confirmada').map((x) => x.texto) : [];
-  const texto = () => !sel ? '' : [`*${sel.nome}*`, `Autorização: ${sel.responsavel ?? '—'} · agendar com ${agendarCom(sel)}`, ...pedido.map((x) => '- ' + x), ...texto2().map((x) => '- ' + x)].join('\n');
+  const texto = () => !sel ? '' : [`*${sel.nome}*`, `Autorização: ${sel.responsavel ?? '—'} · agendar com ${agendarCom(sel)}`, ...pedidoEmLinhas(pedido, b.conselhos.filter((c) => c.convenio_id === sel.id)).map((x) => (x.startsWith('•') ? '   ' + x : '- ' + x)), ...texto2().map((x) => '- ' + x)].join('\n');
 
   return (
     <>

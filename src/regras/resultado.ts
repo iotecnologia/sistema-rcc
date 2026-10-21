@@ -1,6 +1,6 @@
 // Junta tudo numa resposta só: convênio + exames + data do pedido → o que fazer.
 import type { BaseDados } from '../repositorio/repositorio';
-import type { Convenio, Situacao } from '../tipos/modelos';
+import type { Convenio, Situacao, ConvenioConselho } from '../tipos/modelos';
 import { agendaDoExame, type AgendaExame } from './agenda';
 import { autorizacaoDoExame, coberturaImpede, paraItem, type AutorizacaoExame, type ItemRegra } from './autorizacao';
 import { br } from './calendario';
@@ -33,6 +33,7 @@ export interface Resultado {
   motivos: string[];                // por que "não pode" ou "atenção"
   pendentes: ItemRegra[];           // regras envolvidas que estão a confirmar / em conflito / sem informação
   rede: RedeInfo | null;            // null quando o convênio não pede a rede
+  conselhos: ConvenioConselho[];    // médico solicitante: quais conselhos o convênio aceita (CRM, CRO, CREFITO…)
 }
 
 /** Regras do convênio que dependem da combinação de exames do pedido. */
@@ -95,7 +96,8 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
   const todas = [...geral.itens, ...exames.flatMap((e) => e.autorizacao.regras), ...combinacao];
   const pendentes = todas.filter((r) => PROBLEMA.includes(r.situacao)).filter((r, i, a) => a.findIndex((x) => x.id === r.id) === i);
   // regras ainda não confirmadas NÃO mudam a situação: a confirmação acontece antes de o sistema ir para produção
-  return { convenio, geral, exames, combinacao, janela, situacao, motivos, pendentes, rede };
+  const conselhos = b.conselhos.filter((c) => c.convenio_id === convenio.id);
+  return { convenio, geral, exames, combinacao, janela, situacao, motivos, pendentes, rede, conselhos };
 }
 
 /** Texto curto para WhatsApp / área de transferência. */

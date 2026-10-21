@@ -3,6 +3,7 @@
 import type { Resultado } from '../regras/resultado';
 import { br } from '../regras/calendario';
 import type { RelatorioDados } from './Relatorio';
+import { pedidoEmLinhas } from '../regras/conselhos';
 
 const unicos = <T,>(l: T[], k: (x: T) => string) => l.filter((x, i) => l.findIndex((y) => k(y) === k(x)) === i);
 
@@ -10,7 +11,7 @@ function dados(r: Resultado) {
   const resp = r.geral.responsavel ?? 'o setor de autorização';
   const quando = r.janela.agendarAPartirDe ? `a partir de ${br(r.janela.agendarAPartirDe)}` : r.janela.motivoAPartir;
   const codigos = r.exames.map((e) => ({ nome: e.autorizacao.exame.nome, qtd: e.quantidade, cod: e.autorizacao.codigos.map((c) => c.codigo).join(' + ') }));
-  const pedido = r.geral.checklist.filter((x) => x.situacao === 'confirmada').map((x) => x.texto);
+  const pedido = pedidoEmLinhas(r.geral.checklist.filter((x) => x.situacao === 'confirmada').map((x) => x.texto), r.conselhos);
   const regras = unicos([...r.combinacao, ...r.exames.flatMap((e) => [...e.autorizacao.regras, ...e.agenda.avisos, ...e.agenda.avisosPaciente])].filter((x) => x.situacao === 'confirmada'), (x) => x.id).map((x) => x.texto);
   const preparos = unicos(r.exames.flatMap((e) => e.agenda.preparos), (p) => String(p.id));
   const paciente: string[] = [];
