@@ -1,0 +1,432 @@
+[
+ {
+  "convenio_id": 9,
+  "regra": "SulAmérica (Izabel, 21/10/2026): RM e TC autorizam pelo PACOTE da região; os demais exames pelo TUSS do exame. Duas ou mais regiões diferentes no mesmo pedido: um código só, o de múltiplas regiões. Exames que dependem do pedido mostram o código sugerido + aviso para conferir.",
+  "tuss_fora_dos_pacotes": true,
+  "pacotes": [
+   {
+    "codigo": "64626326",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Crânio e encéfalo",
+    "exames": [
+     150,
+     151
+    ]
+   },
+   {
+    "codigo": "64626300",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Cabeça e/ou pescoço",
+    "exames": [
+     101,
+     102,
+     103,
+     104,
+     221,
+     222,
+     152,
+     153
+    ]
+   },
+   {
+    "codigo": "64626369",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Tórax",
+    "exames": [
+     105,
+     148,
+     154,
+     155,
+     161,
+     162
+    ]
+   },
+   {
+    "codigo": "64626288",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Abdome superior e/ou inferior",
+    "exames": [
+     106,
+     107,
+     149,
+     156,
+     157
+    ]
+   },
+   {
+    "codigo": "64626350",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Pelve / genitália",
+    "exames": [
+     108,
+     158,
+     159
+    ]
+   },
+   {
+    "codigo": "64626318",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Coluna",
+    "exames": [
+     109
+    ]
+   },
+   {
+    "codigo": "64626296",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Articulação",
+    "exames": []
+   },
+   {
+    "codigo": "64626334",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Membros superiores",
+    "exames": [
+     375,
+     376
+    ]
+   },
+   {
+    "codigo": "64626342",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Membros inferiores",
+    "exames": []
+   },
+   {
+    "codigo": "64625493",
+    "modalidade": "TC",
+    "tipo": "especial",
+    "regiao": "Angio-TC arterial de membro inferior",
+    "exames": [
+     160
+    ]
+   },
+   {
+    "codigo": "64625885",
+    "modalidade": "TC",
+    "tipo": "especial",
+    "regiao": "Angio-TC coronariana",
+    "exames": [
+     220
+    ]
+   },
+   {
+    "codigo": "64625845",
+    "modalidade": "TC",
+    "tipo": "especial",
+    "regiao": "Angio-TC coronariana (PCT)",
+    "exames": []
+   },
+   {
+    "codigo": "64626377",
+    "modalidade": "TC",
+    "tipo": "regiao",
+    "regiao": "Radioterápica / oncológica",
+    "exames": [
+     114
+    ]
+   },
+   {
+    "codigo": "64625958",
+    "modalidade": "TC",
+    "tipo": "multiplas",
+    "regiao": "Múltiplas regiões",
+    "exames": []
+   },
+   {
+    "codigo": "64626229",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Crânio e encéfalo",
+    "exames": [
+     115,
+     116,
+     118,
+     169,
+     170
+    ]
+   },
+   {
+    "codigo": "64626199",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Cabeça e/ou pescoço",
+    "exames": [
+     119,
+     120,
+     121,
+     122,
+     123,
+     174,
+     175
+    ]
+   },
+   {
+    "codigo": "64626261",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Tórax",
+    "exames": [
+     124,
+     143,
+     163,
+     165,
+     166
+    ]
+   },
+   {
+    "codigo": "64626210",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Coração",
+    "exames": [
+     125,
+     126,
+     127
+    ]
+   },
+   {
+    "codigo": "64626172",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Abdome superior e/ou inferior",
+    "exames": [
+     128,
+     164,
+     167,
+     168
+    ]
+   },
+   {
+    "codigo": "64626253",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Pelve / genitália",
+    "exames": [
+     129,
+     130,
+     131,
+     172,
+     173
+    ]
+   },
+   {
+    "codigo": "64626202",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Coluna",
+    "exames": [
+     132
+    ]
+   },
+   {
+    "codigo": "64626180",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Articulação",
+    "exames": [
+     141,
+     226
+    ]
+   },
+   {
+    "codigo": "64626237",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Membros superiores",
+    "exames": [
+     135,
+     136
+    ]
+   },
+   {
+    "codigo": "64626245",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Membros inferiores",
+    "exames": [
+     138,
+     139,
+     140
+    ]
+   },
+   {
+    "codigo": "64625915",
+    "modalidade": "RM",
+    "tipo": "especial",
+    "regiao": "Angio-RM de membro inferior",
+    "exames": [
+     171,
+     372
+    ]
+   },
+   {
+    "codigo": "64625907",
+    "modalidade": "RM",
+    "tipo": "especial",
+    "regiao": "Fluxo liquórico",
+    "exames": [
+     133
+    ]
+   },
+   {
+    "codigo": "64626270",
+    "modalidade": "RM",
+    "tipo": "regiao",
+    "regiao": "Radioterápica / oncológica",
+    "exames": [
+     144
+    ]
+   },
+   {
+    "codigo": "64625966",
+    "modalidade": "RM",
+    "tipo": "multiplas",
+    "regiao": "Múltiplas regiões",
+    "exames": []
+   }
+  ],
+  "duvidas": [
+   {
+    "exame": 100,
+    "opcoes": [
+     "64626326",
+     "64626300"
+    ],
+    "aviso": "Confira no pedido: crânio ou sela = 64626326 (crânio e encéfalo); órbitas = 64626300 (cabeça e/ou pescoço)."
+   },
+   {
+    "exame": 373,
+    "opcoes": [
+     "64626369"
+    ],
+    "aviso": "Confira no pedido: sugerido o pacote de tórax (64626369)."
+   },
+   {
+    "exame": 377,
+    "opcoes": [
+     "64626369"
+    ],
+    "aviso": "Confira no pedido: sugerido o pacote de tórax (64626369)."
+   },
+   {
+    "exame": 223,
+    "opcoes": [
+     "64626288",
+     "64626350"
+    ],
+    "aviso": "Confira no pedido: abdome = 64626288; pelve = 64626350."
+   },
+   {
+    "exame": 110,
+    "opcoes": [
+     "64626318"
+    ],
+    "aviso": "Confira no pedido: segmento adicional entra no pacote de coluna (64626318), autorizar quantidade 01."
+   },
+   {
+    "exame": 111,
+    "opcoes": [
+     "64626296",
+     "64626350"
+    ],
+    "aviso": "Confira no pedido: articulação = 64626296; sacroilíacas (bacia) = 64626350 (pelve)."
+   },
+   {
+    "exame": 112,
+    "opcoes": [
+     "64626334",
+     "64626342"
+    ],
+    "aviso": "Confira no pedido: braço, antebraço ou mão = 64626334 (membros superiores); coxa, perna ou pé = 64626342 (membros inferiores)."
+   },
+   {
+    "exame": 113,
+    "opcoes": [
+     "64626342"
+    ],
+    "aviso": "Confira no pedido: sugerido o pacote de membros inferiores (64626342)."
+   },
+   {
+    "exame": 374,
+    "opcoes": [
+     "64626342"
+    ],
+    "aviso": "Confira no pedido: sugerido o pacote de membros inferiores (64626342); o 64625493 é só para angio ARTERIAL."
+   },
+   {
+    "exame": 219,
+    "opcoes": [
+     "64626377"
+    ],
+    "aviso": "Confira no pedido: sugerido o pacote oncológico (64626377)."
+   },
+   {
+    "exame": 218,
+    "opcoes": [
+     "64626326",
+     "64626300",
+     "64626369",
+     "64626288",
+     "64626350"
+    ],
+    "aviso": "Use o pacote da região escrita no pedido: crânio 64626326 · pescoço 64626300 · tórax 64626369 · abdome 64626288 · pelve 64626350."
+   },
+   {
+    "exame": 117,
+    "opcoes": [
+     "64626229",
+     "64626199"
+    ],
+    "aviso": "Confira no pedido: crânio = 64626229; fossa posterior / cabeça e pescoço = 64626199."
+   },
+   {
+    "exame": 137,
+    "opcoes": [
+     "64626253",
+     "64626180"
+    ],
+    "aviso": "Confira no pedido: bacia/sacroilíacas = 64626253 (pelve); articulação = 64626180."
+   },
+   {
+    "exame": 134,
+    "opcoes": [
+     "64626202",
+     "64626237",
+     "64626253"
+    ],
+    "aviso": "Confira no pedido: coluna = 64626202; plexo braquial = 64626237 (membros superiores); lombossacral = 64626253 (pelve)."
+   },
+   {
+    "exame": 142,
+    "opcoes": [
+     "64626172",
+     "64626202",
+     "64626199",
+     "64626253"
+    ],
+    "aviso": "Confira no pedido: colangio ou uro-RM = 64626172 (abdome); mielo-RM = 64626202 (coluna); sialo-RM = 64626199 (pescoço); cistografia = 64626253 (pelve)."
+   },
+   {
+    "exame": 225,
+    "opcoes": [
+     "64626229",
+     "64626199",
+     "64626261",
+     "64626172",
+     "64626253"
+    ],
+    "aviso": "Use o pacote da região escrita no pedido: crânio 64626229 · pescoço 64626199 · tórax 64626261 · abdome 64626172 · pelve 64626253."
+   }
+  ]
+ }
+]

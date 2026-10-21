@@ -100,6 +100,28 @@ describe('SulAmérica', () => {
     const c = consultar(b, { convenio: 'sulamerica', exames: [{ exameId: RM_CORACAO }], dataPedido: HOJE, hoje: HOJE });
     expect(textos(c)).toMatch(/NÃO incluir angio-RM/i);
   });
+  // pacotes por região (Izabel, 21/10/2026): RM/TC pelo pacote; demais exames pelo TUSS; 2+ regiões = 1 código de múltiplas regiões
+  const cods = (ids: number[]) => consultar(b, { convenio: 'sulamerica', exames: ids.map((exameId) => ({ exameId })), dataPedido: HOJE, hoje: HOJE })
+    .exames.map((e) => e.autorizacao.codigos.map((c) => c.codigo).join('+'));
+  it('RM articular: pacote de articulação 64626180', () => { expect(cods([RM_ARTICULAR])).toEqual(['64626180']); });
+  it('RM crânio + RM coluna (regiões diferentes): os dois com o código de múltiplas regiões 64625966', () => {
+    expect(cods([RM_CRANIO, RM_COLUNA])).toEqual(['64625966', '64625966']);
+  });
+  it('mamografia (fora de RM/TC): autoriza pelo TUSS do exame', () => { expect(cods([MAMOGRAFIA])).toEqual(['40808041']); });
+  it('exame que depende do pedido (Hidro-RM): códigos sugeridos + aviso para conferir', () => {
+    const hidro = b.exames.find((x) => x.nome.startsWith('RM - Hidro-RM'))!.id;
+    const r = consultar(b, { convenio: 'sulamerica', exames: [{ exameId: hidro }], dataPedido: HOJE, hoje: HOJE });
+    expect(r.exames[0].autorizacao.codigos.map((c) => c.codigo)).toEqual(['64626172', '64626202', '64626199', '64626253']);
+    expect(r.exames[0].autorizacao.codigos[0].observacao).toMatch(/Confira no pedido/);
+  });
+  it('exame que depende do pedido + outra região sem nada em comum: múltiplas regiões', () => {
+    const base = b.exames.find((x) => x.nome === 'RM - Base do crânio')!.id;
+    expect(cods([base, RM_COLUNA])).toEqual(['64625966', '64625966']);
+  });
+  it('aba Exames: a SulAmérica aparece para RM crânio (pacote 64626229)', () => {
+    const sul = b.convenios.find((c) => c.slug === 'sulamerica')!;
+    expect(b.codigos.filter((c) => c.convenio_id === sul.id && c.exame_id === RM_CRANIO).map((c) => c.codigo)).toEqual(['64626229']);
+  });
 });
 
 describe('Outros convênios', () => {

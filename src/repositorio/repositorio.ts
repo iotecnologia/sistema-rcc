@@ -12,7 +12,8 @@ export interface BaseDados {
   exames: M.Exame[];
   gruposPrazo: M.GrupoPrazo[];
   exameGrupos: M.ExameGrupo[];
-  codigos: M.ConvenioCodigo[];
+  codigos: M.ConvenioCodigo[];          // tabela do convênio + códigos que vêm dos pacotes por região (repositorio/pacotes.ts)
+  pacotes: M.ConvenioPacotes[];          // convênios que autorizam RM/TC por pacote de região (ex.: SulAmérica)
   equipamentos: M.Equipamento[];
   equipamentoExames: M.EquipamentoExame[];
   preparos: M.Preparo[];

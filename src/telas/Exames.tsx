@@ -126,6 +126,8 @@ export function Exames() {
                     <Link to={`/consultar?convenio=${cv.slug}&exame=${e.id}`} className="cod-conv-nome" title="Abrir a consulta deste convênio"><LogoConvenio c={cv} tam={22} /><span>{cv.nome}</span></Link>
                     <span className="codigos">{cods.map((c) => <span key={c.id} className="cod-item">
                       {c.tipo === 'PACOTE' || c.tipo === 'AMB' ? <small className="cod-tipo">{c.tipo === 'PACOTE' ? 'pacote' : 'AMB'}</small> : null}<Copiar codigo={c.codigo} /></span>)}</span>
+                    {[...new Set(cods.filter((c) => c.vinculo === 'pacote_conferir' && c.observacao).map((c) => c.observacao))].map((o) => (
+                      <small key={o} style={{ flexBasis: '100%', color: 'var(--st-at-t)', fontSize: 12.5 }}>⚠ {o}</small>))}
                   </div>
                 ))}</div> : <Vazio>Nenhum convênio tem código próprio cadastrado: autorizar pelo {tussTexto(e).toLowerCase()}.</Vazio>}
               </Bloco>

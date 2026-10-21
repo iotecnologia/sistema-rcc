@@ -7,6 +7,7 @@ import { br } from './calendario';
 import { ALVOS_COMBINACAO, convenioPorSlug, ehAngio, gruposDoExame, modalidadeBase, norm, regrasDoConvenio } from './contexto';
 import { calcularJanela, type ExamePedido, type Janela } from './janela';
 import { regrasGerais, type RegrasGerais } from './pedido';
+import { aplicarMultiplasRegioes } from './pacotes';
 import { situacaoDaRede, type RedeInfo } from './rede';
 
 export interface Consulta {
@@ -70,6 +71,7 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
     autorizacao: autorizacaoDoExame(b, q.convenio, x.exame), agenda: agendaDoExame(b, x.exame), quantidade: x.quantidade,
     grupos: gruposDoExame(b, x.exame),
   }));
+  aplicarMultiplasRegioes(b, convenio.id, exames);   // SulAmérica: RM/TC de regiões diferentes = 1 código de múltiplas regiões
   const combinacao = regrasDeCombinacao(b, q.convenio, itens);
   const janela = calcularJanela(b, q.convenio, itens, q.dataPedido, q.hoje, q.dataAutorizacao);
 

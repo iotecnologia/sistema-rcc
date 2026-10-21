@@ -135,7 +135,7 @@ export function ResultadoView({ r, dataPedido }: { r: Resultado; dataPedido?: st
           {r.geral.portal && <Linha rot="Onde"><a href={r.geral.portal.url} target="_blank" rel="noopener noreferrer">{r.geral.portal.rotulo}</a></Linha>}
           {r.exames.map((e) => {
             const a = e.autorizacao;
-            const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...a.regras.filter((x) => x.molde !== 'M18').map((x) => x.texto)];
+            const obs = [...(COBERTURA_OK.has(a.cobertura) ? [] : [a.coberturaTexto]), ...unicos(a.codigos.filter((c) => (c.vinculo === 'pacote_multiplas' || c.vinculo === 'pacote_conferir') && c.observacao).map((c) => c.observacao!)), ...a.regras.filter((x) => x.molde !== 'M18').map((x) => x.texto)];
             return (
               <div key={a.exame.id}>
                 <SubExame nome={a.exame.nome} qtd={e.quantidade} varios={r.exames.length > 1} />

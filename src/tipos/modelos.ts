@@ -91,3 +91,14 @@ export interface RegrasPadronizadas {
   padroes: PadraoRCC[];
   regras: RegraPadronizada[];
 }
+
+/** Pacote de autorização por região (ex.: SulAmérica): um código vale para vários exames de RM ou de TC. */
+export interface PacoteRegiao {
+  codigo: string; modalidade: 'RM' | 'TC';
+  tipo: 'regiao' | 'especial' | 'multiplas';   // especial = pacote próprio de um exame (ex.: coronária); multiplas = 2+ regiões no mesmo pedido
+  regiao: string; exames: Id[];                 // exames em que o pacote é certo
+}
+/** Exame cujo pacote depende do que está escrito no pedido: mostra os códigos sugeridos + um aviso para conferir. */
+export interface DuvidaPacote { exame: Id; opcoes: string[]; aviso: string; }
+/** Como o convênio autoriza por pacote. Com tuss_fora_dos_pacotes, os exames que não são RM/TC usam o TUSS do próprio exame. */
+export interface ConvenioPacotes { convenio_id: Id; regra: string; tuss_fora_dos_pacotes: boolean; pacotes: PacoteRegiao[]; duvidas: DuvidaPacote[]; }
