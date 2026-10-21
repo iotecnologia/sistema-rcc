@@ -86,14 +86,14 @@
  {
   "convenio_id": 1,
   "nome": "EFETIVO PLUS E",
-  "atende": true,
-  "origem": "Lista de redes"
+  "atende": false,
+  "origem": "RCC (21/10/2026): não atende"
  },
  {
   "convenio_id": 1,
   "nome": "EFETIVO PLUS Q",
-  "atende": true,
-  "origem": "Lista de redes"
+  "atende": false,
+  "origem": "RCC (21/10/2026): não atende"
  },
  {
   "convenio_id": 1,
