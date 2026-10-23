@@ -193,9 +193,18 @@
   "grupo": "cardiaco",
   "tipo": "analise",
   "dias": 5,
-  "contagem": "corridos",
+  "contagem": "uteis",
   "qtd_minima": null,
-  "observacao": "Coronárias e RM cardíaca: até 5 dias para autorizar"
+  "observacao": "Coronárias e RM cardíaca: até 5 dias úteis para autorizar (RCC 23/10/2026)"
+ },
+ {
+  "convenio_id": 8,
+  "grupo": "cardiaco",
+  "tipo": "agendamento",
+  "dias": 5,
+  "contagem": "uteis",
+  "qtd_minima": null,
+  "observacao": "RCC (22/10/2026): exames cardíacos com 5 dias úteis"
  },
  {
   "convenio_id": 17,

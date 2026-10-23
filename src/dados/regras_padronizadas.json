@@ -4344,6 +4344,25 @@
    "resposta": null
   },
   {
+   "id": "CAR-08",
+   "molde": "M13",
+   "molde_nome": "Cobertura",
+   "convenio": "careplus",
+   "alvo_original": "Angio-RM de aorta torácica",
+   "alvos": [
+    "ANGIO_RM_AORTA_TORACICA"
+   ],
+   "campos": {
+    "cobertura": "sem_cobertura"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não tem cobertura para angio-RM de aorta torácica.",
+   "fontes": [
+    "RCC 22/10/2026"
+   ],
+   "resposta": null
+  },
+  {
    "id": "ECO-01",
    "molde": "M09",
    "molde_nome": "Guia SP/SADT obrigatória",
@@ -7258,10 +7277,10 @@
     "ANGIO_TC_CORONARIAS"
    ],
    "campos": {
-    "texto": "TC 2, seg–sex, só manhã até 11:30, não atende sábado."
+    "texto": "TC 2, seg–sex, só manhã até 11:10, não atende sábado."
    },
    "situacao": "confirmada",
-   "texto_original": "TC 2, seg–sex, só manhã até 11:30, não atende sábado.",
+   "texto_original": "TC 2, seg–sex, só manhã até 11:10, não atende sábado.",
    "fontes": [
     "PR10"
    ],
@@ -8168,6 +8187,26 @@
    "texto_original": "Usar o pacote 64625885 (o 64625845 não se usa).",
    "fontes": [
     "RESP-1"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "SUL-23",
+   "molde": "M18",
+   "molde_nome": "Texto exigido no pedido",
+   "convenio": "sulamerica",
+   "alvo_original": "Angio-TC coronárias",
+   "alvos": [
+    "ANGIO_TC_CORONARIAS"
+   ],
+   "campos": {
+    "deve_conter": "angiotomografia de coronárias"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Pedido precisa ter escrito \"angiotomografia de coronárias\"; não precisa da TC de tórax. Antes de pedir para trocar o pedido médico, confira se o exame é mesmo de coronária.",
+   "fontes": [
+    "RCC 22/10/2026",
+    "RCC 23/10/2026"
    ],
    "resposta": null
   },

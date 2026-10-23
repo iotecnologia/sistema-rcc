@@ -22,17 +22,5 @@
   "telefones": "(19) 3736-3481 Radiologia · (19) 3739-3333 RM e TC",
   "whatsapp": "(19) 99891-5235",
   "horario_atendimento": "Segunda a sexta 7h às 17h30; sábado 7h às 11h"
- },
- {
-  "id": 3,
-  "nome": "Barão Geraldo – Centro de Oncologia de Campinas",
-  "apelido": "COC Barão Geraldo",
-  "observacao": "",
-  "endereco": "Rua Alberto de Salvo, 311",
-  "cep": "13064-670",
-  "cidade": "Campinas/SP",
-  "telefones": "(19) 3787-3400 · (19) 3787-3432",
-  "whatsapp": null,
-  "horario_atendimento": "Segunda a sexta 8h às 12h e 13h às 16h"
  }
 ]

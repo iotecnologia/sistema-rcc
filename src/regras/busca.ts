@@ -42,7 +42,18 @@ export function buscarExames(b: BaseDados, q: string, limite = 10): Achado[] {
   const ps = palavras(q);
   if (!ps.length || norm(q).trim().length < 2) return [];
   const casa = (texto: string) => { const h = norm(texto); return ps.every((formas) => formas.some((f) => h.includes(f))); };
-  return b.exames.filter((e) => casa(`${e.nome} ${e.tuss ?? ''} ${apelidos(e)}`)).slice(0, limite).map((e) => ({ exame: e, rotulo: rotulo(e, q) }));
+  // Ordem: primeiro os exames em que a palavra digitada aparece INTEIRA ("pé" acha "RM - Pé" antes de "pelve", "perna").
+  const inteiras = (texto: string) => {
+    const tokens = new Set(norm(texto).split(/[^A-Z0-9]+/));
+    return ps.filter((formas) => formas.some((f) => tokens.has(f))).length;
+  };
+  return b.exames
+    .map((e, i) => ({ e, i, t: `${e.nome} ${e.tuss ?? ''} ${apelidos(e)}` }))
+    .filter((x) => casa(x.t))
+    .map((x) => ({ ...x, n: inteiras(x.t) }))
+    .sort((a, c) => c.n - a.n || a.i - c.i)
+    .slice(0, limite)
+    .map(({ e }) => ({ exame: e, rotulo: rotulo(e, q) }));
 }
 
 export function buscarPrecos(precos: Preco[], q: string, limite = 12): Preco[] {
