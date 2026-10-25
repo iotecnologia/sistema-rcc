@@ -22,8 +22,8 @@ function valor(el: HTMLInputElement, v: string) {
 }
 async function digitar(sel: string, texto: string) {
   const el = q(sel) as HTMLInputElement | null; if (!el) return;
-  el.focus(); await espera(250);
-  for (let i = 1; i <= texto.length; i++) { valor(el, texto.slice(0, i)); await espera(120); }
+  el.focus(); await espera(200);
+  for (let i = 1; i <= texto.length; i++) { valor(el, texto.slice(0, i)); await espera(80); }
 }
 async function clicar(sel: string, mouseDown = false) {
   for (let t = 0; t < 20 && !q(sel); t++) await espera(150);
@@ -38,10 +38,10 @@ const textoPuro = (n: ReactNode): string => {
   if (isValidElement<{ children?: ReactNode }>(n)) return textoPuro(n.props.children);
   return '';
 };
-/** Tempo de leitura no modo "Me mostra sozinho": 0,5 s por palavra + 2,5 s, nunca menos de 6 s. */
+/** Tempo de leitura no modo "Me mostra sozinho": 0,35 s por palavra + 1,5 s, nunca menos de 4 s. */
 const tempoLeitura = (p: { titulo: string; texto: ReactNode }) => {
   const palavras = `${p.titulo} ${textoPuro(p.texto)}`.split(/\s+/).filter(Boolean).length;
-  return Math.max(6000, palavras * 500 + 2500);
+  return Math.max(4000, palavras * 350 + 1500);
 };
 
 interface Passo {
@@ -55,7 +55,7 @@ const PASSOS: Passo[] = [
   { titulo: 'Vamos aprender a consultar', texto: 'Em 1 minuto você vai ver como achar tudo o que precisa para agendar um exame.' },
   { alvo: '.barra-fixa .combo-campo input', titulo: 'Escolha o convênio', texto: <>Digite o nome do convênio do paciente e clique nele na lista. <b>Tente: Amil</b></>,
     pronto: () => !!q('.barra-fixa .combo-logo'),
-    auto: async () => { await digitar('.barra-fixa .combo-campo input', 'Amil'); await espera(500); await clicar('.combo-lista button', true); } },
+    auto: async () => { await digitar('.barra-fixa .combo-campo input', 'Amil'); await espera(350); await clicar('.combo-lista button', true); } },
   { alvo: '.barra-fixa input[type=search]', titulo: 'Digite o exame', texto: <>Escreva do jeito que o paciente falou. <b>Tente: resso joelho</b></>,
     pronto: () => !!q('.barra-fixa .sugestoes button'),
     auto: () => digitar('.barra-fixa input[type=search]', 'resso joelho') },
@@ -119,7 +119,7 @@ export function Tour() {
       (async () => {
         await espera(tempoLeitura(p));   // primeiro a pessoa lê a instrução
         if (id !== rodando.current) return;
-        if (p.auto) { await p.auto(); if (id !== rodando.current) return; setFeito(true); await espera(2500); }   // depois vê o resultado
+        if (p.auto) { await p.auto(); if (id !== rodando.current) return; setFeito(true); await espera(1600); }   // depois vê o resultado
         if (id === rodando.current && !fim) proximo();
       })();
       return;
@@ -150,7 +150,7 @@ export function Tour() {
     <div className="tour" role="dialog" aria-label="Tour guiado">
       {caixa ? <div className="tour-luz" style={{ left: caixa.left - 6, top: caixa.top - 6, width: caixa.width + 12, height: caixa.height + 12 }} />
         : <div className="tour-escuro" />}
-      {caixa && esperando && <div className="tour-mao" style={{ left: caixa.left + Math.min(caixa.width / 2, 120), top: caixa.bottom - 6 }}>👆</div>}
+      {caixa && esperando && <div className="tour-mao" style={{ left: caixa.left + Math.min(caixa.width / 2, 120), top: caixa.top + caixa.height / 2 - 6 }}>👆</div>}
       <div className={'tour-balao' + (seta ? ' seta-' + seta : '')} style={{ ...estilo, width: W }} key={i}>
         <div className="tour-topo"><span className="tour-prog">{i + 1} de {PASSOS.length}</span>
           <button type="button" className="tour-x" onClick={sair} aria-label="Sair do tour"><Icone n="x" /></button></div>
