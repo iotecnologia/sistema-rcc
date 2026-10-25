@@ -46,6 +46,7 @@ const tempoLeitura = (p: { titulo: string; texto: ReactNode }) => {
 
 interface Passo {
   alvo?: string; titulo: string; texto: ReactNode;
+  lista?: boolean;                   // abre uma lista embaixo do campo: o balão vai para o lado e a lista fica acesa
   pronto?: () => boolean;            // o tour espera isso acontecer para seguir
   opcional?: boolean;                // pode seguir sem fazer
   auto?: () => Promise<void>;        // o que o sistema faz sozinho no modo "mostra"
@@ -53,13 +54,13 @@ interface Passo {
 
 const PASSOS: Passo[] = [
   { titulo: 'Vamos aprender a consultar', texto: 'Em 1 minuto você vai ver como achar tudo o que precisa para agendar um exame.' },
-  { alvo: '.barra-fixa .combo-campo input', titulo: 'Escolha o convênio', texto: <>Digite o nome do convênio do paciente e clique nele na lista. <b>Tente: Amil</b></>,
+  { alvo: '.barra-fixa .combo-campo input', lista: true, titulo: 'Escolha o convênio', texto: <>Digite o nome do convênio do paciente e clique nele na lista. <b>Tente: Amil</b></>,
     pronto: () => !!q('.barra-fixa .combo-logo'),
     auto: async () => { await digitar('.barra-fixa .combo-campo input', 'Amil'); await espera(350); await clicar('.combo-lista button', true); } },
-  { alvo: '.barra-fixa input[type=search]', titulo: 'Digite o exame', texto: <>Escreva do jeito que o paciente falou. <b>Tente: resso joelho</b></>,
+  { alvo: '.barra-fixa input[type=search]', lista: true, titulo: 'Digite o exame', texto: <>Escreva do jeito que o paciente falou. <b>Tente: resso joelho</b></>,
     pronto: () => !!q('.barra-fixa .sugestoes button'),
     auto: () => digitar('.barra-fixa input[type=search]', 'resso joelho') },
-  { alvo: '.barra-fixa .sugestoes button', titulo: 'Escolha o exame certo', texto: 'Clique no exame que o paciente vai fazer. Se forem vários, repita.',
+  { alvo: '.barra-fixa .sugestoes button', lista: true, titulo: 'Escolha o exame certo', texto: 'Clique no exame que o paciente vai fazer. Se forem vários, repita.',
     pronto: () => !!q('.exames-sel .exame-linha'),
     auto: () => clicar('.barra-fixa .sugestoes button') },
   { alvo: '.barra-fixa .cp.data input', titulo: 'Data do pedido', texto: 'Coloque a data que o médico escreveu no pedido. Com ela o sistema mostra até quando dá para marcar.',
@@ -77,13 +78,14 @@ export function Tour() {
   const nav = useNavigate();
   const [modo, setModo] = useState<ModoTour | null>(null);
   const [i, setI] = useState(0);
-  const [caixa, setCaixa] = useState<DOMRect | null>(null);
+  const [caixa, setCaixa] = useState<DOMRect | null>(null);   // o campo da vez
+  const [luz, setLuz] = useState<DOMRect | null>(null);       // campo + lista aberta embaixo dele (área acesa)
   const [feito, setFeito] = useState(false);
   const rodando = useRef(0);
   const p = PASSOS[i];
   const fim = i === PASSOS.length - 1;
 
-  const sair = useCallback(() => { rodando.current++; setModo(null); setI(0); setCaixa(null); local.gravar(TOUR_VISTO, true); }, []);
+  const sair = useCallback(() => { rodando.current++; setModo(null); setI(0); setCaixa(null); setLuz(null); local.gravar(TOUR_VISTO, true); }, []);
   const proximo = useCallback(() => setI((x) => Math.min(x + 1, PASSOS.length - 1)), []);
 
   // abre pelo evento
@@ -99,13 +101,16 @@ export function Tour() {
 
   // acompanha o alvo (posição muda com rolagem e com a tela crescendo)
   useEffect(() => {
-    if (!modo || !p.alvo) { setCaixa(null); return; }
+    if (!modo || !p.alvo) { setCaixa(null); setLuz(null); return; }
     let rolou = false;
     const t = setInterval(() => {
       const el = q(p.alvo!);
       if (!el) return;
       if (!rolou) { el.scrollIntoView({ block: 'center', behavior: 'smooth' }); rolou = true; }
-      setCaixa(el.getBoundingClientRect());
+      const c = el.getBoundingClientRect();
+      const l = p.lista ? (q('.barra-fixa .combo-lista') ?? q('.barra-fixa .sugestoes'))?.getBoundingClientRect() : undefined;
+      setCaixa(c);
+      setLuz(l ? new DOMRect(Math.min(c.left, l.left), Math.min(c.top, l.top), Math.max(c.right, l.right) - Math.min(c.left, l.left), Math.max(c.bottom, l.bottom) - Math.min(c.top, l.top)) : c);
     }, 120);
     return () => clearInterval(t);
   }, [modo, i, p.alvo]);
@@ -134,21 +139,25 @@ export function Tour() {
 
   if (!modo) return null;
 
-  // balão: embaixo do alvo, ou em cima se não couber; sem alvo, no meio da tela
-  const W = 340, vw = window.innerWidth, vh = window.innerHeight;
+  // balão: nunca em cima da área acesa (campo + lista). Embaixo; se o passo abre lista, ao lado; senão em cima.
+  const W = 340, H = 220, vw = window.innerWidth, vh = window.innerHeight;
   let estilo: CSSProperties = { left: (vw - W) / 2, top: vh * 0.3 };
-  let seta: 'cima' | 'baixo' | null = null;
-  if (caixa) {
+  let seta: 'cima' | 'baixo' | 'esq' | 'dir' | null = null;
+  if (caixa && luz) {
     const left = Math.min(Math.max(12, caixa.left + caixa.width / 2 - W / 2), vw - W - 12);
-    const embaixo = caixa.bottom + 210 < vh;
-    estilo = embaixo ? { left, top: caixa.bottom + 16 } : { left, top: Math.max(12, caixa.top - 16), transform: 'translateY(-100%)' };
-    seta = embaixo ? 'cima' : 'baixo';
+    const topLado = Math.min(Math.max(12, caixa.top + caixa.height / 2 - 40), vh - H - 12);
+    if (!p.lista && luz.bottom + 16 + H < vh) { estilo = { left, top: luz.bottom + 16 }; seta = 'cima'; }
+    else if (luz.right + 16 + W < vw - 12) { estilo = { left: luz.right + 16, top: topLado }; seta = 'esq'; }
+    else if (luz.left - 16 - W > 12) { estilo = { left: luz.left - 16 - W, top: topLado }; seta = 'dir'; }
+    else if (luz.top - 16 - H > 12) { estilo = { left, top: luz.top - 16, transform: 'translateY(-100%)' }; seta = 'baixo'; }
+    else if (luz.bottom + 16 + H < vh) { estilo = { left, top: luz.bottom + 16 }; seta = 'cima'; }
+    else { estilo = { left: vw - W - 12, top: vh - H - 12 }; seta = null; }   // lista larga e comprida: canto de baixo à direita, longe dos nomes
   }
   const esperando = modo === 'faz' && !!p.pronto && !feito;
 
   return (
     <div className="tour" role="dialog" aria-label="Tour guiado">
-      {caixa ? <div className="tour-luz" style={{ left: caixa.left - 6, top: caixa.top - 6, width: caixa.width + 12, height: caixa.height + 12 }} />
+      {luz ? <div className="tour-luz" style={{ left: luz.left - 6, top: luz.top - 6, width: luz.width + 12, height: luz.height + 12 }} />
         : <div className="tour-escuro" />}
       {caixa && esperando && <div className="tour-mao" style={{ left: caixa.left + Math.min(caixa.width / 2, 120), top: caixa.top + caixa.height / 2 - 6 }}>👆</div>}
       <div className={'tour-balao' + (seta ? ' seta-' + seta : '')} style={{ ...estilo, width: W }} key={i}>
