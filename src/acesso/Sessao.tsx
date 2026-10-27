@@ -1,8 +1,7 @@
-// Login por e-mail + cargo. Acesso de teste: senha provisória com validade (acessoProvisorio.ts); a senha por usuário entra com o servidor (Fase 3).
+// Login por e-mail + cargo. Acesso de teste: senha provisória sem validade (acessoProvisorio.ts); a senha por usuário entra com o servidor (Fase 3).
 // Sessão some ao fechar o navegador (sessionStorage). Cadastro de cargos/usuários fica no navegador até existir o servidor.
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import base from '../dados/acesso.json';
-import { acessoExpirado } from './acessoProvisorio';
 
 export interface Cargo { id: string; nome: string; paginas: string[]; descontoMax?: number }
 /** Desconto extra máximo (%) que o cargo pode dar no orçamento. Administrador: sem limite (100). */
@@ -25,7 +24,7 @@ const Ctx = createContext<Sessao | null>(null);
 export function SessaoProvider({ children }: { children: ReactNode }) {
   const [cad, setCad] = useState<Acesso>(() => ler(localStorage, CHAVE_CAD, base as Acesso));
   const [email, setEmail] = useState<string | null>(() => ler(sessionStorage, CHAVE_SES, null));
-  const usuario = acessoExpirado() ? null : cad.usuarios.find((u) => u.email === email) ?? null;   // acesso de teste vencido derruba a sessão
+  const usuario = cad.usuarios.find((u) => u.email === email) ?? null;
   const cargo = usuario ? cad.cargos.find((c) => c.id === usuario.cargo) ?? null : null;
   const valor: Sessao = {
     ...cad, usuario, cargo,
