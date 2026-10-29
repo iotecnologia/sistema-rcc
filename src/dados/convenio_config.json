@@ -45,7 +45,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": null,
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 10,
@@ -77,7 +78,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": "Pedido com data futura anotada pelo médico vale 90 dias a partir dessa data. Todos os pedidos vão para auditoria.",
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 16,
@@ -93,7 +95,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": "Pedido sem prazo de validade. Aceita receituário da Unimed carimbado e assinado.",
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 12,
@@ -109,7 +112,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": null,
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 18,
@@ -157,7 +161,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": "Critérios e observações marcados como \"Informação a atualizar\".",
-  "revisar": true
+  "revisar": true,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 5,
@@ -173,7 +178,8 @@
   "canal_autorizacao": "E-mail (nome, exame, carteirinha, nº prestador, nº operadora + pedido anexo)",
   "gera_senha": null,
   "observacao": null,
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 13,
@@ -189,7 +195,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": null,
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 8,
@@ -221,7 +228,8 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": "Angio RM e Angio TC: verificar sempre se está no contrato.",
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 4,
@@ -269,7 +277,8 @@
   "canal_autorizacao": "Site Orizon (só Tomografia)",
   "gera_senha": null,
   "observacao": "Não aceita cópia: só pedido original ou pedido digitalizado (resposta 14/10/2026).",
-  "revisar": true
+  "revisar": true,
+  "codigos_tuss": true
  },
  {
   "convenio_id": 15,
@@ -285,6 +294,24 @@
   "canal_autorizacao": null,
   "gera_senha": null,
   "observacao": null,
-  "revisar": false
+  "revisar": false,
+  "codigos_tuss": true
+ },
+ {
+  "convenio_id": 28,
+  "validade_pedido_dias": null,
+  "validade_autorizacao_dias": null,
+  "aceita_copia": null,
+  "exige_original": false,
+  "exige_cid": false,
+  "exige_carimbo_assinatura": false,
+  "aceita_multipla_escolha": null,
+  "aceita_outro_estado": null,
+  "guia_sp_sadt": false,
+  "canal_autorizacao": null,
+  "gera_senha": null,
+  "observacao": null,
+  "revisar": false,
+  "codigos_tuss": true
  }
 ]

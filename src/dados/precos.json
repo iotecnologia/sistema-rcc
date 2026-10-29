@@ -1180,10 +1180,19 @@
   "exame_id": null
  },
  {
+  "id": 311,
+  "tabela_id": 1,
+  "grupo": "ressonancia",
+  "procedimento": "COLANGIO RM",
+  "subgrupo": "Ressonância",
+  "valor": 700.0,
+  "exame_id": null
+ },
+ {
   "id": 131,
   "tabela_id": 1,
   "grupo": "ressonancia",
-  "procedimento": "HIDRO-RM (COLANGIORESSONANCIA)",
+  "procedimento": "HIDRO-RM (COLANGIORESSONANCIA) + RM ABDOME TOTAL",
   "subgrupo": "Ressonância",
   "valor": 1670.0,
   "exame_id": null
@@ -1205,15 +1214,6 @@
   "subgrupo": "Ressonância",
   "valor": 1670.0,
   "exame_id": 133
- },
- {
-  "id": 134,
-  "tabela_id": 1,
-  "grupo": "ressonancia",
-  "procedimento": "RM - URO RM (HIDRO-RM)",
-  "subgrupo": "Ressonância",
-  "valor": 700.0,
-  "exame_id": null
  },
  {
   "id": 135,

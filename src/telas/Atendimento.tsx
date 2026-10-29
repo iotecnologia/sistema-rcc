@@ -179,6 +179,7 @@ export function Unidades() {
               {u.horario_atendimento && <div className="un-secao col">
                 <div className="un-rot">Horário</div>
                 <div className="un-hora"><Icone n="calendario" /><span>{u.horario_atendimento}</span></div>
+                {u.retirada_exames && <div className="un-hora"><Icone n="calendario" /><span>Retirada de exames: {u.retirada_exames}</span></div>}
               </div>}
 
               <div className="un-secao col">

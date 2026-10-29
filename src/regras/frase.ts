@@ -30,6 +30,7 @@ export function frase(b: BaseDados, r: RegraPadronizada): string {
       if (c.conta_a_partir === 'data_futura_anotada') return 'Se o médico anotar uma data futura, a validade conta a partir dessa data';
       return c.dias ? `Pedido médico vale ${c.dias} dias corridos` : 'Validade do pedido: sem informação';
     case 'M02':
+      if (c.sem_prazo) return 'Autorização sem data de vencimento';
       return c.dias ? `Autorização vale ${c.dias} dias corridos` : 'Validade da autorização: sem informação';
     case 'M03': {
       if (c.grupo === 'regra_geral') return 'Prazos de agendamento contam dias úteis (segunda a sexta, sem feriado nacional)';

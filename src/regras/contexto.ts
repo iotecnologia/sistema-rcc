@@ -44,7 +44,7 @@ export const ALVOS_GERAIS = new Set(['TODOS', 'DEMAIS', 'PEDIDO', 'AUTORIZACAO',
 
 /** Alvos que dependem da COMBINAÇÃO de exames do pedido (avaliados em resultado.ts). */
 export const ALVOS_COMBINACAO = new Set(['COLUNA_MAIS_DE_UMA', 'ARTICULACAO_BILATERAL', 'COLUNA_LOMBAR_BACIA', 'EXAMES_BILATERAIS',
-  'RM_MAIS_ANGIO', 'REGIOES_DIFERENTES']);
+  'RM_MAIS_ANGIO', 'REGIOES_DIFERENTES', 'US_TC_RM_MESMO_DIA']);
 
 /** Alvos que dependem de uma condição do PACIENTE (perguntadas no passo a passo). */
 export const ALVOS_PACIENTE = new Set(['GESTANTE', 'NEUROESTIMULADOR', 'OPERADO_TUMOR', 'TATUAGEM_RECENTE', 'JOELHO_90KG']);
@@ -53,6 +53,7 @@ export const ALVOS_PACIENTE = new Set(['GESTANTE', 'NEUROESTIMULADOR', 'OPERADO_
 const PALAVRAS: Record<string, (e: Exame, n: string, g: string[]) => boolean> = {
   G_RM: (e) => modalidadeBase(e) === 'RM',
   G_TC: (e) => modalidadeBase(e) === 'TC',
+  G_RX: (e) => modalidadeBase(e) === 'RX',
   G_ANGIO: (_e, _n, g) => g.includes('angio'),
   G_CARDIACO: (_e, _n, g) => g.includes('cardiaco'),
   G_ARTICULACAO: (_e, _n, g) => g.includes('articulacao'),

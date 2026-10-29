@@ -94,7 +94,8 @@ export function calcularJanela(b: BaseDados, slug: string, exames: ExamePedido[]
 
   const autorizacaoValeDias = cfg?.validade_autorizacao_dias ?? null;
   const autorizacaoValeAte = dataAutorizacao && autorizacaoValeDias ? somarDias(dataAutorizacao, autorizacaoValeDias) : null;
-  if (autorizacaoValeDias === null) semInformacao.push(`Validade da autorização sem informação — confirmar com ${conv?.responsavel ?? 'o setor'}`);
+  const autorizacaoSemPrazo = regras.some((r) => r.molde === 'M02' && r.campos.sem_prazo);
+  if (autorizacaoValeDias === null && !autorizacaoSemPrazo) semInformacao.push(`Validade da autorização sem informação — confirmar com ${conv?.responsavel ?? 'o setor'}`);
   if (pedidoValeAte && agendarAPartirDe && agendarAPartirDe > pedidoValeAte)
     avisos.push(`O pedido vence (${br(pedidoValeAte)}) antes da primeira data possível (${br(agendarAPartirDe)})`);
 

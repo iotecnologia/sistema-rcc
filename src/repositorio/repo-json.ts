@@ -27,7 +27,7 @@ import arquivos from '../dados/arquivos.json';
 import pendencias from '../dados/pendencias.json';
 import regras from '../dados/regras_padronizadas.json';
 import pacotes from '../dados/convenio_pacotes.json';
-import { codigosDosPacotes } from './pacotes';
+import { codigosDosPacotes, codigosTussPadrao } from './pacotes';
 
 export const baseJson: BaseDados = {
   unidades: unidades as M.Unidade[],
@@ -39,7 +39,8 @@ export const baseJson: BaseDados = {
   exames: exames as M.Exame[],
   gruposPrazo: gruposPrazo as M.GrupoPrazo[],
   exameGrupos: exameGrupos as M.ExameGrupo[],
-  codigos: [...(codigos as M.ConvenioCodigo[]), ...codigosDosPacotes(pacotes as M.ConvenioPacotes[], codigos as M.ConvenioCodigo[], exames as M.Exame[])],
+  codigos: [...(codigos as M.ConvenioCodigo[]), ...codigosDosPacotes(pacotes as M.ConvenioPacotes[], codigos as M.ConvenioCodigo[], exames as M.Exame[]),
+    ...codigosTussPadrao(config as M.ConvenioConfig[], codigos as M.ConvenioCodigo[], exames as M.Exame[])],
   pacotes: pacotes as M.ConvenioPacotes[],
   equipamentos: equipamentos as M.Equipamento[],
   equipamentoExames: equipamentoExames as M.EquipamentoExame[],

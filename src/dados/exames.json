@@ -1809,7 +1809,7 @@
   "nome": "Tomomielografia (até 3 segmentos) - acrescentar a TC da coluna e incluir a punção",
   "modalidade": "PROCEDIMENTO",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": false
  },
  {
   "id": 225,
@@ -2214,7 +2214,7 @@
   "nome": "Drenagem percutânea orientada por TC (acrescentar o exame de base)",
   "modalidade": "PROCEDIMENTO",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": false
  },
  {
   "id": 275,
@@ -2992,7 +2992,7 @@
   "nome": "Medida de pressão hepática",
   "modalidade": "OUTROS",
   "origem": "tabela do convênio cassi",
-  "ativo": true
+  "ativo": false
  },
  {
   "id": 372,
@@ -3040,6 +3040,22 @@
   "nome": "Escore de cálcio (TC de tórax)",
   "modalidade": "TOMOGRAFIA",
   "origem": "interno RCC",
+  "ativo": true
+ },
+ {
+  "id": 380,
+  "tuss": "41101570",
+  "nome": "RM - Angio arterial de membro superior (unilateral)",
+  "modalidade": "ANGIORRESSONANCIA",
+  "origem": "tabela geral",
+  "ativo": true
+ },
+ {
+  "id": 381,
+  "tuss": "41101588",
+  "nome": "RM - Angio venosa de membro superior (unilateral)",
+  "modalidade": "ANGIORRESSONANCIA",
+  "origem": "tabela geral",
   "ativo": true
  }
 ]

@@ -175,13 +175,15 @@
   },
   {
    "id": "ANGIO_TC_MMII",
-   "nome": "Angio-TC de membros inferiores",
+   "nome": "Angio-TC de membros inferiores (arterial ou venosa)",
    "tipo": "exame",
    "tuss": [
-    "41001478"
+    "41001478",
+    "41001486"
    ],
    "exame_ids": [
-    160
+    160,
+    374
    ]
   },
   {
@@ -844,6 +846,82 @@
    "tipo": "escopo",
    "tuss": [],
    "exame_ids": []
+  },
+  {
+   "id": "RM_CORACAO_TODAS",
+   "nome": "RM coração (todas as variantes)",
+   "tipo": "exame",
+   "tuss": [
+    "41101138",
+    "41101146",
+    "41101154"
+   ],
+   "exame_ids": [
+    125,
+    126,
+    127
+   ]
+  },
+  {
+   "id": "MAMOGRAFIA_EXAME",
+   "nome": "Mamografia (convencional ou digital)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    98,
+    99
+   ]
+  },
+  {
+   "id": "DENSITO_SEGMENTOS",
+   "nome": "Densitometria (um ou dois segmentos)",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    145,
+    146
+   ]
+  },
+  {
+   "id": "DENSITO_CORPO_TOTAL",
+   "nome": "Densitometria de corpo inteiro",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    147
+   ]
+  },
+  {
+   "id": "US_ABDOME_TOTAL",
+   "nome": "US abdome total",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    82
+   ]
+  },
+  {
+   "id": "US_ABDOME_SUPERIOR",
+   "nome": "US abdome superior",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    83
+   ]
+  },
+  {
+   "id": "US_BEXIGA_CHEIA",
+   "nome": "US abdome inferior / aparelho urinário / próstata via abdominal",
+   "tipo": "exame",
+   "tuss": [],
+   "exame_ids": [
+    84,
+    85,
+    95,
+    96,
+    186,
+    187
+   ]
   }
  ],
  "padroes": [
@@ -3216,7 +3294,7 @@
    "campos": {
     "texto": "Seção de códigos vazia."
    },
-   "situacao": "sem_informacao",
+   "situacao": "substituida",
    "texto_original": "Seção de códigos vazia.",
    "fontes": [
     "R86"
@@ -5367,16 +5445,16 @@
    ],
    "campos": {
     "codigos": [
-     "41001230"
+     "98327402"
     ],
-    "status": "ativo",
-    "duvida": "tabela de pacotes Saúde Caixa tem 98327402"
+    "status": "ativo"
    },
-   "situacao": "conflito",
-   "texto_original": "Pacote 41001230 — MAS a tabela de pacotes da Saúde Caixa tem 98327402 (angio coronariana).",
+   "situacao": "confirmada",
+   "texto_original": "Pacote 98327402 (angiotomografia coronariana).",
    "fontes": [
     "R167",
-    "CD07"
+    "CD07",
+    "Tabela Funcef (RCC 28/10/2026)"
    ],
    "resposta": null
   },
@@ -5552,12 +5630,14 @@
     "ANGIO_TC_MMII"
    ],
    "campos": {
-    "cobertura": "consultar_faturamento"
+    "cobertura": "coberto",
+    "variante": "arterial e venosa — encaminhar para o setor responsável autorizar"
    },
    "situacao": "confirmada",
-   "texto_original": "Tem cobertura — consultar faturamento.",
+   "texto_original": "Tem cobertura (arterial e venosa) — encaminhar para o setor responsável autorizar.",
    "fontes": [
-    "R173"
+    "R173",
+    "RCC 27/10/2026"
    ],
    "resposta": null
   },
@@ -7094,15 +7174,16 @@
    "convenio": null,
    "alvo_original": "RM cardíaca",
    "alvos": [
-    "RM_CORACAO"
+    "RM_CORACAO_TODAS"
    ],
    "campos": {
     "texto": "Só RM 3, horário 07:30–10:10, horários reservados (texto também menciona RM 4)."
    },
-   "situacao": "a_confirmar",
-   "texto_original": "Só RM 3, horário 07:30–10:10, horários reservados (texto também menciona RM 4).",
+   "situacao": "confirmada",
+   "texto_original": "Só RM 3, 4 horários, só de manhã. Exame acompanhado pelo Dr. Juliano (cardiologista), que só está de manhã. No X-Clinic, inserir o código 4X.",
    "fontes": [
-    "PR04"
+    "PR04",
+    "RCC 28/10/2026"
    ],
    "resposta": null
   },
@@ -7161,10 +7242,11 @@
    "campos": {
     "texto": "Só RM 1 (texto também menciona RM 4)."
    },
-   "situacao": "a_confirmar",
-   "texto_original": "Só RM 1 (texto também menciona RM 4).",
+   "situacao": "confirmada",
+   "texto_original": "Agendar sempre na RM 1.",
    "fontes": [
-    "PR08"
+    "PR08",
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
    ],
    "resposta": null
   },
@@ -7219,10 +7301,11 @@
     "texto": "RM 3 com 3 horários; com marcapasso → RM 2 com 3 horários."
    },
    "situacao": "confirmada",
-   "texto_original": "RM 3 com 3 horários; com marcapasso → RM 2 com 3 horários.",
+   "texto_original": "Agendar na RM 3 (3 horários); com marcapasso → RM 2 com 3 horários. Adicionar o paciente no WhatsApp para envio do preparo.",
    "fontes": [
     "PR09",
-    "EQ05"
+    "EQ05",
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
    ],
    "resposta": null
   },
@@ -7280,9 +7363,10 @@
     "texto": "TC 2, seg–sex, só manhã até 11:10, não atende sábado."
    },
    "situacao": "confirmada",
-   "texto_original": "TC 2, seg–sex, só manhã até 11:10, não atende sábado.",
+   "texto_original": "TC 2, seg–sex, só de manhã (07:30 às 11:10), somente nos horários bloqueados para coronária; não atende sábado. Exame acompanhado pelo Dr. Juliano (cardiologista).",
    "fontes": [
-    "PR10"
+    "PR10",
+    "RCC 28/10/2026"
    ],
    "resposta": null
   },
@@ -7375,11 +7459,12 @@
    "campos": {
     "texto": "Agendar em TC 2 — mas TC I também lista \"Escore (Dr. Pinho)\"."
    },
-   "situacao": "conflito",
-   "texto_original": "Agendar em TC 2 — mas TC I também lista \"Escore (Dr. Pinho)\".",
+   "situacao": "confirmada",
+   "texto_original": "Agendar só na TC 2. Não possui preparo.",
    "fontes": [
     "PR07",
-    "EQ03"
+    "EQ03",
+    "RCC 28/10/2026"
    ],
    "resposta": null
   },
@@ -8441,6 +8526,341 @@
    "texto_original": "As 92 redes da lista são ATENDIDAS.",
    "fontes": [
     "RESP-6"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-83",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Triagem RM",
+   "alvos": [
+    "G_RM"
+   ],
+   "campos": {
+    "texto": "Perguntar se o paciente tem algum metal no corpo e se tem alergia a contraste (se sim, qual reação teve)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Triagem: perguntar se o paciente tem algum metal no corpo e se tem alergia a contraste (se sim, qual reação teve).",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-84",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Triagem TC / angio-TC",
+   "alvos": [
+    "G_TC"
+   ],
+   "campos": {
+    "texto": "Perguntar se o paciente tem alergia a frutos do mar ou iodo (se sim, qual reação teve)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Triagem: perguntar se o paciente tem alergia a frutos do mar ou iodo (se sim, qual reação teve).",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-85",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "RM pelve endometriose",
+   "alvos": [
+    "RM_PELVE_ENDOMETRIOSE"
+   ],
+   "campos": {},
+   "situacao": "confirmada",
+   "texto_original": "Agendar na RM 2 (se não tiver vaga, verificar a RM 1). Adicionar o paciente no WhatsApp para envio do preparo.",
+   "fontes": [
+    "RCC 28/10/2026"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-86",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Doppler renal",
+   "alvos": [
+    "DOPPLER_RENAL"
+   ],
+   "campos": {
+    "horarios": 2
+   },
+   "situacao": "confirmada",
+   "texto_original": "Agendar somente com Dra. Lílian ou Dr. Leandro, usando 2 horários.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-87",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Mamografia",
+   "alvos": [
+    "MAMOGRAFIA_EXAME"
+   ],
+   "campos": {},
+   "situacao": "confirmada",
+   "texto_original": "Manhã 07:30 às 11:30 · tarde 13:30 às 16:30.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-88",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Mamografia",
+   "alvos": [
+    "MAMOGRAFIA_EXAME"
+   ],
+   "campos": {
+    "texto": "Evitar talco e creme nas mamas e axilas no dia do exame."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Evitar talco e creme nas mamas e axilas no dia do exame.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-89",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "Densitometria",
+   "alvos": [
+    "DENSITO_SEGMENTOS"
+   ],
+   "campos": {
+    "peso_max_kg": 120
+   },
+   "situacao": "confirmada",
+   "texto_original": "Limite 120 kg (a máquina não faz acima disso). Perguntar peso e altura.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-90",
+   "molde": "M23",
+   "molde_nome": "Restrição do paciente",
+   "convenio": null,
+   "alvo_original": "Densitometria corpo inteiro",
+   "alvos": [
+    "DENSITO_CORPO_TOTAL"
+   ],
+   "campos": {
+    "peso_max_kg": 100
+   },
+   "situacao": "confirmada",
+   "texto_original": "Corpo inteiro: limite 100 kg (a máquina não faz acima disso). Perguntar peso e altura.",
+   "fontes": [
+    "RCC 28/10/2026"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-91",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Densitometria",
+   "alvos": [
+    "DENSITO_SEGMENTOS",
+    "DENSITO_CORPO_TOTAL"
+   ],
+   "campos": {
+    "texto": "Perguntar se faz reposição de cálcio ou vitamina com cálcio todo dia. Se sim, suspender 24h antes do exame."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Perguntar se faz reposição de cálcio ou vitamina com cálcio todo dia. Se sim, suspender 24h antes do exame.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-92",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Densitometria",
+   "alvos": [
+    "DENSITO_SEGMENTOS",
+    "DENSITO_CORPO_TOTAL"
+   ],
+   "campos": {},
+   "situacao": "confirmada",
+   "texto_original": "Manhã 07:30 às 11:30 · tarde 13:30 às 16:30.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-93",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Raio-X",
+   "alvos": [
+    "G_RX"
+   ],
+   "campos": {},
+   "situacao": "confirmada",
+   "texto_original": "Agendar data e horário. Segunda a sexta 07:30 às 16:30 · sábado 07:30 às 11:30.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-94",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "Raio-X",
+   "alvos": [
+    "G_RX"
+   ],
+   "campos": {
+    "texto": "Não possui preparo."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Não possui preparo.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-95",
+   "molde": "M24",
+   "molde_nome": "Agenda do exame",
+   "convenio": null,
+   "alvo_original": "Ordem dos exames no mesmo dia",
+   "alvos": [
+    "US_TC_RM_MESMO_DIA"
+   ],
+   "campos": {},
+   "situacao": "confirmada",
+   "texto_original": "Mesmo dia: agendar nesta ordem — 1º Ultrassom → aguardar 1 hora → 2º Tomografia → aguardar 1 hora → 3º Ressonância (intervalo obrigatório).",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-96",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "US abdome total",
+   "alvos": [
+    "US_ABDOME_TOTAL"
+   ],
+   "campos": {
+    "texto": "6 horas de jejum + bexiga cheia."
+   },
+   "situacao": "confirmada",
+   "texto_original": "6 horas de jejum + bexiga cheia.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-97",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "US abdome superior",
+   "alvos": [
+    "US_ABDOME_SUPERIOR"
+   ],
+   "campos": {
+    "texto": "6 horas de jejum (pode tomar água; não precisa de bexiga cheia)."
+   },
+   "situacao": "confirmada",
+   "texto_original": "6 horas de jejum (pode tomar água; não precisa de bexiga cheia).",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "RCC-98",
+   "molde": "M26",
+   "molde_nome": "Preparo",
+   "convenio": null,
+   "alvo_original": "US abdome inferior / aparelho urinário / próstata",
+   "alvos": [
+    "US_BEXIGA_CHEIA"
+   ],
+   "campos": {
+    "texto": "Bexiga cheia."
+   },
+   "situacao": "confirmada",
+   "texto_original": "Bexiga cheia.",
+   "fontes": [
+    "Orientações de Agendamento e Triagem (RCC 27/10/2026)"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "AAF-13",
+   "molde": "M02",
+   "molde_nome": "Validade da autorização",
+   "convenio": "aafresp",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "dias": null,
+    "sem_prazo": true
+   },
+   "situacao": "confirmada",
+   "texto_original": "Autorização sem data de vencimento.",
+   "fontes": [
+    "RCC 27/10/2026"
+   ],
+   "resposta": null
+  },
+  {
+   "id": "ASS-12",
+   "molde": "M10",
+   "molde_nome": "Canal de autorização",
+   "convenio": "assefaz",
+   "alvo_original": "Autorização",
+   "alvos": [
+    "AUTORIZACAO"
+   ],
+   "campos": {
+    "canal": "setor"
+   },
+   "situacao": "confirmada",
+   "texto_original": "Encaminhar para o setor responsável autorizar.",
+   "fontes": [
+    "RCC 27/10/2026"
    ],
    "resposta": null
   }

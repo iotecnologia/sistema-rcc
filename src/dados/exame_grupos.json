@@ -170,5 +170,13 @@
  {
   "exame_id": 377,
   "grupo_id": 1
+ },
+ {
+  "exame_id": 380,
+  "grupo_id": 2
+ },
+ {
+  "exame_id": 381,
+  "grupo_id": 2
  }
 ]

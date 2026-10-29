@@ -4,7 +4,7 @@ import type { Convenio, Situacao, ConvenioConselho } from '../tipos/modelos';
 import { agendaDoExame, type AgendaExame } from './agenda';
 import { autorizacaoDoExame, coberturaImpede, paraItem, type AutorizacaoExame, type ItemRegra } from './autorizacao';
 import { br } from './calendario';
-import { ALVOS_COMBINACAO, convenioPorSlug, ehAngio, gruposDoExame, modalidadeBase, norm, regrasDoConvenio } from './contexto';
+import { ALVOS_COMBINACAO, convenioPorSlug, ehAngio, gruposDoExame, modalidadeBase, norm, regrasDoConvenio, regrasRCC } from './contexto';
 import { calcularJanela, type ExamePedido, type Janela } from './janela';
 import { regrasGerais, type RegrasGerais } from './pedido';
 import { aplicarMultiplasRegioes } from './pacotes';
@@ -54,8 +54,9 @@ function regrasDeCombinacao(b: BaseDados, slug: string, itens: ExamePedido[]): I
     EXAMES_BILATERAIS: bilateral,
     COLUNA_LOMBAR_BACIA: lombarBacia,
     REGIOES_DIFERENTES: regioes >= 2,
+    US_TC_RM_MESMO_DIA: ['US', 'TC', 'RM'].filter((m) => mods.includes(m)).length >= 2,   // ordem obrigatória com 1h de intervalo
   };
-  return regrasDoConvenio(b, slug)
+  return [...regrasDoConvenio(b, slug), ...regrasRCC(b)]
     .filter((r) => r.alvos.some((a) => ALVOS_COMBINACAO.has(a) && dispara[a]))
     .map((r) => paraItem(b, r));
 }

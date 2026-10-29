@@ -31,3 +31,18 @@ export function codigosDosPacotes(cfg: M.ConvenioPacotes[], codigos: M.ConvenioC
   }
   return novos;
 }
+
+/** Convênios que autorizam pelo TUSS padrão (config.codigos_tuss): cada exame ativo sem código próprio recebe o TUSS do catálogo. */
+export function codigosTussPadrao(cfg: M.ConvenioConfig[], codigos: M.ConvenioCodigo[], exames: M.Exame[]): M.ConvenioCodigo[] {
+  let id = 950000;   // ids altos: não colidem com os da tabela nem com os dos pacotes
+  const novos: M.ConvenioCodigo[] = [];
+  for (const c of cfg.filter((x) => x.codigos_tuss)) {
+    const temCodigo = new Set(codigos.filter((x) => x.convenio_id === c.convenio_id && x.exame_id && x.status === 'ativo').map((x) => x.exame_id));
+    for (const e of exames)
+      if (e.ativo && e.tuss && !temCodigo.has(e.id))
+        novos.push({ id: id++, convenio_id: c.convenio_id, exame_id: e.id, codigo: e.tuss, tipo: 'TUSS', nome_no_convenio: e.nome,
+          observacao: null, composicao: false, alternativo: false, grupo: null, secao: 'TUSS do exame',
+          revisao: null, status: 'ativo', vinculo: 'tuss_padrao' });
+  }
+  return novos;
+}

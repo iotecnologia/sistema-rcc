@@ -1390,16 +1390,6 @@
   "periodo": null
  },
  {
-  "equipamento_id": 6,
-  "exame_nome": "Escore de cálcio (dr. pinho)",
-  "exame_id": null,
-  "horarios": null,
-  "minutos": null,
-  "contraste": null,
-  "condicao_paciente": null,
-  "periodo": null
- },
- {
   "equipamento_id": 7,
   "exame_nome": "Angiotomografia",
   "exame_id": null,

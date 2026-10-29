@@ -6,7 +6,7 @@ export type Id = number;
 export interface Unidade {
   id: Id; nome: string; apelido: string; observacao: string;
   endereco: string; cep: string; cidade: string; telefones: string;
-  whatsapp: string | null; horario_atendimento: string;
+  whatsapp: string | null; horario_atendimento: string; retirada_exames?: string | null;
 }
 
 export interface Convenio {
@@ -20,6 +20,7 @@ export interface ConvenioConfig {
   aceita_copia: boolean | null; exige_original: boolean; exige_cid: boolean; exige_carimbo_assinatura: boolean;
   aceita_multipla_escolha: boolean | null; aceita_outro_estado: boolean | null; guia_sp_sadt: boolean;
   canal_autorizacao: string | null; gera_senha: string | null; observacao: string | null; revisar: boolean;
+  codigos_tuss?: boolean;   // autoriza pelo TUSS padrão: todo exame sem código próprio recebe o TUSS do catálogo
 }
 
 export interface ConvenioPrazo {

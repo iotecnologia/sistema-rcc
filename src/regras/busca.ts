@@ -49,7 +49,7 @@ export function buscarExames(b: BaseDados, q: string, limite = 10): Achado[] {
   };
   return b.exames
     .map((e, i) => ({ e, i, t: `${e.nome} ${e.tuss ?? ''} ${apelidos(e)}` }))
-    .filter((x) => casa(x.t))
+    .filter((x) => x.e.ativo && casa(x.t))   // exame que a RCC não faz (ativo: false) não aparece na busca
     .map((x) => ({ ...x, n: inteiras(x.t) }))
     .sort((a, c) => c.n - a.n || a.i - c.i)
     .slice(0, limite)
