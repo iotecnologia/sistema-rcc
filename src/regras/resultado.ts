@@ -1,6 +1,6 @@
 // Junta tudo numa resposta só: convênio + exames + data do pedido → o que fazer.
 import type { BaseDados } from '../repositorio/repositorio';
-import type { Convenio, Situacao, ConvenioConselho } from '../tipos/modelos';
+import type { Convenio, Situacao, ConvenioConselho, Plano } from '../tipos/modelos';
 import { agendaDoExame, type AgendaExame } from './agenda';
 import { autorizacaoDoExame, coberturaImpede, paraItem, type AutorizacaoExame, type ItemRegra } from './autorizacao';
 import { br } from './calendario';
@@ -8,7 +8,7 @@ import { ALVOS_COMBINACAO, convenioPorSlug, ehAngio, gruposDoExame, modalidadeBa
 import { calcularJanela, type ExamePedido, type Janela } from './janela';
 import { regrasGerais, type RegrasGerais } from './pedido';
 import { aplicarMultiplasRegioes } from './pacotes';
-import { rotuloRede, situacaoDaRede, type RedeInfo } from './rede';
+import { pedeRede, situacaoDaRede, type RedeInfo } from './rede';
 
 export interface Consulta {
   convenio: string;                 // slug
@@ -33,6 +33,7 @@ export interface Resultado {
   motivos: string[];                // por que "não pode" ou "atenção"
   pendentes: ItemRegra[];           // regras envolvidas que estão a confirmar / em conflito / sem informação
   rede: RedeInfo | null;            // null quando o convênio não pede a rede
+  planos: Plano[];                  // planos com regra (ex.: SulAmérica) quando o convênio NÃO pede o campo de rede: só alerta para conferir na carteirinha
   conselhos: ConvenioConselho[];    // médico solicitante: quais conselhos o convênio aceita (CRM, CRO, CREFITO…)
 }
 
@@ -83,7 +84,7 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
     motivos.push(`${convenio.nome}: o pedido já vem AUTORIZADO pelo próprio convênio. Antes de agendar, confira na guia autorizada: nome do paciente, exame autorizado e validade da senha.`);
   }
   const rede = situacaoDaRede(b, q.convenio, q.rede);
-  if (rede?.situacao === 'nao_atende') { situacao = 'nao_pode'; motivos.push(`${rotuloRede(q.convenio)} ${rede.nome}: a RCC não atende`); }
+  if (rede?.situacao === 'nao_atende') { situacao = 'nao_pode'; motivos.push(`Rede ${rede.nome}: a RCC não atende essa rede`); }
   if (janela.pedidoVencido) { situacao = 'nao_pode'; motivos.push(`Pedido vencido em ${br(janela.pedidoValeAte)} — pedir um pedido novo ao paciente`); }
   for (const e of exames) if (coberturaImpede(e.autorizacao.cobertura))
     { situacao = 'nao_pode'; motivos.push(`${e.autorizacao.exame.nome}: ${e.autorizacao.coberturaTexto}`); }
@@ -98,7 +99,8 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
   const pendentes = todas.filter((r) => PROBLEMA.includes(r.situacao)).filter((r, i, a) => a.findIndex((x) => x.id === r.id) === i);
   // regras ainda não confirmadas NÃO mudam a situação: a confirmação acontece antes de o sistema ir para produção
   const conselhos = b.conselhos.filter((c) => c.convenio_id === convenio.id);
-  return { convenio, geral, exames, combinacao, janela, situacao, motivos, pendentes, rede, conselhos };
+  const planos = pedeRede(q.convenio) ? [] : b.planos.filter((p) => p.convenio_id === convenio.id);
+  return { convenio, geral, exames, combinacao, janela, situacao, motivos, pendentes, rede, planos, conselhos };
 }
 
 /** Texto curto para WhatsApp / área de transferência. */

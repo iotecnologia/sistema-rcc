@@ -4,7 +4,6 @@ import type { ReactNode } from 'react';
 import { ConselhosLinhas } from './Conselhos';
 import { Copiar } from './Copiar';
 import type { Resultado, ResultadoExame } from '../regras/resultado';
-import { rotuloRede } from '../regras/rede';
 import type { AgendaExame } from '../regras/agenda';
 import { br, nomeDia } from '../regras/calendario';
 import { useBase } from './Dados';
@@ -72,13 +71,13 @@ function rotuloPedido(t: string): [string, string] {
 const Sinal = ({ tipo, txt }: { tipo: 'sim' | 'nao'; txt: string }) =>
   <span className={'sinal ' + tipo}><span className="ic"><Icone n={tipo === 'nao' ? 'x' : 'ok'} /></span>{txt}</span>;
 
-/** Linha da rede (Bradesco) ou do plano (SulAmérica): atende, não atende ou alerta para conferir. */
+/** Linha da rede (só Bradesco): atende, não atende ou alerta para conferir. */
 function LinhaRede({ r }: { r: Resultado }) {
+  if (!r.rede && r.planos.length) return <Linha rot="Atenção" aviso>Confira o plano na carteirinha: {r.planos.map((p) => `${p.nome} — ${p.atende === false ? 'NÃO atendemos' : 'atendemos'}`).join(' · ')}.</Linha>;
   if (!r.rede) return null;
-  const rot = rotuloRede(r.convenio.slug);
-  if (r.rede.situacao === 'escolher') return <Linha rot="Atenção" aviso>Confira {rot === 'Plano' ? 'o plano' : 'a rede'} do paciente (está na carteirinha) antes de agendar. Escolha {rot === 'Plano' ? 'o Plano' : 'a Rede'} no campo 2.</Linha>;
-  if (r.rede.situacao === 'atende') return <Linha rot={rot}><Sinal tipo="sim" txt={`${r.rede.nome}: atendemos`} /></Linha>;
-  return <Linha rot={rot} aviso><Sinal tipo="nao" txt={`${r.rede.nome}: não atendemos`} /></Linha>;
+  if (r.rede.situacao === 'escolher') return <Linha rot="Atenção" aviso>Confira a rede do paciente (está na carteirinha) antes de agendar. Escolha a Rede no campo 2.</Linha>;
+  if (r.rede.situacao === 'atende') return <Linha rot="Rede"><Sinal tipo="sim" txt={`${r.rede.nome}: atendemos`} /></Linha>;
+  return <Linha rot="Rede" aviso><Sinal tipo="nao" txt={`${r.rede.nome}: não atendemos`} /></Linha>;
 }
 
 function Mensagem1({ r }: { r: Resultado }) {
