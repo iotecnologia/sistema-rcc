@@ -73,7 +73,19 @@ const Sinal = ({ tipo, txt }: { tipo: 'sim' | 'nao'; txt: string }) =>
 
 /** Linha da rede (só Bradesco): atende, não atende ou alerta para conferir. */
 function LinhaRede({ r }: { r: Resultado }) {
-  if (!r.rede && r.planos.length) return <Linha rot="Atenção" aviso>Confira o plano na carteirinha: {r.planos.map((p) => `${p.nome} — ${p.atende === false ? 'NÃO atendemos' : 'atendemos'}`).join(' · ')}.</Linha>;
+  if (!r.rede && r.planos.length) return (   // planos (ex.: SulAmérica): mesmo estilo do médico solicitante, um por linha
+    <Linha rot="Plano (carteirinha)">
+      <ul className="conselhos">
+        {r.planos.map((p) => (
+          <li key={p.nome} className={p.atende === false ? 'nao' : 'sim'} style={{ gridTemplateColumns: '20px 120px 1fr' }}>
+            <span className="ic"><Icone n={p.atende === false ? 'x' : 'ok'} /></span>
+            <b>{p.nome}</b>
+            <span>{p.atende === false ? 'não atendemos' : 'atendemos'}</span>
+          </li>
+        ))}
+      </ul>
+    </Linha>
+  );
   if (!r.rede) return null;
   if (r.rede.situacao === 'escolher') return <Linha rot="Atenção" aviso>Confira a rede do paciente (está na carteirinha) antes de agendar. Escolha a Rede no campo 2.</Linha>;
   if (r.rede.situacao === 'atende') return <Linha rot="Rede"><Sinal tipo="sim" txt={`${r.rede.nome}: atendemos`} /></Linha>;
