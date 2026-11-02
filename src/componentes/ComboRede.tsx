@@ -1,8 +1,8 @@
-// Campo da rede do paciente (só aparece no Bradesco): digitar e escolher na lista suspensa. Não trava a consulta.
+// Campo da rede (Bradesco) ou do plano (SulAmérica) do paciente: digitar e escolher na lista suspensa. Não trava a consulta.
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
 import { useBase } from './Dados';
 import { norm } from '../regras/contexto';
-import { redesDoConvenio } from '../regras/rede';
+import { redesDoConvenio, rotuloRede } from '../regras/rede';
 
 export function ComboRede({ convenio, valor, mudar, passo }: { convenio: string; valor: string; mudar: (nome: string) => void; passo?: number }) {
   const b = useBase();
@@ -11,7 +11,9 @@ export function ComboRede({ convenio, valor, mudar, passo }: { convenio: string;
   const [i, setI] = useState(0);
   const ref = useRef<HTMLInputElement>(null);
   const redes = useMemo(() => redesDoConvenio(b, convenio), [b, convenio]);
-  const lista = useMemo(() => (q.trim() ? redes.filter((r) => norm(r.nome).includes(norm(q.trim()))).slice(0, 30) : []), [redes, q]);
+  const rot = rotuloRede(convenio);
+  const poucas = redes.length <= 10;   // lista curta (ex.: planos da SulAmérica): mostra tudo ao clicar, sem precisar digitar
+  const lista = useMemo(() => (q.trim() ? redes.filter((r) => norm(r.nome).includes(norm(q.trim()))).slice(0, 30) : poucas ? redes : []), [redes, q, poucas]);
   const escolher = (nome: string) => { mudar(nome); setAberto(false); setQ(''); ref.current?.blur(); };
   const tecla = (e: KeyboardEvent) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); setAberto(true); setI(Math.min(i + 1, lista.length - 1)); }
@@ -21,20 +23,20 @@ export function ComboRede({ convenio, valor, mudar, passo }: { convenio: string;
   };
   return (
     <label className="cp combo rede">
-      <span>{passo && <span className="passo">{passo}</span>}Rede <small style={{ fontWeight: 400, textTransform: 'none' }}>(na carteirinha)</small></span>
+      <span>{passo && <span className="passo">{passo}</span>}{rot} <small style={{ fontWeight: 400, textTransform: 'none' }}>(na carteirinha)</small></span>
       <div className="combo-campo">
-        <input ref={ref} value={aberto ? q : valor} placeholder="Digite a rede…" autoComplete="off"
+        <input ref={ref} value={aberto ? q : valor} placeholder={poucas ? `Escolha o ${rot.toLowerCase()}…` : `Digite a ${rot.toLowerCase()}…`} autoComplete="off"
           onFocus={() => { setAberto(true); setI(0); }} onBlur={() => setTimeout(() => { setAberto(false); setQ(''); }, 150)}
           onChange={(e) => { setQ(e.target.value); setI(0); setAberto(true); if (valor) mudar(''); }} onKeyDown={tecla} />
       </div>
-      {aberto && q.trim() !== '' && (
+      {aberto && (q.trim() !== '' || poucas) && (
         <div className="combo-lista" role="listbox">
           {lista.length ? lista.map((r, k) => (
             <button type="button" key={r.nome} role="option" aria-selected={r.nome === valor} className={(k === i ? 'foco ' : '') + (r.nome === valor ? 'sel' : '')}
               onMouseDown={(e) => { e.preventDefault(); escolher(r.nome); }} onMouseEnter={() => setI(k)}>
               <span>{r.nome}</span>
             </button>
-          )) : <div className="combo-vazio">Rede “{q}” não cadastrada. Confirme com a supervisão.</div>}
+          )) : <div className="combo-vazio">{rot} “{q}” não cadastrad{rot === 'Plano' ? 'o' : 'a'}. Confirme com a supervisão.</div>}
         </div>
       )}
     </label>

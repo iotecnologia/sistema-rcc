@@ -8,7 +8,7 @@ import { ALVOS_COMBINACAO, convenioPorSlug, ehAngio, gruposDoExame, modalidadeBa
 import { calcularJanela, type ExamePedido, type Janela } from './janela';
 import { regrasGerais, type RegrasGerais } from './pedido';
 import { aplicarMultiplasRegioes } from './pacotes';
-import { situacaoDaRede, type RedeInfo } from './rede';
+import { rotuloRede, situacaoDaRede, type RedeInfo } from './rede';
 
 export interface Consulta {
   convenio: string;                 // slug
@@ -83,7 +83,7 @@ export function consultar(b: BaseDados, q: Consulta): Resultado {
     motivos.push(`${convenio.nome}: o pedido já vem AUTORIZADO pelo próprio convênio. Antes de agendar, confira na guia autorizada: nome do paciente, exame autorizado e validade da senha.`);
   }
   const rede = situacaoDaRede(b, q.convenio, q.rede);
-  if (rede?.situacao === 'nao_atende') { situacao = 'nao_pode'; motivos.push(`Rede ${rede.nome}: a RCC não atende essa rede`); }
+  if (rede?.situacao === 'nao_atende') { situacao = 'nao_pode'; motivos.push(`${rotuloRede(q.convenio)} ${rede.nome}: a RCC não atende`); }
   if (janela.pedidoVencido) { situacao = 'nao_pode'; motivos.push(`Pedido vencido em ${br(janela.pedidoValeAte)} — pedir um pedido novo ao paciente`); }
   for (const e of exames) if (coberturaImpede(e.autorizacao.cobertura))
     { situacao = 'nao_pode'; motivos.push(`${e.autorizacao.exame.nome}: ${e.autorizacao.coberturaTexto}`); }

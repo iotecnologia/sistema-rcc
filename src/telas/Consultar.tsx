@@ -9,7 +9,7 @@ import { relatorioAgendamento } from '../componentes/ResultadoSimples';
 import { ComboConvenio } from '../componentes/ComboConvenio';
 import { SeletorExames, ExamesEscolhidos, type Escolhido } from '../componentes/SeletorExames';
 import { ComboRede } from '../componentes/ComboRede';
-import { pedeRede } from '../regras/rede';
+import { pedeRede, rotuloRede } from '../regras/rede';
 import { consultar, resumoTexto } from '../regras/resultado';
 import { hojeIso } from '../regras/calendario';
 import { local } from '../util/formato';
@@ -42,7 +42,7 @@ export function Consultar() {
     if (!hist.length || hist[0].conv !== item.conv || hist[0].ex !== item.ex) local.gravar('historico', [item, ...hist].slice(0, 8));
   }, [resultado]);
 
-  const guia = !conv ? 'Comece escolhendo o convênio do paciente.' : comRede && !rede ? 'Agora escolha a rede do paciente (está na carteirinha) e digite o exame.' : 'Agora digite o exame do jeito que o paciente falou.';
+  const guia = !conv ? 'Comece escolhendo o convênio do paciente.' : comRede && !rede ? `Agora escolha ${rotuloRede(conv) === 'Plano' ? 'o plano' : 'a rede'} do paciente (está na carteirinha) e digite o exame.` : 'Agora digite o exame do jeito que o paciente falou.';
   const limpar = () => { setConv(''); setRede(''); setExames([]); setDataPedido(''); };
 
   return (

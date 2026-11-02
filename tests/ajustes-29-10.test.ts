@@ -66,4 +66,9 @@ describe('convênios', () => {
     expect(p.some((x) => x.procedimento === 'HIDRO-RM (COLANGIORESSONANCIA) + RM ABDOME TOTAL')).toBe(true);
     expect(p.some((x) => x.procedimento === 'RM - URO RM (HIDRO-RM)')).toBe(false);
   });
+  test('SulAmérica pede o plano: Clássico 100 não atende, Especial 100 atende', () => {
+    const c = (rede: string) => consultar(b, { convenio: 'sulamerica', exames: [{ exameId: 115 }], dataPedido: HOJE, hoje: HOJE, rede });
+    expect(c('CLÁSSICO 100').situacao).toBe('nao_pode');
+    expect(c('ESPECIAL 100').rede?.situacao).toBe('atende');
+  });
 });
