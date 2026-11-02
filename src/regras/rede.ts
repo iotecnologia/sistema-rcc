@@ -1,11 +1,9 @@
-// Rede / plano do paciente (está na carteirinha): Bradesco pede a rede, SulAmérica pede o plano. A lista vem de planos.json.
+// Rede do paciente: hoje só o Bradesco pede a rede (está na carteirinha). A lista vem de planos.json.
 import type { BaseDados } from '../repositorio/repositorio';
 import type { Plano } from '../tipos/modelos';
 import { norm } from './contexto';
 
-export const CONVENIOS_COM_REDE = new Set(['bradesco', 'sulamerica']);
-/** Nome do campo na carteirinha: "Rede" (Bradesco) ou "Plano" (SulAmérica). */
-export const rotuloRede = (slug: string) => (slug === 'sulamerica' ? 'Plano' : 'Rede');
+export const CONVENIOS_COM_REDE = new Set(['bradesco']);
 export type SituacaoRede = 'atende' | 'nao_atende' | 'escolher';
 export interface RedeInfo { nome: string | null; situacao: SituacaoRede }
 

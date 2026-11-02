@@ -9,7 +9,7 @@ import { regrasDoConvenio, norm } from '../regras/contexto';
 import { regrasGerais } from '../regras/pedido';
 import { pedidoEmLinhas } from '../regras/conselhos';
 import { ConselhosLinhas } from '../componentes/Conselhos';
-import { redesDoConvenio, rotuloRede } from '../regras/rede';
+import { redesDoConvenio } from '../regras/rede';
 import type { Convenio } from '../tipos/modelos';
 
 const NOME_GRUPO: Record<string, string> = { cardiaco: 'Exames cardíacos', articulacao: 'Articulações' };
@@ -120,7 +120,7 @@ export function Convenios() {
   );
 }
 
-/** Rede (Bradesco) ou plano (SulAmérica): caixa fechada; ao abrir mostra todas as redes e se a RCC atende ou não. */
+/** Rede (só Bradesco): caixa fechada; ao abrir mostra todas as redes e se a RCC atende ou não. */
 function RedesDoConvenio({ slug }: { slug: string }) {
   const b = useBase();
   const redes = redesDoConvenio(b, slug);
@@ -129,7 +129,7 @@ function RedesDoConvenio({ slug }: { slug: string }) {
   const nao = redes.filter((r) => r.atende === false).length;
   return (
     <details className="bloco redes-caixa">
-      <summary className="bloco-cab"><h3>{rotuloRede(slug)}</h3><span className="mut" style={{ fontSize: 13 }}>{redes.length} {rotuloRede(slug) === 'Plano' ? 'planos' : 'redes'} · {nao} não {nao === 1 ? 'atendid' : 'atendid'}{rotuloRede(slug) === 'Plano' ? (nao === 1 ? 'o' : 'os') : (nao === 1 ? 'a' : 'as')}</span></summary>
+      <summary className="bloco-cab"><h3>Rede</h3><span className="mut" style={{ fontSize: 13 }}>{redes.length} redes · {nao} não {nao === 1 ? 'atendida' : 'atendidas'}</span></summary>
       <div className="redes-lista">
         {lista.map((r) => (
           <div className="rede-linha" key={r.nome}>
